@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://bsp1ug1544wkv"]
+[gd_scene load_steps=35 format=3 uid="uid://bsp1ug1544wkv"]
 
 [ext_resource type="PackedScene" uid="uid://ctpcgnbte0ujm" path="res://scenes/models/pathtest.blend" id="1_27c0p"]
 [ext_resource type="Script" uid="uid://tr0544b3fh36" path="res://addons/aacc/scripts/car_input.gd" id="1_g86do"]
@@ -42,9 +42,8 @@ distance_fade_max_distance = 1.5
 material = SubResource("StandardMaterial3D_6v6se")
 size = Vector2(2, 1)
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_vycac"]
-height = 20.0
-radius = 10.0
+[sub_resource type="BoxShape3D" id="BoxShape3D_f85px"]
+size = Vector3(20, 20, 20)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vycac"]
 transparency = 1
@@ -60,9 +59,6 @@ material = SubResource("StandardMaterial3D_vycac")
 top_radius = 10.0
 bottom_radius = 10.0
 height = 20.0
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_f85px"]
-size = Vector3(20, 20, 20)
 
 [sub_resource type="Resource" id="Resource_rftos"]
 resource_local_to_scene = true
@@ -160,7 +156,7 @@ script = ExtResource("11_6v6se")
 next = NodePath("../Checkpoint2")
 
 [node name="Collision" type="CollisionShape3D" parent="Checkpoint1"]
-shape = SubResource("CylinderShape3D_vycac")
+shape = SubResource("BoxShape3D_f85px")
 debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="Mesh" type="MeshInstance3D" parent="Checkpoint1"]
@@ -175,7 +171,7 @@ script = ExtResource("11_6v6se")
 next = NodePath("../Checkpoint3")
 
 [node name="Collision" type="CollisionShape3D" parent="Checkpoint2"]
-shape = SubResource("CylinderShape3D_vycac")
+shape = SubResource("BoxShape3D_f85px")
 debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="Mesh" type="MeshInstance3D" parent="Checkpoint2"]
@@ -190,7 +186,7 @@ script = ExtResource("11_6v6se")
 next = NodePath("../Checkpoint4")
 
 [node name="Collision" type="CollisionShape3D" parent="Checkpoint3"]
-shape = SubResource("CylinderShape3D_vycac")
+shape = SubResource("BoxShape3D_f85px")
 debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="Mesh" type="MeshInstance3D" parent="Checkpoint3"]
@@ -205,7 +201,7 @@ script = ExtResource("11_6v6se")
 next = NodePath("../Checkpoint5")
 
 [node name="Collision" type="CollisionShape3D" parent="Checkpoint4"]
-shape = SubResource("CylinderShape3D_vycac")
+shape = SubResource("BoxShape3D_f85px")
 debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="Mesh" type="MeshInstance3D" parent="Checkpoint4"]
@@ -437,6 +433,7 @@ text = "TODO: actual outro
 Demo saved to:
 Windows: %APPDATA%\\Godot\\app_userdata\\No Downforce\\save_<timestamp>.res
 Linux: ~/.local/share/godot/app_userdata/No Downforce/save_<timestamp>.res
+Web: somewhere in the browser's IndexedDB, you figure it out
 Make sure to share it in the comments or something!
 
 Press R to try again"
@@ -468,9 +465,3 @@ text = "00:00.000"
 label_settings = ExtResource("15_6v6se")
 horizontal_alignment = 2
 script = ExtResource("20_f85px")
-
-[connection signal="body_entered" from="Checkpoint1" to="Checkpoint1" method="_on_body_entered"]
-[connection signal="body_entered" from="Checkpoint2" to="Checkpoint2" method="_on_body_entered"]
-[connection signal="body_entered" from="Checkpoint3" to="Checkpoint3" method="_on_body_entered"]
-[connection signal="body_entered" from="Checkpoint4" to="Checkpoint4" method="_on_body_entered"]
-[connection signal="body_entered" from="Checkpoint5" to="Checkpoint5" method="_on_body_entered"]
