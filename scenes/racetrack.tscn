@@ -1,0 +1,476 @@
+[gd_scene load_steps=36 format=3 uid="uid://bsp1ug1544wkv"]
+
+[ext_resource type="PackedScene" uid="uid://ctpcgnbte0ujm" path="res://scenes/models/pathtest.blend" id="1_27c0p"]
+[ext_resource type="Script" uid="uid://tr0544b3fh36" path="res://addons/aacc/scripts/car_input.gd" id="1_g86do"]
+[ext_resource type="Script" uid="uid://bscgy4yukr3na" path="res://scripts/car_setter.gd" id="1_rftos"]
+[ext_resource type="PackedScene" uid="uid://7qj1vlu41qpm" path="res://scenes/cars/race.tscn" id="2_fi1wu"]
+[ext_resource type="Script" uid="uid://crrd7ugev6afh" path="res://addons/aacc/scripts/helper_classes/procedural_curve.gd" id="3_g86do"]
+[ext_resource type="Script" uid="uid://ddq1hbwwr3v26" path="res://scripts/shadow_color_setter.gd" id="3_opjfx"]
+[ext_resource type="Script" uid="uid://k4svdp3krbho" path="res://scripts/camera.gd" id="4_0kx16"]
+[ext_resource type="Script" uid="uid://dct8lw28g61gg" path="res://scripts/race_tracker.gd" id="4_u20ab"]
+[ext_resource type="Environment" uid="uid://cx6466y1wxssu" path="res://misc/racetrack_environment.tres" id="6_qej83"]
+[ext_resource type="Script" uid="uid://cscro4kkkoacv" path="res://scripts/light_compatibility_adjustment.gd" id="7_sdtqh"]
+[ext_resource type="LightmapGIData" uid="uid://bvcubssjkd6ht" path="res://scenes/racetrack.lmbake" id="8_n0m4o"]
+[ext_resource type="Script" uid="uid://d34asehi5ugcg" path="res://scripts/checkpoint.gd" id="11_6v6se"]
+[ext_resource type="AudioStream" uid="uid://dgrfcwskgo3i1" path="res://audio/149935__conleec__amb_ext_residential_day_stereo_002.wav" id="11_kdiae"]
+[ext_resource type="LabelSettings" uid="uid://bq8kv3xts0y7f" path="res://ui/hud_small_text.tres" id="12_p664h"]
+[ext_resource type="Script" uid="uid://bf5r1446orb5o" path="res://scripts/speed_label.gd" id="13_687kb"]
+[ext_resource type="Script" uid="uid://kaltnwdawygu" path="res://scripts/gear_label.gd" id="13_vycac"]
+[ext_resource type="Script" uid="uid://d3uedaj5w0io6" path="res://scripts/revs_progress.gd" id="14_p664h"]
+[ext_resource type="LabelSettings" uid="uid://btu0x28601047" path="res://ui/hud_large_numbers.tres" id="15_6v6se"]
+[ext_resource type="StyleBox" uid="uid://djeifm0a8tat5" path="res://ui/background.tres" id="16_atpe0"]
+[ext_resource type="Texture2D" uid="uid://bdxlnj62ojse4" path="res://textures/logo.png" id="18_p664h"]
+[ext_resource type="Script" uid="uid://chmpfjelb8eur" path="res://scripts/checkpoint_label.gd" id="19_52djk"]
+[ext_resource type="Script" uid="uid://doba6yo6yyqq4" path="res://scripts/your_time_label.gd" id="20_f85px"]
+[ext_resource type="Script" uid="uid://bhh58okq2ia53" path="res://scripts/demo_car_input.gd" id="23_ahn5o"]
+[ext_resource type="Script" uid="uid://t7u2xmebscww" path="res://scripts/version_label.gd" id="24_ahn5o"]
+
+[sub_resource type="FogMaterial" id="FogMaterial_qej83"]
+density = 0.2
+height_falloff = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6v6se"]
+transparency = 1
+shading_mode = 0
+albedo_texture = ExtResource("18_p664h")
+billboard_keep_scale = true
+distance_fade_mode = 1
+distance_fade_min_distance = 0.5
+distance_fade_max_distance = 1.5
+
+[sub_resource type="QuadMesh" id="QuadMesh_vycac"]
+material = SubResource("StandardMaterial3D_6v6se")
+size = Vector2(2, 1)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_vycac"]
+height = 20.0
+radius = 10.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vycac"]
+transparency = 1
+blend_mode = 1
+diffuse_mode = 2
+specular_mode = 2
+disable_fog = true
+albedo_color = Color(0, 1, 0, 1)
+proximity_fade_distance = 10.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_vycac"]
+material = SubResource("StandardMaterial3D_vycac")
+top_radius = 10.0
+bottom_radius = 10.0
+height = 20.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_f85px"]
+size = Vector3(20, 20, 20)
+
+[sub_resource type="Resource" id="Resource_rftos"]
+resource_local_to_scene = true
+script = ExtResource("3_g86do")
+left_value = 0.0
+right_value = 2.0
+max_input = 10.0
+input_curve = 0.5
+
+[sub_resource type="Resource" id="Resource_1a0jv"]
+resource_local_to_scene = true
+script = ExtResource("3_g86do")
+left_value = 1.0
+right_value = 0.075
+max_input = 10.0
+input_curve = 0.5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kdiae"]
+bg_color = Color(0, 0, 0, 0.25098)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ne0hn"]
+bg_color = Color(1, 1, 1, 1)
+
+[node name="RaceTrack" type="Node3D"]
+
+[node name="CarSetter" type="Node" parent="." node_paths=PackedStringArray("car")]
+script = ExtResource("1_rftos")
+car = NodePath("../Race")
+
+[node name="ShadowColorSetter" type="Node" parent="."]
+script = ExtResource("3_opjfx")
+shadow_color = Color(0.556863, 0.635294, 0.733333, 1)
+
+[node name="RaceTracker" type="Node" parent="." node_paths=PackedStringArray("checkpoints_list")]
+process_priority = -1000
+process_physics_priority = -1000
+script = ExtResource("4_u20ab")
+checkpoints_list = [NodePath("../Checkpoint1"), NodePath("../Checkpoint2"), NodePath("../Checkpoint3"), NodePath("../Checkpoint4"), NodePath("../Checkpoint5")]
+
+[node name="CarInput" type="Node" parent="."]
+script = ExtResource("1_g86do")
+metadata/_custom_type_script = ExtResource("1_g86do")
+
+[node name="DemoCarInput" type="Node" parent="."]
+script = ExtResource("23_ahn5o")
+
+[node name="Background" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_kdiae")
+autoplay = true
+mix_target = 1
+bus = &"Background"
+
+[node name="Camera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 3)
+doppler_tracking = 1
+script = ExtResource("4_0kx16")
+
+[node name="ReflectionProbe" type="ReflectionProbe" parent="Camera"]
+update_mode = 1
+size = Vector3(100, 100, 100)
+cull_mask = 1048573
+
+[node name="Lighting" type="Node" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Lighting"]
+environment = ExtResource("6_qej83")
+
+[node name="Sun" type="DirectionalLight3D" parent="Lighting"]
+transform = Transform3D(-0.707107, -0.183013, 0.683013, 0, 0.965926, 0.258819, -0.707107, 0.183013, -0.683013, 0, 0, 0)
+light_color = Color(1, 0.878431, 0.752941, 1)
+light_energy = 2.0
+light_bake_mode = 1
+shadow_enabled = true
+script = ExtResource("7_sdtqh")
+actual_energy = 2.0
+
+[node name="FogVolume" type="FogVolume" parent="Lighting"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5, 0)
+shape = 4
+material = SubResource("FogMaterial_qej83")
+
+[node name="LightmapGI" type="LightmapGI" parent="."]
+generate_probes_subdiv = 0
+light_data = ExtResource("8_n0m4o")
+
+[node name="pathtest" parent="." instance=ExtResource("1_27c0p")]
+
+[node name="Logo" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 1.5)
+mesh = SubResource("QuadMesh_vycac")
+
+[node name="Checkpoint1" type="Area3D" parent="." node_paths=PackedStringArray("next")]
+transform = Transform3D(0.669131, 0, -0.743145, 0, 1, 0, 0.743145, 0, 0.669131, 40, 10, -90)
+script = ExtResource("11_6v6se")
+next = NodePath("../Checkpoint2")
+
+[node name="Collision" type="CollisionShape3D" parent="Checkpoint1"]
+shape = SubResource("CylinderShape3D_vycac")
+debug_color = Color(0, 0.6, 0.7, 0.42)
+
+[node name="Mesh" type="MeshInstance3D" parent="Checkpoint1"]
+gi_mode = 0
+mesh = SubResource("CylinderMesh_vycac")
+
+[node name="Checkpoint2" type="Area3D" parent="." node_paths=PackedStringArray("next")]
+process_mode = 4
+transform = Transform3D(0.913545, 0, 0.406737, 0, 1, 0, -0.406737, 0, 0.913545, 160, 10, -90)
+visible = false
+script = ExtResource("11_6v6se")
+next = NodePath("../Checkpoint3")
+
+[node name="Collision" type="CollisionShape3D" parent="Checkpoint2"]
+shape = SubResource("CylinderShape3D_vycac")
+debug_color = Color(0, 0.6, 0.7, 0.42)
+
+[node name="Mesh" type="MeshInstance3D" parent="Checkpoint2"]
+gi_mode = 0
+mesh = SubResource("CylinderMesh_vycac")
+
+[node name="Checkpoint3" type="Area3D" parent="." node_paths=PackedStringArray("next")]
+process_mode = 4
+transform = Transform3D(0.898794, 0, -0.438371, 0, 1, 0, 0.438371, 0, 0.898794, 210, 10, 370)
+visible = false
+script = ExtResource("11_6v6se")
+next = NodePath("../Checkpoint4")
+
+[node name="Collision" type="CollisionShape3D" parent="Checkpoint3"]
+shape = SubResource("CylinderShape3D_vycac")
+debug_color = Color(0, 0.6, 0.7, 0.42)
+
+[node name="Mesh" type="MeshInstance3D" parent="Checkpoint3"]
+gi_mode = 0
+mesh = SubResource("CylinderMesh_vycac")
+
+[node name="Checkpoint4" type="Area3D" parent="." node_paths=PackedStringArray("next")]
+process_mode = 4
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -250, 10, 150)
+visible = false
+script = ExtResource("11_6v6se")
+next = NodePath("../Checkpoint5")
+
+[node name="Collision" type="CollisionShape3D" parent="Checkpoint4"]
+shape = SubResource("CylinderShape3D_vycac")
+debug_color = Color(0, 0.6, 0.7, 0.42)
+
+[node name="Mesh" type="MeshInstance3D" parent="Checkpoint4"]
+gi_mode = 0
+mesh = SubResource("CylinderMesh_vycac")
+
+[node name="Checkpoint5" type="Area3D" parent="."]
+process_mode = 4
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, -10)
+visible = false
+script = ExtResource("11_6v6se")
+
+[node name="Collision" type="CollisionShape3D" parent="Checkpoint5"]
+shape = SubResource("BoxShape3D_f85px")
+debug_color = Color(0, 0.6, 0.7, 0.42)
+
+[node name="Mesh" type="MeshInstance3D" parent="Checkpoint5"]
+gi_mode = 0
+mesh = SubResource("CylinderMesh_vycac")
+
+[node name="Race" parent="." instance=ExtResource("2_fi1wu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+steer_tug_curve = SubResource("Resource_rftos")
+reduced_grip_curve = SubResource("Resource_1a0jv")
+
+[node name="HUD" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SpeedRev" type="PanelContainer" parent="HUD"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_styles/panel = ExtResource("16_atpe0")
+
+[node name="VBox" type="VBoxContainer" parent="HUD/SpeedRev"]
+layout_mode = 2
+theme_override_constants/separation = 2
+alignment = 2
+
+[node name="Gear" type="Label" parent="HUD/SpeedRev/VBox"]
+layout_mode = 2
+text = "Gear 1"
+label_settings = ExtResource("12_p664h")
+horizontal_alignment = 2
+script = ExtResource("13_vycac")
+
+[node name="Revs" type="ProgressBar" parent="HUD/SpeedRev/VBox"]
+custom_minimum_size = Vector2(150, 15)
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_kdiae")
+theme_override_styles/fill = SubResource("StyleBoxFlat_ne0hn")
+max_value = 1.0
+step = 0.0
+value = 0.5
+fill_mode = 1
+show_percentage = false
+script = ExtResource("14_p664h")
+
+[node name="Speed" type="Label" parent="HUD/SpeedRev/VBox"]
+layout_mode = 2
+text = "888"
+label_settings = ExtResource("15_6v6se")
+horizontal_alignment = 2
+script = ExtResource("13_687kb")
+
+[node name="SpeedUnit" type="Label" parent="HUD/SpeedRev/VBox"]
+layout_mode = 2
+text = "km/h"
+label_settings = ExtResource("12_p664h")
+horizontal_alignment = 2
+
+[node name="Time" type="PanelContainer" parent="HUD"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+grow_horizontal = 0
+theme_override_styles/panel = ExtResource("16_atpe0")
+
+[node name="VBox" type="VBoxContainer" parent="HUD/Time"]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="YourTimeLabel" type="Label" parent="HUD/Time/VBox"]
+layout_mode = 2
+text = "Your Time"
+label_settings = ExtResource("12_p664h")
+horizontal_alignment = 2
+
+[node name="YourTime" type="Label" parent="HUD/Time/VBox"]
+layout_mode = 2
+text = "00:00.000"
+label_settings = ExtResource("15_6v6se")
+horizontal_alignment = 2
+script = ExtResource("20_f85px")
+
+[node name="TargetTimeLabel" type="Label" parent="HUD/Time/VBox"]
+layout_mode = 2
+text = "Target Time"
+label_settings = ExtResource("12_p664h")
+horizontal_alignment = 2
+
+[node name="TargetTime" type="Label" parent="HUD/Time/VBox"]
+layout_mode = 2
+text = "02:00.000"
+label_settings = ExtResource("15_6v6se")
+horizontal_alignment = 2
+
+[node name="Checkpoints" type="PanelContainer" parent="HUD"]
+layout_mode = 1
+anchors_preset = -1
+theme_override_styles/panel = ExtResource("16_atpe0")
+
+[node name="VBox" type="VBoxContainer" parent="HUD/Checkpoints"]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="CheckpointLabel" type="Label" parent="HUD/Checkpoints/VBox"]
+layout_mode = 2
+text = "Checkpoint"
+label_settings = ExtResource("12_p664h")
+
+[node name="Checkpoint" type="Label" parent="HUD/Checkpoints/VBox"]
+layout_mode = 2
+text = "0/5"
+label_settings = ExtResource("15_6v6se")
+script = ExtResource("19_52djk")
+
+[node name="IntroScreen" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="IntroBG" type="PanelContainer" parent="IntroScreen"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = 100.0
+grow_horizontal = 2
+theme_override_styles/panel = ExtResource("16_atpe0")
+
+[node name="IntroLabel" type="Label" parent="IntroScreen/IntroBG"]
+layout_mode = 2
+text = "Whenever you're ready, press gas or reverse
+
+Hint: hold the handbrake while pushing gas,
+and then let go of the handbrake for a big
+starting boost!"
+label_settings = ExtResource("12_p664h")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Revs" type="ProgressBar" parent="IntroScreen"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = 60.0
+offset_right = 150.0
+grow_horizontal = 2
+theme_override_styles/background = ExtResource("16_atpe0")
+theme_override_styles/fill = SubResource("StyleBoxFlat_ne0hn")
+max_value = 1.0
+step = 0.0
+value = 0.5
+show_percentage = false
+script = ExtResource("14_p664h")
+
+[node name="VersionBG" type="PanelContainer" parent="IntroScreen"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_bottom = 1.0
+grow_vertical = 0
+theme_override_styles/panel = ExtResource("16_atpe0")
+
+[node name="Version" type="Label" parent="IntroScreen/VersionBG"]
+layout_mode = 2
+text = "Version"
+label_settings = ExtResource("12_p664h")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("24_ahn5o")
+
+[node name="OutroScreen" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="OutroBG" type="PanelContainer" parent="OutroScreen"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = 100.0
+grow_horizontal = 2
+theme_override_styles/panel = ExtResource("16_atpe0")
+
+[node name="OutroLabel" type="Label" parent="OutroScreen/OutroBG"]
+layout_mode = 2
+text = "TODO: actual outro
+
+Demo saved to:
+Windows: %APPDATA%\\Godot\\app_userdata\\No Downforce\\save_<timestamp>.res
+Linux: ~/.local/share/godot/app_userdata/No Downforce/save_<timestamp>.res
+Make sure to share it in the comments or something!
+
+Press R to try again"
+label_settings = ExtResource("12_p664h")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Time" type="PanelContainer" parent="OutroScreen"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+grow_horizontal = 0
+theme_override_styles/panel = ExtResource("16_atpe0")
+
+[node name="VBox" type="VBoxContainer" parent="OutroScreen/Time"]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="YourTimeLabel" type="Label" parent="OutroScreen/Time/VBox"]
+layout_mode = 2
+text = "Your Time"
+label_settings = ExtResource("12_p664h")
+horizontal_alignment = 2
+
+[node name="YourTime" type="Label" parent="OutroScreen/Time/VBox"]
+layout_mode = 2
+text = "00:00.000"
+label_settings = ExtResource("15_6v6se")
+horizontal_alignment = 2
+script = ExtResource("20_f85px")
+
+[connection signal="body_entered" from="Checkpoint1" to="Checkpoint1" method="_on_body_entered"]
+[connection signal="body_entered" from="Checkpoint2" to="Checkpoint2" method="_on_body_entered"]
+[connection signal="body_entered" from="Checkpoint3" to="Checkpoint3" method="_on_body_entered"]
+[connection signal="body_entered" from="Checkpoint4" to="Checkpoint4" method="_on_body_entered"]
+[connection signal="body_entered" from="Checkpoint5" to="Checkpoint5" method="_on_body_entered"]

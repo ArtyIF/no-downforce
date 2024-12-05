@@ -1,0 +1,40 @@
+[remap]
+
+importer="font_data_dynamic"
+type="FontFile"
+uid="uid://yg13fswuk34r"
+path="res://.godot/imported/MatrixTypeDisplay-Regular.otf-cd08fbb09cdd34e119fec9b92691b4ab.fontdata"
+
+[deps]
+
+source_file="res://fonts/MatrixTypeDisplay-Regular.otf"
+dest_files=["res://.godot/imported/MatrixTypeDisplay-Regular.otf-cd08fbb09cdd34e119fec9b92691b4ab.fontdata"]
+
+[params]
+
+Rendering=null
+antialiasing=1
+generate_mipmaps=true
+disable_embedded_bitmaps=true
+multichannel_signed_distance_field=true
+msdf_pixel_range=8
+msdf_size=80
+allow_system_fallback=true
+force_autohinter=false
+hinting=1
+subpixel_positioning=4
+oversampling=0.0
+Fallbacks=null
+fallbacks=[]
+Compress=null
+compress=true
+preload=[{
+"chars": [],
+"glyphs": [],
+"name": "New Configuration",
+"size": Vector2i(16, 0),
+&"variation_embolden": 0.0
+}]
+language_support={}
+script_support={}
+opentype_features={}
