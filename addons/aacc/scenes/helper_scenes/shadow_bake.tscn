@@ -1,6 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bdwp17u0lh3ik"]
-
-[ext_resource type="LightmapGIData" uid="uid://df1nxuudd05oi" path="res://addons/aacc/scenes/helper_scenes/shadow_bake.lmbake" id="1_gidpm"]
+[gd_scene load_steps=4 format=3 uid="uid://bdwp17u0lh3ik"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6msde"]
 metallic_specular = 0.0
@@ -37,7 +35,6 @@ mesh = SubResource("PlaneMesh_nkcuy")
 [node name="LightmapGI" type="LightmapGI" parent="."]
 quality = 3
 generate_probes_subdiv = 0
-light_data = ExtResource("1_gidpm")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_as865")
