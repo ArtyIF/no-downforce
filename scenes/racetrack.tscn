@@ -92,18 +92,22 @@ car = NodePath("../Race")
 script = ExtResource("3_opjfx")
 shadow_color = Color(0.556863, 0.635294, 0.733333, 1)
 
+[node name="CarInput" type="Node" parent="."]
+process_priority = -1000
+process_physics_priority = -1000
+script = ExtResource("1_g86do")
+metadata/_custom_type_script = ExtResource("1_g86do")
+
+[node name="DemoCarInput" type="Node" parent="."]
+process_priority = -1000
+process_physics_priority = -1000
+script = ExtResource("23_ahn5o")
+
 [node name="RaceTracker" type="Node" parent="." node_paths=PackedStringArray("checkpoints_list")]
 process_priority = -1000
 process_physics_priority = -1000
 script = ExtResource("4_u20ab")
 checkpoints_list = [NodePath("../Checkpoint1"), NodePath("../Checkpoint2"), NodePath("../Checkpoint3"), NodePath("../Checkpoint4"), NodePath("../Checkpoint5")]
-
-[node name="CarInput" type="Node" parent="."]
-script = ExtResource("1_g86do")
-metadata/_custom_type_script = ExtResource("1_g86do")
-
-[node name="DemoCarInput" type="Node" parent="."]
-script = ExtResource("23_ahn5o")
 
 [node name="Background" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_kdiae")
@@ -465,3 +469,40 @@ text = "00:00.000"
 label_settings = ExtResource("15_6v6se")
 horizontal_alignment = 2
 script = ExtResource("20_f85px")
+
+[node name="OutdatedDemoVersionWarning" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BG" type="PanelContainer" parent="OutdatedDemoVersionWarning"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = ExtResource("16_atpe0")
+
+[node name="VBox" type="VBoxContainer" parent="OutdatedDemoVersionWarning/BG"]
+layout_mode = 2
+
+[node name="Warning" type="Label" parent="OutdatedDemoVersionWarning/BG/VBox"]
+layout_mode = 2
+text = "The loaded demo was recorded in a different version!"
+label_settings = ExtResource("12_p664h")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Version" type="Label" parent="OutdatedDemoVersionWarning/BG/VBox"]
+layout_mode = 2
+text = "0.1"
+label_settings = ExtResource("15_6v6se")
+horizontal_alignment = 1
+vertical_alignment = 1

@@ -14,7 +14,7 @@ func reset() -> void:
 	_car.angular_velocity = Vector3.ZERO
 	_car.force_update_transform()
 	_car.reset_physics_interpolation()
-	_car.revs.force_current_value(0.0)
+	_car.reset()
 	
 	get_node("../Camera").reset()
 	
