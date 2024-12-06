@@ -3,8 +3,8 @@ class_name DemoResource extends Resource
 @export var version: String = ""
 @export var frames: Array[Array] = []
 
-func append(forward: float, backward: float, steer: float, handbrake: bool) -> void:
-	frames.append([forward, backward, steer, handbrake])
+func append(forward: float, backward: float, steer: float, handbrake: bool, transform: Transform3D) -> void:
+	frames.append([forward, backward, steer, handbrake, transform])
 
 func save() -> Error:
 	if version == "":

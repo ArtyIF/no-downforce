@@ -2,21 +2,22 @@
 
 importer="2d_array_texture"
 type="CompressedTexture2DArray"
-uid="uid://mhnrafuyakle"
-path="res://.godot/imported/racetrack.exr-3bf7fad265c968f12f16b3186d0c31bb.ctexarray"
+uid="uid://wqwg1lji5w15"
+path.bptc="res://.godot/imported/racetrack.exr-3bf7fad265c968f12f16b3186d0c31bb.bptc.ctexarray"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
 }
 
 [deps]
 
 source_file="res://scenes/racetrack.exr"
-dest_files=["res://.godot/imported/racetrack.exr-3bf7fad265c968f12f16b3186d0c31bb.ctexarray"]
+dest_files=["res://.godot/imported/racetrack.exr-3bf7fad265c968f12f16b3186d0c31bb.bptc.ctexarray"]
 
 [params]
 
-compress/mode=3
-compress/high_quality=false
+compress/mode=2
+compress/high_quality=true
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/channel_pack=1

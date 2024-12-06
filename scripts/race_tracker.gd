@@ -18,9 +18,9 @@ func reset() -> void:
 	
 	get_node("../Camera").reset()
 	
-	get_node("../IntroScreen").visible = true
-	get_node("../HUD").visible = false
-	get_node("../OutroScreen").visible = false
+	get_node("../UI/IntroScreen").visible = true
+	get_node("../UI/HUD").visible = false
+	get_node("../UI/OutroScreen").visible = false
 	
 	NoDownforceGlobal.reset_race(checkpoints_list)
 	_demo.clear()
@@ -30,7 +30,7 @@ func _physics_process(delta: float) -> void:
 		get_node("../Camera").follow_amount_speed = -1.0
 		get_node("../CarInput").process_mode = Node.PROCESS_MODE_DISABLED
 		get_node("../HUD").visible = false
-		get_node("../OutroScreen").visible = true
+		get_node("../UI/OutroScreen").visible = true
 
 		_car.input_forward = 0.0
 		_car.input_backward = 0.0
@@ -45,10 +45,10 @@ func _physics_process(delta: float) -> void:
 		if not NoDownforceGlobal.timer_going and not _car.input_handbrake and (_car.input_forward > 0.0 or _car.input_backward > 0.0):
 			get_node("../Camera").follow_amount_speed = 1.0
 			NoDownforceGlobal.timer_going = true
-			get_node("../IntroScreen").visible = false
-			get_node("../HUD").visible = true
-			get_node("../OutroScreen").visible = false
-		_demo.append(_car.input_forward, _car.input_backward, _car.input_steer, _car.input_handbrake)
+			get_node("../UI/IntroScreen").visible = false
+			get_node("../UI/HUD").visible = true
+			get_node("../UI/OutroScreen").visible = false
+		_demo.append(_car.input_forward, _car.input_backward, _car.input_steer, _car.input_handbrake, _car.global_transform)
 
 	NoDownforceGlobal.update_timer(delta)
 	

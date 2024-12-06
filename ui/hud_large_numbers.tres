@@ -1,7 +1,0 @@
-[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://btu0x28601047"]
-
-[ext_resource type="FontFile" uid="uid://yg13fswuk34r" path="res://fonts/MatrixTypeDisplay-Regular.otf" id="1_xjl7m"]
-
-[resource]
-font = ExtResource("1_xjl7m")
-font_size = 30

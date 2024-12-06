@@ -1,0 +1,43 @@
+[gd_resource type="Theme" load_steps=10 format=3 uid="uid://br8g18fol6tdx"]
+
+[ext_resource type="FontFile" uid="uid://b4qwwhu8xgo4x" path="res://fonts/Qaz-Regular.otf" id="1_rqugq"]
+[ext_resource type="StyleBox" uid="uid://1fce4114vka5" path="res://ui/background_off.tres" id="2_3fgq6"]
+[ext_resource type="StyleBox" uid="uid://bgpdj0vigvbce" path="res://ui/focus.tres" id="3_y5ki2"]
+[ext_resource type="StyleBox" uid="uid://ceuvh48awrf15" path="res://ui/background_widget.tres" id="4_47c11"]
+[ext_resource type="StyleBox" uid="uid://vm8ecq63p47s" path="res://ui/background_hover.tres" id="4_rtqkv"]
+[ext_resource type="StyleBox" uid="uid://oq0bkdaih1vo" path="res://ui/background_press.tres" id="6_2j8s8"]
+[ext_resource type="StyleBox" uid="uid://djeifm0a8tat5" path="res://ui/background_panel.tres" id="7_2j8s8"]
+[ext_resource type="FontFile" uid="uid://yg13fswuk34r" path="res://fonts/MatrixTypeDisplay-Regular.otf" id="7_y5ki2"]
+[ext_resource type="StyleBox" uid="uid://dn2v12vx6uj0d" path="res://ui/fill.tres" id="8_rtqkv"]
+
+[resource]
+default_font = ExtResource("1_rqugq")
+default_font_size = 20
+Button/colors/font_color = Color(1, 0.690196, 0.501961, 1)
+Button/colors/font_disabled_color = Color(1, 0.690196, 0.501961, 0.501961)
+Button/colors/font_focus_color = Color(1, 0.690196, 0.501961, 1)
+Button/colors/font_hover_color = Color(1, 0.845833, 0.75, 1)
+Button/colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+Button/colors/font_pressed_color = Color(0, 0, 0, 1)
+Button/styles/disabled = ExtResource("2_3fgq6")
+Button/styles/focus = ExtResource("3_y5ki2")
+Button/styles/hover = ExtResource("4_rtqkv")
+Button/styles/normal = ExtResource("4_47c11")
+Button/styles/pressed = ExtResource("6_2j8s8")
+HBoxContainer/constants/separation = 2
+Label/colors/font_color = Color(1, 0.690196, 0.501961, 1)
+MatrixLargeLabel/base_type = &"Label"
+MatrixLargeLabel/colors/font_color = Color(1, 0.376471, 0, 1)
+MatrixLargeLabel/colors/font_outline_color = Color(1, 0.376471, 0, 0.376471)
+MatrixLargeLabel/constants/outline_size = 5
+MatrixLargeLabel/font_sizes/font_size = 30
+MatrixLargeLabel/fonts/font = ExtResource("7_y5ki2")
+OrangeLabel/base_type = &"Label"
+OrangeLabel/colors/font_color = Color(1, 0.376471, 0, 1)
+Panel/styles/panel = ExtResource("7_2j8s8")
+PanelContainer/styles/panel = ExtResource("7_2j8s8")
+ProgressBar/colors/font_color = Color(1, 0.690196, 0.501961, 1)
+ProgressBar/constants/outline_size = 10
+ProgressBar/styles/background = ExtResource("4_47c11")
+ProgressBar/styles/fill = ExtResource("8_rtqkv")
+VBoxContainer/constants/separation = 2
