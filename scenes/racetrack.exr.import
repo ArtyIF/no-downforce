@@ -17,7 +17,7 @@ dest_files=["res://.godot/imported/racetrack.exr-3bf7fad265c968f12f16b3186d0c31b
 [params]
 
 compress/mode=2
-compress/high_quality=true
+compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/channel_pack=1

@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://bsp1ug1544wkv"]
+[gd_scene load_steps=40 format=3 uid="uid://bsp1ug1544wkv"]
 
 [ext_resource type="PackedScene" uid="uid://ctpcgnbte0ujm" path="res://scenes/models/pathtest.blend" id="1_27c0p"]
 [ext_resource type="Script" uid="uid://tr0544b3fh36" path="res://addons/aacc/scripts/car_input.gd" id="1_g86do"]
@@ -9,19 +9,22 @@
 [ext_resource type="Script" uid="uid://k4svdp3krbho" path="res://scripts/camera.gd" id="4_0kx16"]
 [ext_resource type="Script" uid="uid://dct8lw28g61gg" path="res://scripts/race_tracker.gd" id="4_u20ab"]
 [ext_resource type="Environment" uid="uid://cx6466y1wxssu" path="res://misc/racetrack_environment.tres" id="6_qej83"]
-[ext_resource type="Script" uid="uid://cscro4kkkoacv" path="res://scripts/light_compatibility_adjustment.gd" id="7_sdtqh"]
+[ext_resource type="AudioStream" uid="uid://3nxptby4kecn" path="res://audio/ambience.ogg" id="7_f85px"]
+[ext_resource type="AudioStream" uid="uid://blxw2282c2gy3" path="res://audio/hurricane.ogg" id="8_f85px"]
+[ext_resource type="Script" uid="uid://163ttgo2dtdb" path="res://scripts/hurricane_sound.gd" id="9_mkv83"]
 [ext_resource type="LightmapGIData" uid="uid://8c4gcecaeppl" path="res://scenes/racetrack.lmbake" id="10_f85px"]
 [ext_resource type="Script" uid="uid://d34asehi5ugcg" path="res://scripts/checkpoint.gd" id="11_6v6se"]
-[ext_resource type="AudioStream" uid="uid://dgrfcwskgo3i1" path="res://audio/149935__conleec__amb_ext_residential_day_stereo_002.wav" id="11_kdiae"]
 [ext_resource type="Script" uid="uid://bf5r1446orb5o" path="res://scripts/speed_label.gd" id="13_687kb"]
 [ext_resource type="Script" uid="uid://kaltnwdawygu" path="res://scripts/gear_label.gd" id="13_vycac"]
 [ext_resource type="Script" uid="uid://d3uedaj5w0io6" path="res://scripts/revs_progress.gd" id="14_p664h"]
-[ext_resource type="StyleBox" uid="uid://djeifm0a8tat5" path="res://ui/background_panel.tres" id="16_atpe0"]
+[ext_resource type="Script" uid="uid://l5wpd7hevwo0" path="res://scripts/logo_camera.gd" id="16_ahn5o"]
 [ext_resource type="Texture2D" uid="uid://bdxlnj62ojse4" path="res://textures/logo.png" id="18_p664h"]
 [ext_resource type="Script" uid="uid://chmpfjelb8eur" path="res://scripts/checkpoint_label.gd" id="19_52djk"]
+[ext_resource type="Script" uid="uid://cdw3owqmnypk" path="res://scripts/watch_demo_button.gd" id="20_ahn5o"]
 [ext_resource type="Script" uid="uid://doba6yo6yyqq4" path="res://scripts/your_time_label.gd" id="20_f85px"]
 [ext_resource type="Script" uid="uid://bhh58okq2ia53" path="res://scripts/demo_car_input.gd" id="23_ahn5o"]
 [ext_resource type="Script" uid="uid://t7u2xmebscww" path="res://scripts/version_label.gd" id="24_ahn5o"]
+[ext_resource type="Script" uid="uid://da3u2km1ycsom" path="res://scripts/demo_file_dialog.gd" id="24_mkv83"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_f85px"]
 size = Vector3(20, 20, 20)
@@ -40,6 +43,15 @@ material = SubResource("StandardMaterial3D_vycac")
 top_radius = 10.0
 bottom_radius = 10.0
 height = 20.0
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_u20ab"]
+auto_exposure_enabled = true
+auto_exposure_scale = 0.5
+
+[sub_resource type="FogMaterial" id="FogMaterial_qej83"]
+density = 0.2
+albedo = Color(1, 0.376471, 0, 1)
+height_falloff = 1.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6v6se"]
 transparency = 1
@@ -70,6 +82,22 @@ right_value = 0.075
 max_input = 10.0
 input_curve = 0.5
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_f85px"]
+viewport_path = NodePath("LogoCameraRect/SubViewport")
+
+[sub_resource type="Environment" id="Environment_f85px"]
+background_color = Color(0, 0, 0, 0)
+ambient_light_source = 1
+reflected_light_source = 1
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_f85px"]
+
+[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_atpe0"]
+button_index = 3
+
+[sub_resource type="Shortcut" id="Shortcut_ahn5o"]
+events = [SubResource("InputEventJoypadButton_atpe0")]
+
 [node name="RaceTrack" type="Node3D"]
 
 [node name="CarSetter" type="Node" parent="." node_paths=PackedStringArray("car")]
@@ -78,7 +106,7 @@ car = NodePath("../Race")
 
 [node name="ShadowColorSetter" type="Node" parent="."]
 script = ExtResource("3_opjfx")
-shadow_color = Color(0.556863, 0.635294, 0.733333, 1)
+shadow_color_amount = 0.0
 
 [node name="RaceTracker" type="Node" parent="." node_paths=PackedStringArray("checkpoints_list")]
 process_priority = -1000
@@ -170,13 +198,23 @@ process_physics_priority = -1000
 script = ExtResource("23_ahn5o")
 
 [node name="Background" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("11_kdiae")
+stream = ExtResource("7_f85px")
+volume_db = -24.0
 autoplay = true
 mix_target = 1
 bus = &"Background"
 
+[node name="Hurricane" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_f85px")
+volume_db = -20.0
+autoplay = true
+mix_target = 1
+bus = &"Background"
+script = ExtResource("9_mkv83")
+
 [node name="Camera" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 3)
+cull_mask = 524287
 doppler_tracking = 1
 script = ExtResource("4_0kx16")
 
@@ -184,27 +222,38 @@ script = ExtResource("4_0kx16")
 update_mode = 1
 size = Vector3(100, 100, 100)
 cull_mask = 1048573
-reflection_mask = 2
+reflection_mask = 3
 
 [node name="Lighting" type="Node" parent="."]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Lighting"]
 environment = ExtResource("6_qej83")
+camera_attributes = SubResource("CameraAttributesPractical_u20ab")
 
 [node name="Sun" type="DirectionalLight3D" parent="Lighting"]
 transform = Transform3D(-0.707107, -0.183013, 0.683013, 0, 0.965926, 0.258819, -0.707107, 0.183013, -0.683013, 0, 0, 0)
-light_color = Color(1, 0.690196, 0.501961, 1)
-light_energy = 4.0
-light_angular_distance = 2.0
-light_bake_mode = 1
+light_color = Color(1, 0.845833, 0.75, 1)
+light_energy = 3.0
 shadow_enabled = true
-script = ExtResource("7_sdtqh")
+directional_shadow_split_1 = 0.05
+directional_shadow_split_2 = 0.1
+directional_shadow_split_3 = 0.15
+directional_shadow_blend_splits = true
+directional_shadow_max_distance = 500.0
+sky_mode = 1
+
+[node name="SunSky" type="DirectionalLight3D" parent="Lighting/Sun"]
+light_color = Color(1, 0.845833, 0.75, 1)
+light_energy = 16.0
+light_angular_distance = 1.0
+sky_mode = 2
+
+[node name="FogVolumeGlobal" type="FogVolume" parent="Lighting"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5, 0)
+shape = 4
+material = SubResource("FogMaterial_qej83")
 
 [node name="LightmapGI" type="LightmapGI" parent="."]
-quality = 0
-bounces = 1
-use_texture_for_bounces = false
-use_denoiser = false
 generate_probes_subdiv = 0
 light_data = ExtResource("10_f85px")
 
@@ -212,12 +261,35 @@ light_data = ExtResource("10_f85px")
 
 [node name="Logo" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 1.5)
+layers = 524288
 mesh = SubResource("QuadMesh_vycac")
 
 [node name="Race" parent="." instance=ExtResource("2_fi1wu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
 steer_tug_curve = SubResource("Resource_rftos")
 reduced_grip_curve = SubResource("Resource_1a0jv")
+
+[node name="LogoCameraRect" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("ViewportTexture_f85px")
+expand_mode = 1
+
+[node name="SubViewport" type="SubViewport" parent="LogoCameraRect"]
+transparent_bg = true
+msaa_3d = 1
+size = Vector2i(1280, 720)
+
+[node name="Camera" type="Camera3D" parent="LogoCameraRect/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 3)
+cull_mask = 524288
+environment = SubResource("Environment_f85px")
+attributes = SubResource("CameraAttributesPractical_f85px")
+far = 10.0
+script = ExtResource("16_ahn5o")
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
@@ -227,8 +299,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MainMenu" type="Control" parent="UI"]
-visible = false
+[node name="IntroScreen" type="Control" parent="UI"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -236,7 +307,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="BG" type="PanelContainer" parent="UI/MainMenu"]
+[node name="IntroBG" type="PanelContainer" parent="UI/IntroScreen"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -245,49 +316,70 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 offset_top = 100.0
 grow_horizontal = 2
-theme_override_styles/panel = ExtResource("16_atpe0")
 
-[node name="HBox" type="HBoxContainer" parent="UI/MainMenu/BG"]
+[node name="IntroLabel" type="Label" parent="UI/IntroScreen/IntroBG"]
 layout_mode = 2
-alignment = 1
+text = "Whenever you're ready, press gas or reverse"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="PlayButton" type="Button" parent="UI/MainMenu/BG/HBox"]
+[node name="RevsBG" type="PanelContainer" parent="UI/IntroScreen"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = 50.0
+offset_right = 150.0
+grow_horizontal = 2
+
+[node name="Revs" type="ProgressBar" parent="UI/IntroScreen/RevsBG"]
+layout_mode = 2
+max_value = 1.0
+step = 0.0
+value = 0.5
+show_percentage = false
+script = ExtResource("14_p664h")
+
+[node name="VersionBG" type="PanelContainer" parent="UI/IntroScreen"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -43.0
+offset_right = 87.0
+grow_vertical = 0
+
+[node name="Version" type="Label" parent="UI/IntroScreen/VersionBG"]
+layout_mode = 2
+text = "Version"
+vertical_alignment = 2
+script = ExtResource("24_ahn5o")
+
+[node name="VersionRequest" type="HTTPRequest" parent="UI/IntroScreen/VersionBG/Version"]
+
+[node name="WatchDemoButton" type="Button" parent="UI/IntroScreen"]
 custom_minimum_size = Vector2(150, 50)
-layout_mode = 2
-focus_neighbor_left = NodePath("../ExitButton")
-focus_neighbor_right = NodePath("../WatchDemoButton")
-focus_next = NodePath("../WatchDemoButton")
-focus_previous = NodePath("../ExitButton")
-text = "Play"
-
-[node name="WatchDemoButton" type="Button" parent="UI/MainMenu/BG/HBox"]
-custom_minimum_size = Vector2(150, 50)
-layout_mode = 2
-focus_neighbor_left = NodePath("../PlayButton")
-focus_neighbor_right = NodePath("../SettingsButton")
-focus_next = NodePath("../SettingsButton")
-focus_previous = NodePath("../PlayButton")
-text = "Watch Demo"
-
-[node name="SettingsButton" type="Button" parent="UI/MainMenu/BG/HBox"]
-custom_minimum_size = Vector2(150, 50)
-layout_mode = 2
-focus_neighbor_left = NodePath("../WatchDemoButton")
-focus_neighbor_right = NodePath("../ExitButton")
-focus_next = NodePath("../ExitButton")
-focus_previous = NodePath("../WatchDemoButton")
-text = "Settings"
-
-[node name="ExitButton" type="Button" parent="UI/MainMenu/BG/HBox"]
-custom_minimum_size = Vector2(150, 50)
-layout_mode = 2
-focus_neighbor_left = NodePath("../SettingsButton")
-focus_neighbor_right = NodePath("../PlayButton")
-focus_next = NodePath("../PlayButton")
-focus_previous = NodePath("../SettingsButton")
-text = "Exit"
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -150.0
+offset_top = -50.0
+grow_horizontal = 0
+grow_vertical = 0
+focus_mode = 0
+shortcut = SubResource("Shortcut_ahn5o")
+shortcut_in_tooltip = false
+text = "Play Demo"
+script = ExtResource("20_ahn5o")
 
 [node name="HUD" type="Control" parent="UI"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -310,10 +402,15 @@ layout_mode = 2
 theme_override_constants/separation = 2
 alignment = 2
 
+[node name="GearLabel" type="Label" parent="UI/HUD/SpeedRev/VBox"]
+layout_mode = 2
+text = "Gear"
+horizontal_alignment = 2
+
 [node name="Gear" type="Label" parent="UI/HUD/SpeedRev/VBox"]
 layout_mode = 2
-theme_type_variation = &"OrangeLabel"
-text = "Gear 1"
+theme_type_variation = &"MatrixLargeLabel"
+text = "1"
 horizontal_alignment = 2
 script = ExtResource("13_vycac")
 
@@ -391,65 +488,6 @@ theme_type_variation = &"MatrixLargeLabel"
 text = "0/5"
 script = ExtResource("19_52djk")
 
-[node name="IntroScreen" type="Control" parent="UI"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="IntroBG" type="PanelContainer" parent="UI/IntroScreen"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_top = 100.0
-grow_horizontal = 2
-
-[node name="IntroLabel" type="Label" parent="UI/IntroScreen/IntroBG"]
-layout_mode = 2
-text = "Whenever you're ready, press gas or reverse"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="RevsBG" type="PanelContainer" parent="UI/IntroScreen"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -150.0
-offset_top = 50.0
-offset_right = 150.0
-grow_horizontal = 2
-
-[node name="Revs" type="ProgressBar" parent="UI/IntroScreen/RevsBG"]
-layout_mode = 2
-max_value = 1.0
-step = 0.0
-value = 0.5
-show_percentage = false
-script = ExtResource("14_p664h")
-
-[node name="VersionBG" type="PanelContainer" parent="UI/IntroScreen"]
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 1.0
-anchor_bottom = 1.0
-grow_vertical = 0
-
-[node name="Version" type="Label" parent="UI/IntroScreen/VersionBG"]
-layout_mode = 2
-text = "Version"
-vertical_alignment = 2
-script = ExtResource("24_ahn5o")
-
-[node name="VersionRequest" type="HTTPRequest" parent="UI/IntroScreen/VersionBG/Version"]
-
 [node name="OutroScreen" type="Control" parent="UI"]
 visible = false
 layout_mode = 1
@@ -504,7 +542,7 @@ text = "00:00.000"
 horizontal_alignment = 2
 script = ExtResource("20_f85px")
 
-[node name="OutdatedDemoVersionWarning" type="Control" parent="UI"]
+[node name="DemoScreen" type="Control" parent="UI"]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -513,7 +551,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="BG" type="PanelContainer" parent="UI/OutdatedDemoVersionWarning"]
+[node name="OutdatedDemoWarning" type="PanelContainer" parent="UI/DemoScreen"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -523,18 +561,46 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="VBox" type="VBoxContainer" parent="UI/OutdatedDemoVersionWarning/BG"]
+[node name="VBox" type="VBoxContainer" parent="UI/DemoScreen/OutdatedDemoWarning"]
 layout_mode = 2
 
-[node name="Warning" type="Label" parent="UI/OutdatedDemoVersionWarning/BG/VBox"]
+[node name="Warning" type="Label" parent="UI/DemoScreen/OutdatedDemoWarning/VBox"]
 layout_mode = 2
-text = "The loaded demo was recorded in a different version!"
+text = "The loaded demo was recorded in a different version and may be broken!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Version" type="Label" parent="UI/OutdatedDemoVersionWarning/BG/VBox"]
+[node name="Version" type="Label" parent="UI/DemoScreen/OutdatedDemoWarning/VBox"]
 layout_mode = 2
 theme_type_variation = &"MatrixLargeLabel"
 text = "0.1"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Demo" type="PanelContainer" parent="UI/DemoScreen"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+grow_horizontal = 2
+
+[node name="VBox" type="VBoxContainer" parent="UI/DemoScreen/Demo"]
+layout_mode = 2
+
+[node name="DemoPlayback" type="Label" parent="UI/DemoScreen/Demo/VBox"]
+layout_mode = 2
+text = "Demo Playback
+Press reset to stop
+TODO: better controls"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DemoFileDialog" type="FileDialog" parent="UI"]
+title = "Open a File"
+initial_position = 2
+ok_button_text = "Open"
+file_mode = 0
+access = 1
+filters = PackedStringArray("*.res;Resource Files")
+use_native_dialog = true
+script = ExtResource("24_mkv83")

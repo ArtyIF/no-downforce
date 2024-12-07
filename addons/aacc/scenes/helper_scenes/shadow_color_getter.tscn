@@ -1,7 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://digmgsesj0spx"]
+[gd_scene load_steps=6 format=3 uid="uid://digmgsesj0spx"]
 
 [ext_resource type="Environment" uid="uid://cx6466y1wxssu" path="res://misc/racetrack_environment.tres" id="1_msylg"]
-[ext_resource type="Script" uid="uid://cscro4kkkoacv" path="res://scripts/light_compatibility_adjustment.gd" id="2_pld3w"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gujfx"]
 metallic_specular = 0.0
@@ -47,9 +46,19 @@ generate_probes_subdiv = 0
 
 [node name="Sun" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.707107, -0.183013, 0.683013, 0, 0.965926, 0.258819, -0.707107, 0.183013, -0.683013, 0, 0, 0)
-light_color = Color(1, 0.878431, 0.752941, 1)
-light_energy = 2.0
+light_color = Color(1, 0.845833, 0.75, 1)
+light_energy = 3.0
 light_bake_mode = 1
 shadow_enabled = true
-script = ExtResource("2_pld3w")
-actual_energy = 2.0
+directional_shadow_split_1 = 0.05
+directional_shadow_split_2 = 0.1
+directional_shadow_split_3 = 0.15
+directional_shadow_blend_splits = true
+directional_shadow_max_distance = 500.0
+sky_mode = 1
+
+[node name="SunSky" type="DirectionalLight3D" parent="Sun"]
+light_color = Color(1, 0.845833, 0.75, 1)
+light_energy = 16.0
+light_angular_distance = 1.0
+sky_mode = 2

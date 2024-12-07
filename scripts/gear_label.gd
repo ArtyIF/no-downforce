@@ -10,7 +10,5 @@ func get_gear_text(gear: int) -> String:
 
 func _process(_delta: float) -> void:
 	var gear_text: String = get_gear_text(AACCGlobal.current_car.current_gear)
-	if AACCGlobal.current_car.switching_gears:
-		gear_text += " -> " + get_gear_text(AACCGlobal.current_car.target_gear)
 
-	text = "Gear %s" % gear_text
+	text = "%s" % gear_text

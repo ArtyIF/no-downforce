@@ -16,7 +16,7 @@ func _ready() -> void:
 	else:
 		text = "Version %s (Running in editor, no update check)" % ProjectSettings.get_setting("application/config/version")
 
-func update_check(result, response_code, headers, body):
+func update_check(result, response_code, _headers, body):
 	if result == HTTPRequest.RESULT_SUCCESS and response_code < 400:
 		var json = JSON.parse_string(body.get_string_from_utf8())
 		var version = json["latest"]

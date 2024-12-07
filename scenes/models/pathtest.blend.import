@@ -52,6 +52,9 @@ _subresources={
 }
 },
 "nodes": {
+"PATH:BasePlaneLightmapped": {
+"mesh_instance/cast_shadow": 0
+},
 "PATH:BasePlaneUnlightmapped": {
 "import/skip_import": true
 }
