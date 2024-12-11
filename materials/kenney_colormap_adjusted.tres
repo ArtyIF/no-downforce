@@ -11,3 +11,4 @@ metallic = 0.05
 metallic_specular = 1.0
 roughness = 0.1
 rim_enabled = true
+rim_tint = 0.0

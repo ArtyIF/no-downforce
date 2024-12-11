@@ -1,30 +1,31 @@
-[gd_scene load_steps=40 format=3 uid="uid://bsp1ug1544wkv"]
+[gd_scene load_steps=41 format=3 uid="uid://bsp1ug1544wkv"]
 
 [ext_resource type="PackedScene" uid="uid://ctpcgnbte0ujm" path="res://scenes/models/pathtest.blend" id="1_27c0p"]
 [ext_resource type="Script" uid="uid://tr0544b3fh36" path="res://addons/aacc/scripts/car_input.gd" id="1_g86do"]
-[ext_resource type="Script" uid="uid://bscgy4yukr3na" path="res://scripts/car_setter.gd" id="1_rftos"]
+[ext_resource type="Script" uid="uid://bscgy4yukr3na" path="res://scripts/race/car_setter.gd" id="1_rftos"]
 [ext_resource type="PackedScene" uid="uid://7qj1vlu41qpm" path="res://scenes/cars/race.tscn" id="2_fi1wu"]
 [ext_resource type="Script" uid="uid://crrd7ugev6afh" path="res://addons/aacc/scripts/helper_classes/procedural_curve.gd" id="3_g86do"]
 [ext_resource type="Script" uid="uid://ddq1hbwwr3v26" path="res://scripts/shadow_color_setter.gd" id="3_opjfx"]
-[ext_resource type="Script" uid="uid://k4svdp3krbho" path="res://scripts/camera.gd" id="4_0kx16"]
-[ext_resource type="Script" uid="uid://dct8lw28g61gg" path="res://scripts/race_tracker.gd" id="4_u20ab"]
+[ext_resource type="Script" uid="uid://k4svdp3krbho" path="res://scripts/scene/camera.gd" id="4_0kx16"]
+[ext_resource type="Script" uid="uid://dct8lw28g61gg" path="res://scripts/race/race_tracker.gd" id="4_u20ab"]
 [ext_resource type="Environment" uid="uid://cx6466y1wxssu" path="res://misc/racetrack_environment.tres" id="6_qej83"]
 [ext_resource type="AudioStream" uid="uid://3nxptby4kecn" path="res://audio/ambience.ogg" id="7_f85px"]
 [ext_resource type="AudioStream" uid="uid://blxw2282c2gy3" path="res://audio/hurricane.ogg" id="8_f85px"]
-[ext_resource type="Script" uid="uid://163ttgo2dtdb" path="res://scripts/hurricane_sound.gd" id="9_mkv83"]
+[ext_resource type="Script" uid="uid://163ttgo2dtdb" path="res://scripts/scene/hurricane_sound.gd" id="9_mkv83"]
 [ext_resource type="LightmapGIData" uid="uid://8c4gcecaeppl" path="res://scenes/racetrack.lmbake" id="10_f85px"]
-[ext_resource type="Script" uid="uid://d34asehi5ugcg" path="res://scripts/checkpoint.gd" id="11_6v6se"]
-[ext_resource type="Script" uid="uid://bf5r1446orb5o" path="res://scripts/speed_label.gd" id="13_687kb"]
-[ext_resource type="Script" uid="uid://kaltnwdawygu" path="res://scripts/gear_label.gd" id="13_vycac"]
-[ext_resource type="Script" uid="uid://d3uedaj5w0io6" path="res://scripts/revs_progress.gd" id="14_p664h"]
-[ext_resource type="Script" uid="uid://l5wpd7hevwo0" path="res://scripts/logo_camera.gd" id="16_ahn5o"]
+[ext_resource type="Script" uid="uid://d34asehi5ugcg" path="res://scripts/race/checkpoint.gd" id="11_6v6se"]
+[ext_resource type="Script" uid="uid://bf5r1446orb5o" path="res://scripts/ui/hud/speed_label.gd" id="13_687kb"]
+[ext_resource type="Script" uid="uid://kaltnwdawygu" path="res://scripts/ui/hud/gear_label.gd" id="13_vycac"]
+[ext_resource type="Script" uid="uid://d3uedaj5w0io6" path="res://scripts/ui/hud/revs_progress.gd" id="14_p664h"]
+[ext_resource type="Script" uid="uid://l5wpd7hevwo0" path="res://scripts/scene/logo_camera.gd" id="16_ahn5o"]
+[ext_resource type="Script" uid="uid://bbppe8tb16clq" path="res://scripts/ui/ui_manager.gd" id="18_ocxmh"]
 [ext_resource type="Texture2D" uid="uid://bdxlnj62ojse4" path="res://textures/logo.png" id="18_p664h"]
-[ext_resource type="Script" uid="uid://chmpfjelb8eur" path="res://scripts/checkpoint_label.gd" id="19_52djk"]
-[ext_resource type="Script" uid="uid://cdw3owqmnypk" path="res://scripts/watch_demo_button.gd" id="20_ahn5o"]
-[ext_resource type="Script" uid="uid://doba6yo6yyqq4" path="res://scripts/your_time_label.gd" id="20_f85px"]
-[ext_resource type="Script" uid="uid://bhh58okq2ia53" path="res://scripts/demo_car_input.gd" id="23_ahn5o"]
-[ext_resource type="Script" uid="uid://t7u2xmebscww" path="res://scripts/version_label.gd" id="24_ahn5o"]
-[ext_resource type="Script" uid="uid://da3u2km1ycsom" path="res://scripts/demo_file_dialog.gd" id="24_mkv83"]
+[ext_resource type="Script" uid="uid://chmpfjelb8eur" path="res://scripts/race/checkpoint_label.gd" id="19_52djk"]
+[ext_resource type="Script" uid="uid://cdw3owqmnypk" path="res://scripts/ui/watch_demo_button.gd" id="20_ahn5o"]
+[ext_resource type="Script" uid="uid://doba6yo6yyqq4" path="res://scripts/ui/hud/your_time_label.gd" id="20_f85px"]
+[ext_resource type="Script" uid="uid://bhh58okq2ia53" path="res://scripts/demo/demo_car_input.gd" id="23_ahn5o"]
+[ext_resource type="Script" uid="uid://t7u2xmebscww" path="res://scripts/ui/version_label.gd" id="24_ahn5o"]
+[ext_resource type="Script" uid="uid://da3u2km1ycsom" path="res://scripts/demo/demo_file_dialog.gd" id="24_mkv83"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_f85px"]
 size = Vector3(20, 20, 20)
@@ -36,6 +37,10 @@ diffuse_mode = 2
 specular_mode = 2
 disable_fog = true
 albedo_color = Color(1, 0.376471, 0, 1)
+metallic_specular = 0.0
+roughness = 0.75
+rim_enabled = true
+rim_tint = 0.0
 proximity_fade_distance = 10.0
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_vycac"]
@@ -47,6 +52,7 @@ height = 20.0
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_u20ab"]
 auto_exposure_enabled = true
 auto_exposure_scale = 0.5
+auto_exposure_max_sensitivity = 1200.0
 
 [sub_resource type="FogMaterial" id="FogMaterial_qej83"]
 density = 0.2
@@ -106,7 +112,8 @@ car = NodePath("../Race")
 
 [node name="ShadowColorSetter" type="Node" parent="."]
 script = ExtResource("3_opjfx")
-shadow_color_amount = 0.0
+shadow_color = Color(1, 0.537255, 0.352941, 1)
+shadow_color_amount = 0.25
 
 [node name="RaceTracker" type="Node" parent="." node_paths=PackedStringArray("checkpoints_list")]
 process_priority = -1000
@@ -206,7 +213,7 @@ bus = &"Background"
 
 [node name="Hurricane" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_f85px")
-volume_db = -20.0
+volume_db = -30.458
 autoplay = true
 mix_target = 1
 bus = &"Background"
@@ -221,6 +228,7 @@ script = ExtResource("4_0kx16")
 [node name="ReflectionProbe" type="ReflectionProbe" parent="Camera"]
 update_mode = 1
 size = Vector3(100, 100, 100)
+enable_shadows = true
 cull_mask = 1048573
 reflection_mask = 3
 
@@ -232,20 +240,19 @@ camera_attributes = SubResource("CameraAttributesPractical_u20ab")
 
 [node name="Sun" type="DirectionalLight3D" parent="Lighting"]
 transform = Transform3D(-0.707107, -0.183013, 0.683013, 0, 0.965926, 0.258819, -0.707107, 0.183013, -0.683013, 0, 0, 0)
-light_color = Color(1, 0.845833, 0.75, 1)
-light_energy = 3.0
+light_color = Color(1, 0.691667, 0.5, 1)
+light_energy = 4.0
 shadow_enabled = true
-directional_shadow_split_1 = 0.05
-directional_shadow_split_2 = 0.1
-directional_shadow_split_3 = 0.15
 directional_shadow_blend_splits = true
-directional_shadow_max_distance = 500.0
+directional_shadow_fade_start = 0.9
+directional_shadow_max_distance = 200.0
 sky_mode = 1
 
 [node name="SunSky" type="DirectionalLight3D" parent="Lighting/Sun"]
-light_color = Color(1, 0.845833, 0.75, 1)
-light_energy = 16.0
-light_angular_distance = 1.0
+light_color = Color(1, 0.691667, 0.5, 1)
+light_energy = 50.0
+light_volumetric_fog_energy = 0.0
+light_angular_distance = 2.0
 sky_mode = 2
 
 [node name="FogVolumeGlobal" type="FogVolume" parent="Lighting"]
@@ -291,13 +298,15 @@ attributes = SubResource("CameraAttributesPractical_f85px")
 far = 10.0
 script = ExtResource("16_ahn5o")
 
-[node name="UI" type="Control" parent="."]
+[node name="UI" type="Control" parent="." node_paths=PackedStringArray("screens")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("18_ocxmh")
+screens = [NodePath("IntroScreen"), NodePath("HUD"), NodePath("OutroScreen"), NodePath("DemoScreen")]
 
 [node name="IntroScreen" type="Control" parent="UI"]
 layout_mode = 1
@@ -321,7 +330,6 @@ grow_horizontal = 2
 layout_mode = 2
 text = "Whenever you're ready, press gas or reverse"
 horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="RevsBG" type="PanelContainer" parent="UI/IntroScreen"]
 layout_mode = 1
@@ -348,8 +356,6 @@ layout_mode = 1
 anchors_preset = -1
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -43.0
-offset_right = 87.0
 grow_vertical = 0
 
 [node name="Version" type="Label" parent="UI/IntroScreen/VersionBG"]
@@ -363,13 +369,11 @@ script = ExtResource("24_ahn5o")
 [node name="WatchDemoButton" type="Button" parent="UI/IntroScreen"]
 custom_minimum_size = Vector2(150, 50)
 layout_mode = 1
-anchors_preset = 3
+anchors_preset = -1
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -150.0
-offset_top = -50.0
 grow_horizontal = 0
 grow_vertical = 0
 focus_mode = 0
@@ -510,12 +514,7 @@ grow_horizontal = 2
 [node name="OutroLabel" type="Label" parent="UI/OutroScreen/OutroBG"]
 layout_mode = 2
 text = "TODO: actual outro
-
-Demo saved to:
-Windows: %APPDATA%\\Godot\\app_userdata\\No Downforce\\save_<timestamp>.res
-Linux: ~/.local/share/godot/app_userdata/No Downforce/save_<timestamp>.res
-
-Press R to try again"
+Press reset to try again"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -602,5 +601,10 @@ ok_button_text = "Open"
 file_mode = 0
 access = 1
 filters = PackedStringArray("*.res;Resource Files")
-use_native_dialog = true
 script = ExtResource("24_mkv83")
+
+[node name="ErrorDialog" type="AcceptDialog" parent="UI"]
+title = "Error!"
+initial_position = 2
+size = Vector2i(165, 100)
+dialog_text = "Error text goes here"

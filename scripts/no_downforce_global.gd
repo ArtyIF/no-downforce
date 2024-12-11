@@ -4,8 +4,10 @@ var checkpoints_passed: int = 0
 var total_checkpoints: int = 5
 var time_passed: float = 0.0
 var timer_going: bool = false
-var demo_car_input: Node
+var demo_car_input: DemoCarInput
 var playing_demo: bool = false
+var ui_manager: UIManager
+var camera: NoDownforceCamera
 
 func activate_next_checkpoint(current: Node3D, next: Node3D):
 	checkpoints_passed += 1

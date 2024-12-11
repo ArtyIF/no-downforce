@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=26 format=3 uid="uid://br8g18fol6tdx"]
+[gd_resource type="Theme" load_steps=30 format=3 uid="uid://br8g18fol6tdx"]
 
 [ext_resource type="FontFile" uid="uid://b4qwwhu8xgo4x" path="res://fonts/Qaz-Regular.otf" id="1_rqugq"]
 [ext_resource type="StyleBox" uid="uid://1fce4114vka5" path="res://ui/background_off.tres" id="2_3fgq6"]
@@ -15,6 +15,10 @@
 [ext_resource type="Texture2D" uid="uid://7cqpdnoxlbyo" path="res://ui/textures/checkbox_unchecked.png" id="7_yipae"]
 [ext_resource type="Texture2D" uid="uid://dj783yw7fpv6r" path="res://ui/textures/radio_unchecked.png" id="8_iag4h"]
 [ext_resource type="StyleBox" uid="uid://dn2v12vx6uj0d" path="res://ui/fill.tres" id="8_rtqkv"]
+[ext_resource type="Texture2D" uid="uid://f46j8t5iv1ch" path="res://ui/textures/close_button.png" id="15_0xrcv"]
+[ext_resource type="StyleBox" uid="uid://dqt31cm8v42vi" path="res://ui/background_window_focused.tres" id="15_iag4h"]
+[ext_resource type="StyleBox" uid="uid://dwcutvdolyk58" path="res://ui/background_window_unfocused.tres" id="16_8v3t1"]
+[ext_resource type="Texture2D" uid="uid://dtnnrx4gvgkyp" path="res://ui/textures/close_button_pressed.png" id="16_o3grh"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_iag4h"]
 
@@ -38,7 +42,8 @@
 
 [resource]
 default_font = ExtResource("1_rqugq")
-default_font_size = 20
+default_font_size = 16
+AcceptDialog/styles/panel = ExtResource("7_2j8s8")
 Button/colors/font_color = Color(1, 0.690196, 0.501961, 1)
 Button/colors/font_disabled_color = Color(1, 0.690196, 0.501961, 0.501961)
 Button/colors/font_focus_color = Color(1, 0.690196, 0.501961, 1)
@@ -86,7 +91,7 @@ MatrixLargeLabel/base_type = &"Label"
 MatrixLargeLabel/colors/font_color = Color(1, 0.376471, 0, 1)
 MatrixLargeLabel/colors/font_outline_color = Color(1, 0.376471, 0, 0.376471)
 MatrixLargeLabel/constants/outline_size = 5
-MatrixLargeLabel/font_sizes/font_size = 30
+MatrixLargeLabel/font_sizes/font_size = 24
 MatrixLargeLabel/fonts/font = ExtResource("7_y5ki2")
 OrangeLabel/base_type = &"Label"
 OrangeLabel/colors/font_color = Color(1, 0.376471, 0, 1)
@@ -105,3 +110,9 @@ ProgressBar/constants/outline_size = 5
 ProgressBar/styles/background = ExtResource("4_47c11")
 ProgressBar/styles/fill = ExtResource("8_rtqkv")
 VBoxContainer/constants/separation = 2
+Window/colors/title_color = Color(1, 0.691667, 0.5, 1)
+Window/constants/title_height = 32
+Window/icons/close = ExtResource("15_0xrcv")
+Window/icons/close_pressed = ExtResource("16_o3grh")
+Window/styles/embedded_border = ExtResource("15_iag4h")
+Window/styles/embedded_unfocused_border = ExtResource("16_8v3t1")

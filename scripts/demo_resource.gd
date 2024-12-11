@@ -9,7 +9,10 @@ func append(forward: float, backward: float, steer: float, handbrake: bool, tran
 func save() -> Error:
 	if version == "":
 		version = ProjectSettings.get_setting("application/config/version")
-	var result = ResourceSaver.save(self, "user://save_%s.res" % str(Time.get_unix_time_from_system()).replace(".", ""))
+	if len(frames) == 0:
+		print("Nothing to save")
+		return ERR_INVALID_DATA
+	var result = ResourceSaver.save(self, "user://demo_%s.res" % str(Time.get_unix_time_from_system()).replace(".", ""))
 	return result
 
 func clear() -> void:
