@@ -29,6 +29,8 @@ func reset() -> void:
 
 	_follow_amount = 0.0
 	follow_amount_speed = 0.0
+	
+	reset_physics_interpolation()
 
 func _physics_process(delta: float) -> void:
 	var car_position: Vector3 = _car.global_position

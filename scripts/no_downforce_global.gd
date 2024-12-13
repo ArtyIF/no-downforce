@@ -6,6 +6,7 @@ var time_passed: float = 0.0
 var timer_going: bool = false
 var demo_car_input: DemoCarInput
 var playing_demo: bool = false
+var showing_main_menu: bool = false
 var ui_manager: UIManager
 var camera: NoDownforceCamera
 

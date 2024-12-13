@@ -29,10 +29,15 @@ func reset() -> void:
 		save_requested = false
 
 func _physics_process(delta: float) -> void:
+	AACCGlobal.current_car_input.enabled = (
+		not NoDownforceGlobal.showing_main_menu and
+		not NoDownforceGlobal.playing_demo and
+		not NoDownforceGlobal.checkpoints_passed == NoDownforceGlobal.total_checkpoints
+	)
+	
 	var playing_demo: bool = NoDownforceGlobal.playing_demo
 	if NoDownforceGlobal.checkpoints_passed == NoDownforceGlobal.total_checkpoints:
 		NoDownforceGlobal.camera.follow_amount_speed = -1.0
-		AACCGlobal.current_car_input.enabled = false
 		NoDownforceGlobal.ui_manager.hide_screen("HUD")
 		NoDownforceGlobal.ui_manager.show_screen("OutroScreen")
 
@@ -46,13 +51,12 @@ func _physics_process(delta: float) -> void:
 				_demo.save()
 			save_requested = true
 	else:
-		AACCGlobal.current_car_input.enabled = not playing_demo
 		if not NoDownforceGlobal.timer_going and not _car.input_handbrake and (_car.input_forward > 0.0 or _car.input_backward > 0.0):
 			NoDownforceGlobal.camera.follow_amount_speed = 1.0
 			NoDownforceGlobal.timer_going = true
 			NoDownforceGlobal.ui_manager.show_screen("HUD")
 			if playing_demo:
-				NoDownforceGlobal.ui_manager.show_screen("DemoScreen", false)
+				NoDownforceGlobal.ui_manager.show_overlay("DemoOverlay")
 		if not playing_demo:
 			_demo.append(_car.input_forward, _car.input_backward, _car.input_steer, _car.input_handbrake, _car.global_transform, _car.linear_velocity, _car.angular_velocity)
 		elif len(_demo.frames) > 0:

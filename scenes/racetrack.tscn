@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://bsp1ug1544wkv"]
+[gd_scene load_steps=45 format=3 uid="uid://bsp1ug1544wkv"]
 
 [ext_resource type="PackedScene" uid="uid://ctpcgnbte0ujm" path="res://scenes/models/pathtest.blend" id="1_27c0p"]
 [ext_resource type="Script" uid="uid://tr0544b3fh36" path="res://addons/aacc/scripts/car_input.gd" id="1_g86do"]
@@ -21,11 +21,17 @@
 [ext_resource type="Script" uid="uid://bbppe8tb16clq" path="res://scripts/ui/ui_manager.gd" id="18_ocxmh"]
 [ext_resource type="Texture2D" uid="uid://bdxlnj62ojse4" path="res://textures/logo.png" id="18_p664h"]
 [ext_resource type="Script" uid="uid://chmpfjelb8eur" path="res://scripts/race/checkpoint_label.gd" id="19_52djk"]
+[ext_resource type="Script" uid="uid://dedvko1t8b6dk" path="res://scripts/ui/main_menu_panel.gd" id="19_vlhqj"]
+[ext_resource type="Script" uid="uid://btxnochio5unn" path="res://scripts/ui/credits_button.gd" id="20_2hgki"]
 [ext_resource type="Script" uid="uid://cdw3owqmnypk" path="res://scripts/ui/watch_demo_button.gd" id="20_ahn5o"]
 [ext_resource type="Script" uid="uid://doba6yo6yyqq4" path="res://scripts/ui/hud/your_time_label.gd" id="20_f85px"]
+[ext_resource type="Script" uid="uid://dfkcuol0yv7h0" path="res://scripts/ui/play_button.gd" id="20_js2oq"]
 [ext_resource type="Script" uid="uid://bhh58okq2ia53" path="res://scripts/demo/demo_car_input.gd" id="23_ahn5o"]
+[ext_resource type="Script" uid="uid://cwbguhearg3if" path="res://scripts/ui/quit_button.gd" id="23_suohj"]
 [ext_resource type="Script" uid="uid://t7u2xmebscww" path="res://scripts/ui/version_label.gd" id="24_ahn5o"]
 [ext_resource type="Script" uid="uid://da3u2km1ycsom" path="res://scripts/demo/demo_file_dialog.gd" id="24_mkv83"]
+[ext_resource type="Script" uid="uid://dm6aro2ng2ef4" path="res://scripts/ui/intro_screen.gd" id="25_6dtjt"]
+[ext_resource type="Script" uid="uid://5ur5k83aopny" path="res://scripts/ui/credits_scroll.gd" id="27_ht4hr"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_f85px"]
 size = Vector3(20, 20, 20)
@@ -52,7 +58,8 @@ height = 20.0
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_u20ab"]
 auto_exposure_enabled = true
 auto_exposure_scale = 0.5
-auto_exposure_max_sensitivity = 1200.0
+auto_exposure_speed = 1.0
+auto_exposure_max_sensitivity = 2400.0
 
 [sub_resource type="FogMaterial" id="FogMaterial_qej83"]
 density = 0.2
@@ -98,12 +105,6 @@ reflected_light_source = 1
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_f85px"]
 
-[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_atpe0"]
-button_index = 3
-
-[sub_resource type="Shortcut" id="Shortcut_ahn5o"]
-events = [SubResource("InputEventJoypadButton_atpe0")]
-
 [node name="RaceTrack" type="Node3D"]
 
 [node name="CarSetter" type="Node" parent="." node_paths=PackedStringArray("car")]
@@ -122,6 +123,7 @@ script = ExtResource("4_u20ab")
 checkpoints_list = [NodePath("Checkpoint1"), NodePath("Checkpoint2"), NodePath("Checkpoint3"), NodePath("Checkpoint4"), NodePath("Checkpoint5")]
 
 [node name="Checkpoint1" type="Area3D" parent="RaceTracker" node_paths=PackedStringArray("next")]
+physics_interpolation_mode = 2
 transform = Transform3D(0.669131, 0, -0.743145, 0, 1, 0, 0.743145, 0, 0.669131, 40, 10, -90)
 script = ExtResource("11_6v6se")
 next = NodePath("../Checkpoint2")
@@ -136,6 +138,7 @@ mesh = SubResource("CylinderMesh_vycac")
 
 [node name="Checkpoint2" type="Area3D" parent="RaceTracker" node_paths=PackedStringArray("next")]
 process_mode = 4
+physics_interpolation_mode = 2
 transform = Transform3D(0.913545, 0, 0.406737, 0, 1, 0, -0.406737, 0, 0.913545, 160, 10, -90)
 visible = false
 script = ExtResource("11_6v6se")
@@ -151,6 +154,7 @@ mesh = SubResource("CylinderMesh_vycac")
 
 [node name="Checkpoint3" type="Area3D" parent="RaceTracker" node_paths=PackedStringArray("next")]
 process_mode = 4
+physics_interpolation_mode = 2
 transform = Transform3D(0.898794, 0, -0.438371, 0, 1, 0, 0.438371, 0, 0.898794, 210, 10, 370)
 visible = false
 script = ExtResource("11_6v6se")
@@ -166,6 +170,7 @@ mesh = SubResource("CylinderMesh_vycac")
 
 [node name="Checkpoint4" type="Area3D" parent="RaceTracker" node_paths=PackedStringArray("next")]
 process_mode = 4
+physics_interpolation_mode = 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -250, 10, 150)
 visible = false
 script = ExtResource("11_6v6se")
@@ -181,6 +186,7 @@ mesh = SubResource("CylinderMesh_vycac")
 
 [node name="Checkpoint5" type="Area3D" parent="RaceTracker"]
 process_mode = 4
+physics_interpolation_mode = 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, -10)
 visible = false
 script = ExtResource("11_6v6se")
@@ -298,7 +304,7 @@ attributes = SubResource("CameraAttributesPractical_f85px")
 far = 10.0
 script = ExtResource("16_ahn5o")
 
-[node name="UI" type="Control" parent="." node_paths=PackedStringArray("screens")]
+[node name="UI" type="Control" parent="." node_paths=PackedStringArray("screens", "overlays", "windows")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -306,15 +312,105 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("18_ocxmh")
-screens = [NodePath("IntroScreen"), NodePath("HUD"), NodePath("OutroScreen"), NodePath("DemoScreen")]
+screens = {
+"HUD": NodePath("HUD"),
+"IntroScreen": NodePath("IntroScreen"),
+"MainMenu": NodePath("MainMenu"),
+"OutroScreen": NodePath("OutroScreen")
+}
+overlays = {
+"DemoOverlay": NodePath("DemoOverlay")
+}
+windows = {
+"CreditsDialog": NodePath("CreditsDialog"),
+"DemoFileDialog": NodePath("DemoFileDialog"),
+"ErrorDialog": NodePath("ErrorDialog")
+}
 
-[node name="IntroScreen" type="Control" parent="UI"]
+[node name="MainMenu" type="Control" parent="UI"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("19_vlhqj")
+
+[node name="BG" type="PanelContainer" parent="UI/MainMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = 50.0
+grow_horizontal = 2
+
+[node name="HBox" type="HBoxContainer" parent="UI/MainMenu/BG"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="PlayButton" type="Button" parent="UI/MainMenu/BG/HBox"]
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+text = "Play"
+script = ExtResource("20_js2oq")
+
+[node name="WatchDemoButton" type="Button" parent="UI/MainMenu/BG/HBox"]
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+text = "Watch Demo"
+script = ExtResource("20_ahn5o")
+
+[node name="CreditsButton" type="Button" parent="UI/MainMenu/BG/HBox"]
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+text = "Credits"
+script = ExtResource("20_2hgki")
+
+[node name="SettingsButton" type="Button" parent="UI/MainMenu/BG/HBox"]
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+disabled = true
+text = "Settings
+(coming soon)"
+
+[node name="QuitButton" type="Button" parent="UI/MainMenu/BG/HBox"]
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+text = "Quit"
+script = ExtResource("23_suohj")
+
+[node name="VersionBG" type="PanelContainer" parent="UI/MainMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -39.0
+offset_right = 73.0
+grow_vertical = 0
+
+[node name="Version" type="RichTextLabel" parent="UI/MainMenu/VersionBG"]
+layout_mode = 2
+bbcode_enabled = true
+text = "Version"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+vertical_alignment = 2
+script = ExtResource("24_ahn5o")
+
+[node name="VersionRequest" type="HTTPRequest" parent="UI/MainMenu/VersionBG/Version"]
+
+[node name="IntroScreen" type="Control" parent="UI"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("25_6dtjt")
 
 [node name="IntroBG" type="PanelContainer" parent="UI/IntroScreen"]
 layout_mode = 1
@@ -328,7 +424,8 @@ grow_horizontal = 2
 
 [node name="IntroLabel" type="Label" parent="UI/IntroScreen/IntroBG"]
 layout_mode = 2
-text = "Whenever you're ready, press gas or reverse"
+text = "Whenever you're ready, press gas or reverse
+Press pause to get back to the main menu"
 horizontal_alignment = 1
 
 [node name="RevsBG" type="PanelContainer" parent="UI/IntroScreen"]
@@ -350,37 +447,6 @@ step = 0.0
 value = 0.5
 show_percentage = false
 script = ExtResource("14_p664h")
-
-[node name="VersionBG" type="PanelContainer" parent="UI/IntroScreen"]
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 1.0
-anchor_bottom = 1.0
-grow_vertical = 0
-
-[node name="Version" type="Label" parent="UI/IntroScreen/VersionBG"]
-layout_mode = 2
-text = "Version"
-vertical_alignment = 2
-script = ExtResource("24_ahn5o")
-
-[node name="VersionRequest" type="HTTPRequest" parent="UI/IntroScreen/VersionBG/Version"]
-
-[node name="WatchDemoButton" type="Button" parent="UI/IntroScreen"]
-custom_minimum_size = Vector2(150, 50)
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 0
-grow_vertical = 0
-focus_mode = 0
-shortcut = SubResource("Shortcut_ahn5o")
-shortcut_in_tooltip = false
-text = "Play Demo"
-script = ExtResource("20_ahn5o")
 
 [node name="HUD" type="Control" parent="UI"]
 visible = false
@@ -541,7 +607,7 @@ text = "00:00.000"
 horizontal_alignment = 2
 script = ExtResource("20_f85px")
 
-[node name="DemoScreen" type="Control" parent="UI"]
+[node name="DemoOverlay" type="Control" parent="UI"]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -550,7 +616,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="OutdatedDemoWarning" type="PanelContainer" parent="UI/DemoScreen"]
+[node name="OutdatedDemoWarning" type="PanelContainer" parent="UI/DemoOverlay"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -560,33 +626,33 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="VBox" type="VBoxContainer" parent="UI/DemoScreen/OutdatedDemoWarning"]
+[node name="VBox" type="VBoxContainer" parent="UI/DemoOverlay/OutdatedDemoWarning"]
 layout_mode = 2
 
-[node name="Warning" type="Label" parent="UI/DemoScreen/OutdatedDemoWarning/VBox"]
+[node name="Warning" type="Label" parent="UI/DemoOverlay/OutdatedDemoWarning/VBox"]
 layout_mode = 2
 text = "The loaded demo was recorded in a different version and may be broken!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Version" type="Label" parent="UI/DemoScreen/OutdatedDemoWarning/VBox"]
+[node name="Version" type="Label" parent="UI/DemoOverlay/OutdatedDemoWarning/VBox"]
 layout_mode = 2
 theme_type_variation = &"MatrixLargeLabel"
 text = "0.1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Demo" type="PanelContainer" parent="UI/DemoScreen"]
+[node name="Demo" type="PanelContainer" parent="UI/DemoOverlay"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
 anchor_right = 0.5
 grow_horizontal = 2
 
-[node name="VBox" type="VBoxContainer" parent="UI/DemoScreen/Demo"]
+[node name="VBox" type="VBoxContainer" parent="UI/DemoOverlay/Demo"]
 layout_mode = 2
 
-[node name="DemoPlayback" type="Label" parent="UI/DemoScreen/Demo/VBox"]
+[node name="DemoPlayback" type="Label" parent="UI/DemoOverlay/Demo/VBox"]
 layout_mode = 2
 text = "Demo Playback
 Press reset to stop
@@ -601,10 +667,168 @@ ok_button_text = "Open"
 file_mode = 0
 access = 1
 filters = PackedStringArray("*.res;Resource Files")
+use_native_dialog = true
 script = ExtResource("24_mkv83")
 
 [node name="ErrorDialog" type="AcceptDialog" parent="UI"]
 title = "Error!"
 initial_position = 2
 size = Vector2i(165, 100)
+popup_window = true
 dialog_text = "Error text goes here"
+
+[node name="CreditsDialog" type="AcceptDialog" parent="UI"]
+title = "Credits"
+initial_position = 2
+size = Vector2i(800, 600)
+ok_button_text = "Close"
+
+[node name="Scroll" type="ScrollContainer" parent="UI/CreditsDialog"]
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 790.0
+offset_bottom = 541.0
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+script = ExtResource("27_ht4hr")
+
+[node name="VBox" type="VBoxContainer" parent="UI/CreditsDialog/Scroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="PaddingBefore" type="Control" parent="UI/CreditsDialog/Scroll/VBox"]
+custom_minimum_size = Vector2(0, 530)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="CreditsLabel" type="RichTextLabel" parent="UI/CreditsDialog/Scroll/VBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 1
+bbcode_enabled = true
+text = "[color=#ff6000]Most of the things[/color]
+	ArtyIF
+
+[color=#ff6000]Sounds[/color]
+	[color=#ff6000]screeching tyres / tires[/color] by [color=#ff6000]fractanimal[/color] -- [url]https://freesound.org/s/614627/[/url]
+		[color=#ff6000]License:[/color] CC0 1.0 ([url]https://creativecommons.org/publicdomain/zero/1.0/[/url])
+		[color=#ff6000]Changes made:[/color] Trimmed and looped, converted to OGG
+	[color=#ff6000]Collision 1[/color] by [color=#ff6000]JustInvoke[/color] -- [url]https://freesound.org/s/446126/[/url]
+		[color=#ff6000]License:[/color] CC BY 4.0 ([url]https://creativecommons.org/licenses/by/4.0/[/url])
+		[color=#ff6000]Changes made:[/color] Converted to OGG
+	[color=#ff6000]Collision 2[/color] by [color=#ff6000]JustInvoke[/color] -- [url]https://freesound.org/s/446125/[/url]
+		[color=#ff6000]License:[/color] CC BY 4.0 ([url]https://creativecommons.org/licenses/by/4.0/[/url])
+		[color=#ff6000]Changes made:[/color] Converted to OGG
+	[color=#ff6000]Collision 3[/color] by [color=#ff6000]JustInvoke[/color] -- [url]https://freesound.org/s/446132/[/url]
+		[color=#ff6000]License:[/color] CC BY 4.0 ([url]https://creativecommons.org/licenses/by/4.0/[/url])
+		[color=#ff6000]Changes made:[/color] Converted to OGG
+	[color=#ff6000]metal plate scratch[/color] by [color=#ff6000]Ridderick[/color] -- [url]https://freesound.org/s/707639/[/url]
+		[color=#ff6000]License:[/color] CC0 1.0 ([url]https://creativecommons.org/publicdomain/zero/1.0/[/url])
+		[color=#ff6000]Changes made:[/color] Trimmed and looped, converted to OGG
+	[color=#ff6000]Car Land/Hit[/color] by [color=#ff6000]JustInvoke[/color] -- [url]https://freesound.org/s/446135/[/url]
+		[color=#ff6000]License:[/color] CC BY 4.0 ([url]https://creativecommons.org/licenses/by/4.0/[/url])
+		[color=#ff6000]Changes made:[/color] Converted to OGG
+	[color=#ff6000]Hurricane Ophelia - Youghal, Co. Cork, Ireland - 16th October 2017 (2)[/color] by [color=#ff6000]midaza.com[/color] -- [url]https://freesound.org/s/404946/[/url]
+		[color=#ff6000]License:[/color] CC BY 4.0 ([url]https://creativecommons.org/licenses/by/4.0/[/url])
+		[color=#ff6000]Changes made:[/color] Trimmed and looped, converted to OGG
+
+	Engine sounds created with [url]https://github.com/DasEtwas/enginesound[/url] from on example .esc files
+
+[color=#ff6000]Textures[/color]
+	[color=#ff6000]WispySmoke01[/color] by [color=#ff6000]Unity Labs Paris[/color] -- [url]https://unity.com/blog/engine-platform/free-vfx-image-sequences-flipbooks[/url]
+		[color=#ff6000]License:[/color] CC0 1.0 ([url]https://creativecommons.org/publicdomain/zero/1.0/[/url])
+
+[color=#ff6000]Fonts[/color]
+	[color=#ff6000]MatrixType[/color] by [color=#ff6000]GGBotNet[/color] -- [url]https://ggbot.itch.io/matrixtype-font-family[/url]
+		[color=#ff6000]License:[/color] CC0 1.0 ([url]https://creativecommons.org/publicdomain/zero/1.0/[/url])
+
+	[color=#ff6000]Qaz[/color] by [color=#ff6000]GGBotNet[/color] -- [url]https://ggbot.itch.io/qaz-font[/url]
+		[color=#ff6000]License:[/color] SIL OFL 1.1
+			Copyright © 2022-2024 GGBotNet ([url]https://ggbot.net[/url]), with Reserved Font Name \"Qaz\".
+
+			This Font Software is licensed under the SIL Open Font License, Version 1.1.
+			This license is available with a FAQ at: [url]http://scripts.sil.org/OFL[/url]
+
+[color=#ff6000]Models[/color]
+	[color=#ff6000]Car Kit[/color] by [color=#ff6000]Kenney[/color] -- [url]https://kenney.nl/assets/car-kit[/url]
+		[color=#ff6000]License:[/color] CC0 1.0 ([url]https://creativecommons.org/publicdomain/zero/1.0/[/url])
+
+[color=#ff6000]Third party code[/color]
+	[color=#ff6000]Arty's Arcadey Car Controller[/color] by [color=#ff6000]ArtyIF[/color] -- [url]https://github.com/ArtyIF/aacc[/url]
+		[color=#ff6000]License:[/color] MIT
+			Copyright (c) 2024 ArtyIF
+
+			Permission is hereby granted, free of charge, to any person obtaining a copy
+			of this software and associated documentation files (the \"Software\"), to deal
+			in the Software without restriction, including without limitation the rights
+			to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+			copies of the Software, and to permit persons to whom the Software is
+			furnished to do so, subject to the following conditions:
+
+			The above copyright notice and this permission notice shall be included in all
+			copies or substantial portions of the Software.
+
+			THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+			IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+			FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+			AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+			LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+			OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+			SOFTWARE.
+
+	[color=#ff6000]Trail Renderer[/color] by [color=#ff6000]Hyrdaboo[/color] -- [url]https://github.com/Hyrdaboo/TrailRenderer[/url]
+		[color=#ff6000]License:[/color] MIT
+			Copyright (c) 2024 Hyrdaboo
+
+			Permission is hereby granted, free of charge, to any person obtaining a copy
+			of this software and associated documentation files (the \"Software\"), to deal
+			in the Software without restriction, including without limitation the rights
+			to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+			copies of the Software, and to permit persons to whom the Software is
+			furnished to do so, subject to the following conditions:
+
+			The above copyright notice and this permission notice shall be included in all
+			copies or substantial portions of the Software.
+
+			THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+			IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+			FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+			AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+			LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+			OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+			SOFTWARE.
+
+	[color=#ff6000]Godot Jolt[/color] by [color=#ff6000]Mikael Hermansson and Godot Jolt contributors[/color] -- [url]https://github.com/godot-jolt/godot-jolt[/url]
+		[color=#ff6000]License:[/color] MIT
+			Copyright (c) Mikael Hermansson and Godot Jolt contributors.
+
+			Permission is hereby granted, free of charge, to any person obtaining a copy of
+			this software and associated documentation files (the \"Software\"), to deal in
+			the Software without restriction, including without limitation the rights to
+			use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+			the Software, and to permit persons to whom the Software is furnished to do so,
+			subject to the following conditions:
+
+			The above copyright notice and this permission notice shall be included in all
+			copies or substantial portions of the Software.
+
+			THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+			IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+			FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+			COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+			IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+			CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+"
+fit_content = true
+scroll_active = false
+
+[node name="PaddingAfter" type="Control" parent="UI/CreditsDialog/Scroll/VBox"]
+custom_minimum_size = Vector2(0, 530)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="LastNote" type="Label" parent="UI/CreditsDialog/Scroll/VBox"]
+layout_mode = 2
+text = "Scroll up or reopen credits to restart credits"

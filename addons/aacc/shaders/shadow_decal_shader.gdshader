@@ -85,7 +85,7 @@ void fragment() {
 	shadow = vec3(1.0) - shadow;
 	shadow *= vec3(1.0) - (shadow_color * shadow_color_amount);
 	shadow = clamp(vec3(1.0) - shadow, 0.0, 1.0);
-	
+
 	float normal_blend = 1.0;
 	#if CURRENT_RENDERER == RENDERER_FORWARD_PLUS
 		vec3 normal = texture(NORMAL_TEXTURE, SCREEN_UV).xyz * 2.0 - 1.0;

@@ -4,4 +4,4 @@ func _ready() -> void:
 	pressed.connect(on_press)
 
 func on_press() -> void:
-	$"../../DemoFileDialog".show()
+	NoDownforceGlobal.ui_manager.show_window("DemoFileDialog")
