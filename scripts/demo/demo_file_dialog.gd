@@ -9,6 +9,7 @@ func on_file_select(path: String) -> void:
 		print("Loaded ", path)
 		print(resource.version)
 	else:
-		push_error(path, " is not a DemoResource!")
+		NoDownforceGlobal.ui_manager.windows["ErrorDialog"].dialog_text = "You've tried loading a file that's not a demo resource."
+		NoDownforceGlobal.ui_manager.call_deferred("popup_window", "ErrorDialog")
 	NoDownforceGlobal.demo_car_input.demo = resource
 	NoDownforceGlobal.demo_car_input.load_demo()

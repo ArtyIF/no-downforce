@@ -18,7 +18,7 @@ func _process(delta: float) -> void:
 			pause_for -= delta
 	else:
 		scroll_amount = 0
-	scroll_vertical = scroll_amount
+	scroll_vertical = int(scroll_amount)
 
 func on_gui_input(event: InputEvent):
 	if event is not InputEventMouseMotion:

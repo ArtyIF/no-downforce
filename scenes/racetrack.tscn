@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://bsp1ug1544wkv"]
+[gd_scene load_steps=48 format=3 uid="uid://bsp1ug1544wkv"]
 
 [ext_resource type="PackedScene" uid="uid://ctpcgnbte0ujm" path="res://scenes/models/pathtest.blend" id="1_27c0p"]
 [ext_resource type="Script" uid="uid://tr0544b3fh36" path="res://addons/aacc/scripts/car_input.gd" id="1_g86do"]
@@ -32,6 +32,9 @@
 [ext_resource type="Script" uid="uid://da3u2km1ycsom" path="res://scripts/demo/demo_file_dialog.gd" id="24_mkv83"]
 [ext_resource type="Script" uid="uid://dm6aro2ng2ef4" path="res://scripts/ui/intro_screen.gd" id="25_6dtjt"]
 [ext_resource type="Script" uid="uid://5ur5k83aopny" path="res://scripts/ui/credits_scroll.gd" id="27_ht4hr"]
+[ext_resource type="Script" uid="uid://do30xq236a6u7" path="res://scripts/ui/pause_menu.gd" id="31_uui3w"]
+[ext_resource type="Script" uid="uid://clmduckcq77ok" path="res://scripts/ui/resume_button.gd" id="32_hxphi"]
+[ext_resource type="Script" uid="uid://c6bo35loo6qr3" path="res://scripts/ui/main_menu_button.gd" id="33_dlp85"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_f85px"]
 size = Vector3(20, 20, 20)
@@ -410,6 +413,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 script = ExtResource("25_6dtjt")
 
 [node name="IntroBG" type="PanelContainer" parent="UI/IntroScreen"]
@@ -456,6 +460,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 
 [node name="SpeedRev" type="PanelContainer" parent="UI/HUD"]
 layout_mode = 1
@@ -566,6 +571,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 
 [node name="OutroBG" type="PanelContainer" parent="UI/OutroScreen"]
 layout_mode = 1
@@ -615,6 +621,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 
 [node name="OutdatedDemoWarning" type="PanelContainer" parent="UI/DemoOverlay"]
 layout_mode = 1
@@ -659,6 +666,84 @@ Press reset to stop
 TODO: better controls"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="PauseMenu" type="Control" parent="UI"]
+process_mode = 3
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("31_uui3w")
+
+[node name="PauseBG" type="ColorRect" parent="UI/PauseMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.101961, 0.0666667, 0.0509804, 0.752941)
+
+[node name="PauseLabel" type="Label" parent="UI/PauseMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 1
+theme_type_variation = &"MatrixHugeLabel"
+text = "PAUSED"
+
+[node name="BG" type="PanelContainer" parent="UI/PauseMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = 50.0
+grow_horizontal = 2
+
+[node name="HBox" type="HBoxContainer" parent="UI/PauseMenu/BG"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="ResumeButton" type="Button" parent="UI/PauseMenu/BG/HBox"]
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+text = "Resume"
+script = ExtResource("32_hxphi")
+
+[node name="ResetButton" type="Button" parent="UI/PauseMenu/BG/HBox"]
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+text = "Reset"
+script = ExtResource("20_js2oq")
+
+[node name="SettingsButton" type="Button" parent="UI/PauseMenu/BG/HBox"]
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+disabled = true
+text = "Settings
+(coming soon)"
+
+[node name="MainMenuButton" type="Button" parent="UI/PauseMenu/BG/HBox"]
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+text = "Main Menu"
+script = ExtResource("33_dlp85")
+
+[node name="QuitButton" type="Button" parent="UI/PauseMenu/BG/HBox"]
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+text = "Quit"
+script = ExtResource("23_suohj")
 
 [node name="DemoFileDialog" type="FileDialog" parent="UI"]
 title = "Open a File"

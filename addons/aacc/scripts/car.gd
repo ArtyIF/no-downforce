@@ -343,7 +343,7 @@ func update_burnout_amount():
 		burnout_revs = linear_velocity.length() / 10.0
 	if abs(local_linear_velocity.z) < 0.25:
 		burnout_revs = revs.get_current_value()
-	
+
 	burnout_amount = clamp(burnout_colliding * (burnout_velocity + burnout_revs), 0.0, 1.0)
 #endregion
 

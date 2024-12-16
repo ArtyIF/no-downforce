@@ -1,4 +1,4 @@
-extends Node
+class_name RaceTracker extends Node
 @export var checkpoints_list: Array[Node3D]
 
 @onready var _car: Car = AACCGlobal.current_car
@@ -6,6 +6,9 @@ extends Node
 @onready var _demo: DemoResource = DemoResource.new()
 
 var save_requested: bool = false
+
+func _init() -> void:
+	NoDownforceGlobal.race_tracker = self
 
 func reset() -> void:
 	if not NoDownforceGlobal.playing_demo:
@@ -57,7 +60,7 @@ func _physics_process(delta: float) -> void:
 			NoDownforceGlobal.ui_manager.show_screen("HUD")
 			if playing_demo:
 				NoDownforceGlobal.ui_manager.show_overlay("DemoOverlay")
-		if not playing_demo:
+		if not playing_demo and not NoDownforceGlobal.showing_main_menu:
 			_demo.append(_car.input_forward, _car.input_backward, _car.input_steer, _car.input_handbrake, _car.global_transform, _car.linear_velocity, _car.angular_velocity)
 		elif len(_demo.frames) > 0:
 			_demo.clear()

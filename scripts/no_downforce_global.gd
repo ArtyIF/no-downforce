@@ -9,6 +9,7 @@ var playing_demo: bool = false
 var showing_main_menu: bool = false
 var ui_manager: UIManager
 var camera: NoDownforceCamera
+var race_tracker: RaceTracker
 
 func activate_next_checkpoint(current: Node3D, next: Node3D):
 	checkpoints_passed += 1
