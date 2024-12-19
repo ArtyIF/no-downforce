@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=30 format=3 uid="uid://br8g18fol6tdx"]
+[gd_resource type="Theme" load_steps=37 format=3 uid="uid://br8g18fol6tdx"]
 
 [ext_resource type="FontFile" uid="uid://b4qwwhu8xgo4x" path="res://fonts/Qaz-Regular.otf" id="1_rqugq"]
 [ext_resource type="StyleBox" uid="uid://1fce4114vka5" path="res://ui/background_off.tres" id="2_3fgq6"]
@@ -15,10 +15,17 @@
 [ext_resource type="Texture2D" uid="uid://7cqpdnoxlbyo" path="res://ui/textures/checkbox_unchecked.png" id="7_yipae"]
 [ext_resource type="Texture2D" uid="uid://dj783yw7fpv6r" path="res://ui/textures/radio_unchecked.png" id="8_iag4h"]
 [ext_resource type="StyleBox" uid="uid://dn2v12vx6uj0d" path="res://ui/fill.tres" id="8_rtqkv"]
+[ext_resource type="StyleBox" uid="uid://di2tex56jhvun" path="res://ui/hseparator.tres" id="13_2d6lx"]
+[ext_resource type="StyleBox" uid="uid://bltuoi4yce7dy" path="res://ui/grabber_scroll.tres" id="13_8dcbj"]
+[ext_resource type="StyleBox" uid="uid://domy3u7hq5mxq" path="res://ui/grabber_scroll_hover.tres" id="14_4f1vg"]
 [ext_resource type="Texture2D" uid="uid://f46j8t5iv1ch" path="res://ui/textures/close_button.png" id="15_0xrcv"]
+[ext_resource type="Texture2D" uid="uid://b4ms2avn413l4" path="res://ui/textures/dropdown.png" id="15_6eqeh"]
 [ext_resource type="StyleBox" uid="uid://dqt31cm8v42vi" path="res://ui/background_window_focused.tres" id="15_iag4h"]
+[ext_resource type="StyleBox" uid="uid://dvb2vsn7if7n2" path="res://ui/background_hscroll.tres" id="15_mjtt5"]
 [ext_resource type="StyleBox" uid="uid://dwcutvdolyk58" path="res://ui/background_window_unfocused.tres" id="16_8v3t1"]
 [ext_resource type="Texture2D" uid="uid://dtnnrx4gvgkyp" path="res://ui/textures/close_button_pressed.png" id="16_o3grh"]
+[ext_resource type="StyleBox" uid="uid://cfnk5kruypc2o" path="res://ui/background_press_hover.tres" id="17_4f1vg"]
+[ext_resource type="StyleBox" uid="uid://c7dht2biceu3o" path="res://ui/background_vscroll.tres" id="20_2kqek"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_iag4h"]
 
@@ -85,7 +92,20 @@ CheckButton/styles/hover_pressed = SubResource("StyleBoxEmpty_de4b7")
 CheckButton/styles/normal = SubResource("StyleBoxEmpty_yipae")
 CheckButton/styles/pressed = SubResource("StyleBoxEmpty_qxik8")
 FlatButton/colors/font_pressed_color = Color(1, 0.690196, 0.501961, 1)
+GridContainer/constants/h_separation = 0
+GridContainer/constants/v_separation = 2
 HBoxContainer/constants/separation = 2
+HScrollBar/styles/grabber = ExtResource("13_8dcbj")
+HScrollBar/styles/grabber_highlight = ExtResource("14_4f1vg")
+HScrollBar/styles/grabber_pressed = ExtResource("6_2j8s8")
+HScrollBar/styles/scroll = ExtResource("15_mjtt5")
+HScrollBar/styles/scroll_focus = ExtResource("15_mjtt5")
+HSeparator/styles/separator = ExtResource("13_2d6lx")
+HSlider/icons/grabber = ExtResource("8_iag4h")
+HSlider/icons/grabber_highlight = ExtResource("7_qxik8")
+HSlider/styles/grabber_area = ExtResource("6_2j8s8")
+HSlider/styles/grabber_area_highlight = ExtResource("17_4f1vg")
+HSlider/styles/slider = ExtResource("15_mjtt5")
 Label/colors/font_color = Color(1, 0.690196, 0.501961, 1)
 LineEdit/colors/caret_color = Color(1, 0.690196, 0.501961, 1)
 LineEdit/colors/clear_button_color = Color(1, 0.690196, 0.501961, 1)
@@ -110,10 +130,15 @@ MatrixLargeLabel/colors/font_outline_color = Color(1, 0.376471, 0, 0.376471)
 MatrixLargeLabel/constants/outline_size = 5
 MatrixLargeLabel/font_sizes/font_size = 24
 MatrixLargeLabel/fonts/font = ExtResource("7_y5ki2")
+OptionButton/constants/arrow_margin = 8
+OptionButton/icons/arrow = ExtResource("15_6eqeh")
 OrangeLabel/base_type = &"Label"
 OrangeLabel/colors/font_color = Color(1, 0.376471, 0, 1)
 Panel/styles/panel = ExtResource("7_2j8s8")
 PanelContainer/styles/panel = ExtResource("7_2j8s8")
+PopupMenu/colors/font_color = Color(1, 0.690196, 0.501961, 1)
+PopupMenu/colors/font_disabled_color = Color(1, 0.690196, 0.501961, 0.501961)
+PopupMenu/colors/font_hover_color = Color(1, 0.845833, 0.75, 1)
 PopupMenu/constants/h_separation = 10
 PopupMenu/constants/v_separation = 2
 PopupMenu/icons/checked = ExtResource("6_de4b7")
@@ -130,16 +155,18 @@ RichTextLabel/colors/default_color = Color(1, 0.690196, 0.501961, 1)
 RichTextLabel/colors/font_selected_color = Color(0.101961, 0.0666667, 0.0509804, 1)
 RichTextLabel/colors/selection_color = Color(1, 0.376471, 0, 1)
 RichTextLabel/styles/focus = ExtResource("3_y5ki2")
+SettingHBox/base_type = &"HBoxContainer"
+SettingHBox/constants/separation = 5
 TabContainer/colors/font_disabled_color = Color(1, 0.690196, 0.501961, 0.501961)
 TabContainer/colors/font_hovered_color = Color(1, 0.845833, 0.75, 1)
-TabContainer/colors/font_selected_color = Color(0.101961, 0.0666667, 0.0509804, 1)
+TabContainer/colors/font_selected_color = Color(1, 0.376471, 0, 1)
 TabContainer/colors/font_unselected_color = Color(1, 0.690196, 0.501961, 1)
 TabContainer/constants/side_margin = 0
 TabContainer/styles/panel = ExtResource("4_47c11")
 TabContainer/styles/tab_disabled = ExtResource("2_3fgq6")
 TabContainer/styles/tab_focus = ExtResource("3_y5ki2")
 TabContainer/styles/tab_hovered = ExtResource("4_rtqkv")
-TabContainer/styles/tab_selected = ExtResource("6_2j8s8")
+TabContainer/styles/tab_selected = ExtResource("4_47c11")
 TabContainer/styles/tab_unselected = ExtResource("4_47c11")
 TextEdit/colors/caret_color = Color(1, 0.690196, 0.501961, 1)
 TextEdit/colors/font_color = Color(1, 0.690196, 0.501961, 1)
@@ -161,6 +188,11 @@ Tree/styles/panel = ExtResource("4_47c11")
 Tree/styles/selected = ExtResource("6_2j8s8")
 Tree/styles/selected_focus = ExtResource("6_2j8s8")
 VBoxContainer/constants/separation = 2
+VScrollBar/styles/grabber = ExtResource("13_8dcbj")
+VScrollBar/styles/grabber_highlight = ExtResource("14_4f1vg")
+VScrollBar/styles/grabber_pressed = ExtResource("6_2j8s8")
+VScrollBar/styles/scroll = ExtResource("20_2kqek")
+VScrollBar/styles/scroll_focus = ExtResource("20_2kqek")
 Window/colors/title_color = Color(1, 0.691667, 0.5, 1)
 Window/constants/title_height = 32
 Window/icons/close = ExtResource("15_0xrcv")

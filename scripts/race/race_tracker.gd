@@ -11,25 +11,24 @@ func _init() -> void:
 	NoDownforceGlobal.race_tracker = self
 
 func reset() -> void:
-	if not NoDownforceGlobal.playing_demo:
-		_car.global_position = Vector3(0.0, 0.1, 0.0)
-		_car.global_basis = Basis.IDENTITY
-		_car.linear_velocity = Vector3.ZERO
-		_car.angular_velocity = Vector3.ZERO
-		_car.reset_physics_interpolation()
-		_car.force_update_transform()
-		_car.reset()
-		
-		NoDownforceGlobal.camera.reset()
+	_car.global_position = Vector3(0.0, 0.1, 0.0)
+	_car.global_basis = Basis.IDENTITY
+	_car.linear_velocity = Vector3.ZERO
+	_car.angular_velocity = Vector3.ZERO
+	_car.reset_physics_interpolation()
+	_car.force_update_transform()
+	_car.reset()
+	
+	NoDownforceGlobal.camera.reset()
 
-		NoDownforceGlobal.ui_manager.show_screen("IntroScreen")
-		
-		NoDownforceGlobal.reset_race(checkpoints_list)
-		_demo.clear()
-	else:
+	NoDownforceGlobal.ui_manager.show_screen("IntroScreen")
+	
+	NoDownforceGlobal.reset_race(checkpoints_list)
+	_demo.clear()
+	save_requested = false
+	if NoDownforceGlobal.playing_demo:
 		NoDownforceGlobal.demo_car_input.demo = null
 		NoDownforceGlobal.demo_car_input.load_demo()
-		save_requested = false
 
 func _physics_process(delta: float) -> void:
 	AACCGlobal.current_car_input.enabled = (
