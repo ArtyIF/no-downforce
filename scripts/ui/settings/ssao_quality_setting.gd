@@ -3,6 +3,8 @@ extends OptionButton
 
 func _ready() -> void:
 	item_selected.connect(on_value_changed)
+	select(NoDownforceGlobal.settings_resource.graphics_ssao_quality)
+	on_value_changed(NoDownforceGlobal.settings_resource.graphics_ssao_quality)
 
 func on_value_changed(index: int):
 	var env: Environment = world_env.environment
@@ -22,3 +24,5 @@ func on_value_changed(index: int):
 			env.ssao_enabled = true
 			RenderingServer.environment_set_ssao_quality(RenderingServer.ENV_SSAO_QUALITY_HIGH, false, 0.5, 3, 50.0, 300.0)
 	world_env.environment = env
+	
+	NoDownforceGlobal.settings_resource.graphics_ssao_quality = index

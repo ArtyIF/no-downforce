@@ -1,0 +1,15 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://51ss77anqcxl"]
+
+[resource]
+resource_name = "colormap"
+transparency = 1
+blend_mode = 1
+cull_mode = 2
+diffuse_mode = 2
+specular_mode = 2
+albedo_color = Color(1, 0.383333, 0, 0.25098)
+metallic_specular = 0.0
+roughness = 0.75
+rim_enabled = true
+rim_tint = 0.0
+proximity_fade_enabled = true

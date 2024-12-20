@@ -2,6 +2,8 @@ extends OptionButton
 
 func _ready() -> void:
 	item_selected.connect(on_value_changed)
+	select(NoDownforceGlobal.settings_resource.graphics_shadow_resolution)
+	on_value_changed(NoDownforceGlobal.settings_resource.graphics_shadow_resolution)
 
 func on_value_changed(index: int):
 	match index:
@@ -20,3 +22,5 @@ func on_value_changed(index: int):
 		4:
 			$"/root/RaceTrack/Lighting/Sun".shadow_bias = 0.1
 			RenderingServer.directional_shadow_atlas_set_size(4096, true)
+
+	NoDownforceGlobal.settings_resource.graphics_shadow_resolution = index

@@ -2,6 +2,8 @@ extends OptionButton
 
 func _ready() -> void:
 	item_selected.connect(on_value_changed)
+	select(NoDownforceGlobal.settings_resource.graphics_shadow_filtering_quality)
+	on_value_changed(NoDownforceGlobal.settings_resource.graphics_shadow_filtering_quality)
 
 func on_value_changed(index: int):
 	match index:
@@ -17,3 +19,5 @@ func on_value_changed(index: int):
 			RenderingServer.directional_soft_shadow_filter_set_quality(RenderingServer.SHADOW_QUALITY_SOFT_HIGH)
 		5:
 			RenderingServer.directional_soft_shadow_filter_set_quality(RenderingServer.SHADOW_QUALITY_SOFT_ULTRA)
+
+	NoDownforceGlobal.settings_resource.graphics_shadow_filtering_quality = index

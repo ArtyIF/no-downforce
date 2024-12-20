@@ -16,26 +16,26 @@ func load_demo() -> void:
 		NoDownforceGlobal.ui_manager.hide_overlay("DemoOverlay")
 		NoDownforceGlobal.playing_demo = false
 		return
-	if demo.version == "" or demo.version == "0.2" or demo.version == "0.3":
+	if demo.version != "0.5":
 		NoDownforceGlobal.ui_manager.windows["ErrorDialog"].dialog_text = "The version of this demo is too old to be played properly."
 		NoDownforceGlobal.ui_manager.call_deferred("popup_window", "ErrorDialog")
 		demo = null
 		return
-	if demo.version != ProjectSettings.get_setting("application/config/version"):
-		NoDownforceGlobal.ui_manager.overlays["DemoOverlay"].get_node("OutdatedDemoWarning").visible = true
-		NoDownforceGlobal.ui_manager.overlays["DemoOverlay"].get_node("OutdatedDemoWarning/VBox/Version").text = demo.version if demo.version != "" else "0.1"
-	else:
-		NoDownforceGlobal.ui_manager.overlays["DemoOverlay"].get_node("OutdatedDemoWarning").visible = false
 	NoDownforceGlobal.ui_manager.show_screen("IntroScreen")
 	NoDownforceGlobal.ui_manager.show_overlay("DemoOverlay")
 	NoDownforceGlobal.playing_demo = true
 
 func _physics_process(_delta: float) -> void:
 	if not _car: return
-	if not demo: return
-	if current_frame >= len(demo.frames): return
+	if not demo:
+		_car.do_not_apply_forces = false
+		return
+	if current_frame >= len(demo.frames):
+		_car.do_not_apply_forces = false
+		return
 
 	if current_frame >= 0:
+		_car.do_not_apply_forces = true
 		_car.input_forward = demo.frames[current_frame][0]
 		_car.input_backward = demo.frames[current_frame][1]
 		_car.input_steer = demo.frames[current_frame][2]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=3 uid="uid://bsp1ug1544wkv"]
+[gd_scene load_steps=66 format=3 uid="uid://bsp1ug1544wkv"]
 
 [ext_resource type="PackedScene" uid="uid://ctpcgnbte0ujm" path="res://scenes/models/pathtest.blend" id="1_27c0p"]
 [ext_resource type="Script" uid="uid://tr0544b3fh36" path="res://addons/aacc/scripts/car_input.gd" id="1_g86do"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://ddq1hbwwr3v26" path="res://scripts/shadow_color_setter.gd" id="3_opjfx"]
 [ext_resource type="Script" uid="uid://k4svdp3krbho" path="res://scripts/scene/camera.gd" id="4_0kx16"]
 [ext_resource type="Script" uid="uid://dct8lw28g61gg" path="res://scripts/race/race_tracker.gd" id="4_u20ab"]
+[ext_resource type="Material" uid="uid://dwvmrqsahnumm" path="res://materials/material_checkpoint.tres" id="5_w6o7j"]
 [ext_resource type="Environment" uid="uid://cx6466y1wxssu" path="res://misc/racetrack_environment.tres" id="6_qej83"]
 [ext_resource type="AudioStream" uid="uid://3nxptby4kecn" path="res://audio/ambience.ogg" id="7_f85px"]
 [ext_resource type="AudioStream" uid="uid://blxw2282c2gy3" path="res://audio/hurricane.ogg" id="8_f85px"]
@@ -44,8 +45,9 @@
 [ext_resource type="Script" uid="uid://bxt8o0qvoywct" path="res://scripts/ui/settings/resolution_scale_setting.gd" id="41_4hh65"]
 [ext_resource type="Script" uid="uid://b7018n1kx30a5" path="res://scripts/ui/settings/msaa_option.gd" id="42_00phd"]
 [ext_resource type="Script" uid="uid://ctdhta0mxpl7v" path="res://scripts/ui/settings/lighting_quality_option.gd" id="42_o2x5v"]
+[ext_resource type="Script" uid="uid://d4atu24eanq2n" path="res://scripts/ui/settings/vsync_setting.gd" id="43_0j4tq"]
 [ext_resource type="LightmapGIData" uid="uid://ctuxuv3f0vdcd" path="res://lightmaps/racetrack_baked.lmbake" id="43_00phd"]
-[ext_resource type="Script" uid="uid://cc8hml66mwr74" path="res://scripts/ui/settings/reflection_probe_setting.gd" id="45_f75xh"]
+[ext_resource type="Script" uid="uid://cc8hml66mwr74" path="res://scripts/ui/settings/reflection_probe_quality_setting.gd" id="45_f75xh"]
 [ext_resource type="Script" uid="uid://rp6fcwlsx12j" path="res://scripts/ui/settings/shadow_resolution_setting.gd" id="46_csdh4"]
 [ext_resource type="Script" uid="uid://cedt1utsqflr7" path="res://scripts/ui/settings/shadow_filtering_quality_setting.gd" id="47_fbg68"]
 [ext_resource type="Script" uid="uid://d0jnnkw80mbep" path="res://scripts/ui/settings/bloom_quality_setting.gd" id="48_m6i20"]
@@ -56,21 +58,8 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_f85px"]
 size = Vector3(20, 20, 20)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vycac"]
-transparency = 1
-blend_mode = 1
-diffuse_mode = 2
-specular_mode = 2
-disable_fog = true
-albedo_color = Color(1, 0.376471, 0, 1)
-metallic_specular = 0.0
-roughness = 0.75
-rim_enabled = true
-rim_tint = 0.0
-proximity_fade_distance = 10.0
-
 [sub_resource type="CylinderMesh" id="CylinderMesh_vycac"]
-material = SubResource("StandardMaterial3D_vycac")
+material = ExtResource("5_w6o7j")
 top_radius = 10.0
 bottom_radius = 10.0
 height = 20.0
@@ -145,6 +134,7 @@ checkpoints_list = [NodePath("Checkpoint1"), NodePath("Checkpoint2"), NodePath("
 [node name="Checkpoint1" type="Area3D" parent="RaceTracker" node_paths=PackedStringArray("next")]
 physics_interpolation_mode = 2
 transform = Transform3D(0.669131, 0, -0.743145, 0, 1, 0, 0.743145, 0, 0.669131, 40, 10, -90)
+collision_mask = 2
 script = ExtResource("11_6v6se")
 next = NodePath("../Checkpoint2")
 
@@ -160,6 +150,7 @@ process_mode = 4
 physics_interpolation_mode = 2
 transform = Transform3D(0.913545, 0, 0.406737, 0, 1, 0, -0.406737, 0, 0.913545, 160, 10, -90)
 visible = false
+collision_mask = 2
 script = ExtResource("11_6v6se")
 next = NodePath("../Checkpoint3")
 
@@ -175,6 +166,7 @@ process_mode = 4
 physics_interpolation_mode = 2
 transform = Transform3D(0.898794, 0, -0.438371, 0, 1, 0, 0.438371, 0, 0.898794, 210, 10, 370)
 visible = false
+collision_mask = 2
 script = ExtResource("11_6v6se")
 next = NodePath("../Checkpoint4")
 
@@ -190,6 +182,7 @@ process_mode = 4
 physics_interpolation_mode = 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -250, 10, 150)
 visible = false
+collision_mask = 2
 script = ExtResource("11_6v6se")
 next = NodePath("../Checkpoint5")
 
@@ -205,6 +198,7 @@ process_mode = 4
 physics_interpolation_mode = 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, -10)
 visible = false
+collision_mask = 2
 script = ExtResource("11_6v6se")
 
 [node name="Collision" type="CollisionShape3D" parent="RaceTracker/Checkpoint5"]
@@ -248,8 +242,7 @@ script = ExtResource("4_0kx16")
 
 [node name="ReflectionProbe" type="ReflectionProbe" parent="Camera"]
 update_mode = 1
-blend_distance = 0.0
-size = Vector3(50, 50, 50)
+size = Vector3(100, 100, 100)
 enable_shadows = true
 cull_mask = 1048573
 reflection_mask = 2
@@ -658,32 +651,6 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 
-[node name="OutdatedDemoWarning" type="PanelContainer" parent="UI/DemoOverlay"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 0
-
-[node name="VBox" type="VBoxContainer" parent="UI/DemoOverlay/OutdatedDemoWarning"]
-layout_mode = 2
-
-[node name="Warning" type="Label" parent="UI/DemoOverlay/OutdatedDemoWarning/VBox"]
-layout_mode = 2
-text = "The loaded demo was recorded in a different version and may be broken!"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Version" type="Label" parent="UI/DemoOverlay/OutdatedDemoWarning/VBox"]
-layout_mode = 2
-theme_type_variation = &"MatrixLargeLabel"
-text = "0.1"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="Demo" type="PanelContainer" parent="UI/DemoOverlay"]
 layout_mode = 1
 anchors_preset = -1
@@ -988,7 +955,6 @@ layout_mode = 2
 text = "Coming soon! Sorry, this is just the hardest part of the settings"
 
 [node name="ControllerType" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Controls"]
-visible = false
 layout_mode = 2
 theme_type_variation = &"SettingHBox"
 
@@ -1000,6 +966,7 @@ text = "Controller Type"
 [node name="Value" type="OptionButton" parent="UI/SettingsDialog/BG/VBox/Tabs/Controls/ControllerType"]
 custom_minimum_size = Vector2(150, 40)
 layout_mode = 2
+disabled = true
 selected = 0
 item_count = 2
 popup/item_0/text = "Keyboard"
@@ -1008,11 +975,9 @@ popup/item_1/text = "Gamepad"
 popup/item_1/id = 1
 
 [node name="Separator" type="HSeparator" parent="UI/SettingsDialog/BG/VBox/Tabs/Controls"]
-visible = false
 layout_mode = 2
 
 [node name="Scroll" type="ScrollContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Controls"]
-visible = false
 layout_mode = 2
 size_flags_vertical = 3
 follow_focus = true
@@ -1034,6 +999,7 @@ text = "Accelerate"
 [node name="Value" type="Button" parent="UI/SettingsDialog/BG/VBox/Tabs/Controls/Scroll/List/Accelerate"]
 custom_minimum_size = Vector2(150, 40)
 layout_mode = 2
+disabled = true
 text = "W"
 
 [node name="Brake" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Controls/Scroll/List"]
@@ -1048,6 +1014,7 @@ text = "Brake"
 [node name="Value" type="Button" parent="UI/SettingsDialog/BG/VBox/Tabs/Controls/Scroll/List/Brake"]
 custom_minimum_size = Vector2(150, 40)
 layout_mode = 2
+disabled = true
 text = "S"
 
 [node name="SteerLeft" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Controls/Scroll/List"]
@@ -1062,6 +1029,7 @@ text = "Steer Left"
 [node name="Value" type="Button" parent="UI/SettingsDialog/BG/VBox/Tabs/Controls/Scroll/List/SteerLeft"]
 custom_minimum_size = Vector2(150, 40)
 layout_mode = 2
+disabled = true
 text = "A"
 
 [node name="SteerRight" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Controls/Scroll/List"]
@@ -1076,6 +1044,7 @@ text = "Steer Right"
 [node name="Value" type="Button" parent="UI/SettingsDialog/BG/VBox/Tabs/Controls/Scroll/List/SteerRight"]
 custom_minimum_size = Vector2(150, 40)
 layout_mode = 2
+disabled = true
 text = "D"
 
 [node name="Handbrake" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Controls/Scroll/List"]
@@ -1090,6 +1059,7 @@ text = "Handbrake"
 [node name="Value" type="Button" parent="UI/SettingsDialog/BG/VBox/Tabs/Controls/Scroll/List/Handbrake"]
 custom_minimum_size = Vector2(150, 40)
 layout_mode = 2
+disabled = true
 text = "Space"
 
 [node name="Reset" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Controls/Scroll/List"]
@@ -1104,6 +1074,7 @@ text = "Reset"
 [node name="Value" type="Button" parent="UI/SettingsDialog/BG/VBox/Tabs/Controls/Scroll/List/Reset"]
 custom_minimum_size = Vector2(150, 40)
 layout_mode = 2
+disabled = true
 text = "R"
 
 [node name="Audio" type="VBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs"]
@@ -1212,6 +1183,7 @@ script = ExtResource("38_nv0xe")
 bus_name = "Background"
 
 [node name="UI" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Audio/Scroll/List"]
+visible = false
 layout_mode = 2
 theme_type_variation = &"SettingHBox"
 
@@ -1270,6 +1242,26 @@ popup/item_1/id = 1
 popup/item_2/text = "Fullscreen"
 popup/item_2/id = 2
 script = ExtResource("40_lcwrm")
+
+[node name="VSync" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Graphics/Scroll/List"]
+layout_mode = 2
+theme_type_variation = &"SettingHBox"
+
+[node name="Label" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Graphics/Scroll/List/VSync"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "V-Sync"
+
+[node name="Value" type="OptionButton" parent="UI/SettingsDialog/BG/VBox/Tabs/Graphics/Scroll/List/VSync"]
+custom_minimum_size = Vector2(150, 40)
+layout_mode = 2
+selected = 1
+item_count = 2
+popup/item_0/text = "Off"
+popup/item_0/id = 0
+popup/item_1/text = "On"
+popup/item_1/id = 1
+script = ExtResource("43_0j4tq")
 
 [node name="ResolutionScale" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Graphics/Scroll/List"]
 layout_mode = 2
@@ -1332,32 +1324,34 @@ custom_minimum_size = Vector2(150, 40)
 layout_mode = 2
 selected = 1
 item_count = 2
-popup/item_0/text = "Low"
+popup/item_0/text = "Static"
 popup/item_0/id = 0
-popup/item_1/text = "High"
+popup/item_1/text = "Dynamic"
 popup/item_1/id = 1
 script = ExtResource("42_o2x5v")
 baked_light_data = ExtResource("43_00phd")
 realtime_light_data = ExtResource("13_jgxhr")
 
-[node name="ReflectionProbe" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Graphics/Scroll/List"]
+[node name="ReflectionProbeQuality" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Graphics/Scroll/List"]
 layout_mode = 2
 theme_type_variation = &"SettingHBox"
 
-[node name="Label" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Graphics/Scroll/List/ReflectionProbe"]
+[node name="Label" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Graphics/Scroll/List/ReflectionProbeQuality"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Reflection Probe"
+text = "Reflection Probe Quality"
 
-[node name="Value" type="OptionButton" parent="UI/SettingsDialog/BG/VBox/Tabs/Graphics/Scroll/List/ReflectionProbe"]
+[node name="Value" type="OptionButton" parent="UI/SettingsDialog/BG/VBox/Tabs/Graphics/Scroll/List/ReflectionProbeQuality"]
 custom_minimum_size = Vector2(150, 40)
 layout_mode = 2
-selected = 1
-item_count = 2
+selected = 2
+item_count = 3
 popup/item_0/text = "Off"
 popup/item_0/id = 0
-popup/item_1/text = "On"
+popup/item_1/text = "Low"
 popup/item_1/id = 1
+popup/item_2/text = "High"
+popup/item_2/id = 2
 script = ExtResource("45_f75xh")
 
 [node name="ShadowResolution" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Graphics/Scroll/List"]
@@ -1517,4 +1511,4 @@ script = ExtResource("50_d7avv")
 [node name="CloseButton" type="Button" parent="UI/SettingsDialog/BG/VBox"]
 layout_mode = 2
 size_flags_horizontal = 4
-text = "Close"
+text = "Save and Close"

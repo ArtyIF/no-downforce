@@ -3,6 +3,8 @@ extends OptionButton
 
 func _ready() -> void:
 	item_selected.connect(on_value_changed)
+	select(NoDownforceGlobal.settings_resource.graphics_fog_quality)
+	on_value_changed(NoDownforceGlobal.settings_resource.graphics_fog_quality)
 
 func on_value_changed(index: int):
 	var env: Environment = world_env.environment
@@ -27,3 +29,5 @@ func on_value_changed(index: int):
 			env.volumetric_fog_enabled = true
 			RenderingServer.environment_set_volumetric_fog_volume_size(128, 128)
 	world_env.environment = env
+	
+	NoDownforceGlobal.settings_resource.graphics_fog_quality = index

@@ -10,6 +10,14 @@ var showing_main_menu: bool = false
 var ui_manager: UIManager
 var camera: NoDownforceCamera
 var race_tracker: RaceTracker
+var settings_resource: SettingsResource
+
+func _ready() -> void:
+	if not FileAccess.file_exists("user://settings.tres"):
+		settings_resource = SettingsResource.new()
+		settings_resource.save()
+	else:
+		settings_resource = ResourceLoader.load("user://settings.tres", "", ResourceLoader.CACHE_MODE_REPLACE)
 
 func activate_next_checkpoint(current: Node3D, next: Node3D):
 	checkpoints_passed += 1

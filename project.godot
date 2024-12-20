@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="No Downforce"
-config/version="0.4.2"
+config/version="0.5"
 run/main_scene="res://scenes/racetrack.tscn"
 config/features=PackedStringArray("4.4", "Forward Plus")
 boot_splash/bg_color=Color(0.05, 0.0345833, 0.025, 1)
@@ -126,6 +126,9 @@ aaccdemo_reset={
 [layer_names]
 
 3d_render/layer_2="Car"
+3d_physics/layer_1="Track"
+3d_physics/layer_2="Car"
+3d_physics/layer_3="Ghost"
 
 [physics]
 
