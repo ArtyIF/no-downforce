@@ -131,12 +131,11 @@ aaccdemo_reset={
 
 common/physics_ticks_per_second=120
 common/physics_jitter_fix=0.0
-3d/physics_engine="JoltPhysics3D"
+3d/physics_engine="Jolt Physics"
 common/physics_interpolation=true
 
 [rendering]
 
-lights_and_shadows/directional_shadow/size=8192
 lights_and_shadows/directional_shadow/soft_shadow_filter_quality=5
 textures/default_filters/anisotropic_filtering_level=4
 environment/ssao/quality=3

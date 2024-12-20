@@ -300,27 +300,22 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 3.5)
 [node name="CollisionBody" type="CollisionShape3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1.34997e-13, 0.1, 3.60944e-16)
 shape = SubResource("ConvexPolygonShape3D_6et6s")
-debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="CollisionWheelBL" type="CollisionShape3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.35, 0.3, 0.880114)
 shape = SubResource("ConvexPolygonShape3D_igdfd")
-debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="CollisionWheelBR" type="CollisionShape3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.35, 0.3, 0.880114)
 shape = SubResource("ConvexPolygonShape3D_j5kpq")
-debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="CollisionWheelFL" type="CollisionShape3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.35, 0.3, -0.639886)
 shape = SubResource("ConvexPolygonShape3D_l8fnf")
-debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="CollisionWheelFR" type="CollisionShape3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.35, 0.3, -0.639886)
 shape = SubResource("ConvexPolygonShape3D_guhhe")
-debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="WheelBL" type="Node3D" parent="." node_paths=PackedStringArray("visual_node", "skid_trail", "burnout_particles")]
 process_physics_priority = -1

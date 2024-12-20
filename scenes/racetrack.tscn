@@ -150,7 +150,6 @@ next = NodePath("../Checkpoint2")
 
 [node name="Collision" type="CollisionShape3D" parent="RaceTracker/Checkpoint1"]
 shape = SubResource("BoxShape3D_f85px")
-debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="Mesh" type="MeshInstance3D" parent="RaceTracker/Checkpoint1"]
 gi_mode = 0
@@ -166,7 +165,6 @@ next = NodePath("../Checkpoint3")
 
 [node name="Collision" type="CollisionShape3D" parent="RaceTracker/Checkpoint2"]
 shape = SubResource("BoxShape3D_f85px")
-debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="Mesh" type="MeshInstance3D" parent="RaceTracker/Checkpoint2"]
 gi_mode = 0
@@ -182,7 +180,6 @@ next = NodePath("../Checkpoint4")
 
 [node name="Collision" type="CollisionShape3D" parent="RaceTracker/Checkpoint3"]
 shape = SubResource("BoxShape3D_f85px")
-debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="Mesh" type="MeshInstance3D" parent="RaceTracker/Checkpoint3"]
 gi_mode = 0
@@ -198,7 +195,6 @@ next = NodePath("../Checkpoint5")
 
 [node name="Collision" type="CollisionShape3D" parent="RaceTracker/Checkpoint4"]
 shape = SubResource("BoxShape3D_f85px")
-debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="Mesh" type="MeshInstance3D" parent="RaceTracker/Checkpoint4"]
 gi_mode = 0
@@ -213,7 +209,6 @@ script = ExtResource("11_6v6se")
 
 [node name="Collision" type="CollisionShape3D" parent="RaceTracker/Checkpoint5"]
 shape = SubResource("BoxShape3D_f85px")
-debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="Mesh" type="MeshInstance3D" parent="RaceTracker/Checkpoint5"]
 gi_mode = 0
@@ -253,10 +248,11 @@ script = ExtResource("4_0kx16")
 
 [node name="ReflectionProbe" type="ReflectionProbe" parent="Camera"]
 update_mode = 1
-size = Vector3(1000, 100, 1000)
+blend_distance = 0.0
+size = Vector3(50, 50, 50)
 enable_shadows = true
 cull_mask = 1048573
-reflection_mask = 3
+reflection_mask = 2
 
 [node name="Lighting" type="Node" parent="."]
 
@@ -270,10 +266,9 @@ transform = Transform3D(-0.707107, -0.183013, 0.683013, 0, 0.965926, 0.258819, -
 light_color = Color(1, 0.691667, 0.5, 1)
 light_energy = 4.0
 shadow_enabled = true
-shadow_bias = 0.05
 directional_shadow_blend_splits = true
 directional_shadow_fade_start = 0.9
-directional_shadow_max_distance = 200.0
+directional_shadow_max_distance = 50.0
 sky_mode = 1
 
 [node name="SunSky" type="DirectionalLight3D" parent="Lighting/Sun"]
@@ -290,6 +285,7 @@ shape = 4
 material = SubResource("FogMaterial_qej83")
 
 [node name="LightmapGI" type="LightmapGI" parent="."]
+shadowmask_mode = 2
 generate_probes_subdiv = 0
 light_data = ExtResource("13_jgxhr")
 
@@ -943,26 +939,7 @@ text = "[color=#ff6000]Most of the things[/color]
 			OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 			SOFTWARE.
 
-	[color=#ff6000]Godot Jolt[/color] by [color=#ff6000]Mikael Hermansson and Godot Jolt contributors[/color] -- [url]https://github.com/godot-jolt/godot-jolt[/url]
-		[color=#ff6000]License:[/color] MIT
-			Copyright (c) Mikael Hermansson and Godot Jolt contributors.
-
-			Permission is hereby granted, free of charge, to any person obtaining a copy of
-			this software and associated documentation files (the \"Software\"), to deal in
-			the Software without restriction, including without limitation the rights to
-			use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
-			the Software, and to permit persons to whom the Software is furnished to do so,
-			subject to the following conditions:
-
-			The above copyright notice and this permission notice shall be included in all
-			copies or substantial portions of the Software.
-
-			THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-			IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
-			FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
-			COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
-			IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
-			CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+[color=#ff6000]Made[/color] with [color=#ff6000]Godot Game Engine[/color] -- [url]https://godotengine.org/[/url]
 "
 fit_content = true
 scroll_active = false
