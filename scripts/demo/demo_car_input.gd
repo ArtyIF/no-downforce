@@ -1,17 +1,15 @@
 class_name DemoCarInput extends Node
 @export var demo: DemoResource
-@export var apply_transform: bool = true
-@export var apply_velocity: bool = true
+@export var custom_car: Car
 
 var current_frame: int = 0
-@onready var _car: Car = AACCGlobal.current_car
+var playing: bool = false
+@onready var _car: Car = custom_car if custom_car else AACCGlobal.current_car
 
 func _ready() -> void:
 	NoDownforceGlobal.demo_car_input = self
 
-func load_demo() -> void:
-	current_frame = -1
-	_car.reset()
+func load_demo(start_from_takeoff: bool = false, autoplay: bool = true) -> void:
 	if not demo:
 		NoDownforceGlobal.ui_manager.hide_overlay("DemoOverlay")
 		NoDownforceGlobal.playing_demo = false
@@ -21,9 +19,16 @@ func load_demo() -> void:
 		NoDownforceGlobal.ui_manager.call_deferred("popup_window", "ErrorDialog")
 		demo = null
 		return
-	NoDownforceGlobal.ui_manager.show_screen("IntroScreen")
-	NoDownforceGlobal.ui_manager.show_overlay("DemoOverlay")
-	NoDownforceGlobal.playing_demo = true
+
+	_car = custom_car if custom_car else AACCGlobal.current_car
+	_car.reset()
+	current_frame = demo.start_frame if start_from_takeoff else 0
+	if not custom_car:
+		NoDownforceGlobal.ui_manager.show_screen("IntroScreen")
+		NoDownforceGlobal.ui_manager.show_overlay("DemoOverlay")
+		NoDownforceGlobal.playing_demo = true
+	if autoplay:
+		playing = true
 
 func _physics_process(_delta: float) -> void:
 	if not _car: return
@@ -36,14 +41,22 @@ func _physics_process(_delta: float) -> void:
 
 	if current_frame >= 0:
 		_car.do_not_apply_forces = true
-		_car.input_forward = demo.frames[current_frame][0]
-		_car.input_backward = demo.frames[current_frame][1]
-		_car.input_steer = demo.frames[current_frame][2]
-		_car.input_handbrake = demo.frames[current_frame][3]
-		if len(demo.frames[current_frame]) > 4 and apply_transform:
-			_car.global_transform = demo.frames[current_frame][4]
-		if len(demo.frames[current_frame]) > 5 and apply_velocity:
-			_car.linear_velocity = demo.frames[current_frame][5]
-			_car.angular_velocity = demo.frames[current_frame][6]
+		#_car.input_forward = demo.frames[current_frame][1]
+		#_car.input_backward = demo.frames[current_frame][2]
+		#_car.input_steer = demo.frames[current_frame][3]
+		#_car.input_handbrake = demo.frames[current_frame][4]
+		#_car.global_position = demo.frames[current_frame][5]
+		#_car.global_rotation = demo.frames[current_frame][6]
+		#_car.linear_velocity = demo.frames[current_frame][7]
+		#_car.angular_velocity = demo.frames[current_frame][8]
+		_car.input_forward = demo.frames[current_frame].forward
+		_car.input_backward = demo.frames[current_frame].backward
+		_car.input_steer = demo.frames[current_frame].steer
+		_car.input_handbrake = demo.frames[current_frame].handbrake
+		_car.global_position = demo.frames[current_frame].position
+		_car.global_rotation = demo.frames[current_frame].rotation
+		_car.linear_velocity = demo.frames[current_frame].linear_velocity
+		_car.angular_velocity = demo.frames[current_frame].angular_velocity
 
-	current_frame += 1
+	if playing:
+		current_frame += 1

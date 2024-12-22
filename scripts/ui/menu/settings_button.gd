@@ -5,6 +5,5 @@ func _ready() -> void:
 
 func on_press() -> void:
 	NoDownforceGlobal.ui_manager.popup_window("SettingsDialog")
-	# TODO: use controls instead once that's ready
-	NoDownforceGlobal.ui_manager.windows["SettingsDialog"].get_node("BG/VBox/Tabs").current_tab = 1
-	NoDownforceGlobal.ui_manager.windows["SettingsDialog"].get_node("BG/VBox/Tabs/Audio/Scroll/List/Master/Value").grab_focus()
+	NoDownforceGlobal.ui_manager.windows["SettingsDialog"].get_node("BG/VBox/Tabs").current_tab = 0
+	NoDownforceGlobal.ui_manager.windows["SettingsDialog"].get_node("BG/VBox/Tabs/Controls/ControllerType/Value").grab_focus()

@@ -212,6 +212,7 @@ mesh = SubResource("CylinderMesh_vycac")
 process_priority = -1000
 process_physics_priority = -1000
 script = ExtResource("1_g86do")
+enabled = false
 metadata/_custom_type_script = ExtResource("1_g86do")
 
 [node name="DemoCarInput" type="Node" parent="."]
@@ -228,7 +229,7 @@ bus = &"Background"
 
 [node name="Hurricane" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_f85px")
-volume_db = -30.458
+volume_db = -80.0
 autoplay = true
 mix_target = 1
 bus = &"Background"
@@ -362,23 +363,33 @@ grow_horizontal = 2
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="PlayButton" type="Button" parent="UI/MainMenu/BG/HBox"]
+[node name="RaceAloneButton" type="Button" parent="UI/MainMenu/BG/HBox"]
 custom_minimum_size = Vector2(150, 50)
 layout_mode = 2
 focus_neighbor_left = NodePath("../QuitButton")
 focus_neighbor_right = NodePath("../WatchDemoButton")
 focus_next = NodePath("../WatchDemoButton")
 focus_previous = NodePath("../QuitButton")
-text = "Play"
+text = "Race Alone"
 script = ExtResource("20_js2oq")
+
+[node name="RaceVsGhostButton" type="Button" parent="UI/MainMenu/BG/HBox"]
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+focus_neighbor_left = NodePath("../QuitButton")
+focus_neighbor_right = NodePath("../WatchDemoButton")
+focus_next = NodePath("../WatchDemoButton")
+focus_previous = NodePath("../QuitButton")
+disabled = true
+text = "Race vs Ghost"
 
 [node name="WatchDemoButton" type="Button" parent="UI/MainMenu/BG/HBox"]
 custom_minimum_size = Vector2(150, 50)
 layout_mode = 2
-focus_neighbor_left = NodePath("../PlayButton")
+focus_neighbor_left = NodePath("../RaceAloneButton")
 focus_neighbor_right = NodePath("../CreditsButton")
 focus_next = NodePath("../CreditsButton")
-focus_previous = NodePath("../PlayButton")
+focus_previous = NodePath("../RaceAloneButton")
 text = "Watch Demo"
 script = ExtResource("20_ahn5o")
 
@@ -406,8 +417,8 @@ script = ExtResource("23_jgxhr")
 custom_minimum_size = Vector2(150, 50)
 layout_mode = 2
 focus_neighbor_left = NodePath("../SettingsButton")
-focus_neighbor_right = NodePath("../PlayButton")
-focus_next = NodePath("../PlayButton")
+focus_neighbor_right = NodePath("../RaceAloneButton")
+focus_next = NodePath("../RaceAloneButton")
 focus_previous = NodePath("../SettingsButton")
 text = "Quit"
 script = ExtResource("23_suohj")
@@ -818,9 +829,9 @@ text = "[color=#ff6000]Most of the things[/color]
 	ArtyIF
 
 [color=#ff6000]Sounds[/color]
-	[color=#ff6000]screeching tyres / tires[/color] by [color=#ff6000]fractanimal[/color] -- [url]https://freesound.org/s/614627/[/url]
+	[color=#ff6000]Chrysler LHS tire squeal 04 (04-25-2009).wav[/color] by [color=#ff6000]audible-edge[/color] -- [url]https://freesound.org/s/71739/[/url]
 		[color=#ff6000]License:[/color] CC0 1.0 ([url]https://creativecommons.org/publicdomain/zero/1.0/[/url])
-		[color=#ff6000]Changes made:[/color] Trimmed and looped, converted to OGG
+		[color=#ff6000]Changes made:[/color] Trimmed and looped, EQd to remove engine noise, converted to OGG
 	[color=#ff6000]Collision 1[/color] by [color=#ff6000]JustInvoke[/color] -- [url]https://freesound.org/s/446126/[/url]
 		[color=#ff6000]License:[/color] CC BY 4.0 ([url]https://creativecommons.org/licenses/by/4.0/[/url])
 		[color=#ff6000]Changes made:[/color] Converted to OGG
@@ -839,8 +850,11 @@ text = "[color=#ff6000]Most of the things[/color]
 	[color=#ff6000]Hurricane Ophelia - Youghal, Co. Cork, Ireland - 16th October 2017 (2)[/color] by [color=#ff6000]midaza.com[/color] -- [url]https://freesound.org/s/404946/[/url]
 		[color=#ff6000]License:[/color] CC BY 4.0 ([url]https://creativecommons.org/licenses/by/4.0/[/url])
 		[color=#ff6000]Changes made:[/color] Trimmed and looped, converted to OGG
+	[color=#ff6000]Car Brakes sqeak screech squeal stop.wav[/color] by [color=#ff6000]WavJunction.com[/color] -- [url]https://freesound.org/s/456764/[/url]
+		[color=#ff6000]License:[/color] CC0 1.0 ([url]https://creativecommons.org/publicdomain/zero/1.0/[/url])
+		[color=#ff6000]Changes made:[/color] Trimmed and looped, converted to OGG
 
-	Engine sounds created with [url]https://github.com/DasEtwas/enginesound[/url] from on example .esc files
+	[color=#ff6000]Engine sounds[/color] created with [url]https://github.com/DasEtwas/enginesound[/url] from on example .esc files
 
 [color=#ff6000]Textures[/color]
 	[color=#ff6000]WispySmoke01[/color] by [color=#ff6000]Unity Labs Paris[/color] -- [url]https://unity.com/blog/engine-platform/free-vfx-image-sequences-flipbooks[/url]
@@ -943,10 +957,9 @@ layout_mode = 2
 layout_mode = 2
 size_flags_vertical = 3
 tab_alignment = 1
-current_tab = 1
+current_tab = 0
 
 [node name="Controls" type="VBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs"]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -1078,6 +1091,7 @@ disabled = true
 text = "R"
 
 [node name="Audio" type="VBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs"]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
