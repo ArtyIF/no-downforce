@@ -6,5 +6,5 @@ func _ready() -> void:
 
 func on_press() -> void:
 	NoDownforceGlobal.ui_manager.windows["DemoFileDialog"].root_subfolder = "demos"
-	NoDownforceGlobal.ui_manager.windows["DemoFileDialog"].vs_ghost = false
+	NoDownforceGlobal.ui_manager.windows["DemoFileDialog"].vs_ghost = true
 	NoDownforceGlobal.ui_manager.show_window("DemoFileDialog")

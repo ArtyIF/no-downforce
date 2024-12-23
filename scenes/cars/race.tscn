@@ -294,9 +294,6 @@ gi_mode = 0
 mesh = SubResource("BoxMesh_sc5a5")
 script = ExtResource("7_kexbn")
 
-[node name="HoodCameraPosition" type="Node3D" parent="Visuals"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0.05)
-
 [node name="FollowCameraOffset" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 3.5)
 
@@ -388,7 +385,7 @@ stream = ExtResource("10_3drba")
 autoplay = true
 bus = &"Engine"
 playback_type = 1
-doppler_tracking = 2
+doppler_tracking = 1
 script = ExtResource("9_y0173")
 engine_pitch_range = Vector2(0.1, 1)
 
@@ -400,7 +397,7 @@ max_db = 0.0
 autoplay = true
 bus = &"SFX"
 playback_type = 1
-doppler_tracking = 2
+doppler_tracking = 1
 script = ExtResource("10_7ntn4")
 pitch_range = Vector2(0.75, 1.25)
 

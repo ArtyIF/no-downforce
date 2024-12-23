@@ -7,4 +7,5 @@ func on_press() -> void:
 	NoDownforceGlobal.race_tracker.reset()
 	NoDownforceGlobal.ui_manager.show_screen("MainMenu")
 	get_tree().paused = false
-	NoDownforceGlobal.ui_manager.screens["MainMenu"].get_node("BG/HBox/RaceAloneButton").grab_focus()
+	NoDownforceGlobal.demo_car_input.demo = null
+	NoDownforceGlobal.ui_manager.screens["MainMenu"].get_node("BG/HBox/RaceButton").grab_focus()

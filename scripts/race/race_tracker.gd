@@ -26,7 +26,9 @@ func reset() -> void:
 	NoDownforceGlobal.reset_race(checkpoints_list)
 	_demo.clear()
 	save_requested = false
-	if NoDownforceGlobal.playing_demo:
+	if NoDownforceGlobal.demo_car_input.custom_car:
+		NoDownforceGlobal.demo_car_input.load_demo(true, false)
+	else:
 		NoDownforceGlobal.demo_car_input.demo = null
 		NoDownforceGlobal.demo_car_input.load_demo()
 
@@ -61,6 +63,8 @@ func _physics_process(delta: float) -> void:
 				NoDownforceGlobal.ui_manager.show_overlay("DemoOverlay")
 			else:
 				_demo.start_frame = len(_demo.frames)
+				if NoDownforceGlobal.demo_car_input.custom_car:
+					NoDownforceGlobal.demo_car_input.playing = true
 		if AACCGlobal.current_car_input.enabled:
 			_demo.append(delta, _car.input_forward, _car.input_backward, _car.input_steer, _car.input_handbrake, _car.global_position, _car.global_rotation, _car.linear_velocity, _car.angular_velocity)
 		elif len(_demo.frames) > 0:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=71 format=3 uid="uid://bsp1ug1544wkv"]
+[gd_scene load_steps=73 format=3 uid="uid://bsp1ug1544wkv"]
 
 [ext_resource type="PackedScene" uid="uid://ctpcgnbte0ujm" path="res://scenes/models/pathtest.blend" id="1_27c0p"]
 [ext_resource type="Script" uid="uid://tr0544b3fh36" path="res://addons/aacc/scripts/car_input.gd" id="1_g86do"]
@@ -28,6 +28,7 @@
 [ext_resource type="Script" uid="uid://cdw3owqmnypk" path="res://scripts/ui/menu/watch_demo_button.gd" id="20_ahn5o"]
 [ext_resource type="Script" uid="uid://doba6yo6yyqq4" path="res://scripts/ui/hud/your_time_label.gd" id="20_f85px"]
 [ext_resource type="Script" uid="uid://dfkcuol0yv7h0" path="res://scripts/ui/menu/play_button.gd" id="20_js2oq"]
+[ext_resource type="Script" uid="uid://dv11wjcp7w84o" path="res://scripts/ui/menu/race_vs_ghost_button.gd" id="23_5yn6w"]
 [ext_resource type="Script" uid="uid://bhh58okq2ia53" path="res://scripts/demo/demo_car_input.gd" id="23_ahn5o"]
 [ext_resource type="Script" uid="uid://bvy4e0xhrh33e" path="res://scripts/ui/menu/settings_button.gd" id="23_jgxhr"]
 [ext_resource type="Script" uid="uid://cwbguhearg3if" path="res://scripts/ui/menu/quit_button.gd" id="23_suohj"]
@@ -52,6 +53,7 @@
 [ext_resource type="Script" uid="uid://ctdhta0mxpl7v" path="res://scripts/ui/settings/lighting_quality_option.gd" id="42_o2x5v"]
 [ext_resource type="Script" uid="uid://d4atu24eanq2n" path="res://scripts/ui/settings/vsync_setting.gd" id="43_0j4tq"]
 [ext_resource type="LightmapGIData" uid="uid://ctuxuv3f0vdcd" path="res://lightmaps/racetrack_baked.lmbake" id="43_00phd"]
+[ext_resource type="PackedScene" uid="uid://bgcm0ljtikw2u" path="res://scenes/cars/race_ghost.tscn" id="44_v6qg8"]
 [ext_resource type="Script" uid="uid://cc8hml66mwr74" path="res://scripts/ui/settings/reflection_probe_quality_setting.gd" id="45_f75xh"]
 [ext_resource type="Script" uid="uid://rp6fcwlsx12j" path="res://scripts/ui/settings/shadow_resolution_setting.gd" id="46_csdh4"]
 [ext_resource type="Script" uid="uid://cedt1utsqflr7" path="res://scripts/ui/settings/shadow_filtering_quality_setting.gd" id="47_fbg68"]
@@ -73,7 +75,7 @@ height = 20.0
 auto_exposure_enabled = true
 auto_exposure_scale = 0.5
 auto_exposure_speed = 1.0
-auto_exposure_max_sensitivity = 2400.0
+auto_exposure_max_sensitivity = 3200.0
 
 [sub_resource type="FogMaterial" id="FogMaterial_qej83"]
 density = 0.2
@@ -241,6 +243,7 @@ bus = &"Background"
 script = ExtResource("9_mkv83")
 
 [node name="Camera" type="Camera3D" parent="."]
+physics_interpolation_mode = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 3)
 cull_mask = 524287
 doppler_tracking = 1
@@ -368,34 +371,33 @@ grow_horizontal = 2
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="RaceAloneButton" type="Button" parent="UI/MainMenu/BG/HBox"]
+[node name="RaceButton" type="Button" parent="UI/MainMenu/BG/HBox"]
 custom_minimum_size = Vector2(150, 50)
 layout_mode = 2
 focus_neighbor_left = NodePath("../QuitButton")
-focus_neighbor_right = NodePath("../WatchDemoButton")
-focus_next = NodePath("../WatchDemoButton")
+focus_neighbor_right = NodePath("../RaceVsGhostButton")
+focus_next = NodePath("../RaceVsGhostButton")
 focus_previous = NodePath("../QuitButton")
 text = "Race"
 script = ExtResource("20_js2oq")
 
 [node name="RaceVsGhostButton" type="Button" parent="UI/MainMenu/BG/HBox"]
-visible = false
 custom_minimum_size = Vector2(150, 50)
 layout_mode = 2
-focus_neighbor_left = NodePath("../QuitButton")
+focus_neighbor_left = NodePath("../RaceButton")
 focus_neighbor_right = NodePath("../WatchDemoButton")
 focus_next = NodePath("../WatchDemoButton")
-focus_previous = NodePath("../QuitButton")
-disabled = true
+focus_previous = NodePath("../RaceButton")
 text = "Race vs Ghost"
+script = ExtResource("23_5yn6w")
 
 [node name="WatchDemoButton" type="Button" parent="UI/MainMenu/BG/HBox"]
 custom_minimum_size = Vector2(150, 50)
 layout_mode = 2
-focus_neighbor_left = NodePath("../RaceAloneButton")
+focus_neighbor_left = NodePath("../RaceVsGhostButton")
 focus_neighbor_right = NodePath("../CreditsButton")
 focus_next = NodePath("../CreditsButton")
-focus_previous = NodePath("../RaceAloneButton")
+focus_previous = NodePath("../RaceVsGhostButton")
 text = "Watch Demo"
 script = ExtResource("20_ahn5o")
 
@@ -423,8 +425,8 @@ script = ExtResource("23_jgxhr")
 custom_minimum_size = Vector2(150, 50)
 layout_mode = 2
 focus_neighbor_left = NodePath("../SettingsButton")
-focus_neighbor_right = NodePath("../RaceAloneButton")
-focus_next = NodePath("../RaceAloneButton")
+focus_neighbor_right = NodePath("../RaceButton")
+focus_next = NodePath("../RaceButton")
 focus_previous = NodePath("../SettingsButton")
 text = "Quit"
 script = ExtResource("23_suohj")
@@ -581,11 +583,13 @@ horizontal_alignment = 2
 script = ExtResource("20_f85px")
 
 [node name="TargetTimeLabel" type="Label" parent="UI/HUD/Time/VBox"]
+visible = false
 layout_mode = 2
 text = "Target Time"
 horizontal_alignment = 2
 
 [node name="TargetTime" type="Label" parent="UI/HUD/Time/VBox"]
+visible = false
 layout_mode = 2
 theme_type_variation = &"MatrixLargeLabel"
 text = "02:00.000"
@@ -869,6 +873,7 @@ access = 1
 filters = PackedStringArray("*.res;Resource Files")
 use_native_dialog = true
 script = ExtResource("24_mkv83")
+ghost_car = ExtResource("44_v6qg8")
 
 [node name="ErrorDialog" type="AcceptDialog" parent="UI"]
 title = "Error!"

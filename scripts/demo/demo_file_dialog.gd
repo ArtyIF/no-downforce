@@ -1,5 +1,8 @@
 extends FileDialog
 
+@export var vs_ghost: bool = false
+@export var ghost_car: PackedScene
+
 func _ready() -> void:
 	file_selected.connect(on_file_select)
 
@@ -10,4 +13,11 @@ func on_file_select(path: String) -> void:
 		NoDownforceGlobal.ui_manager.call_deferred("popup_window", "ErrorDialog")
 		return
 	NoDownforceGlobal.demo_car_input.demo = resource
-	NoDownforceGlobal.demo_car_input.load_demo()
+	if not vs_ghost:
+		NoDownforceGlobal.demo_car_input.custom_car = null
+		NoDownforceGlobal.demo_car_input.load_demo()
+	else:
+		var ghost_instance: Car = ghost_car.instantiate()
+		NoDownforceGlobal.demo_car_input.get_parent().add_child(ghost_instance)
+		NoDownforceGlobal.demo_car_input.custom_car = ghost_instance
+		NoDownforceGlobal.demo_car_input.load_demo(true, false)

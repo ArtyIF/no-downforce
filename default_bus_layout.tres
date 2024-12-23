@@ -10,8 +10,10 @@ release_ms = 1000.0
 
 [sub_resource type="AudioEffectReverb" id="AudioEffectReverb_j3pel"]
 resource_name = "Reverb"
-room_size = 0.01
-damping = 0.0
+predelay_msec = 50.0
+room_size = 0.0
+damping = 1.0
+spread = 0.0
 wet = 0.05
 
 [resource]

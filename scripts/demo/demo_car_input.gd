@@ -10,11 +10,13 @@ func _ready() -> void:
 	NoDownforceGlobal.demo_car_input = self
 
 func load_demo(start_from_takeoff: bool = false, autoplay: bool = true) -> void:
+	NoDownforceGlobal.ui_manager.screens["HUD"].get_node("Time/VBox/TargetTime").visible = false
+	NoDownforceGlobal.ui_manager.screens["HUD"].get_node("Time/VBox/TargetTimeLabel").visible = false
 	if not demo:
 		NoDownforceGlobal.ui_manager.hide_overlay("DemoOverlay")
 		NoDownforceGlobal.playing_demo = false
 		return
-	if demo.version != "0.5":
+	if not demo.version.begins_with("0.5"):
 		NoDownforceGlobal.ui_manager.windows["ErrorDialog"].dialog_text = "This demo is incompatible with this version of the game."
 		NoDownforceGlobal.ui_manager.call_deferred("popup_window", "ErrorDialog")
 		demo = null
@@ -23,20 +25,29 @@ func load_demo(start_from_takeoff: bool = false, autoplay: bool = true) -> void:
 	_car = custom_car if custom_car else AACCGlobal.current_car
 	_car.reset()
 	current_frame = demo.start_frame if start_from_takeoff else 0
+	NoDownforceGlobal.ui_manager.show_screen("IntroScreen")
+
 	if not custom_car:
-		NoDownforceGlobal.ui_manager.show_screen("IntroScreen")
 		NoDownforceGlobal.ui_manager.show_overlay("DemoOverlay")
 		NoDownforceGlobal.playing_demo = true
-	if autoplay:
-		playing = true
+	else:
+		var time = demo.frames[len(demo.frames) - 1].time
+		var minutes: int = floori(time / 60)
+		var seconds: int = floori(time) % 60
+		var milliseconds: int = floori(time * 1000) % 1000
+		NoDownforceGlobal.ui_manager.screens["HUD"].get_node("Time/VBox/TargetTime").text = "%02d:%02d.%03d" % [minutes, seconds, milliseconds]
+		NoDownforceGlobal.ui_manager.screens["HUD"].get_node("Time/VBox/TargetTime").visible = true
+		NoDownforceGlobal.ui_manager.screens["HUD"].get_node("Time/VBox/TargetTimeLabel").visible = true
+
+	playing = autoplay
 
 func _physics_process(_delta: float) -> void:
 	if not _car: return
-	if not demo:
-		_car.do_not_apply_forces = false
-		return
-	if current_frame >= len(demo.frames):
-		_car.do_not_apply_forces = false
+	if not demo or current_frame >= len(demo.frames):
+		if not custom_car:
+			_car.do_not_apply_forces = false
+		else:
+			NoDownforceGlobal.demo_car_input.custom_car.queue_free()
 		return
 
 	if current_frame >= 0:
@@ -51,4 +62,9 @@ func _physics_process(_delta: float) -> void:
 		_car.angular_velocity = demo.frames[current_frame].angular_velocity
 
 	if playing:
+		if not _car.get_node("Engine").playing:
+			_car.get_node("Engine").play()
 		current_frame += 1
+	else:
+		if _car.get_node("Engine").playing:
+			_car.get_node("Engine").stop()
