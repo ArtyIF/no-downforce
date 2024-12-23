@@ -15,7 +15,7 @@ func load_demo(start_from_takeoff: bool = false, autoplay: bool = true) -> void:
 		NoDownforceGlobal.playing_demo = false
 		return
 	if demo.version != "0.5":
-		NoDownforceGlobal.ui_manager.windows["ErrorDialog"].dialog_text = "The version of this demo is too old to be played properly."
+		NoDownforceGlobal.ui_manager.windows["ErrorDialog"].dialog_text = "This demo is incompatible with this version of the game."
 		NoDownforceGlobal.ui_manager.call_deferred("popup_window", "ErrorDialog")
 		demo = null
 		return
@@ -41,14 +41,6 @@ func _physics_process(_delta: float) -> void:
 
 	if current_frame >= 0:
 		_car.do_not_apply_forces = true
-		#_car.input_forward = demo.frames[current_frame][1]
-		#_car.input_backward = demo.frames[current_frame][2]
-		#_car.input_steer = demo.frames[current_frame][3]
-		#_car.input_handbrake = demo.frames[current_frame][4]
-		#_car.global_position = demo.frames[current_frame][5]
-		#_car.global_rotation = demo.frames[current_frame][6]
-		#_car.linear_velocity = demo.frames[current_frame][7]
-		#_car.angular_velocity = demo.frames[current_frame][8]
 		_car.input_forward = demo.frames[current_frame].forward
 		_car.input_backward = demo.frames[current_frame].backward
 		_car.input_steer = demo.frames[current_frame].steer

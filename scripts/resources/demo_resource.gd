@@ -1,14 +1,12 @@
 class_name DemoResource extends Resource
 
 @export var version: String = ProjectSettings.get_setting("application/config/version")
-#@export var frames: Array[Array] = []
 @export var frames: Array[DemoFrame] = []
 @export var start_frame: int = 0
 
 var current_time: float = 0.0
 
 func append(delta: float, forward: float, backward: float, steer: float, handbrake: bool, position: Vector3, rotation: Vector3, linear_velocity: Vector3, angular_velocity: Vector3) -> void:
-	#frames.append([delta, forward, backward, steer, handbrake, position, rotation, linear_velocity, angular_velocity])
 	var frame = DemoFrame.new()
 	frame.time = current_time
 	frame.forward = forward

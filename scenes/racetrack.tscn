@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=3 uid="uid://bsp1ug1544wkv"]
+[gd_scene load_steps=71 format=3 uid="uid://bsp1ug1544wkv"]
 
 [ext_resource type="PackedScene" uid="uid://ctpcgnbte0ujm" path="res://scenes/models/pathtest.blend" id="1_27c0p"]
 [ext_resource type="Script" uid="uid://tr0544b3fh36" path="res://addons/aacc/scripts/car_input.gd" id="1_g86do"]
@@ -38,8 +38,13 @@
 [ext_resource type="Script" uid="uid://do30xq236a6u7" path="res://scripts/ui/pause_menu.gd" id="31_uui3w"]
 [ext_resource type="Script" uid="uid://clmduckcq77ok" path="res://scripts/ui/menu/resume_button.gd" id="32_hxphi"]
 [ext_resource type="Script" uid="uid://c6bo35loo6qr3" path="res://scripts/ui/menu/main_menu_button.gd" id="33_dlp85"]
+[ext_resource type="Script" uid="uid://8d804bacsad8" path="res://scripts/ui/hud/forward_bar.gd" id="34_vqu6m"]
+[ext_resource type="Script" uid="uid://duujg25xkbqwn" path="res://scripts/ui/hud/backward_bar.gd" id="35_usg5d"]
 [ext_resource type="Script" uid="uid://c0outyq5dsbdx" path="res://scripts/ui/settings_dialog.gd" id="36_3jmr6"]
+[ext_resource type="Script" uid="uid://ddw0yl2rxatm5" path="res://scripts/ui/hud/steer_bar_left.gd" id="36_usg5d"]
+[ext_resource type="Script" uid="uid://kmpnayoul2vb" path="res://scripts/ui/hud/steer_bar_right.gd" id="37_uqxp6"]
 [ext_resource type="Script" uid="uid://dh1nqnmjiswug" path="res://scripts/ui/settings/value_text.gd" id="38_3ppu2"]
+[ext_resource type="Script" uid="uid://c7hfgvl4lvkcx" path="res://scripts/ui/hud/handbrake_bar.gd" id="38_l4ne8"]
 [ext_resource type="Script" uid="uid://b4tcctbtpnuab" path="res://scripts/ui/settings/audio_setting.gd" id="38_nv0xe"]
 [ext_resource type="Script" uid="uid://ep67hxlgypke" path="res://scripts/ui/settings/window_mode_setting.gd" id="40_lcwrm"]
 [ext_resource type="Script" uid="uid://bxt8o0qvoywct" path="res://scripts/ui/settings/resolution_scale_setting.gd" id="41_4hh65"]
@@ -370,10 +375,11 @@ focus_neighbor_left = NodePath("../QuitButton")
 focus_neighbor_right = NodePath("../WatchDemoButton")
 focus_next = NodePath("../WatchDemoButton")
 focus_previous = NodePath("../QuitButton")
-text = "Race Alone"
+text = "Race"
 script = ExtResource("20_js2oq")
 
 [node name="RaceVsGhostButton" type="Button" parent="UI/MainMenu/BG/HBox"]
+visible = false
 custom_minimum_size = Vector2(150, 50)
 layout_mode = 2
 focus_neighbor_left = NodePath("../QuitButton")
@@ -662,23 +668,99 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 
-[node name="Demo" type="PanelContainer" parent="UI/DemoOverlay"]
+[node name="TopBG" type="PanelContainer" parent="UI/DemoOverlay"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
 anchor_right = 0.5
 grow_horizontal = 2
 
-[node name="VBox" type="VBoxContainer" parent="UI/DemoOverlay/Demo"]
+[node name="VBox" type="VBoxContainer" parent="UI/DemoOverlay/TopBG"]
 layout_mode = 2
 
-[node name="DemoPlayback" type="Label" parent="UI/DemoOverlay/Demo/VBox"]
+[node name="DemoPlayback" type="Label" parent="UI/DemoOverlay/TopBG/VBox"]
 layout_mode = 2
 text = "Demo Playback
 Press reset to stop
 TODO: better controls"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="ControlsBG" type="PanelContainer" parent="UI/DemoOverlay"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_bottom = 1.0
+grow_vertical = 0
+
+[node name="VBox" type="VBoxContainer" parent="UI/DemoOverlay/ControlsBG"]
+layout_mode = 2
+
+[node name="ForwardLabel" type="Label" parent="UI/DemoOverlay/ControlsBG/VBox"]
+layout_mode = 2
+text = "Accelerate"
+
+[node name="ForwardBar" type="ProgressBar" parent="UI/DemoOverlay/ControlsBG/VBox"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+max_value = 1.0
+step = 0.0
+value = 0.5
+show_percentage = false
+script = ExtResource("34_vqu6m")
+
+[node name="BackwardLabel" type="Label" parent="UI/DemoOverlay/ControlsBG/VBox"]
+layout_mode = 2
+text = "Brake/Reverse"
+
+[node name="BackwardBar" type="ProgressBar" parent="UI/DemoOverlay/ControlsBG/VBox"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+max_value = 1.0
+step = 0.0
+value = 0.5
+show_percentage = false
+script = ExtResource("35_usg5d")
+
+[node name="SteerLabel" type="Label" parent="UI/DemoOverlay/ControlsBG/VBox"]
+layout_mode = 2
+text = "Steer"
+
+[node name="SteerBars" type="HBoxContainer" parent="UI/DemoOverlay/ControlsBG/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="SteerBarLeft" type="ProgressBar" parent="UI/DemoOverlay/ControlsBG/VBox/SteerBars"]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+max_value = 1.0
+step = 0.0
+value = 0.5
+fill_mode = 1
+show_percentage = false
+script = ExtResource("36_usg5d")
+
+[node name="SteerBarRight" type="ProgressBar" parent="UI/DemoOverlay/ControlsBG/VBox/SteerBars"]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+max_value = 1.0
+step = 0.0
+value = 0.5
+show_percentage = false
+script = ExtResource("37_uqxp6")
+
+[node name="HandbrakeLabel" type="Label" parent="UI/DemoOverlay/ControlsBG/VBox"]
+layout_mode = 2
+text = "Handbrake"
+
+[node name="HandbrakeBar" type="ProgressBar" parent="UI/DemoOverlay/ControlsBG/VBox"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+max_value = 1.0
+step = 0.0
+value = 0.5
+show_percentage = false
+script = ExtResource("38_l4ne8")
 
 [node name="PauseMenu" type="Control" parent="UI"]
 process_mode = 3
