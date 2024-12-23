@@ -473,7 +473,8 @@ grow_horizontal = 2
 
 [node name="IntroLabel" type="Label" parent="UI/IntroScreen/IntroBG"]
 layout_mode = 2
-text = "Whenever you're ready, press gas or reverse
+text = "Whenever you're ready...
+Hint: Hold handbrake and accelerate to take off much faster!
 Press pause to get back to the main menu"
 horizontal_alignment = 1
 
