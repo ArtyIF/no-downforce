@@ -1,4 +1,4 @@
-[gd_scene load_steps=73 format=3 uid="uid://bsp1ug1544wkv"]
+[gd_scene load_steps=75 format=3 uid="uid://bsp1ug1544wkv"]
 
 [ext_resource type="PackedScene" uid="uid://ctpcgnbte0ujm" path="res://scenes/models/pathtest.blend" id="1_27c0p"]
 [ext_resource type="Script" uid="uid://tr0544b3fh36" path="res://addons/aacc/scripts/car_input.gd" id="1_g86do"]
@@ -49,8 +49,8 @@
 [ext_resource type="Script" uid="uid://b4tcctbtpnuab" path="res://scripts/ui/settings/audio_setting.gd" id="38_nv0xe"]
 [ext_resource type="Script" uid="uid://ep67hxlgypke" path="res://scripts/ui/settings/window_mode_setting.gd" id="40_lcwrm"]
 [ext_resource type="Script" uid="uid://bxt8o0qvoywct" path="res://scripts/ui/settings/resolution_scale_setting.gd" id="41_4hh65"]
-[ext_resource type="Script" uid="uid://b7018n1kx30a5" path="res://scripts/ui/settings/msaa_option.gd" id="42_00phd"]
-[ext_resource type="Script" uid="uid://ctdhta0mxpl7v" path="res://scripts/ui/settings/lighting_quality_option.gd" id="42_o2x5v"]
+[ext_resource type="Script" uid="uid://b7018n1kx30a5" path="res://scripts/ui/settings/msaa_setting.gd" id="42_00phd"]
+[ext_resource type="Script" uid="uid://ctdhta0mxpl7v" path="res://scripts/ui/settings/lighting_quality_setting.gd" id="42_o2x5v"]
 [ext_resource type="Script" uid="uid://d4atu24eanq2n" path="res://scripts/ui/settings/vsync_setting.gd" id="43_0j4tq"]
 [ext_resource type="LightmapGIData" uid="uid://ctuxuv3f0vdcd" path="res://lightmaps/racetrack_baked.lmbake" id="43_00phd"]
 [ext_resource type="PackedScene" uid="uid://bgcm0ljtikw2u" path="res://scenes/cars/race_ghost.tscn" id="44_v6qg8"]
@@ -61,6 +61,8 @@
 [ext_resource type="Script" uid="uid://bxhi7uko1dn7p" path="res://scripts/ui/settings/fog_quality_setting.gd" id="49_tfpfy"]
 [ext_resource type="Script" uid="uid://dkcssvrqrlro6" path="res://scripts/ui/settings/ssao_quality_setting.gd" id="50_burr8"]
 [ext_resource type="Script" uid="uid://eo8xitm0i6d0" path="res://scripts/ui/settings/ssr_quality_setting.gd" id="50_d7avv"]
+[ext_resource type="Script" uid="uid://dpjh575chum8l" path="res://scripts/ui/settings/upscaling_mode_setting.gd" id="52_qtpag"]
+[ext_resource type="Script" uid="uid://davqnenrgtsk5" path="res://scripts/ui/settings/fxaa_setting.gd" id="53_kdpoe"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_f85px"]
 size = Vector3(20, 20, 20)
@@ -1040,6 +1042,7 @@ grow_vertical = 2
 
 [node name="VBox" type="VBoxContainer" parent="UI/SettingsDialog/BG"]
 layout_mode = 2
+theme_override_constants/separation = 5
 
 [node name="Tabs" type="TabContainer" parent="UI/SettingsDialog/BG/VBox"]
 layout_mode = 2
@@ -1388,6 +1391,28 @@ step = 0.01
 value = 1.0
 script = ExtResource("41_4hh65")
 
+[node name="UpscalingMode" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Graphics/Scroll/List"]
+layout_mode = 2
+theme_type_variation = &"SettingHBox"
+
+[node name="Label" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Graphics/Scroll/List/UpscalingMode"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Upscaling Mode"
+
+[node name="Value" type="OptionButton" parent="UI/SettingsDialog/BG/VBox/Tabs/Graphics/Scroll/List/UpscalingMode"]
+custom_minimum_size = Vector2(150, 40)
+layout_mode = 2
+selected = 0
+item_count = 3
+popup/item_0/text = "Bilinear"
+popup/item_0/id = 0
+popup/item_1/text = "FSR 1.0"
+popup/item_1/id = 1
+popup/item_2/text = "FSR 2.2"
+popup/item_2/id = 2
+script = ExtResource("52_qtpag")
+
 [node name="MSAA" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Graphics/Scroll/List"]
 layout_mode = 2
 theme_type_variation = &"SettingHBox"
@@ -1411,6 +1436,26 @@ popup/item_2/id = 2
 popup/item_3/text = "8×"
 popup/item_3/id = 3
 script = ExtResource("42_00phd")
+
+[node name="FXAA" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Graphics/Scroll/List"]
+layout_mode = 2
+theme_type_variation = &"SettingHBox"
+
+[node name="Label" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Graphics/Scroll/List/FXAA"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "FXAA"
+
+[node name="Value" type="OptionButton" parent="UI/SettingsDialog/BG/VBox/Tabs/Graphics/Scroll/List/FXAA"]
+custom_minimum_size = Vector2(150, 40)
+layout_mode = 2
+selected = 1
+item_count = 2
+popup/item_0/text = "Off"
+popup/item_0/id = 0
+popup/item_1/text = "On"
+popup/item_1/id = 1
+script = ExtResource("53_kdpoe")
 
 [node name="LightingQuality" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Graphics/Scroll/List"]
 layout_mode = 2
