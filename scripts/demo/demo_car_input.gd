@@ -43,11 +43,26 @@ func load_demo(start_from_takeoff: bool = false, autoplay: bool = true) -> void:
 
 func _physics_process(_delta: float) -> void:
 	if not _car: return
-	if not demo or current_frame >= len(demo.frames):
+	if not demo:
 		if not custom_car:
 			_car.do_not_apply_forces = false
 		else:
 			NoDownforceGlobal.demo_car_input.custom_car.queue_free()
+		return
+	if current_frame >= len(demo.frames):
+		if not custom_car:
+			_car.do_not_apply_forces = false
+		else:
+			playing = false
+			if _car.get_node("Engine").playing:
+				_car.get_node("Engine").stop()
+			_car.freeze = true
+			_car.input_forward = 0.0
+			_car.input_backward = 0.0
+			_car.input_steer = 0.0
+			_car.input_handbrake = 0.0
+			_car.linear_velocity = Vector3.ZERO
+			_car.angular_velocity = Vector3.ZERO
 		return
 
 	if current_frame >= 0:
@@ -62,9 +77,11 @@ func _physics_process(_delta: float) -> void:
 		_car.angular_velocity = demo.frames[current_frame].angular_velocity
 
 	if playing:
-		if not _car.get_node("Engine").playing:
-			_car.get_node("Engine").play()
+		if custom_car:
+			if not _car.get_node("Engine").playing:
+				_car.get_node("Engine").play()
+			_car.freeze = false
 		current_frame += 1
 	else:
-		if _car.get_node("Engine").playing:
+		if custom_car and _car.get_node("Engine").playing:
 			_car.get_node("Engine").stop()
