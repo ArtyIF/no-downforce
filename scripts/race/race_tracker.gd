@@ -41,7 +41,6 @@ func _physics_process(delta: float) -> void:
 
 	var playing_demo: bool = NoDownforceGlobal.playing_demo
 	if NoDownforceGlobal.checkpoints_passed == NoDownforceGlobal.total_checkpoints:
-		NoDownforceGlobal.camera.follow_amount_speed = -1.0
 		NoDownforceGlobal.ui_manager.hide_screen("HUD")
 		NoDownforceGlobal.ui_manager.show_screen("OutroScreen")
 
@@ -56,7 +55,6 @@ func _physics_process(delta: float) -> void:
 			save_requested = true
 	else:
 		if not NoDownforceGlobal.timer_going and not _car.input_handbrake and (_car.input_forward > 0.0 or _car.input_backward > 0.0):
-			NoDownforceGlobal.camera.follow_amount_speed = 1.0
 			NoDownforceGlobal.timer_going = true
 			NoDownforceGlobal.ui_manager.show_screen("HUD")
 			if playing_demo:
