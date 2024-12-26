@@ -1,4 +1,4 @@
-[gd_scene load_steps=77 format=3 uid="uid://bsp1ug1544wkv"]
+[gd_scene load_steps=71 format=3 uid="uid://bsp1ug1544wkv"]
 
 [ext_resource type="PackedScene" uid="uid://ctpcgnbte0ujm" path="res://scenes/models/pathtest.blend" id="1_27c0p"]
 [ext_resource type="Script" uid="uid://tr0544b3fh36" path="res://addons/aacc/scripts/car_input.gd" id="1_g86do"]
@@ -16,12 +16,11 @@
 [ext_resource type="Script" uid="uid://d34asehi5ugcg" path="res://scripts/race/checkpoint.gd" id="11_6v6se"]
 [ext_resource type="Script" uid="uid://b3ugjja162d4u" path="res://scripts/scene/very_low_fog_fade.gd" id="12_4duja"]
 [ext_resource type="Script" uid="uid://bf5r1446orb5o" path="res://scripts/ui/hud/speed_label.gd" id="13_687kb"]
-[ext_resource type="LightmapGIData" uid="uid://diilqw22h2lfa" path="res://lightmaps/racetrack_realtime.lmbake" id="13_jgxhr"]
 [ext_resource type="Script" uid="uid://kaltnwdawygu" path="res://scripts/ui/hud/gear_label.gd" id="13_vycac"]
 [ext_resource type="Script" uid="uid://d3uedaj5w0io6" path="res://scripts/ui/hud/revs_progress.gd" id="14_p664h"]
 [ext_resource type="Script" uid="uid://dt721ix7r1ufo" path="res://scripts/scene/follow_camera_position.gd" id="15_dj8gt"]
 [ext_resource type="Script" uid="uid://b50jlbs3eaai3" path="res://scripts/scene/lookat_camera_position.gd" id="16_60j73"]
-[ext_resource type="Script" uid="uid://l5wpd7hevwo0" path="res://scripts/scene/logo_camera.gd" id="16_ahn5o"]
+[ext_resource type="LightmapGIData" uid="uid://diilqw22h2lfa" path="res://lightmaps/racetrack_realtime.lmbake" id="16_w7je6"]
 [ext_resource type="Script" uid="uid://bbppe8tb16clq" path="res://scripts/ui/ui_manager.gd" id="18_ocxmh"]
 [ext_resource type="Texture2D" uid="uid://bdxlnj62ojse4" path="res://textures/logo.png" id="18_p664h"]
 [ext_resource type="Script" uid="uid://chmpfjelb8eur" path="res://scripts/race/checkpoint_label.gd" id="19_52djk"]
@@ -86,19 +85,6 @@ density = 0.2
 albedo = Color(1, 0.376471, 0, 1)
 height_falloff = 1.0
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6v6se"]
-transparency = 1
-shading_mode = 0
-albedo_texture = ExtResource("18_p664h")
-billboard_keep_scale = true
-distance_fade_mode = 1
-distance_fade_min_distance = 0.5
-distance_fade_max_distance = 1.5
-
-[sub_resource type="QuadMesh" id="QuadMesh_vycac"]
-material = SubResource("StandardMaterial3D_6v6se")
-size = Vector2(2, 1)
-
 [sub_resource type="Resource" id="Resource_rftos"]
 resource_local_to_scene = true
 script = ExtResource("3_g86do")
@@ -114,16 +100,6 @@ left_value = 1.0
 right_value = 0.075
 max_input = 10.0
 input_curve = 0.5
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_f85px"]
-viewport_path = NodePath("LogoCameraRect/SubViewport")
-
-[sub_resource type="Environment" id="Environment_f85px"]
-background_color = Color(0, 0, 0, 0)
-ambient_light_source = 1
-reflected_light_source = 1
-
-[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_f85px"]
 
 [node name="RaceTrack" type="Node3D"]
 
@@ -265,7 +241,7 @@ sky_mode = 1
 
 [node name="SunSky" type="DirectionalLight3D" parent="Lighting/Sun"]
 light_color = Color(1, 0.691667, 0.5, 1)
-light_energy = 50.0
+light_energy = 25.0
 light_volumetric_fog_energy = 0.0
 light_angular_distance = 2.0
 light_bake_mode = 0
@@ -277,15 +253,15 @@ shape = 4
 material = SubResource("FogMaterial_qej83")
 
 [node name="FollowCameraPosition" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.39, 3.5)
 script = ExtResource("15_dj8gt")
 
 [node name="LookatCameraPosition" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.39, 0)
 script = ExtResource("16_60j73")
 
 [node name="Camera" type="Camera3D" parent="." node_paths=PackedStringArray("follow_camera_position", "lookat_camera_position")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.39, 3.5)
 doppler_tracking = 1
 script = ExtResource("4_0kx16")
 follow_camera_position = NodePath("../FollowCameraPosition")
@@ -301,40 +277,14 @@ reflection_mask = 2
 [node name="LightmapGI" type="LightmapGI" parent="."]
 shadowmask_mode = 2
 generate_probes_subdiv = 0
-light_data = ExtResource("13_jgxhr")
+light_data = ExtResource("16_w7je6")
 
 [node name="pathtest" parent="." instance=ExtResource("1_27c0p")]
-
-[node name="Logo" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 1.5)
-layers = 524288
-mesh = SubResource("QuadMesh_vycac")
 
 [node name="Race" parent="." instance=ExtResource("2_fi1wu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
 steer_tug_curve = SubResource("Resource_rftos")
 reduced_grip_curve = SubResource("Resource_1a0jv")
-
-[node name="LogoCameraRect" type="TextureRect" parent="."]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = SubResource("ViewportTexture_f85px")
-expand_mode = 1
-
-[node name="SubViewport" type="SubViewport" parent="LogoCameraRect"]
-transparent_bg = true
-size = Vector2i(1280, 720)
-
-[node name="Camera" type="Camera3D" parent="LogoCameraRect/SubViewport"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 3)
-cull_mask = 524288
-environment = SubResource("Environment_f85px")
-attributes = SubResource("CameraAttributesPractical_f85px")
-far = 10.0
-script = ExtResource("16_ahn5o")
 
 [node name="UI" type="Control" parent="." node_paths=PackedStringArray("screens", "overlays", "windows")]
 layout_mode = 3
@@ -368,6 +318,18 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("19_vlhqj")
+
+[node name="Logo" type="TextureRect" parent="UI/MainMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("18_p664h")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="BG" type="PanelContainer" parent="UI/MainMenu"]
 layout_mode = 1
@@ -474,6 +436,18 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("25_6dtjt")
+
+[node name="Logo" type="TextureRect" parent="UI/IntroScreen"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("18_p664h")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="IntroBG" type="PanelContainer" parent="UI/IntroScreen"]
 layout_mode = 1
@@ -1487,7 +1461,7 @@ popup/item_1/text = "Dynamic"
 popup/item_1/id = 1
 script = ExtResource("42_o2x5v")
 baked_light_data = ExtResource("43_00phd")
-realtime_light_data = ExtResource("13_jgxhr")
+realtime_light_data = ExtResource("16_w7je6")
 
 [node name="ReflectionProbeQuality" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Graphics/Scroll/List"]
 layout_mode = 2

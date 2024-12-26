@@ -33,7 +33,7 @@ func _physics_process(delta: float) -> void:
 	_plane = Plane(up_direction)
 
 	var target_offset_amount: float = (_car.linear_velocity.length() - 0.25) / 100.0
-	_offset_amount = lerp(_offset_amount, target_offset_amount, 10.0 * delta)
+	_offset_amount = lerp(_offset_amount, target_offset_amount, 4.0 * delta)
 	var offset: Vector3 = _offset_node_min.position.lerp(_offset_node_max.position, _offset_amount)
 
 	final_position += up_direction * offset.y
@@ -41,9 +41,9 @@ func _physics_process(delta: float) -> void:
 	var target_direction: Vector3 = -_car.linear_velocity.normalized()
 	var slerp_amount: float = min((_car.linear_velocity.length() - 0.25) / 10.0, 1.0)
 	if _car.linear_velocity.length() > 0.25:
-		_direction = _direction.slerp(target_direction, slerp_amount * 10.0 * delta)
+		_direction = _plane.project(_direction.slerp(target_direction, slerp_amount * 10.0 * delta)).normalized()
 
-	final_position += _plane.project(_direction).normalized() * offset.z
+	final_position += _direction * offset.z
 
 	_y_position = lerp(_y_position, final_position.y, 20.0 * delta)
 	final_position.y = _y_position
