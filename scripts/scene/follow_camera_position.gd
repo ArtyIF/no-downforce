@@ -39,8 +39,11 @@ func _physics_process(delta: float) -> void:
 	final_position += up_direction * offset.y
 
 	var target_direction: Vector3 = -_car.linear_velocity.normalized()
-	var slerp_amount: float = min((_car.linear_velocity.length() - 0.25) / 10.0, 1.0)
-	if _car.linear_velocity.length() > 0.25:
+	var slerp_amount: float = clamp((_car.linear_velocity.length() - 0.25) / 10.0, 0.0, 1.0)
+	if _car.input_handbrake and _car.input_forward > 0.0 and _car.linear_velocity.length() <= 0.25:
+		target_direction = _car.global_basis.z
+		slerp_amount = 1.0 * _car.revs.get_current_value()
+	if _car.linear_velocity.length() > 0.25 or (_car.input_handbrake and _car.input_forward > 0.0):
 		_direction = _plane.project(_direction.slerp(target_direction, slerp_amount * 10.0 * delta)).normalized()
 
 	final_position += _direction * offset.z
