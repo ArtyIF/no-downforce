@@ -17,6 +17,7 @@ func _ready() -> void:
 		settings_resource = SettingsResource.new()
 	else:
 		settings_resource = ResourceLoader.load("user://settings.tres", "", ResourceLoader.CACHE_MODE_REPLACE)
+		settings_resource.load_controls()
 	settings_resource.save()
 
 func activate_next_checkpoint(current: Node3D, next: Node3D):
