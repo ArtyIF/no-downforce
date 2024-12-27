@@ -5,7 +5,5 @@ func _ready() -> void:
 	pressed.connect(on_press)
 
 func on_press() -> void:
-	if NoDownforceGlobal.ui_manager.windows["DemoFileDialog"].root_subfolder != "demos":
-		NoDownforceGlobal.ui_manager.windows["DemoFileDialog"].root_subfolder = "demos"
-	NoDownforceGlobal.ui_manager.windows["DemoFileDialog"].vs_ghost = false
-	NoDownforceGlobal.ui_manager.show_window("DemoFileDialog")
+	NoDownforceGlobal.ui_manager.windows["DemoDialog"].vs_ghost = false
+	NoDownforceGlobal.ui_manager.show_window("DemoDialog")

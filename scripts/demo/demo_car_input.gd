@@ -31,11 +31,7 @@ func load_demo(start_from_takeoff: bool = false, autoplay: bool = true) -> void:
 		NoDownforceGlobal.ui_manager.show_overlay("DemoOverlay")
 		NoDownforceGlobal.playing_demo = true
 	else:
-		var time = demo.frames[len(demo.frames) - 1].time
-		var minutes: int = floori(time / 60)
-		var seconds: int = floori(time) % 60
-		var milliseconds: int = floori(time * 1000) % 1000
-		NoDownforceGlobal.ui_manager.screens["HUD"].get_node("Time/VBox/TargetTime").text = "%02d:%02d.%03d" % [minutes, seconds, milliseconds]
+		NoDownforceGlobal.ui_manager.screens["HUD"].get_node("Time/VBox/TargetTime").text = NoDownforceGlobal.float_to_time(demo.frames[-1].time)
 		NoDownforceGlobal.ui_manager.screens["HUD"].get_node("Time/VBox/TargetTime").visible = true
 		NoDownforceGlobal.ui_manager.screens["HUD"].get_node("Time/VBox/TargetTimeLabel").visible = true
 

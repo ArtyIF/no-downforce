@@ -1,6 +1,7 @@
 class_name DemoResource extends Resource
 
 @export var version: String = ProjectSettings.get_setting("application/config/version")
+@export var name: String = ""
 @export var frames: Array[DemoFrame] = []
 @export var start_frame: int = 0
 

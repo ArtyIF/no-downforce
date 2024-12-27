@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=3 uid="uid://bsp1ug1544wkv"]
+[gd_scene load_steps=78 format=3 uid="uid://bsp1ug1544wkv"]
 
 [ext_resource type="PackedScene" uid="uid://ctpcgnbte0ujm" path="res://scenes/models/pathtest.blend" id="1_27c0p"]
 [ext_resource type="Script" uid="uid://tr0544b3fh36" path="res://addons/aacc/scripts/car_input.gd" id="1_g86do"]
@@ -54,8 +54,12 @@
 [ext_resource type="Script" uid="uid://ctdhta0mxpl7v" path="res://scripts/ui/settings/lighting_quality_setting.gd" id="42_o2x5v"]
 [ext_resource type="Script" uid="uid://d4atu24eanq2n" path="res://scripts/ui/settings/vsync_setting.gd" id="43_0j4tq"]
 [ext_resource type="PackedScene" uid="uid://bgcm0ljtikw2u" path="res://scenes/cars/race_ghost.tscn" id="44_v6qg8"]
+[ext_resource type="Script" uid="uid://ckqtlfjjwmtic" path="res://scripts/demo/demo_dialog.gd" id="44_w7je6"]
 [ext_resource type="Script" uid="uid://cc8hml66mwr74" path="res://scripts/ui/settings/reflection_probe_quality_setting.gd" id="45_f75xh"]
+[ext_resource type="Script" uid="uid://c7ywv8vs3n0to" path="res://scripts/resources/demo_resource.gd" id="45_kujmk"]
+[ext_resource type="Resource" uid="uid://bgqp4gxt8wwy5" path="res://demo_examples/arty_fastest_1_33_583.res" id="46_6ij7b"]
 [ext_resource type="Script" uid="uid://rp6fcwlsx12j" path="res://scripts/ui/settings/shadow_resolution_setting.gd" id="46_csdh4"]
+[ext_resource type="Resource" uid="uid://bckm7hq747x8e" path="res://demo_examples/shortcut_first_bridge.res" id="47_cigoj"]
 [ext_resource type="Script" uid="uid://cedt1utsqflr7" path="res://scripts/ui/settings/shadow_filtering_quality_setting.gd" id="47_fbg68"]
 [ext_resource type="Script" uid="uid://dnd3afr8li1vx" path="res://scripts/ui/binding_button.gd" id="47_v4lrh"]
 [ext_resource type="Script" uid="uid://d0jnnkw80mbep" path="res://scripts/ui/settings/bloom_quality_setting.gd" id="48_m6i20"]
@@ -101,6 +105,14 @@ left_value = 1.0
 right_value = 0.075
 max_input = 10.0
 input_curve = 0.5
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tw3nq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_w7je6"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
 
 [node name="RaceTrack" type="Node3D"]
 
@@ -315,6 +327,7 @@ overlays = {
 windows = {
 "ControlBindingDialog": NodePath("SettingsDialog/ControlBindingDialog"),
 "CreditsDialog": NodePath("CreditsDialog"),
+"DemoDialog": NodePath("DemoDialog"),
 "DemoFileDialog": NodePath("DemoFileDialog"),
 "ErrorDialog": NodePath("ErrorDialog"),
 "SettingsDialog": NodePath("SettingsDialog")
@@ -815,6 +828,105 @@ custom_minimum_size = Vector2(150, 50)
 layout_mode = 2
 text = "Quit"
 script = ExtResource("23_suohj")
+
+[node name="DemoDialog" type="Window" parent="UI"]
+process_mode = 3
+auto_translate_mode = 1
+title = "Load Demo"
+initial_position = 2
+size = Vector2i(400, 600)
+visible = false
+wrap_controls = true
+transient = true
+exclusive = true
+script = ExtResource("44_w7je6")
+dev_demos = Array[ExtResource("45_kujmk")]([ExtResource("46_6ij7b"), ExtResource("47_cigoj")])
+ghost_car = ExtResource("44_v6qg8")
+
+[node name="BG" type="PanelContainer" parent="UI/DemoDialog"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBox" type="VBoxContainer" parent="UI/DemoDialog/BG"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="Scroll" type="ScrollContainer" parent="UI/DemoDialog/BG/VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+follow_focus = true
+
+[node name="List" type="VBoxContainer" parent="UI/DemoDialog/BG/VBox/Scroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 5
+
+[node name="HeaderTemplate" type="Label" parent="UI/DemoDialog/BG/VBox/Scroll/List"]
+visible = false
+layout_mode = 2
+theme_type_variation = &"HeaderLarge"
+text = "Header Text"
+text_overrun_behavior = 3
+
+[node name="ButtonTemplate" type="PanelContainer" parent="UI/DemoDialog/BG/VBox/Scroll/List"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxEmpty_tw3nq")
+
+[node name="Button" type="Button" parent="UI/DemoDialog/BG/VBox/Scroll/List/ButtonTemplate"]
+layout_mode = 2
+alignment = 0
+
+[node name="Contents" type="PanelContainer" parent="UI/DemoDialog/BG/VBox/Scroll/List/ButtonTemplate"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_w7je6")
+
+[node name="VBox" type="VBoxContainer" parent="UI/DemoDialog/BG/VBox/Scroll/List/ButtonTemplate/Contents"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Name" type="Label" parent="UI/DemoDialog/BG/VBox/Scroll/List/ButtonTemplate/Contents/VBox"]
+layout_mode = 2
+theme_type_variation = &"HeaderSmall"
+text = "Demo Title"
+text_overrun_behavior = 3
+
+[node name="Info" type="HBoxContainer" parent="UI/DemoDialog/BG/VBox/Scroll/List/ButtonTemplate/Contents/VBox"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Time" type="Label" parent="UI/DemoDialog/BG/VBox/Scroll/List/ButtonTemplate/Contents/VBox/Info"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"MatrixSmallLabel"
+text = "88:88.888"
+
+[node name="Version" type="Label" parent="UI/DemoDialog/BG/VBox/Scroll/List/ButtonTemplate/Contents/VBox/Info"]
+layout_mode = 2
+text = "Version: 0.0"
+horizontal_alignment = 2
+
+[node name="BottomButtons" type="HBoxContainer" parent="UI/DemoDialog/BG/VBox"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 5
+alignment = 1
+
+[node name="FileDialogButton" type="Button" parent="UI/DemoDialog/BG/VBox/BottomButtons"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Load From File... (mouse required)"
+
+[node name="CancelButton" type="Button" parent="UI/DemoDialog/BG/VBox/BottomButtons"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Cancel"
 
 [node name="DemoFileDialog" type="FileDialog" parent="UI"]
 title = "Open a File"
@@ -1652,28 +1764,28 @@ size_flags_vertical = 3
 follow_focus = true
 horizontal_scroll_mode = 0
 
-[node name="VBox" type="VBoxContainer" parent="UI/SettingsDialog/ControlBindingDialog/BG/VBox/Scroll"]
+[node name="List" type="VBoxContainer" parent="UI/SettingsDialog/ControlBindingDialog/BG/VBox/Scroll"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="List" type="VBoxContainer" parent="UI/SettingsDialog/ControlBindingDialog/BG/VBox/Scroll/VBox"]
+[node name="Bindings" type="VBoxContainer" parent="UI/SettingsDialog/ControlBindingDialog/BG/VBox/Scroll/List"]
 layout_mode = 2
 
-[node name="BindingTemplate" type="HBoxContainer" parent="UI/SettingsDialog/ControlBindingDialog/BG/VBox/Scroll/VBox/List"]
+[node name="BindingTemplate" type="HBoxContainer" parent="UI/SettingsDialog/ControlBindingDialog/BG/VBox/Scroll/List/Bindings"]
 visible = false
 layout_mode = 2
 
-[node name="Binding" type="Button" parent="UI/SettingsDialog/ControlBindingDialog/BG/VBox/Scroll/VBox/List/BindingTemplate"]
+[node name="Binding" type="Button" parent="UI/SettingsDialog/ControlBindingDialog/BG/VBox/Scroll/List/Bindings/BindingTemplate"]
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
 text = "Unassigned"
 
-[node name="Delete" type="Button" parent="UI/SettingsDialog/ControlBindingDialog/BG/VBox/Scroll/VBox/List/BindingTemplate"]
+[node name="Delete" type="Button" parent="UI/SettingsDialog/ControlBindingDialog/BG/VBox/Scroll/List/Bindings/BindingTemplate"]
 layout_mode = 2
 text = "Delete"
 
-[node name="AddNewBinding" type="Button" parent="UI/SettingsDialog/ControlBindingDialog/BG/VBox/Scroll/VBox"]
+[node name="AddNewBinding" type="Button" parent="UI/SettingsDialog/ControlBindingDialog/BG/VBox/Scroll/List"]
 layout_mode = 2
 text = "Add New Binding"
 

@@ -18,11 +18,11 @@ func _ready() -> void:
 	about_to_popup.connect(on_popup)
 	close_requested.connect(save_and_close)
 	$BG/VBox/CloseButton.pressed.connect(save_and_close)
-	$BG/VBox/Scroll/VBox/AddNewBinding.pressed.connect(add_binding)
+	$BG/VBox/Scroll/List/AddNewBinding.pressed.connect(add_binding)
 	$BG/VBox/Deadzone/Value.value_changed.connect(change_deadzone)
 
 func refresh_bindings(focus_on_binding: int):
-	for child in $BG/VBox/Scroll/VBox/List.get_children():
+	for child in $BG/VBox/Scroll/List/Bindings.get_children():
 		if child.name != "BindingTemplate":
 			child.queue_free()
 	
@@ -30,26 +30,26 @@ func refresh_bindings(focus_on_binding: int):
 	for i in len(bindings):
 		var binding = bindings[i]
 
-		var binding_element: Control = $BG/VBox/Scroll/VBox/List/BindingTemplate.duplicate()
+		var binding_element: Control = $BG/VBox/Scroll/List/Bindings/BindingTemplate.duplicate()
 		binding_element.get_node("Binding").text = NoDownforceGlobal.input_event_as_string(binding)
 		binding_element.get_node("Binding").pressed.connect(change_binding.bind(i))
 		binding_element.get_node("Delete").pressed.connect(delete_binding.bind(i))
 		binding_element.visible = true
-		$BG/VBox/Scroll/VBox/List.add_child(binding_element)
+		$BG/VBox/Scroll/List/Bindings.add_child(binding_element)
 		
 		if i == focus_on_binding:
 			binding_element.get_node("Binding").call_deferred("grab_focus")
 	
 	if waiting_for_press >= len(bindings):
-		var binding_element: Control = $BG/VBox/Scroll/VBox/List/BindingTemplate.duplicate()
+		var binding_element: Control = $BG/VBox/Scroll/List/Bindings/BindingTemplate.duplicate()
 		binding_element.get_node("Binding").text = "Unassigned"
 		binding_element.get_node("Binding").button_pressed = true
 		binding_element.visible = true
-		$BG/VBox/Scroll/VBox/List.add_child(binding_element)
+		$BG/VBox/Scroll/List/Bindings.add_child(binding_element)
 		binding_element.get_node("Binding").call_deferred("grab_focus")
 	
 	if len(bindings) == 0:
-		$BG/VBox/Scroll/VBox/AddNewBinding.call_deferred("grab_focus")
+		$BG/VBox/Scroll/List/AddNewBinding.call_deferred("grab_focus")
 
 func on_popup() -> void:
 	title = "Control: " + _user_names_of_bindings[control_to_change]

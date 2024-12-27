@@ -129,3 +129,10 @@ func input_event_as_string(input: InputEvent) -> String:
 		result = button_string + " (Gamepad)"
 
 	return result
+
+func float_to_time(time: float) -> String:
+	var minutes: int = floori(time / 60)
+	var seconds: int = floori(time) % 60
+	var milliseconds: int = floori(time * 1000) % 1000
+	
+	return "%02d:%02d.%03d" % [minutes, seconds, milliseconds]
