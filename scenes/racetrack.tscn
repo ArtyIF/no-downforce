@@ -1024,7 +1024,7 @@ custom_minimum_size = Vector2(150, 40)
 layout_mode = 2
 text = "Set Bindings"
 script = ExtResource("47_v4lrh")
-binding_to_change = "aacc_forward"
+control = "aacc_forward"
 
 [node name="Brake" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Controls/Scroll/List"]
 layout_mode = 2
@@ -1040,7 +1040,7 @@ custom_minimum_size = Vector2(150, 40)
 layout_mode = 2
 text = "Set Bindings"
 script = ExtResource("47_v4lrh")
-binding_to_change = "aacc_backward"
+control = "aacc_backward"
 
 [node name="SteerLeft" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Controls/Scroll/List"]
 layout_mode = 2
@@ -1056,7 +1056,7 @@ custom_minimum_size = Vector2(150, 40)
 layout_mode = 2
 text = "Set Bindings"
 script = ExtResource("47_v4lrh")
-binding_to_change = "aacc_steer_left"
+control = "aacc_steer_left"
 
 [node name="SteerRight" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Controls/Scroll/List"]
 layout_mode = 2
@@ -1072,7 +1072,7 @@ custom_minimum_size = Vector2(150, 40)
 layout_mode = 2
 text = "Set Bindings"
 script = ExtResource("47_v4lrh")
-binding_to_change = "aacc_steer_right"
+control = "aacc_steer_right"
 
 [node name="Handbrake" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Controls/Scroll/List"]
 layout_mode = 2
@@ -1088,7 +1088,7 @@ custom_minimum_size = Vector2(150, 40)
 layout_mode = 2
 text = "Set Bindings"
 script = ExtResource("47_v4lrh")
-binding_to_change = "aacc_handbrake"
+control = "aacc_handbrake"
 
 [node name="Reset" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Controls/Scroll/List"]
 layout_mode = 2
@@ -1104,7 +1104,7 @@ custom_minimum_size = Vector2(150, 40)
 layout_mode = 2
 text = "Set Bindings"
 script = ExtResource("47_v4lrh")
-binding_to_change = "aaccdemo_reset"
+control = "aaccdemo_reset"
 
 [node name="Audio" type="VBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs"]
 visible = false
@@ -1136,7 +1136,7 @@ text = "100%"
 script = ExtResource("38_3ppu2")
 
 [node name="Value" type="HSlider" parent="UI/SettingsDialog/BG/VBox/Tabs/Audio/Scroll/List/Master"]
-custom_minimum_size = Vector2(150, 40)
+custom_minimum_size = Vector2(150, 30)
 layout_mode = 2
 max_value = 1.0
 step = 0.01
@@ -1158,7 +1158,7 @@ text = "100%"
 script = ExtResource("38_3ppu2")
 
 [node name="Value" type="HSlider" parent="UI/SettingsDialog/BG/VBox/Tabs/Audio/Scroll/List/SFX"]
-custom_minimum_size = Vector2(150, 40)
+custom_minimum_size = Vector2(150, 30)
 layout_mode = 2
 max_value = 1.0
 step = 0.01
@@ -1181,7 +1181,7 @@ text = "100%"
 script = ExtResource("38_3ppu2")
 
 [node name="Value" type="HSlider" parent="UI/SettingsDialog/BG/VBox/Tabs/Audio/Scroll/List/Engine"]
-custom_minimum_size = Vector2(150, 40)
+custom_minimum_size = Vector2(150, 30)
 layout_mode = 2
 max_value = 1.0
 step = 0.01
@@ -1204,7 +1204,7 @@ text = "100%"
 script = ExtResource("38_3ppu2")
 
 [node name="Value" type="HSlider" parent="UI/SettingsDialog/BG/VBox/Tabs/Audio/Scroll/List/Background"]
-custom_minimum_size = Vector2(150, 40)
+custom_minimum_size = Vector2(150, 30)
 layout_mode = 2
 max_value = 1.0
 step = 0.01
@@ -1228,7 +1228,7 @@ text = "100%"
 script = ExtResource("38_3ppu2")
 
 [node name="Value" type="HSlider" parent="UI/SettingsDialog/BG/VBox/Tabs/Audio/Scroll/List/UI"]
-custom_minimum_size = Vector2(150, 40)
+custom_minimum_size = Vector2(150, 30)
 layout_mode = 2
 max_value = 1.0
 step = 0.01
@@ -1609,7 +1609,31 @@ grow_vertical = 2
 layout_mode = 2
 theme_override_constants/separation = 5
 
-[node name="Label" type="Label" parent="UI/SettingsDialog/ControlBindingDialog/BG/VBox"]
+[node name="Deadzone" type="HBoxContainer" parent="UI/SettingsDialog/ControlBindingDialog/BG/VBox"]
+layout_mode = 2
+theme_type_variation = &"SettingHBox"
+
+[node name="Label" type="Label" parent="UI/SettingsDialog/ControlBindingDialog/BG/VBox/Deadzone"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Deadzone"
+
+[node name="ValueText" type="Label" parent="UI/SettingsDialog/ControlBindingDialog/BG/VBox/Deadzone"]
+layout_mode = 2
+text = "5%"
+
+[node name="Value" type="HSlider" parent="UI/SettingsDialog/ControlBindingDialog/BG/VBox/Deadzone"]
+custom_minimum_size = Vector2(150, 30)
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+value = 0.05
+editable = false
+
+[node name="Separator" type="HSeparator" parent="UI/SettingsDialog/ControlBindingDialog/BG/VBox"]
+layout_mode = 2
+
+[node name="Instructions" type="Label" parent="UI/SettingsDialog/ControlBindingDialog/BG/VBox"]
 layout_mode = 2
 text = "Select binding to assign or change it
 Gamepad binding descriptions are Xbox/PlayStation"
@@ -1636,6 +1660,7 @@ layout_mode = 2
 [node name="Binding" type="Button" parent="UI/SettingsDialog/ControlBindingDialog/BG/VBox/Scroll/VBox/List/BindingTemplate"]
 layout_mode = 2
 size_flags_horizontal = 3
+toggle_mode = true
 text = "Unassigned"
 
 [node name="Delete" type="Button" parent="UI/SettingsDialog/ControlBindingDialog/BG/VBox/Scroll/VBox/List/BindingTemplate"]

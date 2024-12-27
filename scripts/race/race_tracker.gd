@@ -11,6 +11,9 @@ func _init() -> void:
 	NoDownforceGlobal.race_tracker = self
 
 func reset() -> void:
+	if NoDownforceGlobal.showing_main_menu:
+		return
+
 	_car.global_position = Vector3(0.0, 0.1, 0.0)
 	_car.global_basis = Basis.IDENTITY
 	_car.linear_velocity = Vector3.ZERO

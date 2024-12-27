@@ -8,4 +8,4 @@ func on_press() -> void:
 	NoDownforceGlobal.ui_manager.show_screen("MainMenu")
 	get_tree().paused = false
 	NoDownforceGlobal.demo_car_input.demo = null
-	NoDownforceGlobal.ui_manager.screens["MainMenu"].get_node("BG/HBox/RaceButton").grab_focus()
+	NoDownforceGlobal.ui_manager.screens["MainMenu"].get_node("BG/HBox/RaceButton").call_deferred("grab_focus")

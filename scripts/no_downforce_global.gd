@@ -15,9 +15,9 @@ var settings_resource: SettingsResource
 func _ready() -> void:
 	if not FileAccess.file_exists("user://settings.tres"):
 		settings_resource = SettingsResource.new()
-		settings_resource.save()
 	else:
 		settings_resource = ResourceLoader.load("user://settings.tres", "", ResourceLoader.CACHE_MODE_REPLACE)
+	settings_resource.save()
 
 func activate_next_checkpoint(current: Node3D, next: Node3D):
 	checkpoints_passed += 1
