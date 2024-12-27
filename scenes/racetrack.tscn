@@ -1,4 +1,4 @@
-[gd_scene load_steps=73 format=3 uid="uid://bsp1ug1544wkv"]
+[gd_scene load_steps=72 format=3 uid="uid://bsp1ug1544wkv"]
 
 [ext_resource type="PackedScene" uid="uid://ctpcgnbte0ujm" path="res://scenes/models/pathtest.blend" id="1_27c0p"]
 [ext_resource type="Script" uid="uid://tr0544b3fh36" path="res://addons/aacc/scripts/car_input.gd" id="1_g86do"]
@@ -53,7 +53,6 @@
 [ext_resource type="Script" uid="uid://b7018n1kx30a5" path="res://scripts/ui/settings/msaa_setting.gd" id="42_00phd"]
 [ext_resource type="Script" uid="uid://ctdhta0mxpl7v" path="res://scripts/ui/settings/lighting_quality_setting.gd" id="42_o2x5v"]
 [ext_resource type="Script" uid="uid://d4atu24eanq2n" path="res://scripts/ui/settings/vsync_setting.gd" id="43_0j4tq"]
-[ext_resource type="LightmapGIData" uid="uid://ctuxuv3f0vdcd" path="res://lightmaps/racetrack_baked.lmbake" id="43_00phd"]
 [ext_resource type="PackedScene" uid="uid://bgcm0ljtikw2u" path="res://scenes/cars/race_ghost.tscn" id="44_v6qg8"]
 [ext_resource type="Script" uid="uid://cc8hml66mwr74" path="res://scripts/ui/settings/reflection_probe_quality_setting.gd" id="45_f75xh"]
 [ext_resource type="Script" uid="uid://rp6fcwlsx12j" path="res://scripts/ui/settings/shadow_resolution_setting.gd" id="46_csdh4"]
@@ -1402,8 +1401,8 @@ popup/item_0/id = 0
 popup/item_1/text = "Dynamic"
 popup/item_1/id = 1
 script = ExtResource("42_o2x5v")
-baked_light_data = ExtResource("43_00phd")
-realtime_light_data = ExtResource("16_w7je6")
+baked_light_data = "uid://ctuxuv3f0vdcd"
+realtime_light_data = "uid://diilqw22h2lfa"
 
 [node name="ReflectionProbeQuality" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Graphics/Scroll/List"]
 layout_mode = 2
