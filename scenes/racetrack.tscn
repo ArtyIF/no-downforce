@@ -253,20 +253,26 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 0)
 shape = 4
 material = SubResource("FogMaterial_qej83")
 
-[node name="FollowCameraPosition" type="Node3D" parent="."]
+[node name="TempFollowCameraPosition" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.39, 3.5)
 script = ExtResource("15_dj8gt")
 
-[node name="LookatCameraPosition" type="Node3D" parent="."]
+[node name="LookatCameraPosition" type="Node3D" parent="." node_paths=PackedStringArray("follow_camera_position")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.39, 0)
 script = ExtResource("16_60j73")
+follow_camera_position = NodePath("../TempFollowCameraPosition")
+
+[node name="SpringArm" type="SpringArm3D" parent="LookatCameraPosition"]
+margin = 0.1
+
+[node name="ActualFollowCameraPosition" type="Node3D" parent="LookatCameraPosition/SpringArm"]
 
 [node name="Camera" type="Camera3D" parent="." node_paths=PackedStringArray("follow_camera_position", "lookat_camera_position")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.39, 3.5)
 doppler_tracking = 1
 far = 1000.0
 script = ExtResource("4_0kx16")
-follow_camera_position = NodePath("../FollowCameraPosition")
+follow_camera_position = NodePath("../LookatCameraPosition/SpringArm/ActualFollowCameraPosition")
 lookat_camera_position = NodePath("../LookatCameraPosition")
 
 [node name="ReflectionProbe" type="ReflectionProbe" parent="Camera"]

@@ -8,7 +8,7 @@ extends Node3D
 
 var _plane: Plane = Plane.PLANE_XZ
 @onready var _direction: Vector3 = _plane.project(_car.global_basis.z)
-@onready var up_direction: Vector3 = Vector3.UP
+@onready var _up_direction: Vector3 = Vector3.UP
 @onready var _y_position: float = global_position.y
 @onready var _original_y_position: float = _y_position
 
@@ -16,7 +16,7 @@ func reset():
 	_offset_amount = 0.0
 	_plane = Plane.PLANE_XZ
 	_direction = _plane.project(_car.global_basis.z)
-	up_direction = Vector3.UP
+	_up_direction = Vector3.UP
 	_y_position = _original_y_position
 
 func _physics_process(delta: float) -> void:
@@ -26,17 +26,17 @@ func _physics_process(delta: float) -> void:
 	var target_up_direction: Vector3 = Vector3.UP
 	if _car.ground_coefficient > 0.0:
 		target_up_direction = _car.average_wheel_collision_normal
-	if up_direction.distance_to(target_up_direction) > 0.001:
-		up_direction = up_direction.slerp(target_up_direction, delta)
+	if _up_direction.distance_to(target_up_direction) > 0.001:
+		_up_direction = _up_direction.slerp(target_up_direction, delta)
 	else:
-		up_direction = target_up_direction
-	_plane = Plane(up_direction)
+		_up_direction = target_up_direction
+	_plane = Plane(_up_direction)
 
 	var target_offset_amount: float = (_car.linear_velocity.length() - 0.25) / 100.0
 	_offset_amount = lerp(_offset_amount, target_offset_amount, 4.0 * delta)
 	var offset: Vector3 = _offset_node_min.position.lerp(_offset_node_max.position, _offset_amount)
 
-	final_position += up_direction * offset.y
+	final_position += _up_direction * offset.y
 
 	var target_direction: Vector3 = -_car.linear_velocity.normalized()
 	var slerp_amount: float = clamp((_car.linear_velocity.length() - 0.25) / 10.0, 0.0, 1.0)
