@@ -18,7 +18,7 @@ func load_demo(start_from_takeoff: bool = false, autoplay: bool = true) -> void:
 		return
 	if not demo.version.begins_with("0.5"):
 		NoDownforceGlobal.ui_manager.windows["ErrorDialog"].dialog_text = "This demo is incompatible with this version of the game."
-		NoDownforceGlobal.ui_manager.call_deferred("popup_window", "ErrorDialog")
+		NoDownforceGlobal.ui_manager.call_deferred("show_window", "ErrorDialog")
 		demo = null
 		return
 

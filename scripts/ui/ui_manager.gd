@@ -21,10 +21,10 @@ func hide_overlay(overlay_name: String):
 	overlays[overlay_name].visible = false
 
 func show_window(window_name: String):
-	windows[window_name].visible = true
+	windows[window_name].show()
 
 func hide_window(window_name: String):
-	windows[window_name].visible = false
+	windows[window_name].hide()
 
 func popup_window(window_name: String):
 	windows[window_name].popup_centered()
