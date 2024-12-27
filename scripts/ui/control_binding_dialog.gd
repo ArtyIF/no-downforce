@@ -19,6 +19,7 @@ func _ready() -> void:
 	close_requested.connect(save_and_close)
 	$BG/VBox/CloseButton.pressed.connect(save_and_close)
 	$BG/VBox/Scroll/VBox/AddNewBinding.pressed.connect(add_binding)
+	$BG/VBox/Deadzone/Value.value_changed.connect(change_deadzone)
 
 func refresh_bindings(focus_on_binding: int):
 	for child in $BG/VBox/Scroll/VBox/List.get_children():
@@ -53,6 +54,7 @@ func refresh_bindings(focus_on_binding: int):
 func on_popup() -> void:
 	title = "Control: " + _user_names_of_bindings[control_to_change]
 	$BG/VBox/Scroll.set_deferred("scroll_vertical", 0)
+	$BG/VBox/Deadzone/Value.value = InputMap.action_get_deadzone(control_to_change)
 	refresh_bindings(0)
 
 func change_binding(i: int):
@@ -97,6 +99,9 @@ func _input(event: InputEvent) -> void:
 		if success:
 			refresh_bindings(waiting_for_press)
 			waiting_for_press = -1
+
+func change_deadzone(value: float):
+	InputMap.action_set_deadzone(control_to_change, value)
 
 func save_and_close():
 	if waiting_for_press < 0:
