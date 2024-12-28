@@ -254,7 +254,7 @@ sky_mode = 1
 
 [node name="SunSky" type="DirectionalLight3D" parent="Lighting/Sun"]
 light_color = Color(1, 0.691667, 0.5, 1)
-light_energy = 100.0
+light_energy = 50.0
 light_volumetric_fog_energy = 0.0
 light_angular_distance = 2.0
 light_bake_mode = 0
