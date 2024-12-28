@@ -15,7 +15,7 @@ func on_visibility_changed():
 	title = "Race vs Ghost" if vs_ghost else "Watch Demo"
 
 	for child in $BG/VBox/Scroll/List.get_children():
-		if child.name != "HeaderTemplate" and child.name != "ButtonTemplate":
+		if child.name != "HeaderTemplate" and child.name != "ButtonTemplate" and child.name != "NoUserDemos":
 			child.queue_free()
 	
 	var dev_demos_header: Label = $BG/VBox/Scroll/List/HeaderTemplate.duplicate()
@@ -51,7 +51,7 @@ func on_visibility_changed():
 	for user_demo in user_demos:
 		var user_demos_button: PanelContainer = $BG/VBox/Scroll/List/ButtonTemplate.duplicate()
 		if user_demo.name == "":
-			user_demos_button.get_node("Contents/VBox/Name").text = user_demo.resource_path.replace("user://demos/", "").replace(".res", "")
+			user_demos_button.get_node("Contents/VBox/Name").text = user_demo.resource_path.get_basename().get_file()
 		else:
 			user_demos_button.get_node("Contents/VBox/Name").text = user_demo.name
 		user_demos_button.get_node("Contents/VBox/Info/Time").text = NoDownforceGlobal.float_to_time(user_demo.length - user_demo.start_time)
@@ -59,6 +59,12 @@ func on_visibility_changed():
 		user_demos_button.get_node("Button").pressed.connect(load_demo.bind(user_demo))
 		user_demos_button.visible = true
 		$BG/VBox/Scroll/List.add_child(user_demos_button)
+		
+	if user_demos.is_empty():
+		$BG/VBox/Scroll/List.move_child($BG/VBox/Scroll/List/NoUserDemos, -1)
+		$BG/VBox/Scroll/List/NoUserDemos.visible = true
+	else:
+		$BG/VBox/Scroll/List/NoUserDemos.visible = false
 
 func load_demo(demo: DemoResource):
 	hide()
