@@ -1,3 +1,4 @@
+# KEEP FOR BACKWARDS COMPATIBILITY WITH 0.5
 class_name DemoFrame extends Resource
 
 @export var time: float

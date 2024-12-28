@@ -36,6 +36,8 @@ func reset() -> void:
 		NoDownforceGlobal.demo_car_input.load_demo()
 
 func _physics_process(delta: float) -> void:
+	NoDownforceGlobal.update_timer(delta)
+
 	AACCGlobal.current_car_input.enabled = (
 		not NoDownforceGlobal.showing_main_menu and
 		not (NoDownforceGlobal.playing_demo and not NoDownforceGlobal.demo_car_input.custom_car) and
@@ -63,15 +65,13 @@ func _physics_process(delta: float) -> void:
 			if playing_demo:
 				NoDownforceGlobal.ui_manager.show_overlay("DemoOverlay")
 			else:
-				_demo.start_frame = len(_demo.frames)
+				_demo.start_time = _demo.length
 				if NoDownforceGlobal.demo_car_input.custom_car:
 					NoDownforceGlobal.demo_car_input.playing = true
 		if AACCGlobal.current_car_input.enabled:
 			_demo.append(delta, _car.input_forward, _car.input_backward, _car.input_steer, _car.input_handbrake, _car.global_position, _car.global_rotation, _car.linear_velocity, _car.angular_velocity)
-		elif len(_demo.frames) > 0:
+		elif _demo.length > 0.0:
 			_demo.clear()
-
-	NoDownforceGlobal.update_timer(delta)
 	
 	if Input.is_action_pressed("aaccdemo_reset"):
 		reset()

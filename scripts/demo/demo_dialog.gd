@@ -27,7 +27,7 @@ func on_visibility_changed():
 	for dev_demo in dev_demos:
 		var dev_demos_button: PanelContainer = $BG/VBox/Scroll/List/ButtonTemplate.duplicate()
 		dev_demos_button.get_node("Contents/VBox/Name").text = dev_demo.name
-		dev_demos_button.get_node("Contents/VBox/Info/Time").text = NoDownforceGlobal.float_to_time(dev_demo.frames[-1].time)
+		dev_demos_button.get_node("Contents/VBox/Info/Time").text = NoDownforceGlobal.float_to_time(dev_demo.length - dev_demo.start_time)
 		dev_demos_button.get_node("Contents/VBox/Info/Version").text = "Version: " + dev_demo.version
 		dev_demos_button.get_node("Button").pressed.connect(load_demo.bind(dev_demo))
 		dev_demos_button.visible = true
@@ -45,6 +45,7 @@ func on_visibility_changed():
 	for user_demo_path in DirAccess.get_files_at("user://demos"):
 		var user_demo = load("user://demos/" + user_demo_path)
 		if user_demo is DemoResource:
+			user_demo.convert_from_05()
 			user_demos.append(user_demo)
 	
 	for user_demo in user_demos:
@@ -53,7 +54,7 @@ func on_visibility_changed():
 			user_demos_button.get_node("Contents/VBox/Name").text = user_demo.resource_path.replace("user://demos/", "").replace(".res", "")
 		else:
 			user_demos_button.get_node("Contents/VBox/Name").text = user_demo.name
-		user_demos_button.get_node("Contents/VBox/Info/Time").text = NoDownforceGlobal.float_to_time(user_demo.frames[-1].time)
+		user_demos_button.get_node("Contents/VBox/Info/Time").text = NoDownforceGlobal.float_to_time(user_demo.length - user_demo.start_time)
 		user_demos_button.get_node("Contents/VBox/Info/Version").text = "Version: " + user_demo.version
 		user_demos_button.get_node("Button").pressed.connect(load_demo.bind(user_demo))
 		user_demos_button.visible = true
