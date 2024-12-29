@@ -1,4 +1,4 @@
-[gd_scene load_steps=79 format=3 uid="uid://bsp1ug1544wkv"]
+[gd_scene load_steps=78 format=3 uid="uid://bsp1ug1544wkv"]
 
 [ext_resource type="PackedScene" uid="uid://ctpcgnbte0ujm" path="res://scenes/models/pathtest.blend" id="1_27c0p"]
 [ext_resource type="Script" uid="uid://tr0544b3fh36" path="res://addons/aacc/scripts/car_input.gd" id="1_g86do"]
@@ -60,7 +60,6 @@
 [ext_resource type="Resource" uid="uid://ciebqr1x368na" path="res://demo_examples/arty_fastest_1_32_808.res" id="46_6ij7b"]
 [ext_resource type="Script" uid="uid://rp6fcwlsx12j" path="res://scripts/ui/settings/shadow_resolution_setting.gd" id="46_csdh4"]
 [ext_resource type="Resource" uid="uid://cpha1aemihv4k" path="res://demo_examples/arty_2nd_fastest_1_33_091.res" id="47_6ij7b"]
-[ext_resource type="Resource" uid="uid://dpufumksnutqf" path="res://demo_examples/shortcut_first_bridge.res" id="47_cigoj"]
 [ext_resource type="Script" uid="uid://cedt1utsqflr7" path="res://scripts/ui/settings/shadow_filtering_quality_setting.gd" id="47_fbg68"]
 [ext_resource type="Script" uid="uid://dnd3afr8li1vx" path="res://scripts/ui/binding_button.gd" id="47_v4lrh"]
 [ext_resource type="Script" uid="uid://d0jnnkw80mbep" path="res://scripts/ui/settings/bloom_quality_setting.gd" id="48_m6i20"]
@@ -840,7 +839,7 @@ wrap_controls = true
 transient = true
 exclusive = true
 script = ExtResource("44_w7je6")
-dev_demos = Array[ExtResource("45_kujmk")]([ExtResource("46_6ij7b"), ExtResource("47_6ij7b"), ExtResource("47_cigoj")])
+dev_demos = Array[ExtResource("45_kujmk")]([ExtResource("46_6ij7b"), ExtResource("47_6ij7b")])
 ghost_car = ExtResource("44_v6qg8")
 
 [node name="BG" type="PanelContainer" parent="UI/DemoDialog"]

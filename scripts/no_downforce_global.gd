@@ -30,7 +30,7 @@ func activate_next_checkpoint(current: Node3D, next: Node3D):
 		next.set_deferred("process_mode", Node.PROCESS_MODE_INHERIT)
 		next.visible = true
 	else:
-		set_deferred("timer_going", false)
+		timer_going = false
 
 func reset_race(checkpoints_list: Array[Node3D]):
 	for checkpoint in checkpoints_list:

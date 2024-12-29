@@ -36,8 +36,6 @@ func reset(reset_demo: bool = false) -> void:
 		NoDownforceGlobal.demo_car_input.load_demo()
 
 func _physics_process(delta: float) -> void:
-	NoDownforceGlobal.update_timer(delta)
-
 	AACCGlobal.current_car_input.enabled = (
 		not NoDownforceGlobal.showing_main_menu and
 		not (NoDownforceGlobal.playing_demo and not NoDownforceGlobal.demo_car_input.custom_car) and
@@ -46,7 +44,8 @@ func _physics_process(delta: float) -> void:
 
 	var playing_demo: bool = NoDownforceGlobal.playing_demo
 	if NoDownforceGlobal.checkpoints_passed == NoDownforceGlobal.total_checkpoints:
-		NoDownforceGlobal.ui_manager.hide_screen("HUD")
+		NoDownforceGlobal.timer_going = false
+
 		NoDownforceGlobal.ui_manager.show_screen("OutroScreen")
 
 		_car.input_forward = 0.0
@@ -54,6 +53,8 @@ func _physics_process(delta: float) -> void:
 		_car.input_handbrake = true
 		_car.input_steer = 1.0
 		
+		if not playing_demo:
+			NoDownforceGlobal.time_passed = _demo.length - _demo.start_time
 		if not save_requested:
 			if not playing_demo:
 				_demo.save()
@@ -72,6 +73,7 @@ func _physics_process(delta: float) -> void:
 			_demo.append(delta, _car.input_forward, _car.input_backward, _car.input_steer, _car.input_handbrake, _car.global_position, _car.global_rotation, _car.linear_velocity, _car.angular_velocity)
 		elif _demo.length > 0.0:
 			_demo.clear()
-	
+
+	NoDownforceGlobal.update_timer(delta)
 	if Input.is_action_pressed("aaccdemo_reset"):
 		reset()
