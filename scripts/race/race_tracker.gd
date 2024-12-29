@@ -10,8 +10,8 @@ var save_requested: bool = false
 func _init() -> void:
 	NoDownforceGlobal.race_tracker = self
 
-func reset() -> void:
-	if NoDownforceGlobal.showing_main_menu:
+func reset(reset_demo: bool = false) -> void:
+	if NoDownforceGlobal.showing_main_menu or (NoDownforceGlobal.playing_demo and not reset_demo):
 		return
 
 	_car.global_position = Vector3(0.0, 0.1, 0.0)
