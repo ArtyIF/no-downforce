@@ -5,6 +5,7 @@ func _ready() -> void:
 
 func on_press() -> void:
 	NoDownforceGlobal.race_tracker.reset(true)
+	NoDownforceGlobal.ui_manager.hide_overlay("DemoOverlay")
 	NoDownforceGlobal.ui_manager.show_screen("MainMenu")
 	get_tree().paused = false
 	NoDownforceGlobal.demo_car_input.demo = null

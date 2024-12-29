@@ -17,7 +17,7 @@ func on_visibility_changed():
 	for child in $BG/VBox/Scroll/List.get_children():
 		if child.name != "HeaderTemplate" and child.name != "ButtonTemplate" and child.name != "NoUserDemos":
 			child.queue_free()
-	
+
 	var dev_demos_header: Label = $BG/VBox/Scroll/List/HeaderTemplate.duplicate()
 	dev_demos_header.text = "Developer Demos"
 	dev_demos_header.visible = true
@@ -84,3 +84,7 @@ func open_file_dialog():
 		NoDownforceGlobal.ui_manager.windows["DemoFileDialog"].root_subfolder = "demos"
 	NoDownforceGlobal.ui_manager.windows["DemoFileDialog"].vs_ghost = vs_ghost
 	NoDownforceGlobal.ui_manager.show_window("DemoFileDialog")
+
+func _process(_delta: float) -> void:
+	if Input.is_action_pressed("ui_cancel") and visible:
+		hide()

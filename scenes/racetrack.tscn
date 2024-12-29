@@ -1,4 +1,4 @@
-[gd_scene load_steps=85 format=3 uid="uid://bsp1ug1544wkv"]
+[gd_scene load_steps=84 format=3 uid="uid://bsp1ug1544wkv"]
 
 [ext_resource type="PackedScene" uid="uid://ctpcgnbte0ujm" path="res://scenes/models/pathtest.blend" id="1_27c0p"]
 [ext_resource type="Script" uid="uid://tr0544b3fh36" path="res://addons/aacc/scripts/car_input.gd" id="1_g86do"]
@@ -36,7 +36,6 @@
 [ext_resource type="Script" uid="uid://cwbguhearg3if" path="res://scripts/ui/menu/quit_button.gd" id="23_suohj"]
 [ext_resource type="Script" uid="uid://t7u2xmebscww" path="res://scripts/ui/version_label.gd" id="24_ahn5o"]
 [ext_resource type="Script" uid="uid://da3u2km1ycsom" path="res://scripts/demo/demo_file_dialog.gd" id="24_mkv83"]
-[ext_resource type="Script" uid="uid://dm6aro2ng2ef4" path="res://scripts/ui/intro_screen.gd" id="25_6dtjt"]
 [ext_resource type="Script" uid="uid://5ur5k83aopny" path="res://scripts/ui/credits_scroll.gd" id="27_ht4hr"]
 [ext_resource type="Script" uid="uid://do30xq236a6u7" path="res://scripts/ui/pause_menu.gd" id="31_uui3w"]
 [ext_resource type="Script" uid="uid://clmduckcq77ok" path="res://scripts/ui/menu/resume_button.gd" id="32_hxphi"]
@@ -89,7 +88,7 @@ viewport_path = NodePath("CheckpointView")
 resource_local_to_scene = true
 shading_mode = 0
 albedo_texture = SubResource("ViewportTexture_kujmk")
-billboard_mode = 2
+billboard_mode = 1
 billboard_keep_scale = true
 
 [sub_resource type="QuadMesh" id="QuadMesh_6ij7b"]
@@ -364,7 +363,7 @@ transparent_bg = true
 size = Vector2i(512, 256)
 
 [node name="Panel" type="PanelContainer" parent="CheckpointView"]
-anchors_preset = -1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
@@ -392,6 +391,7 @@ script = ExtResource("19_52djk")
 at_checkpoint = true
 
 [node name="LogoViewportContainer" type="TextureRect" parent="."]
+process_priority = -1000
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -401,9 +401,9 @@ texture = SubResource("ViewportTexture_6ij7b")
 expand_mode = 1
 
 [node name="LogoViewport" type="SubViewport" parent="LogoViewportContainer"]
-process_priority = -1000
 transparent_bg = true
 size = Vector2i(1280, 720)
+render_target_update_mode = 4
 
 [node name="LogoCamera" type="Camera3D" parent="LogoViewportContainer/LogoViewport"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.39, 3.5)
@@ -540,7 +540,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
-script = ExtResource("25_6dtjt")
 
 [node name="Logo" type="TextureRect" parent="UI/IntroScreen"]
 layout_mode = 1
@@ -567,8 +566,7 @@ grow_horizontal = 2
 [node name="IntroLabel" type="Label" parent="UI/IntroScreen/IntroBG"]
 layout_mode = 2
 text = "Whenever you're ready...
-Hint: Hold handbrake and accelerate to take off much faster!
-Press pause to get back to the main menu"
+Hint: Hold handbrake and accelerate to take off much faster!"
 horizontal_alignment = 1
 
 [node name="RevsBG" type="PanelContainer" parent="UI/IntroScreen"]
@@ -726,8 +724,7 @@ grow_horizontal = 2
 
 [node name="OutroLabel" type="Label" parent="UI/OutroScreen/OutroBG"]
 layout_mode = 2
-text = "TODO: actual outro
-Press reset to try again"
+text = "TODO: actual outro"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -935,7 +932,6 @@ text = "Quit"
 script = ExtResource("23_suohj")
 
 [node name="DemoDialog" type="Window" parent="UI"]
-process_mode = 3
 auto_translate_mode = 1
 title = "Load Demo"
 initial_position = 2
@@ -1051,6 +1047,7 @@ script = ExtResource("24_mkv83")
 ghost_car = ExtResource("44_v6qg8")
 
 [node name="ErrorDialog" type="AcceptDialog" parent="UI"]
+process_mode = 3
 title = "Error!"
 initial_position = 2
 size = Vector2i(165, 100)
@@ -1334,6 +1331,22 @@ layout_mode = 2
 text = "Set Bindings"
 script = ExtResource("47_v4lrh")
 control = "aaccdemo_reset"
+
+[node name="RecenterCamera" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Controls/Scroll/List"]
+layout_mode = 2
+theme_type_variation = &"SettingHBox"
+
+[node name="Label" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Controls/Scroll/List/RecenterCamera"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Recenter Camera"
+
+[node name="Value" type="Button" parent="UI/SettingsDialog/BG/VBox/Tabs/Controls/Scroll/List/RecenterCamera"]
+custom_minimum_size = Vector2(150, 40)
+layout_mode = 2
+text = "Set Bindings"
+script = ExtResource("47_v4lrh")
+control = "aaccdemo_recenter_camera"
 
 [node name="Audio" type="VBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs"]
 visible = false

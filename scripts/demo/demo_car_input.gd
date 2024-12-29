@@ -28,7 +28,7 @@ func load_demo(start_from_takeoff: bool = false, autoplay: bool = true) -> void:
 	_car = custom_car if custom_car else AACCGlobal.current_car
 	_car.reset()
 	current_time = demo.start_time if start_from_takeoff else 0.0
-	NoDownforceGlobal.ui_manager.show_screen("IntroScreen")
+	NoDownforceGlobal.ui_manager.show_screen("HUD")
 
 	if not custom_car:
 		NoDownforceGlobal.ui_manager.show_overlay("DemoOverlay")

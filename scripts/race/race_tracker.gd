@@ -10,8 +10,8 @@ var save_requested: bool = false
 func _init() -> void:
 	NoDownforceGlobal.race_tracker = self
 
-func reset(reset_demo: bool = false) -> void:
-	if NoDownforceGlobal.showing_main_menu or (NoDownforceGlobal.playing_demo and not reset_demo):
+func reset(force_reset: bool = false) -> void:
+	if not force_reset and (NoDownforceGlobal.showing_main_menu or NoDownforceGlobal.playing_demo or NoDownforceGlobal.checkpoints_passed == NoDownforceGlobal.total_checkpoints):
 		return
 
 	_car.global_position = Vector3(0.0, 0.1, 0.0)
@@ -46,14 +46,13 @@ func _physics_process(delta: float) -> void:
 	if NoDownforceGlobal.checkpoints_passed == NoDownforceGlobal.total_checkpoints:
 		NoDownforceGlobal.timer_going = false
 
-		NoDownforceGlobal.ui_manager.show_screen("OutroScreen")
-
 		_car.input_forward = 0.0
 		_car.input_backward = 0.0
 		_car.input_handbrake = true
 		_car.input_steer = 1.0
 		
 		if not playing_demo:
+			NoDownforceGlobal.ui_manager.show_screen("OutroScreen")
 			NoDownforceGlobal.time_passed = _demo.length - _demo.start_time
 		if not save_requested:
 			if not playing_demo:

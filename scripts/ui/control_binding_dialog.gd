@@ -12,6 +12,7 @@ var _user_names_of_bindings: Dictionary[String, String] = {
 	"aacc_steer_right": "Steer Right",
 	"aacc_handbrake": "Handbrake",
 	"aaccdemo_reset": "Reset",
+	"aaccdemo_recenter_camera": "Recenter Camera",
 }
 
 func _ready() -> void:
