@@ -52,7 +52,7 @@ func input_event_as_string(input: InputEvent) -> String:
 	var result: String = "Unsupported!"
 
 	if input is InputEventKey:
-		result = input.as_text_physical_keycode() + " (Keyboard)"
+		result = input.as_text_keycode() + " (Keyboard)"
 	elif input is InputEventJoypadMotion:
 		var axis_string: String = "???"
 		match input.axis:
