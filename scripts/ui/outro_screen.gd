@@ -1,6 +1,10 @@
 extends Control
 
-func _process(_delta: float) -> void:
+func _ready() -> void:
+	visibility_changed.connect(on_show)
+	$BG/VBox/SaveButton.pressed.connect(on_save)
+
+func on_show() -> void:
 	if visible:
 		$BG/VBox/TargetTimeLabel.visible = NoDownforceGlobal.demo_car_input.custom_car != null
 		$BG/VBox/TargetTime.visible = NoDownforceGlobal.demo_car_input.custom_car != null
@@ -15,3 +19,10 @@ func _process(_delta: float) -> void:
 				$BG/VBox/Difference.text = "-" + NoDownforceGlobal.float_to_time(abs(difference))
 			else:
 				$BG/VBox/Difference.text = NoDownforceGlobal.float_to_time(difference)
+		$BG/VBox/SaveButton.call_deferred("grab_focus")
+
+func on_save() -> void:
+	NoDownforceGlobal.race_tracker.demo.name = $BG/VBox/DemoName.text
+	NoDownforceGlobal.race_tracker.demo.save()
+	NoDownforceGlobal.race_tracker.reset(true)
+	NoDownforceGlobal.ui_manager.show_screen("MainMenu")

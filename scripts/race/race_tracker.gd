@@ -3,9 +3,7 @@ class_name RaceTracker extends Node
 
 @onready var _car: Car = AACCGlobal.current_car
 
-@onready var _demo: DemoResource = DemoResource.new()
-
-var save_requested: bool = false
+@onready var demo: DemoResource = DemoResource.new()
 
 func _init() -> void:
 	NoDownforceGlobal.race_tracker = self
@@ -27,8 +25,7 @@ func reset(force_reset: bool = false) -> void:
 	NoDownforceGlobal.ui_manager.show_screen("IntroScreen")
 	
 	NoDownforceGlobal.reset_race(checkpoints_list)
-	_demo.clear()
-	save_requested = false
+	demo.clear()
 	if NoDownforceGlobal.demo_car_input.custom_car:
 		NoDownforceGlobal.demo_car_input.load_demo(true, false)
 	else:
@@ -53,11 +50,7 @@ func _physics_process(delta: float) -> void:
 		
 		if not playing_demo:
 			NoDownforceGlobal.ui_manager.show_screen("OutroScreen")
-			NoDownforceGlobal.time_passed = _demo.length - _demo.start_time
-		if not save_requested:
-			if not playing_demo:
-				_demo.save()
-			save_requested = true
+			NoDownforceGlobal.time_passed = demo.length - demo.start_time
 	else:
 		if not NoDownforceGlobal.timer_going and not _car.input_handbrake and (_car.input_forward > 0.0 or _car.input_backward > 0.0):
 			NoDownforceGlobal.timer_going = true
@@ -65,13 +58,13 @@ func _physics_process(delta: float) -> void:
 			if playing_demo:
 				NoDownforceGlobal.ui_manager.show_overlay("DemoOverlay")
 			else:
-				_demo.start_time = _demo.length + (1.0 / Engine.physics_ticks_per_second)
+				demo.start_time = demo.length + (1.0 / Engine.physics_ticks_per_second)
 				if NoDownforceGlobal.demo_car_input.custom_car:
 					NoDownforceGlobal.demo_car_input.playing = true
 		if AACCGlobal.current_car_input.enabled:
-			_demo.append(delta, _car.input_forward, _car.input_backward, _car.input_steer, _car.input_handbrake, _car.global_position, _car.global_rotation, _car.linear_velocity, _car.angular_velocity)
-		elif _demo.length > 0.0:
-			_demo.clear()
+			demo.append(delta, _car.input_forward, _car.input_backward, _car.input_steer, _car.input_handbrake, _car.global_position, _car.global_rotation, _car.linear_velocity, _car.angular_velocity)
+		elif demo.length > 0.0:
+			demo.clear()
 
 	NoDownforceGlobal.update_timer(delta)
 	if Input.is_action_pressed("aaccdemo_reset"):

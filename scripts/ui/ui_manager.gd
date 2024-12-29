@@ -7,9 +7,11 @@ func _ready() -> void:
 	NoDownforceGlobal.ui_manager = self
 
 func show_screen(screen_name: String):
-	for screen in screens.values():
-		screen.visible = false
-	screens[screen_name].visible = true
+	for screen_key in screens.keys():
+		if screen_key == screen_name:
+			screens[screen_key].visible = true
+		else:
+			screens[screen_key].visible = false
 
 func hide_screen(screen_name: String):
 	screens[screen_name].visible = false
