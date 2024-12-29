@@ -162,7 +162,7 @@ func update_visuals(delta: float) -> void:
 	visual_node.transform = new_transform
 
 func update_burnout() -> void:
-	if not is_colliding:
+	if not is_colliding or car.freeze:
 		skid_trail.is_emitting = false
 		burnout_particles.amount_ratio = 0.0
 		burnout_particles.emitting = false

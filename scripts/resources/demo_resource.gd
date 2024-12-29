@@ -42,7 +42,7 @@ func save(file_path: String = "") -> Error:
 
 func convert_from_05():
 	if not version.begins_with("0.5"): return
-	start_time = frames[start_frame].time
+	start_time = frames[start_frame - 1].time
 	_current_time = 0.0
 	for frame in frames:
 		append(0.0, frame.forward, frame.backward, frame.steer, frame.handbrake, frame.position, frame.rotation, frame.linear_velocity, frame.angular_velocity, frame.time - 0.00833333)

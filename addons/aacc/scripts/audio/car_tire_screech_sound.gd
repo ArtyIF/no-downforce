@@ -10,7 +10,7 @@ func _physics_process(delta: float) -> void:
 	pitch_scale = lerp(pitch_range.x, pitch_range.y, smooth_burnout_amount.get_current_value())
 	volume_db = linear_to_db(car.burnout_amount)
 
-	if is_inf(volume_db):
+	if is_inf(volume_db) or car.freeze:
 		volume_db = -80.0
 	if volume_db >= -60.0 and not playing:
 		play(randf_range(0.0, stream.get_length()))

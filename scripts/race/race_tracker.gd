@@ -65,7 +65,7 @@ func _physics_process(delta: float) -> void:
 			if playing_demo:
 				NoDownforceGlobal.ui_manager.show_overlay("DemoOverlay")
 			else:
-				_demo.start_time = _demo.length
+				_demo.start_time = _demo.length + (1.0 / Engine.physics_ticks_per_second)
 				if NoDownforceGlobal.demo_car_input.custom_car:
 					NoDownforceGlobal.demo_car_input.playing = true
 		if AACCGlobal.current_car_input.enabled:

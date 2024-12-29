@@ -53,8 +53,7 @@ func _physics_process(delta: float) -> void:
 			_car.do_not_apply_forces = false
 		else:
 			playing = false
-			if _car.get_node("Engine").playing:
-				_car.get_node("Engine").stop()
+			_car.freeze = true
 			_car.input_forward = 0.0
 			_car.input_backward = 0.0
 			_car.input_steer = 0.0
@@ -77,10 +76,7 @@ func _physics_process(delta: float) -> void:
 
 	if playing:
 		if custom_car:
-			if not _car.get_node("Engine").playing:
-				_car.get_node("Engine").play()
 			_car.freeze = false
 		current_time += delta
-	else:
-		if custom_car and _car.get_node("Engine").playing:
-			_car.get_node("Engine").stop()
+	elif custom_car:
+		_car.freeze = true

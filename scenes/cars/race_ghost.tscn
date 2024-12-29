@@ -390,6 +390,7 @@ freeze_on_handbrake = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, -0.4)
 stream = ExtResource("10_cby5l")
 max_db = 0.0
+autoplay = true
 bus = &"Engine"
 playback_type = 1
 attenuation_filter_db = -12.0
