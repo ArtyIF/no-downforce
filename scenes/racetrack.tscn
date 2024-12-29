@@ -1,4 +1,4 @@
-[gd_scene load_steps=84 format=3 uid="uid://bsp1ug1544wkv"]
+[gd_scene load_steps=85 format=3 uid="uid://bsp1ug1544wkv"]
 
 [ext_resource type="PackedScene" uid="uid://ctpcgnbte0ujm" path="res://scenes/models/pathtest.blend" id="1_27c0p"]
 [ext_resource type="Script" uid="uid://tr0544b3fh36" path="res://addons/aacc/scripts/car_input.gd" id="1_g86do"]
@@ -43,6 +43,7 @@
 [ext_resource type="Script" uid="uid://8d804bacsad8" path="res://scripts/ui/hud/forward_bar.gd" id="34_vqu6m"]
 [ext_resource type="Script" uid="uid://duujg25xkbqwn" path="res://scripts/ui/hud/backward_bar.gd" id="35_usg5d"]
 [ext_resource type="Script" uid="uid://c0outyq5dsbdx" path="res://scripts/ui/settings_dialog.gd" id="36_3jmr6"]
+[ext_resource type="Script" uid="uid://crfrobbj1fftv" path="res://scripts/ui/outro_screen.gd" id="36_6ij7b"]
 [ext_resource type="Script" uid="uid://ddw0yl2rxatm5" path="res://scripts/ui/hud/steer_bar_left.gd" id="36_usg5d"]
 [ext_resource type="Script" uid="uid://kmpnayoul2vb" path="res://scripts/ui/hud/steer_bar_right.gd" id="37_uqxp6"]
 [ext_resource type="Script" uid="uid://dh1nqnmjiswug" path="res://scripts/ui/settings/value_text.gd" id="38_3ppu2"]
@@ -707,8 +708,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
+script = ExtResource("36_6ij7b")
 
-[node name="OutroBG" type="PanelContainer" parent="UI/OutroScreen"]
+[node name="BG" type="PanelContainer" parent="UI/OutroScreen"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -718,74 +720,78 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBox" type="VBoxContainer" parent="UI/OutroScreen/OutroBG"]
+[node name="VBox" type="VBoxContainer" parent="UI/OutroScreen/BG"]
 layout_mode = 2
 
-[node name="RunFinished" type="Label" parent="UI/OutroScreen/OutroBG/VBox"]
+[node name="RunFinished" type="Label" parent="UI/OutroScreen/BG/VBox"]
 layout_mode = 2
 theme_type_variation = &"HeaderLarge"
 text = "Run finished"
 horizontal_alignment = 1
 
-[node name="Separator1" type="HSeparator" parent="UI/OutroScreen/OutroBG/VBox"]
+[node name="Separator1" type="HSeparator" parent="UI/OutroScreen/BG/VBox"]
 layout_mode = 2
 
-[node name="YourTimeLabel" type="Label" parent="UI/OutroScreen/OutroBG/VBox"]
+[node name="YourTimeLabel" type="Label" parent="UI/OutroScreen/BG/VBox"]
 layout_mode = 2
 text = "Your time:"
 horizontal_alignment = 1
 
-[node name="YourTime" type="Label" parent="UI/OutroScreen/OutroBG/VBox"]
+[node name="YourTime" type="Label" parent="UI/OutroScreen/BG/VBox"]
 layout_mode = 2
 theme_type_variation = &"MatrixLargeLabel"
 text = "00:00.000"
 horizontal_alignment = 1
 script = ExtResource("20_f85px")
 
-[node name="TargetTimeLabel" type="Label" parent="UI/OutroScreen/OutroBG/VBox"]
+[node name="TargetTimeLabel" type="Label" parent="UI/OutroScreen/BG/VBox"]
 layout_mode = 2
 text = "Target time:"
 horizontal_alignment = 1
 
-[node name="TargetTime" type="Label" parent="UI/OutroScreen/OutroBG/VBox"]
+[node name="TargetTime" type="Label" parent="UI/OutroScreen/BG/VBox"]
 layout_mode = 2
 theme_type_variation = &"MatrixLargeLabel"
 text = "00:00.000"
 horizontal_alignment = 1
 
-[node name="DifferenceLabel" type="Label" parent="UI/OutroScreen/OutroBG/VBox"]
+[node name="DifferenceLabel" type="Label" parent="UI/OutroScreen/BG/VBox"]
 layout_mode = 2
 text = "Difference:"
 horizontal_alignment = 1
 
-[node name="Difference" type="Label" parent="UI/OutroScreen/OutroBG/VBox"]
+[node name="Difference" type="Label" parent="UI/OutroScreen/BG/VBox"]
 layout_mode = 2
 theme_type_variation = &"MatrixLargeLabel"
 text = "00:00.000"
 horizontal_alignment = 1
 
-[node name="Separator2" type="HSeparator" parent="UI/OutroScreen/OutroBG/VBox"]
+[node name="Separator2" type="HSeparator" parent="UI/OutroScreen/BG/VBox"]
+visible = false
 layout_mode = 2
 
-[node name="NameYourDemo" type="Label" parent="UI/OutroScreen/OutroBG/VBox"]
+[node name="NameYourDemo" type="Label" parent="UI/OutroScreen/BG/VBox"]
+visible = false
 layout_mode = 2
 text = "Name your demo:"
 
-[node name="DemoName" type="LineEdit" parent="UI/OutroScreen/OutroBG/VBox"]
+[node name="DemoName" type="LineEdit" parent="UI/OutroScreen/BG/VBox"]
+visible = false
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 placeholder_text = "demo_bunchanumbers"
 
-[node name="BottomButtons" type="HBoxContainer" parent="UI/OutroScreen/OutroBG/VBox"]
+[node name="BottomButtons" type="HBoxContainer" parent="UI/OutroScreen/BG/VBox"]
+visible = false
 layout_mode = 2
 alignment = 1
 
-[node name="SaveButton" type="Button" parent="UI/OutroScreen/OutroBG/VBox/BottomButtons"]
+[node name="SaveButton" type="Button" parent="UI/OutroScreen/BG/VBox/BottomButtons"]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Save"
 
-[node name="CancelButton" type="Button" parent="UI/OutroScreen/OutroBG/VBox/BottomButtons"]
+[node name="CancelButton" type="Button" parent="UI/OutroScreen/BG/VBox/BottomButtons"]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Cancel"
