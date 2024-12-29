@@ -371,7 +371,6 @@ grow_vertical = 2
 
 [node name="VBox" type="VBoxContainer" parent="CheckpointView/Panel"]
 layout_mode = 2
-theme_override_constants/separation = 2
 alignment = 1
 
 [node name="CheckpointLabel" type="Label" parent="CheckpointView/Panel/VBox"]
@@ -611,7 +610,6 @@ grow_vertical = 0
 
 [node name="VBox" type="VBoxContainer" parent="UI/HUD/SpeedRev"]
 layout_mode = 2
-theme_override_constants/separation = 2
 alignment = 2
 
 [node name="GearLabel" type="Label" parent="UI/HUD/SpeedRev/VBox"]
@@ -657,7 +655,6 @@ grow_horizontal = 0
 
 [node name="VBox" type="VBoxContainer" parent="UI/HUD/Time"]
 layout_mode = 2
-theme_override_constants/separation = 2
 
 [node name="YourTimeLabel" type="Label" parent="UI/HUD/Time/VBox"]
 layout_mode = 2
@@ -690,7 +687,6 @@ anchors_preset = -1
 
 [node name="VBox" type="VBoxContainer" parent="UI/HUD/Checkpoints"]
 layout_mode = 2
-theme_override_constants/separation = 2
 
 [node name="CheckpointLabel" type="Label" parent="UI/HUD/Checkpoints/VBox"]
 layout_mode = 2
@@ -719,37 +715,80 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_top = 100.0
 grow_horizontal = 2
+grow_vertical = 2
 
-[node name="OutroLabel" type="Label" parent="UI/OutroScreen/OutroBG"]
+[node name="VBox" type="VBoxContainer" parent="UI/OutroScreen/OutroBG"]
 layout_mode = 2
-text = "TODO: actual outro"
+
+[node name="RunFinished" type="Label" parent="UI/OutroScreen/OutroBG/VBox"]
+layout_mode = 2
+theme_type_variation = &"HeaderLarge"
+text = "Run finished"
 horizontal_alignment = 1
-vertical_alignment = 1
 
-[node name="Time" type="PanelContainer" parent="UI/OutroScreen"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 1.0
-anchor_right = 1.0
-grow_horizontal = 0
-
-[node name="VBox" type="VBoxContainer" parent="UI/OutroScreen/Time"]
+[node name="Separator1" type="HSeparator" parent="UI/OutroScreen/OutroBG/VBox"]
 layout_mode = 2
-theme_override_constants/separation = 2
 
-[node name="YourTimeLabel" type="Label" parent="UI/OutroScreen/Time/VBox"]
+[node name="YourTimeLabel" type="Label" parent="UI/OutroScreen/OutroBG/VBox"]
 layout_mode = 2
-text = "Your Time"
-horizontal_alignment = 2
+text = "Your time:"
+horizontal_alignment = 1
 
-[node name="YourTime" type="Label" parent="UI/OutroScreen/Time/VBox"]
+[node name="YourTime" type="Label" parent="UI/OutroScreen/OutroBG/VBox"]
 layout_mode = 2
 theme_type_variation = &"MatrixLargeLabel"
 text = "00:00.000"
-horizontal_alignment = 2
+horizontal_alignment = 1
 script = ExtResource("20_f85px")
+
+[node name="TargetTimeLabel" type="Label" parent="UI/OutroScreen/OutroBG/VBox"]
+layout_mode = 2
+text = "Target time:"
+horizontal_alignment = 1
+
+[node name="TargetTime" type="Label" parent="UI/OutroScreen/OutroBG/VBox"]
+layout_mode = 2
+theme_type_variation = &"MatrixLargeLabel"
+text = "00:00.000"
+horizontal_alignment = 1
+
+[node name="DifferenceLabel" type="Label" parent="UI/OutroScreen/OutroBG/VBox"]
+layout_mode = 2
+text = "Difference:"
+horizontal_alignment = 1
+
+[node name="Difference" type="Label" parent="UI/OutroScreen/OutroBG/VBox"]
+layout_mode = 2
+theme_type_variation = &"MatrixLargeLabel"
+text = "00:00.000"
+horizontal_alignment = 1
+
+[node name="Separator2" type="HSeparator" parent="UI/OutroScreen/OutroBG/VBox"]
+layout_mode = 2
+
+[node name="NameYourDemo" type="Label" parent="UI/OutroScreen/OutroBG/VBox"]
+layout_mode = 2
+text = "Name your demo:"
+
+[node name="DemoName" type="LineEdit" parent="UI/OutroScreen/OutroBG/VBox"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+placeholder_text = "demo_bunchanumbers"
+
+[node name="BottomButtons" type="HBoxContainer" parent="UI/OutroScreen/OutroBG/VBox"]
+layout_mode = 2
+alignment = 1
+
+[node name="SaveButton" type="Button" parent="UI/OutroScreen/OutroBG/VBox/BottomButtons"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Save"
+
+[node name="CancelButton" type="Button" parent="UI/OutroScreen/OutroBG/VBox/BottomButtons"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Cancel"
 
 [node name="DemoOverlay" type="Control" parent="UI"]
 visible = false
@@ -953,7 +992,6 @@ grow_vertical = 2
 
 [node name="VBox" type="VBoxContainer" parent="UI/DemoDialog/BG"]
 layout_mode = 2
-theme_override_constants/separation = 5
 
 [node name="Scroll" type="ScrollContainer" parent="UI/DemoDialog/BG/VBox"]
 layout_mode = 2
@@ -1022,7 +1060,6 @@ text = "No user demos found in demos folder"
 [node name="BottomButtons" type="HBoxContainer" parent="UI/DemoDialog/BG/VBox"]
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_constants/separation = 5
 alignment = 1
 
 [node name="FileDialogButton" type="Button" parent="UI/DemoDialog/BG/VBox/BottomButtons"]
@@ -1214,7 +1251,6 @@ grow_vertical = 2
 
 [node name="VBox" type="VBoxContainer" parent="UI/SettingsDialog/BG"]
 layout_mode = 2
-theme_override_constants/separation = 5
 
 [node name="Tabs" type="TabContainer" parent="UI/SettingsDialog/BG/VBox"]
 layout_mode = 2
@@ -1238,7 +1274,6 @@ size_flags_vertical = 3
 
 [node name="Accelerate" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Controls/Scroll/List"]
 layout_mode = 2
-theme_type_variation = &"SettingHBox"
 
 [node name="Label" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Controls/Scroll/List/Accelerate"]
 layout_mode = 2
@@ -1254,7 +1289,6 @@ control = "aacc_forward"
 
 [node name="Brake" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Controls/Scroll/List"]
 layout_mode = 2
-theme_type_variation = &"SettingHBox"
 
 [node name="Label" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Controls/Scroll/List/Brake"]
 layout_mode = 2
@@ -1270,7 +1304,6 @@ control = "aacc_backward"
 
 [node name="SteerLeft" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Controls/Scroll/List"]
 layout_mode = 2
-theme_type_variation = &"SettingHBox"
 
 [node name="Label" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Controls/Scroll/List/SteerLeft"]
 layout_mode = 2
@@ -1286,7 +1319,6 @@ control = "aacc_steer_left"
 
 [node name="SteerRight" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Controls/Scroll/List"]
 layout_mode = 2
-theme_type_variation = &"SettingHBox"
 
 [node name="Label" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Controls/Scroll/List/SteerRight"]
 layout_mode = 2
@@ -1302,7 +1334,6 @@ control = "aacc_steer_right"
 
 [node name="Handbrake" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Controls/Scroll/List"]
 layout_mode = 2
-theme_type_variation = &"SettingHBox"
 
 [node name="Label" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Controls/Scroll/List/Handbrake"]
 layout_mode = 2
@@ -1318,7 +1349,6 @@ control = "aacc_handbrake"
 
 [node name="Reset" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Controls/Scroll/List"]
 layout_mode = 2
-theme_type_variation = &"SettingHBox"
 
 [node name="Label" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Controls/Scroll/List/Reset"]
 layout_mode = 2
@@ -1334,7 +1364,6 @@ control = "aaccdemo_reset"
 
 [node name="RecenterCamera" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Controls/Scroll/List"]
 layout_mode = 2
-theme_type_variation = &"SettingHBox"
 
 [node name="Label" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Controls/Scroll/List/RecenterCamera"]
 layout_mode = 2
@@ -1365,7 +1394,6 @@ size_flags_vertical = 3
 
 [node name="Master" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Audio/Scroll/List"]
 layout_mode = 2
-theme_type_variation = &"SettingHBox"
 
 [node name="Label" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Audio/Scroll/List/Master"]
 layout_mode = 2
@@ -1387,7 +1415,6 @@ script = ExtResource("38_nv0xe")
 
 [node name="SFX" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Audio/Scroll/List"]
 layout_mode = 2
-theme_type_variation = &"SettingHBox"
 
 [node name="Label" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Audio/Scroll/List/SFX"]
 layout_mode = 2
@@ -1410,7 +1437,6 @@ bus_name = "SFX"
 
 [node name="Engine" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Audio/Scroll/List"]
 layout_mode = 2
-theme_type_variation = &"SettingHBox"
 
 [node name="Label" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Audio/Scroll/List/Engine"]
 layout_mode = 2
@@ -1433,7 +1459,6 @@ bus_name = "Engine"
 
 [node name="Background" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Audio/Scroll/List"]
 layout_mode = 2
-theme_type_variation = &"SettingHBox"
 
 [node name="Label" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Audio/Scroll/List/Background"]
 layout_mode = 2
@@ -1457,7 +1482,6 @@ bus_name = "Background"
 [node name="UI" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Audio/Scroll/List"]
 visible = false
 layout_mode = 2
-theme_type_variation = &"SettingHBox"
 
 [node name="Label" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Audio/Scroll/List/UI"]
 layout_mode = 2
@@ -1495,7 +1519,6 @@ size_flags_vertical = 3
 
 [node name="WindowMode" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Graphics/Scroll/List"]
 layout_mode = 2
-theme_type_variation = &"SettingHBox"
 
 [node name="Label" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Graphics/Scroll/List/WindowMode"]
 layout_mode = 2
@@ -1517,7 +1540,6 @@ script = ExtResource("40_lcwrm")
 
 [node name="VSync" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Graphics/Scroll/List"]
 layout_mode = 2
-theme_type_variation = &"SettingHBox"
 
 [node name="Label" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Graphics/Scroll/List/VSync"]
 layout_mode = 2
@@ -1537,7 +1559,6 @@ script = ExtResource("43_0j4tq")
 
 [node name="ResolutionScale" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Graphics/Scroll/List"]
 layout_mode = 2
-theme_type_variation = &"SettingHBox"
 
 [node name="Label" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Graphics/Scroll/List/ResolutionScale"]
 layout_mode = 2
@@ -1560,7 +1581,6 @@ script = ExtResource("41_4hh65")
 
 [node name="UpscalingMode" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Graphics/Scroll/List"]
 layout_mode = 2
-theme_type_variation = &"SettingHBox"
 
 [node name="Label" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Graphics/Scroll/List/UpscalingMode"]
 layout_mode = 2
@@ -1582,7 +1602,6 @@ script = ExtResource("52_qtpag")
 
 [node name="MSAA" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Graphics/Scroll/List"]
 layout_mode = 2
-theme_type_variation = &"SettingHBox"
 
 [node name="Label" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Graphics/Scroll/List/MSAA"]
 layout_mode = 2
@@ -1606,7 +1625,6 @@ script = ExtResource("42_00phd")
 
 [node name="FXAA" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Graphics/Scroll/List"]
 layout_mode = 2
-theme_type_variation = &"SettingHBox"
 
 [node name="Label" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Graphics/Scroll/List/FXAA"]
 layout_mode = 2
@@ -1626,7 +1644,6 @@ script = ExtResource("53_kdpoe")
 
 [node name="LightingQuality" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Graphics/Scroll/List"]
 layout_mode = 2
-theme_type_variation = &"SettingHBox"
 
 [node name="Label" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Graphics/Scroll/List/LightingQuality"]
 layout_mode = 2
@@ -1648,7 +1665,6 @@ realtime_light_data = "uid://diilqw22h2lfa"
 
 [node name="ReflectionProbeQuality" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Graphics/Scroll/List"]
 layout_mode = 2
-theme_type_variation = &"SettingHBox"
 
 [node name="Label" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Graphics/Scroll/List/ReflectionProbeQuality"]
 layout_mode = 2
@@ -1670,7 +1686,6 @@ script = ExtResource("45_f75xh")
 
 [node name="ShadowResolution" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Graphics/Scroll/List"]
 layout_mode = 2
-theme_type_variation = &"SettingHBox"
 
 [node name="Label" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Graphics/Scroll/List/ShadowResolution"]
 layout_mode = 2
@@ -1696,7 +1711,6 @@ script = ExtResource("46_csdh4")
 
 [node name="ShadowFilteringQuality" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Graphics/Scroll/List"]
 layout_mode = 2
-theme_type_variation = &"SettingHBox"
 
 [node name="Label" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Graphics/Scroll/List/ShadowFilteringQuality"]
 layout_mode = 2
@@ -1724,7 +1738,6 @@ script = ExtResource("47_fbg68")
 
 [node name="BloomQuality" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Graphics/Scroll/List"]
 layout_mode = 2
-theme_type_variation = &"SettingHBox"
 
 [node name="Label" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Graphics/Scroll/List/BloomQuality"]
 layout_mode = 2
@@ -1746,7 +1759,6 @@ script = ExtResource("48_m6i20")
 
 [node name="FogQuality" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Graphics/Scroll/List"]
 layout_mode = 2
-theme_type_variation = &"SettingHBox"
 
 [node name="Label" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Graphics/Scroll/List/FogQuality"]
 layout_mode = 2
@@ -1772,7 +1784,6 @@ script = ExtResource("49_tfpfy")
 
 [node name="SSAOQuality" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Graphics/Scroll/List"]
 layout_mode = 2
-theme_type_variation = &"SettingHBox"
 
 [node name="Label" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Graphics/Scroll/List/SSAOQuality"]
 layout_mode = 2
@@ -1798,7 +1809,6 @@ script = ExtResource("50_burr8")
 
 [node name="SSRQuality" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Graphics/Scroll/List"]
 layout_mode = 2
-theme_type_variation = &"SettingHBox"
 
 [node name="Label" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Graphics/Scroll/List/SSRQuality"]
 layout_mode = 2
@@ -1849,7 +1859,6 @@ grow_vertical = 2
 
 [node name="VBox" type="VBoxContainer" parent="UI/SettingsDialog/ControlBindingDialog/BG"]
 layout_mode = 2
-theme_override_constants/separation = 5
 
 [node name="Deadzone" type="HBoxContainer" parent="UI/SettingsDialog/ControlBindingDialog/BG/VBox"]
 layout_mode = 2
