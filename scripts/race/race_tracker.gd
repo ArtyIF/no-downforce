@@ -5,6 +5,8 @@ class_name RaceTracker extends Node
 
 @onready var demo: DemoResource = DemoResource.new()
 
+var _timer_nudged: bool = false
+
 func _init() -> void:
 	NoDownforceGlobal.race_tracker = self
 
@@ -25,6 +27,7 @@ func reset(force_reset: bool = false) -> void:
 	NoDownforceGlobal.ui_manager.show_screen("IntroScreen")
 	
 	NoDownforceGlobal.reset_race(checkpoints_list)
+	_timer_nudged = false
 	demo.clear()
 	if NoDownforceGlobal.demo_car_input.custom_car:
 		NoDownforceGlobal.demo_car_input.load_demo(true, false)
@@ -42,6 +45,10 @@ func _physics_process(delta: float) -> void:
 	var playing_demo: bool = NoDownforceGlobal.playing_demo
 	if NoDownforceGlobal.checkpoints_passed == NoDownforceGlobal.total_checkpoints:
 		NoDownforceGlobal.timer_going = false
+		
+		if not _timer_nudged:
+			NoDownforceGlobal.time_passed += delta
+			_timer_nudged = true
 		
 		# HACK: the last frame isn't recorded, but if I do that, a lot of stuff
 		# will have to be rewritten to account for it

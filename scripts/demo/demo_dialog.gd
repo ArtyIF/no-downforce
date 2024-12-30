@@ -44,6 +44,7 @@ func on_visibility_changed():
 	
 	var user_demos: Array[DemoResource] = []
 	for user_demo_path in DirAccess.get_files_at("user://demos"):
+		if not user_demo_path.ends_with(".res") and not user_demo_path.ends_with(".tres"): continue
 		var user_demo = load("user://demos/" + user_demo_path)
 		if user_demo is DemoResource:
 			user_demo.convert_from_05()

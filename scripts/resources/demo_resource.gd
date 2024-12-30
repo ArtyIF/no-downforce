@@ -42,6 +42,8 @@ func save(file_path: String = "") -> Error:
 
 func convert_from_05():
 	if not version.begins_with("0.5"): return
+	DirAccess.copy_absolute(resource_path, resource_path + ".bak")
+
 	start_time = frames[start_frame - 1].time
 	_current_time = 0.0
 	for frame in frames:
@@ -58,7 +60,7 @@ func get_frame_at(time: float) -> DemoFrame:
 	var time_2: float = 0.0
 	var i: int = frames_dict.keys().bsearch(time)
 	time_1 = frames_dict.keys()[max(0, i - 1)]
-	time_2 = frames_dict.keys()[i]
+	time_2 = frames_dict.keys()[min(i, len(frames_dict.keys()) - 1)]
 
 	var frame_1: Array = frames_dict[time_1]
 	var frame_2: Array = frames_dict[time_2]
