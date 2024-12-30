@@ -22,6 +22,7 @@ class_name SettingsResource extends Resource
 @export var graphics_reflection_probe_quality: int = 2
 @export var graphics_shadow_resolution: int = 4
 @export var graphics_shadow_filtering_quality: int = 5
+@export var graphics_burnout_particles_quality: int = 5
 @export var graphics_bloom_quality: int = 2
 @export var graphics_fog_quality: int = 4
 @export var graphics_ssao_quality: int = 4

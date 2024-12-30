@@ -1,4 +1,4 @@
-[gd_scene load_steps=85 format=3 uid="uid://bsp1ug1544wkv"]
+[gd_scene load_steps=86 format=3 uid="uid://bsp1ug1544wkv"]
 
 [ext_resource type="PackedScene" uid="uid://ctpcgnbte0ujm" path="res://scenes/models/pathtest.blend" id="1_27c0p"]
 [ext_resource type="Script" uid="uid://tr0544b3fh36" path="res://addons/aacc/scripts/car_input.gd" id="1_g86do"]
@@ -69,6 +69,7 @@
 [ext_resource type="Script" uid="uid://eo8xitm0i6d0" path="res://scripts/ui/settings/ssr_quality_setting.gd" id="50_d7avv"]
 [ext_resource type="Script" uid="uid://dpjh575chum8l" path="res://scripts/ui/settings/upscaling_mode_setting.gd" id="52_qtpag"]
 [ext_resource type="Script" uid="uid://davqnenrgtsk5" path="res://scripts/ui/settings/fxaa_setting.gd" id="53_kdpoe"]
+[ext_resource type="Script" path="res://scripts/ui/settings/burnout_particles_quality_setting.gd" id="66_cigoj"]
 [ext_resource type="Script" uid="uid://dwwomgxsspqep" path="res://scripts/ui/control_binding_dialog.gd" id="66_w7je6"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_f85px"]
@@ -1731,6 +1732,33 @@ popup/item_4/id = 4
 popup/item_5/text = "Ultra"
 popup/item_5/id = 5
 script = ExtResource("47_fbg68")
+
+[node name="BurnoutParticlesQuality" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Graphics/Scroll/List"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Graphics/Scroll/List/BurnoutParticlesQuality"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Burnout Particles Quality"
+
+[node name="Value" type="OptionButton" parent="UI/SettingsDialog/BG/VBox/Tabs/Graphics/Scroll/List/BurnoutParticlesQuality"]
+custom_minimum_size = Vector2(150, 40)
+layout_mode = 2
+selected = 5
+item_count = 6
+popup/item_0/text = "Off"
+popup/item_0/id = 0
+popup/item_1/text = "Very Low"
+popup/item_1/id = 1
+popup/item_2/text = "Low"
+popup/item_2/id = 2
+popup/item_3/text = "Medium"
+popup/item_3/id = 3
+popup/item_4/text = "High"
+popup/item_4/id = 4
+popup/item_5/text = "Ultra"
+popup/item_5/id = 5
+script = ExtResource("66_cigoj")
 
 [node name="BloomQuality" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Graphics/Scroll/List"]
 layout_mode = 2
