@@ -12,7 +12,7 @@ func on_show() -> void:
 		$BG/VBox/Difference.visible = NoDownforceGlobal.demo_car_input.custom_car != null
 		if NoDownforceGlobal.demo_car_input.custom_car:
 			$BG/VBox/TargetTime.text = NoDownforceGlobal.float_to_time(NoDownforceGlobal.demo_car_input.demo.length - NoDownforceGlobal.demo_car_input.demo.start_time)
-			var difference: float = NoDownforceGlobal.time_passed - NoDownforceGlobal.demo_car_input.demo.length - NoDownforceGlobal.demo_car_input.demo.start_time
+			var difference: float = NoDownforceGlobal.time_passed - (NoDownforceGlobal.demo_car_input.demo.length - NoDownforceGlobal.demo_car_input.demo.start_time)
 			if difference > 0:
 				$BG/VBox/Difference.text = "+" + NoDownforceGlobal.float_to_time(difference)
 			elif difference < 0:
@@ -20,6 +20,9 @@ func on_show() -> void:
 			else:
 				$BG/VBox/Difference.text = NoDownforceGlobal.float_to_time(difference)
 		$BG/VBox/SaveButton.call_deferred("grab_focus")
+
+func _process(delta: float) -> void:
+	pass
 
 func on_save() -> void:
 	NoDownforceGlobal.race_tracker.demo.name = $BG/VBox/DemoName.text

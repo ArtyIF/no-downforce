@@ -42,6 +42,8 @@ func _physics_process(delta: float) -> void:
 	var playing_demo: bool = NoDownforceGlobal.playing_demo
 	if NoDownforceGlobal.checkpoints_passed == NoDownforceGlobal.total_checkpoints:
 		NoDownforceGlobal.timer_going = false
+		
+		# DOESN'T RECORD THE LAST FRAME, PROBABLY THE SOURCE OF ALL TROUBLES
 
 		_car.input_forward = 0.0
 		_car.input_backward = 0.0
