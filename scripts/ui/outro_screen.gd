@@ -26,10 +26,6 @@ func on_show() -> void:
 			$BG/VBox/RunFinished.text = "Run finished!"
 		$BG/VBox/SaveButton.call_deferred("grab_focus")
 
-func _process(delta: float) -> void:
-	#on_show()
-	pass
-
 func on_save() -> void:
 	NoDownforceGlobal.race_tracker.demo.name = $BG/VBox/DemoName.text
 	NoDownforceGlobal.race_tracker.demo.save()
