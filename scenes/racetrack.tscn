@@ -725,7 +725,7 @@ layout_mode = 2
 [node name="RunFinished" type="Label" parent="UI/OutroScreen/BG/VBox"]
 layout_mode = 2
 theme_type_variation = &"HeaderLarge"
-text = "Run finished"
+text = "Run finished!"
 horizontal_alignment = 1
 
 [node name="Separator1" type="HSeparator" parent="UI/OutroScreen/BG/VBox"]
@@ -773,7 +773,7 @@ layout_mode = 2
 text = "Name your demo:"
 
 [node name="DemoName" type="LineEdit" parent="UI/OutroScreen/BG/VBox"]
-custom_minimum_size = Vector2(300, 0)
+custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 placeholder_text = "Defaults to demo_lotsofnumbers"
 
