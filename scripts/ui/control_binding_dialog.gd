@@ -74,15 +74,10 @@ func add_binding():
 func _input(event: InputEvent) -> void:
 	if waiting_for_press >= 0 and (event is InputEventKey or event is InputEventJoypadMotion or event is InputEventJoypadButton):
 		var success: bool = true
-		InputMap.action_erase_events(control_to_change)
 		var bindings_count = len(bindings)
 		if waiting_for_press >= len(bindings):
 			bindings_count += 1
 		for i in bindings_count:
-			var old_binding: InputEvent = null
-			if i < len(bindings):
-				old_binding = bindings[i]
-
 			if i == waiting_for_press:
 				if event is InputEventJoypadMotion:
 					if event.axis_value >= 0.5:
@@ -91,13 +86,23 @@ func _input(event: InputEvent) -> void:
 						event.axis_value = -1
 					else:
 						success = false
+
+				if event is InputEventKey or event is InputEventJoypadButton:
+					if not event.pressed:
+						success = false
+				if Input.is_action_pressed(control_to_change):
+					success = false
+
 				if success:
-					InputMap.action_add_event(control_to_change, event)
-				elif old_binding:
-					InputMap.action_add_event(control_to_change, old_binding)
-			elif old_binding:
-				InputMap.action_add_event(control_to_change, old_binding)
+					if len(bindings) <= i:
+						bindings.append(event)
+					else:
+						bindings[i] = event
+
 		if success:
+			InputMap.action_erase_events(control_to_change)
+			for binding in bindings:
+				InputMap.action_add_event(control_to_change, binding)
 			refresh_bindings(waiting_for_press)
 			waiting_for_press = -1
 
