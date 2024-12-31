@@ -3,12 +3,10 @@ extends ScrollContainer
 var scroll_amount: float = 0.0
 var pause_for: float = 0.0
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	gui_input.connect(on_gui_input)
 	$VBox/CreditsLabel.meta_clicked.connect(on_meta_clicked)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if is_visible_in_tree():
 		if pause_for <= 0.0:
