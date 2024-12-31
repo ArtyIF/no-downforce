@@ -28,8 +28,10 @@ func activate_next_checkpoint(current: Node3D, next: Node3D):
 
 	if checkpoints_passed < total_checkpoints:
 		next.set_deferred("process_mode", Node.PROCESS_MODE_INHERIT)
+		race_tracker.get_node("CheckpointPass").play()
 		next.visible = true
 	else:
+		race_tracker.get_node("CheckpointFinish").play()
 		timer_going = false
 
 func reset_race(checkpoints_list: Array[Node3D]):

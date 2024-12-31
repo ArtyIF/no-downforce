@@ -1,4 +1,4 @@
-[gd_scene load_steps=87 format=3 uid="uid://bsp1ug1544wkv"]
+[gd_scene load_steps=92 format=3 uid="uid://bsp1ug1544wkv"]
 
 [ext_resource type="PackedScene" uid="uid://ctpcgnbte0ujm" path="res://scenes/models/pathtest.blend" id="1_27c0p"]
 [ext_resource type="Script" uid="uid://tr0544b3fh36" path="res://addons/aacc/scripts/car_input.gd" id="1_g86do"]
@@ -9,8 +9,10 @@
 [ext_resource type="Script" uid="uid://k4svdp3krbho" path="res://scripts/scene/camera.gd" id="4_0kx16"]
 [ext_resource type="Script" uid="uid://dct8lw28g61gg" path="res://scripts/race/race_tracker.gd" id="4_u20ab"]
 [ext_resource type="Material" uid="uid://dwvmrqsahnumm" path="res://materials/material_checkpoint.tres" id="5_w6o7j"]
+[ext_resource type="AudioStream" uid="uid://vbxk4da82inc" path="res://audio/ui/checkpoint_pass.ogg" id="6_oc80m"]
 [ext_resource type="Environment" uid="uid://cx6466y1wxssu" path="res://misc/racetrack_environment.tres" id="6_qej83"]
 [ext_resource type="AudioStream" uid="uid://3nxptby4kecn" path="res://audio/ambience.ogg" id="7_f85px"]
+[ext_resource type="AudioStream" uid="uid://i2qx6l1wsgnw" path="res://audio/ui/checkpoint_finish.ogg" id="7_wmot4"]
 [ext_resource type="AudioStream" uid="uid://blxw2282c2gy3" path="res://audio/hurricane.ogg" id="8_f85px"]
 [ext_resource type="Script" uid="uid://163ttgo2dtdb" path="res://scripts/scene/hurricane_sound.gd" id="9_mkv83"]
 [ext_resource type="Script" uid="uid://d34asehi5ugcg" path="res://scripts/race/checkpoint.gd" id="11_6v6se"]
@@ -36,6 +38,9 @@
 [ext_resource type="Script" uid="uid://cwbguhearg3if" path="res://scripts/ui/menu/quit_button.gd" id="23_suohj"]
 [ext_resource type="Script" uid="uid://t7u2xmebscww" path="res://scripts/ui/version_label.gd" id="24_ahn5o"]
 [ext_resource type="Script" uid="uid://da3u2km1ycsom" path="res://scripts/demo/demo_file_dialog.gd" id="24_mkv83"]
+[ext_resource type="AudioStream" uid="uid://bri00oxf0r40" path="res://audio/ui/click.ogg" id="25_po64y"]
+[ext_resource type="AudioStream" uid="uid://bwfdl36a3r4kb" path="res://audio/ui/hover.ogg" id="26_eps6i"]
+[ext_resource type="AudioStream" uid="uid://b3wetnjpgo7ku" path="res://audio/ui/value_change.ogg" id="27_eps6i"]
 [ext_resource type="Script" uid="uid://5ur5k83aopny" path="res://scripts/ui/credits_scroll.gd" id="27_ht4hr"]
 [ext_resource type="Script" uid="uid://do30xq236a6u7" path="res://scripts/ui/pause_menu.gd" id="31_uui3w"]
 [ext_resource type="Script" uid="uid://clmduckcq77ok" path="res://scripts/ui/menu/resume_button.gd" id="32_hxphi"]
@@ -260,6 +265,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
 layers = 524288
 mesh = SubResource("QuadMesh_6ij7b")
 
+[node name="CheckpointPass" type="AudioStreamPlayer" parent="RaceTracker"]
+stream = ExtResource("6_oc80m")
+bus = &"UI"
+
+[node name="CheckpointFinish" type="AudioStreamPlayer" parent="RaceTracker"]
+stream = ExtResource("7_wmot4")
+bus = &"UI"
+
 [node name="CarInput" type="Node" parent="."]
 process_priority = -1000
 process_physics_priority = -1000
@@ -439,6 +452,9 @@ windows = {
 "ErrorDialog": NodePath("ErrorDialog"),
 "SettingsDialog": NodePath("SettingsDialog")
 }
+click_sound = ExtResource("25_po64y")
+hover_sound = ExtResource("26_eps6i")
+value_change_sound = ExtResource("27_eps6i")
 
 [node name="MainMenu" type="Control" parent="UI"]
 layout_mode = 1
@@ -1478,7 +1494,6 @@ script = ExtResource("38_nv0xe")
 bus_name = "Background"
 
 [node name="UI" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Audio/Scroll/List"]
-visible = false
 layout_mode = 2
 
 [node name="Label" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Audio/Scroll/List/UI"]
@@ -1951,3 +1966,6 @@ text = "Add New Binding"
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Save and Close"
+
+[node name="UISounds" type="AudioStreamPlayer" parent="UI"]
+bus = &"UI"

@@ -82,7 +82,7 @@ func _input(event: InputEvent) -> void:
 			var old_binding: InputEvent = null
 			if i < len(bindings):
 				old_binding = bindings[i]
-			
+
 			if i == waiting_for_press:
 				if event is InputEventJoypadMotion:
 					if event.axis_value >= 0.5:
