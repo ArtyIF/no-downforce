@@ -1137,7 +1137,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 1
 bbcode_enabled = true
-text = "[color=#ff6000]Most of the things[/color]
+text = "[color=#ff6000]Coding, level design, idea, director etc.[/color]
 	ArtyIF
 
 [color=#ff6000]Sounds[/color]
@@ -1237,8 +1237,11 @@ text = "[color=#ff6000]Most of the things[/color]
 			OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 			SOFTWARE.
 
-[color=#ff6000]Made[/color] with [color=#ff6000]Godot Game Engine[/color] -- [url]https://godotengine.org/[/url]
-"
+	[color=#ff6000]Godot Engine[/color] by [color=#ff6000]Godot Engine contributors[/color] -- [url]https://godotengine.org/[/url]
+		[color=#ff6000]License:[/color] MIT ([url]https://godotengine.org/license/[/url])
+
+	[color=#ff6000]Third-party libraries used by Godot:[/color] see [url]https://github.com/godotengine/godot/blob/master/COPYRIGHT.txt[/url]
+		(TODO: include in the credits somehow???)"
 fit_content = true
 scroll_active = false
 
