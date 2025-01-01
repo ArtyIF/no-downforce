@@ -1686,7 +1686,6 @@ baked_light_data = "uid://ctuxuv3f0vdcd"
 realtime_light_data = "uid://diilqw22h2lfa"
 
 [node name="AutoExposure" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Graphics/Scroll/List"]
-visible = false
 layout_mode = 2
 
 [node name="Label" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Graphics/Scroll/List/AutoExposure"]
