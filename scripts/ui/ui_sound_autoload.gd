@@ -40,10 +40,13 @@ func on_gui_input(event: InputEvent):
 		NoDownforceGlobal.ui_manager.play_value_change_sound()
 
 func play_click_sound(_arg1 = 0):
-	NoDownforceGlobal.ui_manager.play_click_sound()
+	if NoDownforceGlobal.ui_manager:
+		NoDownforceGlobal.ui_manager.play_click_sound()
 
 func play_hover_sound(_arg1 = 0):
-	NoDownforceGlobal.ui_manager.play_hover_sound()
+	if NoDownforceGlobal.ui_manager:
+		NoDownforceGlobal.ui_manager.play_hover_sound()
 
 func play_value_change_sound(_arg1 = 0):
-	NoDownforceGlobal.ui_manager.play_value_change_sound()
+	if NoDownforceGlobal.ui_manager:
+		NoDownforceGlobal.ui_manager.play_value_change_sound()

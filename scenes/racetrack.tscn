@@ -1,4 +1,4 @@
-[gd_scene load_steps=92 format=3 uid="uid://bsp1ug1544wkv"]
+[gd_scene load_steps=93 format=3 uid="uid://bsp1ug1544wkv"]
 
 [ext_resource type="PackedScene" uid="uid://ctpcgnbte0ujm" path="res://scenes/models/pathtest.blend" id="1_27c0p"]
 [ext_resource type="Script" uid="uid://tr0544b3fh36" path="res://addons/aacc/scripts/car_input.gd" id="1_g86do"]
@@ -77,6 +77,7 @@
 [ext_resource type="Script" uid="uid://davqnenrgtsk5" path="res://scripts/ui/settings/fxaa_setting.gd" id="53_kdpoe"]
 [ext_resource type="Script" uid="uid://dpbf65jjhg418" path="res://scripts/ui/settings/burnout_particles_quality_setting.gd" id="66_cigoj"]
 [ext_resource type="Script" uid="uid://dwwomgxsspqep" path="res://scripts/ui/control_binding_dialog.gd" id="66_w7je6"]
+[ext_resource type="Script" uid="uid://dpxbr22ydxi3r" path="res://scripts/ui/settings/auto_exposure_setting.gd" id="69_ts87n"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_f85px"]
 size = Vector3(20, 20, 20)
@@ -1680,6 +1681,26 @@ popup/item_1/id = 1
 script = ExtResource("42_o2x5v")
 baked_light_data = "uid://ctuxuv3f0vdcd"
 realtime_light_data = "uid://diilqw22h2lfa"
+
+[node name="AutoExposure" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Graphics/Scroll/List"]
+visible = false
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Graphics/Scroll/List/AutoExposure"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Auto-Exposure"
+
+[node name="Value" type="OptionButton" parent="UI/SettingsDialog/BG/VBox/Tabs/Graphics/Scroll/List/AutoExposure"]
+custom_minimum_size = Vector2(150, 40)
+layout_mode = 2
+selected = 1
+item_count = 2
+popup/item_0/text = "Off"
+popup/item_0/id = 0
+popup/item_1/text = "On"
+popup/item_1/id = 1
+script = ExtResource("69_ts87n")
 
 [node name="ReflectionProbeQuality" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Graphics/Scroll/List"]
 layout_mode = 2
