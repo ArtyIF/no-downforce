@@ -142,6 +142,15 @@ func get_copyright_string(copyright_array: Array, indent_prefix: String = "") ->
 		return "\n" + "\n".join(copyright_array).indent(indent_prefix)
 	return copyright_array[0]
 
+func parse_license(input: String) -> String:
+	var split_input_and: PackedStringArray = input.split(" and ", false)
+	if len(split_input_and) > 1:
+		return "[url]" + "[/url] and [url]".join(split_input_and) + "[/url]"
+	var split_input_or: PackedStringArray = input.split(" or ", false)
+	if len(split_input_or) > 1:
+		return "[url]" + "[/url] or [url]".join(split_input_or) + "[/url]"
+	return "[url]" + input + "[/url]"
+
 func convert_copyright_dict_to_string(copyright: Dictionary) -> String:
 	var result: String = ""
 	result += "\n[color=#ff6000]%s[/color]" % copyright["name"]
@@ -153,19 +162,21 @@ func convert_copyright_dict_to_string(copyright: Dictionary) -> String:
 				result += "\n\t\t".join(part["files"])
 			result += "\n\t[color=#ff6000]Copyright[/color] "
 			result += get_copyright_string(part["copyright"], "\t\t")
-			result += "\n\t[color=#ff6000]License[/color] %s" % part["license"]
+			result += "\n\t[color=#ff6000]License[/color] %s\n" % parse_license(part["license"])
+	else:
+		if copyright.has("source"):
+			result += "\n\t[color=#ff6000]Source[/color] [url]%s[/url]" % copyright["source"]
+		if copyright.has("copyright"):
+			result += "\n\t[color=#ff6000]Copyright[/color] "
+			result += get_copyright_string(copyright["copyright"], "\t\t")
+		if copyright.has("license"):
+			result += "\n\t[color=#ff6000]License[/color] [url]%s[/url]" % copyright["license"]
+		if copyright.has("changes_made"):
+			result += "\n\t[color=#ff6000]Changes made[/color] [url]%s[/url]\n" % copyright["changes_made"]
+		else:
+			result += "\n"
 
-	if copyright.has("source"):
-		result += "\n\t[color=#ff6000]Source[/color] [url]%s[/url]" % copyright["source"]
-	if copyright.has("copyright"):
-		result += "\n\t[color=#ff6000]Copyright[/color] "
-		result += get_copyright_string(copyright["copyright"], "\t\t")
-	if copyright.has("license"):
-		result += "\n\t[color=#ff6000]License[/color] [url]%s[/url]" % copyright["license"]
-	if copyright.has("changes_made"):
-		result += "\n\t[color=#ff6000]Changes made[/color] [url]%s[/url]" % copyright["changes_made"]
-
-	return result + "\n"
+	return result
 
 @onready var _text: String = $VBox/CreditsLabel.text
 

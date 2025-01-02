@@ -362,6 +362,7 @@ volume_db = -24.0
 autoplay = true
 mix_target = 1
 bus = &"Background"
+playback_type = 1
 
 [node name="Hurricane" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_f85px")
@@ -369,6 +370,7 @@ volume_db = -80.0
 autoplay = true
 mix_target = 1
 bus = &"Background"
+playback_type = 1
 script = ExtResource("9_mkv83")
 
 [node name="Race" parent="." instance=ExtResource("2_fi1wu")]
