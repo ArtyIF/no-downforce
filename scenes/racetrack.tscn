@@ -80,6 +80,17 @@
 [ext_resource type="Script" uid="uid://dwwomgxsspqep" path="res://scripts/ui/control_binding_dialog.gd" id="66_w7je6"]
 [ext_resource type="Script" uid="uid://dpxbr22ydxi3r" path="res://scripts/ui/settings/auto_exposure_setting.gd" id="69_ts87n"]
 
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_u20ab"]
+auto_exposure_enabled = true
+auto_exposure_scale = 0.5
+auto_exposure_speed = 1.0
+auto_exposure_max_sensitivity = 3200.0
+
+[sub_resource type="FogMaterial" id="FogMaterial_qej83"]
+density = 0.2
+albedo = Color(1, 0.376471, 0, 1)
+height_falloff = 1.0
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_f85px"]
 size = Vector3(20, 20, 20)
 
@@ -106,24 +117,6 @@ resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_kujmk")
 size = Vector2(16, 8)
 
-[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_u20ab"]
-auto_exposure_enabled = true
-auto_exposure_scale = 0.5
-auto_exposure_speed = 1.0
-auto_exposure_max_sensitivity = 3200.0
-
-[sub_resource type="FogMaterial" id="FogMaterial_qej83"]
-density = 0.2
-albedo = Color(1, 0.376471, 0, 1)
-height_falloff = 1.0
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_6ij7b"]
-viewport_path = NodePath("LogoViewportContainer/LogoViewport")
-
-[sub_resource type="Environment" id="Environment_cigoj"]
-
-[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_sh0po"]
-
 [sub_resource type="Resource" id="Resource_rftos"]
 resource_local_to_scene = true
 script = ExtResource("3_g86do")
@@ -140,6 +133,13 @@ right_value = 0.075
 max_input = 10.0
 input_curve = 0.5
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_6ij7b"]
+viewport_path = NodePath("LogoViewportContainer/LogoViewport")
+
+[sub_resource type="Environment" id="Environment_cigoj"]
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_sh0po"]
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tw3nq"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_w7je6"]
@@ -150,6 +150,43 @@ content_margin_bottom = 10.0
 
 [node name="RaceTrack" type="Node3D"]
 
+[node name="Lighting" type="Node" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Lighting"]
+environment = ExtResource("6_qej83")
+camera_attributes = SubResource("CameraAttributesPractical_u20ab")
+script = ExtResource("12_4duja")
+
+[node name="Sun" type="DirectionalLight3D" parent="Lighting"]
+transform = Transform3D(-0.707107, -0.183013, 0.683013, 0, 0.965926, 0.258819, -0.707107, 0.183013, -0.683013, 0, 0, 0)
+light_color = Color(1, 0.691667, 0.5, 1)
+light_energy = 4.0
+shadow_enabled = true
+directional_shadow_blend_splits = true
+directional_shadow_fade_start = 0.9
+directional_shadow_max_distance = 50.0
+sky_mode = 1
+
+[node name="SunSky" type="DirectionalLight3D" parent="Lighting/Sun"]
+light_color = Color(1, 0.691667, 0.5, 1)
+light_energy = 50.0
+light_volumetric_fog_energy = 0.0
+light_angular_distance = 2.0
+light_bake_mode = 0
+sky_mode = 2
+
+[node name="FogVolumeGlobal" type="FogVolume" parent="Lighting"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 0)
+shape = 4
+material = SubResource("FogMaterial_qej83")
+
+[node name="LightmapGI" type="LightmapGI" parent="."]
+shadowmask_mode = 2
+generate_probes_subdiv = 0
+light_data = ExtResource("16_w7je6")
+
+[node name="pathtest" parent="." instance=ExtResource("1_27c0p")]
+
 [node name="CarSetter" type="Node" parent="." node_paths=PackedStringArray("car")]
 script = ExtResource("1_rftos")
 car = NodePath("../Race")
@@ -158,6 +195,18 @@ car = NodePath("../Race")
 script = ExtResource("3_opjfx")
 shadow_color = Color(1, 0.537255, 0.352941, 1)
 shadow_color_amount = 0.25
+
+[node name="CarInput" type="Node" parent="."]
+process_priority = -1000
+process_physics_priority = -1000
+script = ExtResource("1_g86do")
+enabled = false
+metadata/_custom_type_script = ExtResource("1_g86do")
+
+[node name="DemoCarInput" type="Node" parent="."]
+process_priority = -1000
+process_physics_priority = -1000
+script = ExtResource("23_ahn5o")
 
 [node name="RaceTracker" type="Node" parent="." node_paths=PackedStringArray("checkpoints_list")]
 process_priority = -1000
@@ -275,128 +324,6 @@ bus = &"UI"
 stream = ExtResource("7_wmot4")
 bus = &"UI"
 
-[node name="CarInput" type="Node" parent="."]
-process_priority = -1000
-process_physics_priority = -1000
-script = ExtResource("1_g86do")
-enabled = false
-metadata/_custom_type_script = ExtResource("1_g86do")
-
-[node name="DemoCarInput" type="Node" parent="."]
-process_priority = -1000
-process_physics_priority = -1000
-script = ExtResource("23_ahn5o")
-
-[node name="Background" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("7_f85px")
-volume_db = -24.0
-autoplay = true
-mix_target = 1
-bus = &"Background"
-
-[node name="Hurricane" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("8_f85px")
-volume_db = -80.0
-autoplay = true
-mix_target = 1
-bus = &"Background"
-script = ExtResource("9_mkv83")
-
-[node name="Lighting" type="Node" parent="."]
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="Lighting"]
-environment = ExtResource("6_qej83")
-camera_attributes = SubResource("CameraAttributesPractical_u20ab")
-script = ExtResource("12_4duja")
-
-[node name="Sun" type="DirectionalLight3D" parent="Lighting"]
-transform = Transform3D(-0.707107, -0.183013, 0.683013, 0, 0.965926, 0.258819, -0.707107, 0.183013, -0.683013, 0, 0, 0)
-light_color = Color(1, 0.691667, 0.5, 1)
-light_energy = 4.0
-shadow_enabled = true
-directional_shadow_blend_splits = true
-directional_shadow_fade_start = 0.9
-directional_shadow_max_distance = 50.0
-sky_mode = 1
-
-[node name="SunSky" type="DirectionalLight3D" parent="Lighting/Sun"]
-light_color = Color(1, 0.691667, 0.5, 1)
-light_energy = 50.0
-light_volumetric_fog_energy = 0.0
-light_angular_distance = 2.0
-light_bake_mode = 0
-sky_mode = 2
-
-[node name="FogVolumeGlobal" type="FogVolume" parent="Lighting"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 0)
-shape = 4
-material = SubResource("FogMaterial_qej83")
-
-[node name="TempFollowCameraPosition" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.39, 3.5)
-script = ExtResource("15_dj8gt")
-
-[node name="LookatCameraPosition" type="Node3D" parent="." node_paths=PackedStringArray("follow_camera_position")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.39, 0)
-script = ExtResource("16_60j73")
-follow_camera_position = NodePath("../TempFollowCameraPosition")
-
-[node name="SpringArm" type="SpringArm3D" parent="LookatCameraPosition"]
-margin = 0.1
-
-[node name="ActualFollowCameraPosition" type="Node3D" parent="LookatCameraPosition/SpringArm"]
-
-[node name="LogoViewportContainer" type="TextureRect" parent="."]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = SubResource("ViewportTexture_6ij7b")
-expand_mode = 1
-
-[node name="LogoViewport" type="SubViewport" parent="LogoViewportContainer"]
-transparent_bg = true
-size = Vector2i(1280, 720)
-render_target_update_mode = 4
-
-[node name="LogoCamera" type="Camera3D" parent="LogoViewportContainer/LogoViewport"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.39, 3.5)
-cull_mask = 524288
-environment = SubResource("Environment_cigoj")
-attributes = SubResource("CameraAttributesPractical_sh0po")
-far = 1000.0
-script = ExtResource("21_6ij7b")
-
-[node name="Camera" type="Camera3D" parent="." node_paths=PackedStringArray("follow_camera_position", "lookat_camera_position")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.39, 3.5)
-cull_mask = 524287
-doppler_tracking = 1
-far = 1000.0
-script = ExtResource("4_0kx16")
-follow_camera_position = NodePath("../LookatCameraPosition/SpringArm/ActualFollowCameraPosition")
-lookat_camera_position = NodePath("../LookatCameraPosition")
-
-[node name="ReflectionProbe" type="ReflectionProbe" parent="Camera"]
-update_mode = 1
-max_distance = 200.0
-size = Vector3(100, 100, 100)
-enable_shadows = true
-cull_mask = 1048573
-reflection_mask = 2
-
-[node name="LightmapGI" type="LightmapGI" parent="."]
-shadowmask_mode = 2
-generate_probes_subdiv = 0
-light_data = ExtResource("16_w7je6")
-
-[node name="pathtest" parent="." instance=ExtResource("1_27c0p")]
-
-[node name="Race" parent="." instance=ExtResource("2_fi1wu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
-steer_tug_curve = SubResource("Resource_rftos")
-reduced_grip_curve = SubResource("Resource_1a0jv")
-
 [node name="CheckpointView" type="SubViewport" parent="."]
 own_world_3d = true
 transparent_bg = true
@@ -428,6 +355,79 @@ text = "0/5"
 horizontal_alignment = 1
 script = ExtResource("19_52djk")
 at_checkpoint = true
+
+[node name="Background" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_f85px")
+volume_db = -24.0
+autoplay = true
+mix_target = 1
+bus = &"Background"
+
+[node name="Hurricane" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_f85px")
+volume_db = -80.0
+autoplay = true
+mix_target = 1
+bus = &"Background"
+script = ExtResource("9_mkv83")
+
+[node name="Race" parent="." instance=ExtResource("2_fi1wu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+steer_tug_curve = SubResource("Resource_rftos")
+reduced_grip_curve = SubResource("Resource_1a0jv")
+
+[node name="TempFollowCameraPosition" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.39, 3.5)
+script = ExtResource("15_dj8gt")
+
+[node name="LookatCameraPosition" type="Node3D" parent="." node_paths=PackedStringArray("follow_camera_position")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.39, 0)
+script = ExtResource("16_60j73")
+follow_camera_position = NodePath("../TempFollowCameraPosition")
+
+[node name="SpringArm" type="SpringArm3D" parent="LookatCameraPosition"]
+margin = 0.1
+
+[node name="ActualFollowCameraPosition" type="Node3D" parent="LookatCameraPosition/SpringArm"]
+
+[node name="Camera" type="Camera3D" parent="." node_paths=PackedStringArray("follow_camera_position", "lookat_camera_position")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.39, 3.5)
+cull_mask = 524287
+doppler_tracking = 1
+far = 1000.0
+script = ExtResource("4_0kx16")
+follow_camera_position = NodePath("../LookatCameraPosition/SpringArm/ActualFollowCameraPosition")
+lookat_camera_position = NodePath("../LookatCameraPosition")
+
+[node name="ReflectionProbe" type="ReflectionProbe" parent="Camera"]
+update_mode = 1
+max_distance = 200.0
+size = Vector3(100, 100, 100)
+enable_shadows = true
+cull_mask = 1048573
+reflection_mask = 2
+
+[node name="LogoViewportContainer" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("ViewportTexture_6ij7b")
+expand_mode = 1
+
+[node name="LogoViewport" type="SubViewport" parent="LogoViewportContainer"]
+transparent_bg = true
+size = Vector2i(1280, 720)
+render_target_update_mode = 4
+
+[node name="LogoCamera" type="Camera3D" parent="LogoViewportContainer/LogoViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.39, 3.5)
+cull_mask = 524288
+environment = SubResource("Environment_cigoj")
+attributes = SubResource("CameraAttributesPractical_sh0po")
+far = 1000.0
+script = ExtResource("21_6ij7b")
 
 [node name="UI" type="Control" parent="." node_paths=PackedStringArray("screens", "overlays", "windows")]
 layout_mode = 3
