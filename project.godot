@@ -11,13 +11,14 @@ config_version=5
 [application]
 
 config/name="No Downforce"
-config/version="0.6.5"
+config/version="0.6.6"
 run/main_scene="res://scenes/racetrack.tscn"
 config/features=PackedStringArray("4.4", "Forward Plus")
 boot_splash/bg_color=Color(0.05, 0.0345833, 0.025, 1)
 boot_splash/image="uid://cb15rtci1iogw"
 config/icon="uid://cqd2jbn0sxn6y"
 boot_splash/minimum_display_time=1000
+boot_splash/image.web="uid://b1dx0ca22uxcq"
 
 [autoload]
 

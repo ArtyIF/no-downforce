@@ -16,4 +16,5 @@ sparks = ExtResource("4_jlxfa")
 stream = ExtResource("5_2vaqu")
 unit_size = 5.0
 bus = &"SFX"
+playback_type = 1
 doppler_tracking = 2
