@@ -12,6 +12,8 @@ var camera: NoDownforceCamera
 var race_tracker: RaceTracker
 var settings_resource: SettingsResource
 
+@onready var using_opengl: bool = ProjectSettings.get_setting_with_override("rendering/renderer/rendering_method") == "gl_compatibility"
+
 func _ready() -> void:
 	if not FileAccess.file_exists("user://settings.tres"):
 		settings_resource = SettingsResource.new()

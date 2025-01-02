@@ -1,4 +1,4 @@
-[gd_scene load_steps=93 format=3 uid="uid://bsp1ug1544wkv"]
+[gd_scene load_steps=94 format=3 uid="uid://bsp1ug1544wkv"]
 
 [ext_resource type="PackedScene" uid="uid://ctpcgnbte0ujm" path="res://scenes/models/pathtest.blend" id="1_27c0p"]
 [ext_resource type="Script" uid="uid://tr0544b3fh36" path="res://addons/aacc/scripts/car_input.gd" id="1_g86do"]
@@ -75,6 +75,7 @@
 [ext_resource type="Script" uid="uid://eo8xitm0i6d0" path="res://scripts/ui/settings/ssr_quality_setting.gd" id="50_d7avv"]
 [ext_resource type="Script" uid="uid://dpjh575chum8l" path="res://scripts/ui/settings/upscaling_mode_setting.gd" id="52_qtpag"]
 [ext_resource type="Script" uid="uid://davqnenrgtsk5" path="res://scripts/ui/settings/fxaa_setting.gd" id="53_kdpoe"]
+[ext_resource type="Script" uid="uid://5xvequ7stgwg" path="res://scripts/ui/open_gl_warning.gd" id="62_tedy2"]
 [ext_resource type="Script" uid="uid://dpbf65jjhg418" path="res://scripts/ui/settings/burnout_particles_quality_setting.gd" id="66_cigoj"]
 [ext_resource type="Script" uid="uid://dwwomgxsspqep" path="res://scripts/ui/control_binding_dialog.gd" id="66_w7je6"]
 [ext_resource type="Script" uid="uid://dpxbr22ydxi3r" path="res://scripts/ui/settings/auto_exposure_setting.gd" id="69_ts87n"]
@@ -1437,6 +1438,14 @@ follow_focus = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+
+[node name="OpenGLWarning" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Graphics/Scroll/List"]
+visible = false
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "Due to technical limitations, some graphics settings are not available in the web version or when running in OpenGL Compatibility mode. Download the standalone version of the game or use the default Forward+ renderer if you want graphics to look nicer."
+autowrap_mode = 3
+script = ExtResource("62_tedy2")
 
 [node name="WindowMode" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Graphics/Scroll/List"]
 layout_mode = 2

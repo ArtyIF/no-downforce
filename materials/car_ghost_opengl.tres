@@ -1,4 +1,4 @@
-[gd_resource type="StandardMaterial3D" format=3 uid="uid://51ss77anqcxl"]
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://c35s63y06logj"]
 
 [resource]
 resource_name = "colormap"
@@ -12,4 +12,3 @@ metallic_specular = 0.0
 roughness = 0.75
 rim_enabled = true
 rim_tint = 0.0
-proximity_fade_enabled = true

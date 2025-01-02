@@ -9,6 +9,6 @@ specular_mode = 1
 albedo_texture = ExtResource("1_giv6g")
 metallic = 0.5
 metallic_specular = 1.0
-roughness = 0.0
+roughness = 0.05
 rim_enabled = true
 rim_tint = 0.0

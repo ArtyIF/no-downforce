@@ -6,7 +6,18 @@ func _ready() -> void:
 	select(NoDownforceGlobal.settings_resource.graphics_fog_quality)
 	on_value_changed(NoDownforceGlobal.settings_resource.graphics_fog_quality)
 
+	if NoDownforceGlobal.using_opengl:
+		set_item_disabled(1, true)
+		set_item_disabled(2, true)
+		set_item_disabled(3, true)
+		set_item_disabled(4, true)
+
 func on_value_changed(index: int):
+	if NoDownforceGlobal.using_opengl and index > 0:
+		select(0)
+		on_value_changed(0)
+		return
+
 	var env: Environment = world_env.environment
 	match index:
 		0:

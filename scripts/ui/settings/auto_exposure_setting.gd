@@ -6,7 +6,15 @@ func _ready() -> void:
 	select(NoDownforceGlobal.settings_resource.graphics_auto_exposure)
 	on_value_changed(NoDownforceGlobal.settings_resource.graphics_auto_exposure)
 
+	if NoDownforceGlobal.using_opengl:
+		set_item_disabled(1, true)
+
 func on_value_changed(index: int):
+	if NoDownforceGlobal.using_opengl and index > 0:
+		select(0)
+		on_value_changed(0)
+		return
+	
 	var env: Environment = world_env.environment
 	var attr: CameraAttributesPractical = world_env.camera_attributes
 	match index:
