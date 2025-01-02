@@ -19,10 +19,6 @@ boot_splash/image="uid://cb15rtci1iogw"
 config/icon="uid://cqd2jbn0sxn6y"
 boot_splash/minimum_display_time=1000
 
-[audio]
-
-general/default_playback_type.web=0
-
 [autoload]
 
 AACCGlobal="*res://addons/aacc/scripts/aacc_global.gd"
