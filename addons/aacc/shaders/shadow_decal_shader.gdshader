@@ -101,7 +101,7 @@ void fragment() {
 		#endif
 
 		ALBEDO = mix(vec3(1.0), shadow, vertical_blend * normal_blend);
-	
+
 		#if CURRENT_RENDERER == RENDERER_MOBILE
 			// Keep in mind that the rendering breaks for some reason when MSAA is
 			// enabled. Try using FXAA instead.
