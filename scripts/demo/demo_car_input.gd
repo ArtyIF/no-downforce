@@ -67,10 +67,15 @@ func load_demo(start_from_takeoff: bool = false, autoplay: bool = true) -> void:
 	current_time = demo.start_time if start_from_takeoff else 0.0
 
 	if not custom_car:
-		NoDownforceGlobal.ui_manager.show_screen("DemoScreen")
+		if demo.name == "":
+			NoDownforceGlobal.ui_manager.screens["DemoScreen"].get_node("TopBG/VBox/DemoName").text = demo.resource_path.get_basename().get_file()
+		else:
+			NoDownforceGlobal.ui_manager.screens["DemoScreen"].get_node("TopBG/VBox/DemoName").text = demo.name
+
 		NoDownforceGlobal.ui_manager.screens["DemoScreen"].get_node("TopBG/VBox/PositionSlider").max_value = demo.length
-		NoDownforceGlobal.playing_demo = true
+		NoDownforceGlobal.ui_manager.show_screen("DemoScreen")
 		NoDownforceGlobal.ui_manager.screens["DemoScreen"].get_node("TopBG/VBox/PlaybackButtons/Pause").grab_focus()
+		NoDownforceGlobal.playing_demo = true
 	else:
 		NoDownforceGlobal.ui_manager.show_screen("IntroScreen")
 		NoDownforceGlobal.ui_manager.screens["HUD"].get_node("Time/VBox/TargetTime").text = NoDownforceGlobal.float_to_time(demo.length - demo.start_time)

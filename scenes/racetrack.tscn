@@ -822,9 +822,9 @@ grow_horizontal = 2
 [node name="VBox" type="VBoxContainer" parent="UI/DemoScreen/TopBG"]
 layout_mode = 2
 
-[node name="DemoPlaybackHeader" type="Label" parent="UI/DemoScreen/TopBG/VBox"]
+[node name="DemoName" type="Label" parent="UI/DemoScreen/TopBG/VBox"]
 layout_mode = 2
-text = "Demo Playback"
+text = "Demo Name"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -1051,7 +1051,7 @@ script = ExtResource("23_suohj")
 auto_translate_mode = 1
 title = "Load Demo"
 initial_position = 2
-size = Vector2i(435, 600)
+size = Vector2i(400, 600)
 visible = false
 wrap_controls = true
 transient = true
@@ -1142,11 +1142,6 @@ text = "No user demos found in demos folder"
 layout_mode = 2
 size_flags_horizontal = 4
 alignment = 1
-
-[node name="ManageButton" type="Button" parent="UI/DemoDialog/BG/VBox/BottomButtons"]
-layout_mode = 2
-size_flags_horizontal = 4
-text = "Manage..."
 
 [node name="FileDialogButton" type="Button" parent="UI/DemoDialog/BG/VBox/BottomButtons"]
 layout_mode = 2
