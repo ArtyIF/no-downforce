@@ -5,9 +5,27 @@ class_name DemoCarInput extends Node
 var current_time: float = 0.0
 var playback_speed: float = 1.0
 @onready var _car: Car = custom_car if custom_car else AACCGlobal.current_car
+var changing_time: bool = false
+
+func position_slider_start_drag():
+	changing_time = true
+
+func position_slider_value_change(value: float):
+	if changing_time:
+		current_time = value
+		NoDownforceGlobal.ui_manager.play_value_change_sound()
+
+func position_slider_stop_drag(_value_changed: float):
+	changing_time = false
 
 func _ready() -> void:
 	NoDownforceGlobal.demo_car_input = self
+	
+	await get_tree().process_frame
+	NoDownforceGlobal.ui_manager.screens["DemoScreen"].get_node("TopBG/VBox/PositionSlider").drag_started.connect(position_slider_start_drag)
+	NoDownforceGlobal.ui_manager.screens["DemoScreen"].get_node("TopBG/VBox/PositionSlider").value_changed.disconnect($"/root/UISoundAutoload".play_value_change_sound)
+	NoDownforceGlobal.ui_manager.screens["DemoScreen"].get_node("TopBG/VBox/PositionSlider").value_changed.connect(position_slider_value_change)
+	NoDownforceGlobal.ui_manager.screens["DemoScreen"].get_node("TopBG/VBox/PositionSlider").drag_ended.connect(position_slider_stop_drag)
 
 func load_demo(start_from_takeoff: bool = false, autoplay: bool = true) -> void:
 	NoDownforceGlobal.ui_manager.screens["DemoScreen"].get_node("TopBG/VBox/SpeedHBox/Speed").select(2)
@@ -35,6 +53,7 @@ func load_demo(start_from_takeoff: bool = false, autoplay: bool = true) -> void:
 
 	if not custom_car:
 		NoDownforceGlobal.ui_manager.show_screen("DemoScreen")
+		NoDownforceGlobal.ui_manager.screens["DemoScreen"].get_node("TopBG/VBox/PositionSlider").max_value = demo.length
 		NoDownforceGlobal.playing_demo = true
 	else:
 		NoDownforceGlobal.ui_manager.show_screen("IntroScreen")
@@ -56,10 +75,13 @@ func _physics_process(delta: float) -> void:
 	if current_time >= demo.length:
 		playback_speed = 0.0
 		_car.freeze = true
+		var frame: DemoFrame = demo.get_frame_at(current_time)
 		_car.input_forward = 0.0
 		_car.input_backward = 0.0
 		_car.input_steer = 0.0
 		_car.input_handbrake = 0.0
+		_car.global_position = frame.position
+		_car.global_rotation = frame.rotation
 		_car.linear_velocity = Vector3.ZERO
 		_car.angular_velocity = Vector3.ZERO
 	elif current_time >= 0.0:
@@ -100,8 +122,14 @@ func _physics_process(delta: float) -> void:
 		if NoDownforceGlobal.ui_manager.screens["DemoScreen"].get_node("TopBG/VBox/Pause").button_pressed:
 			playback_speed = 0.0
 	
+	if changing_time:
+		playback_speed = 0.0
+	
+	NoDownforceGlobal.ui_manager.screens["DemoScreen"].get_node("TopBG/VBox/PositionText").text = NoDownforceGlobal.float_to_time(current_time) + " / " + NoDownforceGlobal.float_to_time(demo.length) 
+	
 	if playback_speed == 0.0:
 		_car.freeze = true
-
-	current_time += delta * playback_speed
-	current_time = clamp(current_time, 0.0, demo.length)
+	else:
+		NoDownforceGlobal.ui_manager.screens["DemoScreen"].get_node("TopBG/VBox/PositionSlider").value = current_time
+		current_time += delta * playback_speed
+		current_time = clamp(current_time, 0.0, demo.length)
