@@ -26,11 +26,26 @@ func _ready() -> void:
 	NoDownforceGlobal.ui_manager.screens["DemoScreen"].get_node("TopBG/VBox/PositionSlider").value_changed.disconnect($"/root/UISoundAutoload".play_value_change_sound)
 	NoDownforceGlobal.ui_manager.screens["DemoScreen"].get_node("TopBG/VBox/PositionSlider").value_changed.connect(position_slider_value_change)
 	NoDownforceGlobal.ui_manager.screens["DemoScreen"].get_node("TopBG/VBox/PositionSlider").drag_ended.connect(position_slider_stop_drag)
+	
+	NoDownforceGlobal.ui_manager.screens["DemoScreen"].get_node("TopBG/VBox/PlaybackButtons/GoBack").pressed.disconnect($"/root/UISoundAutoload".play_click_sound)
+	NoDownforceGlobal.ui_manager.screens["DemoScreen"].get_node("TopBG/VBox/PlaybackButtons/GoForward").pressed.disconnect($"/root/UISoundAutoload".play_click_sound)
+	NoDownforceGlobal.ui_manager.screens["DemoScreen"].get_node("TopBG/VBox/PlaybackButtons/GoBack").pressed.connect(go_back)
+	NoDownforceGlobal.ui_manager.screens["DemoScreen"].get_node("TopBG/VBox/PlaybackButtons/GoForward").pressed.connect(go_forward)
+
+func go_back():
+	current_time -= 1.0
+	NoDownforceGlobal.ui_manager.screens["DemoScreen"].get_node("TopBG/VBox/PositionSlider").value = current_time
+	NoDownforceGlobal.ui_manager.play_value_change_sound()
+
+func go_forward():
+	current_time += 1.0
+	NoDownforceGlobal.ui_manager.screens["DemoScreen"].get_node("TopBG/VBox/PositionSlider").value = current_time
+	NoDownforceGlobal.ui_manager.play_value_change_sound()
 
 func load_demo(start_from_takeoff: bool = false, autoplay: bool = true) -> void:
 	NoDownforceGlobal.ui_manager.screens["DemoScreen"].get_node("TopBG/VBox/SpeedHBox/Speed").select(2)
 	NoDownforceGlobal.ui_manager.screens["DemoScreen"].get_node("TopBG/VBox/Rewind").button_pressed = false
-	NoDownforceGlobal.ui_manager.screens["DemoScreen"].get_node("TopBG/VBox/Pause").button_pressed = false
+	NoDownforceGlobal.ui_manager.screens["DemoScreen"].get_node("TopBG/VBox/PlaybackButtons/Pause").button_pressed = false
 	AACCGlobal.current_car.freeze = false
 
 	NoDownforceGlobal.ui_manager.screens["HUD"].get_node("Time/VBox/TargetTime").visible = false
@@ -55,6 +70,7 @@ func load_demo(start_from_takeoff: bool = false, autoplay: bool = true) -> void:
 		NoDownforceGlobal.ui_manager.show_screen("DemoScreen")
 		NoDownforceGlobal.ui_manager.screens["DemoScreen"].get_node("TopBG/VBox/PositionSlider").max_value = demo.length
 		NoDownforceGlobal.playing_demo = true
+		NoDownforceGlobal.ui_manager.screens["DemoScreen"].get_node("TopBG/VBox/PlaybackButtons/Pause").grab_focus()
 	else:
 		NoDownforceGlobal.ui_manager.show_screen("IntroScreen")
 		NoDownforceGlobal.ui_manager.screens["HUD"].get_node("Time/VBox/TargetTime").text = NoDownforceGlobal.float_to_time(demo.length - demo.start_time)
@@ -119,7 +135,7 @@ func _physics_process(delta: float) -> void:
 			8:
 				playback_speed = 10.0
 		playback_speed *= -1.0 if NoDownforceGlobal.ui_manager.screens["DemoScreen"].get_node("TopBG/VBox/Rewind").button_pressed else 1.0
-		if NoDownforceGlobal.ui_manager.screens["DemoScreen"].get_node("TopBG/VBox/Pause").button_pressed:
+		if NoDownforceGlobal.ui_manager.screens["DemoScreen"].get_node("TopBG/VBox/PlaybackButtons/Pause").button_pressed:
 			playback_speed = 0.0
 	
 	if changing_time:

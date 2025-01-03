@@ -8,3 +8,5 @@ func _process(_delta: float) -> void:
 		if get_tree().paused:
 			$BG/HBox/ResumeButton.call_deferred("grab_focus")
 			$BG/HBox/ResetButton.disabled = NoDownforceGlobal.playing_demo
+		elif NoDownforceGlobal.playing_demo:
+			NoDownforceGlobal.ui_manager.screens["DemoScreen"].get_node("TopBG/VBox/PlaybackButtons/Pause").grab_focus()
