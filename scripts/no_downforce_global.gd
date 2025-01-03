@@ -42,7 +42,6 @@ func reset_race(checkpoints_list: Array[Node3D]):
 		checkpoint.visible = false
 
 	checkpoints_list[0].set_deferred("process_mode", Node.PROCESS_MODE_INHERIT)
-	checkpoints_list[0].visible = true
 
 	checkpoints_passed = 0
 	time_passed = 0.0

@@ -217,6 +217,7 @@ checkpoints_list = [NodePath("Checkpoint1"), NodePath("Checkpoint2"), NodePath("
 [node name="Checkpoint1" type="Area3D" parent="RaceTracker" node_paths=PackedStringArray("next")]
 physics_interpolation_mode = 2
 transform = Transform3D(0.669131, 0, -0.743145, 0, 1, 0, 0.743145, 0, 0.669131, 40, 10, -90)
+visible = false
 collision_mask = 2
 script = ExtResource("11_6v6se")
 next = NodePath("../Checkpoint2")
@@ -431,7 +432,7 @@ attributes = SubResource("CameraAttributesPractical_sh0po")
 far = 1000.0
 script = ExtResource("21_6ij7b")
 
-[node name="UI" type="Control" parent="." node_paths=PackedStringArray("screens", "overlays", "windows")]
+[node name="UI" type="Control" parent="." node_paths=PackedStringArray("screens", "windows")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -440,13 +441,11 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("18_ocxmh")
 screens = {
+"DemoScreen": NodePath("DemoScreen"),
 "HUD": NodePath("HUD"),
 "IntroScreen": NodePath("IntroScreen"),
 "MainMenu": NodePath("MainMenu"),
 "OutroScreen": NodePath("OutroScreen")
-}
-overlays = {
-"DemoOverlay": NodePath("DemoOverlay")
 }
 windows = {
 "ControlBindingDialog": NodePath("SettingsDialog/ControlBindingDialog"),
@@ -803,7 +802,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 text = "Save"
 
-[node name="DemoOverlay" type="Control" parent="UI"]
+[node name="DemoScreen" type="Control" parent="UI"]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -813,38 +812,90 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 
-[node name="TopBG" type="PanelContainer" parent="UI/DemoOverlay"]
+[node name="TopBG" type="PanelContainer" parent="UI/DemoScreen"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
 anchor_right = 0.5
 grow_horizontal = 2
 
-[node name="VBox" type="VBoxContainer" parent="UI/DemoOverlay/TopBG"]
+[node name="VBox" type="VBoxContainer" parent="UI/DemoScreen/TopBG"]
 layout_mode = 2
 
-[node name="DemoPlayback" type="Label" parent="UI/DemoOverlay/TopBG/VBox"]
+[node name="DemoPlaybackHeader" type="Label" parent="UI/DemoScreen/TopBG/VBox"]
 layout_mode = 2
-text = "Demo Playback
-TODO: better controls"
+text = "Demo Playback"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ControlsBG" type="PanelContainer" parent="UI/DemoOverlay"]
+[node name="PositionText" type="Label" parent="UI/DemoScreen/TopBG/VBox"]
+layout_mode = 2
+theme_type_variation = &"MatrixSmallLabel"
+text = "0:00.000 / 1:00.000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PositionSlider" type="HSlider" parent="UI/DemoScreen/TopBG/VBox"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+max_value = 60.0
+value = 30.0
+
+[node name="Pause" type="Button" parent="UI/DemoScreen/TopBG/VBox"]
+layout_mode = 2
+toggle_mode = true
+text = "Pause"
+
+[node name="SpeedHBox" type="HBoxContainer" parent="UI/DemoScreen/TopBG/VBox"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI/DemoScreen/TopBG/VBox/SpeedHBox"]
+layout_mode = 2
+text = "Speed"
+
+[node name="Speed" type="OptionButton" parent="UI/DemoScreen/TopBG/VBox/SpeedHBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+selected = 2
+item_count = 9
+popup/item_0/text = "0.25x"
+popup/item_0/id = 0
+popup/item_1/text = "0.5x"
+popup/item_1/id = 1
+popup/item_2/text = "1x"
+popup/item_2/id = 2
+popup/item_3/text = "1.5x"
+popup/item_3/id = 3
+popup/item_4/text = "2x"
+popup/item_4/id = 4
+popup/item_5/text = "3x"
+popup/item_5/id = 5
+popup/item_6/text = "4x"
+popup/item_6/id = 6
+popup/item_7/text = "5x"
+popup/item_7/id = 7
+popup/item_8/text = "10x"
+popup/item_8/id = 8
+
+[node name="Rewind" type="CheckBox" parent="UI/DemoScreen/TopBG/VBox"]
+layout_mode = 2
+text = "Rewind"
+
+[node name="ControlsBG" type="PanelContainer" parent="UI/DemoScreen"]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 1.0
 anchor_bottom = 1.0
 grow_vertical = 0
 
-[node name="VBox" type="VBoxContainer" parent="UI/DemoOverlay/ControlsBG"]
+[node name="VBox" type="VBoxContainer" parent="UI/DemoScreen/ControlsBG"]
 layout_mode = 2
 
-[node name="ForwardLabel" type="Label" parent="UI/DemoOverlay/ControlsBG/VBox"]
+[node name="ForwardLabel" type="Label" parent="UI/DemoScreen/ControlsBG/VBox"]
 layout_mode = 2
 text = "Accelerate"
 
-[node name="ForwardBar" type="ProgressBar" parent="UI/DemoOverlay/ControlsBG/VBox"]
+[node name="ForwardBar" type="ProgressBar" parent="UI/DemoScreen/ControlsBG/VBox"]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 max_value = 1.0
@@ -853,11 +904,11 @@ value = 0.5
 show_percentage = false
 script = ExtResource("34_vqu6m")
 
-[node name="BackwardLabel" type="Label" parent="UI/DemoOverlay/ControlsBG/VBox"]
+[node name="BackwardLabel" type="Label" parent="UI/DemoScreen/ControlsBG/VBox"]
 layout_mode = 2
 text = "Brake/Reverse"
 
-[node name="BackwardBar" type="ProgressBar" parent="UI/DemoOverlay/ControlsBG/VBox"]
+[node name="BackwardBar" type="ProgressBar" parent="UI/DemoScreen/ControlsBG/VBox"]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 max_value = 1.0
@@ -866,15 +917,15 @@ value = 0.5
 show_percentage = false
 script = ExtResource("35_usg5d")
 
-[node name="SteerLabel" type="Label" parent="UI/DemoOverlay/ControlsBG/VBox"]
+[node name="SteerLabel" type="Label" parent="UI/DemoScreen/ControlsBG/VBox"]
 layout_mode = 2
 text = "Steer"
 
-[node name="SteerBars" type="HBoxContainer" parent="UI/DemoOverlay/ControlsBG/VBox"]
+[node name="SteerBars" type="HBoxContainer" parent="UI/DemoScreen/ControlsBG/VBox"]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="SteerBarLeft" type="ProgressBar" parent="UI/DemoOverlay/ControlsBG/VBox/SteerBars"]
+[node name="SteerBarLeft" type="ProgressBar" parent="UI/DemoScreen/ControlsBG/VBox/SteerBars"]
 custom_minimum_size = Vector2(75, 0)
 layout_mode = 2
 max_value = 1.0
@@ -884,7 +935,7 @@ fill_mode = 1
 show_percentage = false
 script = ExtResource("36_usg5d")
 
-[node name="SteerBarRight" type="ProgressBar" parent="UI/DemoOverlay/ControlsBG/VBox/SteerBars"]
+[node name="SteerBarRight" type="ProgressBar" parent="UI/DemoScreen/ControlsBG/VBox/SteerBars"]
 custom_minimum_size = Vector2(75, 0)
 layout_mode = 2
 max_value = 1.0
@@ -893,11 +944,11 @@ value = 0.5
 show_percentage = false
 script = ExtResource("37_uqxp6")
 
-[node name="HandbrakeLabel" type="Label" parent="UI/DemoOverlay/ControlsBG/VBox"]
+[node name="HandbrakeLabel" type="Label" parent="UI/DemoScreen/ControlsBG/VBox"]
 layout_mode = 2
 text = "Handbrake"
 
-[node name="HandbrakeBar" type="ProgressBar" parent="UI/DemoOverlay/ControlsBG/VBox"]
+[node name="HandbrakeBar" type="ProgressBar" parent="UI/DemoScreen/ControlsBG/VBox"]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 max_value = 1.0
