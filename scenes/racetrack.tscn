@@ -987,7 +987,7 @@ script = ExtResource("23_suohj")
 auto_translate_mode = 1
 title = "Load Demo"
 initial_position = 2
-size = Vector2i(400, 600)
+size = Vector2i(435, 600)
 visible = false
 wrap_controls = true
 transient = true
@@ -1032,7 +1032,6 @@ theme_override_styles/panel = SubResource("StyleBoxEmpty_tw3nq")
 
 [node name="Button" type="Button" parent="UI/DemoDialog/BG/VBox/Scroll/List/ButtonTemplate"]
 layout_mode = 2
-alignment = 0
 
 [node name="Contents" type="PanelContainer" parent="UI/DemoDialog/BG/VBox/Scroll/List/ButtonTemplate"]
 layout_mode = 2
@@ -1079,6 +1078,11 @@ text = "No user demos found in demos folder"
 layout_mode = 2
 size_flags_horizontal = 4
 alignment = 1
+
+[node name="ManageButton" type="Button" parent="UI/DemoDialog/BG/VBox/BottomButtons"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Manage..."
 
 [node name="FileDialogButton" type="Button" parent="UI/DemoDialog/BG/VBox/BottomButtons"]
 layout_mode = 2

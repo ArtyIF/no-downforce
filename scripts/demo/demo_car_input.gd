@@ -4,6 +4,7 @@ class_name DemoCarInput extends Node
 
 var current_time: float = 0.0
 var playing: bool = false
+@export var playback_speed: float = 1.0
 @onready var _car: Car = custom_car if custom_car else AACCGlobal.current_car
 
 func _ready() -> void:
@@ -78,6 +79,6 @@ func _physics_process(delta: float) -> void:
 	if playing:
 		if custom_car:
 			_car.freeze = false
-		current_time += delta
+		current_time += delta * playback_speed
 	elif custom_car:
 		_car.freeze = true
