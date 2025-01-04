@@ -8,76 +8,76 @@ var copyright_info: Dictionary[String, Array] = {
 		{
 			"name": "Chrysler LHS tire squeal 04 (04-25-2009).wav",
 			"source": "https://freesound.org/s/71739/",
-			"copyright": ["2009 audible-edge"],
+			"copyright": ["2009, audible-edge"],
 			"license": "CC0-1.0",
 			"changes_made": "Trimmed and looped, EQd to remove engine noise, converted to OGG",
 		},
 		{
 			"name": "Collision 1",
 			"source": "https://freesound.org/s/446126/",
-			"copyright": ["2018 JustInvoke"],
+			"copyright": ["2018, JustInvoke"],
 			"license": "CC-BY-4.0",
 			"changes_made": "Converted to OGG",
 		},
 		{
 			"name": "Collision 2",
 			"source": "https://freesound.org/s/446125/",
-			"copyright": ["2018 JustInvoke"],
+			"copyright": ["2018, JustInvoke"],
 			"license": "CC-BY-4.0",
 			"changes_made": "Converted to OGG",
 		},
 		{
 			"name": "Collision 3",
 			"source": "https://freesound.org/s/446132/",
-			"copyright": ["2018 JustInvoke"],
+			"copyright": ["2018, JustInvoke"],
 			"license": "CC-BY-4.0",
 			"changes_made": "Converted to OGG",
 		},
 		{
 			"name": "Car Land/Hit",
 			"source": "https://freesound.org/s/446135/",
-			"copyright": ["2018 JustInvoke"],
+			"copyright": ["2018, JustInvoke"],
 			"license": "CC-BY-4.0",
 			"changes_made": "Converted to OGG",
 		},
 		{
 			"name": "metal plate scratch",
 			"source": "https://freesound.org/s/707639/",
-			"copyright": ["2023 Ridderick"],
+			"copyright": ["2023, Ridderick"],
 			"license": "CC0-1.0",
 			"changes_made": "Trimmed and looped, converted to OGG",
 		},
 		{
 			"name": "Hurricane Ophelia - Youghal, Co. Cork, Ireland - 16th October 2017 (2)",
 			"source": "https://freesound.org/s/404946/",
-			"copyright": ["2017 midaza.com"],
+			"copyright": ["2017, midaza.com"],
 			"license": "CC-BY-4.0",
 			"changes_made": "Trimmed and looped, converted to OGG",
 		},
 		{
 			"name": "Car Brakes sqeak screech squeal stop.wav",
 			"source": "https://freesound.org/s/456764/",
-			"copyright": ["2019 WavJunction.com"],
+			"copyright": ["2019, WavJunction.com"],
 			"license": "CC0-1.0",
 			"changes_made": "Trimmed and looped, converted to OGG",
 		},
 		{
 			"name": "Universal UI/Menu Soundpack",
 			"source": "https://cyrex-studios.itch.io/universal-ui-soundpack",
-			"copyright": ["2021-2024 Cyrex Studios"],
+			"copyright": ["2021-2024, Cyrex Studios"],
 			"license": "CC-BY-4.0",
 			"changes_made": "Trimmed",
 		},
 		{
 			"name": "Interface SFX Pack 1",
 			"source": "https://obsydianx.itch.io/interface-sfx-pack-1",
-			"copyright": ["2016-2023 ObsydianX"],
+			"copyright": ["2016-2023, ObsydianX"],
 			"license": "CC0-1.0",
 		},
 		{
 			"name": ".esc files used to generate engine files with enginesound",
 			"source": "https://github.com/DasEtwas/enginesound",
-			"copyright": ["2019-2023 DasEtwas"],
+			"copyright": ["2019-2023, DasEtwas"],
 			"license": "MIT/Expat",
 		},
 	],
@@ -85,21 +85,28 @@ var copyright_info: Dictionary[String, Array] = {
 		{
 			"name": "WispySmoke01",
 			"source": "https://unity.com/blog/engine-platform/free-vfx-image-sequences-flipbooks",
-			"copyright": ["2016 Unity Labs Paris"],
+			"copyright": ["2016, Unity Labs Paris"],
 			"license": "CC0-1.0",
 		},
+		{
+			"name": "Godot Engine Logo",
+			"source": "https://godotengine.org/press/",
+			"copyright": ["2017, Andrea Calabró"],
+			"license": "CC-BY-4.0",
+			"changes_made": "Recolored, added \"Made with\"",
+		}
 	],
 	"Fonts": [
 		{
 			"name": "MatrixType",
 			"source": "https://ggbot.itch.io/matrixtype-font-family",
-			"copyright": ["2024 GGBotNet"],
+			"copyright": ["2024, GGBotNet"],
 			"license": "CC0-1.0",
 		},
 		{
 			"name": "Qaz",
 			"source": "https://ggbot.itch.io/qaz-font",
-			"copyright": ["2022-2024 GGBotNet"],
+			"copyright": ["2022-2024, GGBotNet"],
 			"license": "OFL-1.1",
 		},
 	],
@@ -107,7 +114,7 @@ var copyright_info: Dictionary[String, Array] = {
 		{
 			"name": "Car Kit",
 			"source": "https://kenney.nl/assets/car-kit",
-			"copyright": ["2022-2024 Kenney"],
+			"copyright": ["2022-2024, Kenney"],
 			"license": "CC0-1.0",
 		},
 	],
@@ -115,13 +122,13 @@ var copyright_info: Dictionary[String, Array] = {
 		{
 			"name": "Arty's Arcadey Car Controller",
 			"source": "https://github.com/ArtyIF/aacc",
-			"copyright": ["2024-2025 ArtyIF"],
+			"copyright": ["2024-2025, ArtyIF"],
 			"license": "MIT/Expat",
 		},
 		{
 			"name": "Trail Renderer",
 			"source": "https://github.com/Hyrdaboo/TrailRenderer",
-			"copyright": ["2024 Hydraboo"],
+			"copyright": ["2024, Hydraboo"],
 			"license": "MIT/Expat",
 		},
 	],
@@ -172,9 +179,8 @@ func convert_copyright_dict_to_string(copyright: Dictionary) -> String:
 		if copyright.has("license"):
 			result += "\n\t[color=#ff6000]License[/color] [url]%s[/url]" % copyright["license"]
 		if copyright.has("changes_made"):
-			result += "\n\t[color=#ff6000]Changes made[/color] [url]%s[/url]\n" % copyright["changes_made"]
-		else:
-			result += "\n"
+			result += "\n\t[color=#ff6000]Changes made[/color] %s" % copyright["changes_made"]
+		result += "\n"
 
 	return result
 
