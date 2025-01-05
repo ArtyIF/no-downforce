@@ -32,7 +32,7 @@ func _physics_process(delta: float) -> void:
 		_up_direction = target_up_direction
 	_plane = Plane(_up_direction)
 
-	var target_offset_amount: float = (_car.linear_velocity.length() - 0.25) / 100.0
+	var target_offset_amount: float = (_car.linear_velocity.length() - 0.25) / _car.top_speed_forward
 	_offset_amount = lerp(_offset_amount, target_offset_amount, 4.0 * delta)
 	var offset: Vector3 = _offset_node_min.position.lerp(_offset_node_max.position, _offset_amount)
 

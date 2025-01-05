@@ -1,9 +1,10 @@
-[gd_scene load_steps=94 format=3 uid="uid://bsp1ug1544wkv"]
+[gd_scene load_steps=96 format=3 uid="uid://bsp1ug1544wkv"]
 
 [ext_resource type="PackedScene" uid="uid://ctpcgnbte0ujm" path="res://scenes/models/pathtest.blend" id="1_27c0p"]
 [ext_resource type="Script" uid="uid://tr0544b3fh36" path="res://addons/aacc/scripts/car_input.gd" id="1_g86do"]
 [ext_resource type="Script" uid="uid://bscgy4yukr3na" path="res://scripts/race/car_setter.gd" id="1_rftos"]
 [ext_resource type="PackedScene" uid="uid://7qj1vlu41qpm" path="res://scenes/cars/race.tscn" id="2_fi1wu"]
+[ext_resource type="Script" uid="uid://cwo76t84hod0r" path="res://scripts/scene/opengl_sun.gd" id="3_03d3b"]
 [ext_resource type="Script" uid="uid://crrd7ugev6afh" path="res://addons/aacc/scripts/helper_classes/procedural_curve.gd" id="3_g86do"]
 [ext_resource type="Script" uid="uid://ddq1hbwwr3v26" path="res://scripts/shadow_color_setter.gd" id="3_opjfx"]
 [ext_resource type="Script" uid="uid://k4svdp3krbho" path="res://scripts/scene/camera.gd" id="4_0kx16"]
@@ -133,6 +134,8 @@ right_value = 0.075
 max_input = 10.0
 input_curve = 0.5
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_tedy2"]
+
 [sub_resource type="ViewportTexture" id="ViewportTexture_6ij7b"]
 viewport_path = NodePath("LogoViewportContainer/LogoViewport")
 
@@ -166,6 +169,7 @@ directional_shadow_blend_splits = true
 directional_shadow_fade_start = 0.9
 directional_shadow_max_distance = 50.0
 sky_mode = 1
+script = ExtResource("3_03d3b")
 
 [node name="SunSky" type="DirectionalLight3D" parent="Lighting/Sun"]
 light_color = Color(1, 0.691667, 0.5, 1)
@@ -389,6 +393,7 @@ script = ExtResource("16_60j73")
 follow_camera_position = NodePath("../TempFollowCameraPosition")
 
 [node name="SpringArm" type="SpringArm3D" parent="LookatCameraPosition"]
+shape = SubResource("SphereShape3D_tedy2")
 margin = 0.1
 
 [node name="ActualFollowCameraPosition" type="Node3D" parent="LookatCameraPosition/SpringArm"]

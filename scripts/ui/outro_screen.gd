@@ -31,3 +31,4 @@ func on_save() -> void:
 	NoDownforceGlobal.race_tracker.demo.save()
 	NoDownforceGlobal.race_tracker.reset(true)
 	NoDownforceGlobal.ui_manager.show_screen("MainMenu")
+	NoDownforceGlobal.ui_manager.screens["MainMenu"].get_node("BG/HBox/RaceButton").call_deferred("grab_focus")
