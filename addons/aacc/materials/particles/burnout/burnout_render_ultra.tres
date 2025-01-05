@@ -1,6 +1,7 @@
-[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://sst7u2r5wcnx"]
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://sst7u2r5wcnx"]
 
 [ext_resource type="Texture2D" uid="uid://dcfh0h4h0tw74" path="res://addons/aacc/textures/WispySmoke01_8x8.tga" id="1_cjtm3"]
+[ext_resource type="Texture2D" uid="uid://hu14dbeblrqd" path="res://addons/aacc/textures/WispySmoke01_8x8_n.png" id="2_qmm62"]
 
 [resource]
 transparency = 4
@@ -8,6 +9,9 @@ diffuse_mode = 2
 specular_mode = 2
 vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("1_cjtm3")
+normal_enabled = true
+normal_scale = 2.0
+normal_texture = ExtResource("2_qmm62")
 billboard_mode = 3
 billboard_keep_scale = true
 particles_anim_h_frames = 8
