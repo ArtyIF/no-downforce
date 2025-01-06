@@ -4,8 +4,14 @@ func _ready() -> void:
 	item_selected.connect(on_value_changed)
 	select(NoDownforceGlobal.settings_resource.graphics_vsync)
 	on_value_changed(NoDownforceGlobal.settings_resource.graphics_vsync)
+	
+	if OS.has_feature("web"):
+		get_parent().visible = false
 
 func on_value_changed(index: int):
+	if OS.has_feature("web"):
+		return
+
 	match index:
 		0:
 			DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)

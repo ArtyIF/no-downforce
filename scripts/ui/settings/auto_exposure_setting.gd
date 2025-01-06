@@ -8,6 +8,7 @@ func _ready() -> void:
 
 	if NoDownforceGlobal.using_opengl:
 		set_item_disabled(1, true)
+		get_parent().visible = false
 
 func on_value_changed(index: int):
 	if NoDownforceGlobal.using_opengl and index > 0:
