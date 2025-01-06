@@ -1,4 +1,4 @@
-extends ScrollContainer
+extends RichTextLabel
 
 var scroll_amount: float = 0.0
 var pause_for: float = 0.0
@@ -118,6 +118,15 @@ var copyright_info: Dictionary[String, Array] = {
 			"license": "CC0-1.0",
 		},
 	],
+	"Shaders": [
+		{
+			"name": "Decal Example",
+			"source": "https://godotshaders.com/shader/decal-example/",
+			"copyright": ["2021, TwistedTwigleg"],
+			"license": "MIT/Expat",
+			"changes_made": "Added support for modern Godot versions and Compatibility renderer, transparency, vertical and normal blending, coloring, blurring the texture depending on distance",
+		},
+	],
 	"Code": [
 		{
 			"name": "Arty's Arcadey Car Controller",
@@ -184,45 +193,50 @@ func convert_copyright_dict_to_string(copyright: Dictionary) -> String:
 
 	return result
 
-@onready var _text: String = $VBox/CreditsLabel.text
+@onready var _text: String = text
 
-func append_text(text: String):
-	$VBox/CreditsLabel.append_text(text)
-	_text += text
+func append_and_save_text(new_text: String):
+	append_text(new_text)
+	_text += new_text
 
 func _ready() -> void:
 	gui_input.connect(on_gui_input)
-	$VBox/CreditsLabel.meta_clicked.connect(on_meta_clicked)
+	get_v_scroll_bar().gui_input.connect(on_gui_input)
+	meta_clicked.connect(on_meta_clicked)
 	
-	append_text("\n[color=#ff6000]Third-party assets[/color]")
-	append_text(convert_copyright_info_to_string().indent("\t"))
+	append_and_save_text("\n[color=#ff6000]Third-party assets[/color]")
+	append_and_save_text(convert_copyright_info_to_string().indent("\t"))
 	
-	append_text("\n[color=#ff6000]Engine and its third-party libraries[/color]")
+	append_and_save_text("\n[color=#ff6000]Engine and its third-party libraries[/color]")
 	var engine_copyright_info: Array[Dictionary] = Engine.get_copyright_info()
 	var license_info: Dictionary = Engine.get_license_info()
 	for library in engine_copyright_info:
-		append_text(convert_copyright_dict_to_string(library).indent("\t"))
+		append_and_save_text(convert_copyright_dict_to_string(library).indent("\t"))
 	
-	append_text("\n[color=#ff6000]Licenses[/color]")
+	append_and_save_text("\n[color=#ff6000]Licenses[/color]")
 	for license in license_info.keys():
-		append_text("\n\t[color=#ff6000]%s[/color]\n" % license)
-		license_scroll_lines[license] = _text.get_slice_count("\n") - 2
-		append_text(license_info[license].indent("\t\t"))
+		append_and_save_text("\n\t[color=#ff6000]%s[/color]\n" % license)
+		license_scroll_lines[license] = _text.get_slice_count("\n") - 1
+		append_and_save_text(license_info[license].indent("\t\t"))
+
+	append_and_save_text("\n".repeat(28))
 
 func _process(delta: float) -> void:
 	if is_visible_in_tree():
 		if pause_for <= 0.0:
 			scroll_amount += delta * 40.0
 		else:
-			scroll_amount = scroll_vertical
+			scroll_amount = get_v_scroll_bar().value
 			pause_for -= delta
 	else:
-		scroll_amount = 0
-	scroll_vertical = int(scroll_amount)
+		scroll_amount = 0.0
+		pause_for = 0.0
+	get_v_scroll_bar().value = scroll_amount
 
 func on_gui_input(event: InputEvent):
 	if event is not InputEventMouseMotion:
 		pause_for = 1.0
+		$"/root/UISoundAutoload".on_gui_input(event)
 
 func on_meta_clicked(meta):
 	if meta.begins_with("http"):
@@ -231,4 +245,4 @@ func on_meta_clicked(meta):
 		if meta == "MIT/Expat":
 			meta = "Expat"
 		if license_scroll_lines.has(meta):
-			scroll_vertical = 535 + int($VBox/CreditsLabel.get_line_offset(license_scroll_lines[meta]))
+			scroll_to_line(license_scroll_lines[meta])

@@ -356,7 +356,7 @@ layout_mode = 2
 theme_type_variation = &"MatrixLargeLabel"
 theme_override_constants/outline_size = 15
 theme_override_font_sizes/font_size = 90
-text = "0/5"
+text = "012345/FINISH"
 horizontal_alignment = 1
 script = ExtResource("19_52djk")
 at_checkpoint = true
@@ -1181,48 +1181,52 @@ dialog_text = "Error text goes here"
 title = "Credits"
 initial_position = 2
 size = Vector2i(800, 600)
+wrap_controls = false
+min_size = Vector2i(800, 600)
 ok_button_text = "Close"
 
-[node name="Scroll" type="ScrollContainer" parent="UI/CreditsDialog"]
+[node name="CreditsLabel" type="RichTextLabel" parent="UI/CreditsDialog"]
 offset_left = 10.0
 offset_top = 10.0
 offset_right = 790.0
 offset_bottom = 541.0
-horizontal_scroll_mode = 0
-vertical_scroll_mode = 3
-script = ExtResource("27_ht4hr")
-
-[node name="VBox" type="VBoxContainer" parent="UI/CreditsDialog/Scroll"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="PaddingBefore" type="Control" parent="UI/CreditsDialog/Scroll/VBox"]
-custom_minimum_size = Vector2(0, 530)
-layout_mode = 2
-mouse_filter = 2
-
-[node name="CreditsLabel" type="RichTextLabel" parent="UI/CreditsDialog/Scroll/VBox"]
-layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 1
 bbcode_enabled = true
-text = "[color=#ff6000]Coding, level design, idea, director etc.[/color]
+text = "
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[color=#ff6000]Coding, level design, idea, director etc.[/color]
 	ArtyIF
 "
-fit_content = true
-scroll_active = false
 threaded = true
-
-[node name="PaddingAfter" type="Control" parent="UI/CreditsDialog/Scroll/VBox"]
-custom_minimum_size = Vector2(0, 530)
-layout_mode = 2
-mouse_filter = 2
-
-[node name="LastNote" type="Label" parent="UI/CreditsDialog/Scroll/VBox"]
-layout_mode = 2
-text = "Scroll up or reopen credits to restart credits"
+script = ExtResource("27_ht4hr")
 
 [node name="SettingsDialog" type="Window" parent="UI"]
 process_mode = 3
