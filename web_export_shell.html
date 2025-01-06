@@ -5,10 +5,16 @@
 		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
 		<title>$GODOT_PROJECT_NAME</title>
 		<style>
+@font-face {
+	font-family: 'Qaz';
+	src: local('Qaz'), url('Qaz-Regular.otf');
+}
+
 html, body, #canvas {
 	margin: 0;
 	padding: 0;
 	border: 0;
+	font-size: 16px;
 }
 
 body {
@@ -59,7 +65,7 @@ body {
 #status-loading {
 	background-color: #1a120d;
 	color: #ffb07f;
-	font-family: 'Noto Sans', 'Droid Sans', Arial, sans-serif;
+	font-family: 'Qaz', sans-serif;
 	margin: 0 auto;
 	bottom: 50px;
 	width: 512px;
@@ -72,7 +78,7 @@ body {
 #status-notice {
 	background-color: #ff6000;
 	color: #1a120d;
-	font-family: 'Noto Sans', 'Droid Sans', Arial, sans-serif;
+	font-family: 'Qaz', sans-serif;
 	margin: 0 auto;
 	bottom: 50px;
 	width: 512px;
