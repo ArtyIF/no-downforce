@@ -2,7 +2,7 @@
 
 [ext_resource type="Material" uid="uid://0nsued0at226" path="res://addons/aacc/materials/particles/burnout/burnout_process.tres" id="1_urvgu"]
 [ext_resource type="Script" uid="uid://3nxhrhbqiab" path="res://addons/aacc/scripts/particles/burnout_particles_quality.gd" id="3_2w4mv"]
-[ext_resource type="ArrayMesh" uid="uid://cgxc62aauqg6s" path="res://addons/aacc/meshes/burnout_particles_mesh.res" id="3_pe51t"]
+[ext_resource type="ArrayMesh" uid="uid://dgjej3v6a6yni" path="res://addons/aacc/meshes/burnout_particle_mesh.res" id="3_pe51t"]
 [ext_resource type="Material" uid="uid://c4yiil756xm2" path="res://addons/aacc/materials/particles/burnout/burnout_render_very_low.tres" id="4_a15ek"]
 [ext_resource type="Material" uid="uid://cls5iwq8aeypi" path="res://addons/aacc/materials/particles/burnout/burnout_render_low.tres" id="4_r6cyj"]
 [ext_resource type="Material" uid="uid://bs4ebie2fu7s7" path="res://addons/aacc/materials/particles/burnout/burnout_render_medium.tres" id="5_r6cyj"]
@@ -17,7 +17,6 @@ cast_shadow = 0
 gi_mode = 0
 emitting = false
 amount = 50
-amount_ratio = 0.0
 lifetime = 2.0
 fixed_fps = 0
 visibility_aabb = AABB(-100, -50, -100, 200, 100, 200)
