@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://dcfh0h4h0tw74" path="res://addons/aacc/textures/WispySmoke01_8x8.tga" id="1_4nqps"]
 
 [resource]
-transparency = 4
+transparency = 1
 shading_mode = 0
 diffuse_mode = 2
 specular_mode = 2

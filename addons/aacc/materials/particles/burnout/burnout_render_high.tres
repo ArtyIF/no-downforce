@@ -3,12 +3,13 @@
 [ext_resource type="Texture2D" uid="uid://dcfh0h4h0tw74" path="res://addons/aacc/textures/WispySmoke01_8x8.tga" id="1_wcy51"]
 
 [resource]
-transparency = 4
+transparency = 1
 shading_mode = 2
 diffuse_mode = 2
 specular_mode = 2
 vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("1_wcy51")
+roughness = 0.5
 billboard_mode = 3
 billboard_keep_scale = true
 particles_anim_h_frames = 8

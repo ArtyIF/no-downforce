@@ -4,11 +4,12 @@
 [ext_resource type="Texture2D" uid="uid://hu14dbeblrqd" path="res://addons/aacc/textures/WispySmoke01_8x8_n.png" id="2_qmm62"]
 
 [resource]
-transparency = 4
+transparency = 1
 diffuse_mode = 2
 specular_mode = 2
 vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("1_cjtm3")
+roughness = 0.5
 normal_enabled = true
 normal_scale = 2.0
 normal_texture = ExtResource("2_qmm62")
