@@ -854,6 +854,12 @@ layout_mode = 2
 layout_mode = 2
 text = "<<"
 
+[node name="Rewind" type="Button" parent="UI/DemoScreen/TopBG/VBox/PlaybackButtons"]
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "Rewind"
+
 [node name="Pause" type="Button" parent="UI/DemoScreen/TopBG/VBox/PlaybackButtons"]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -894,10 +900,6 @@ popup/item_7/text = "5x"
 popup/item_7/id = 7
 popup/item_8/text = "10x"
 popup/item_8/id = 8
-
-[node name="Rewind" type="CheckBox" parent="UI/DemoScreen/TopBG/VBox"]
-layout_mode = 2
-text = "Rewind"
 
 [node name="ControlsBG" type="PanelContainer" parent="UI/DemoScreen"]
 layout_mode = 1

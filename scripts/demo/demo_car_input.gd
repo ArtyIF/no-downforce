@@ -44,7 +44,7 @@ func go_forward():
 
 func load_demo(start_from_takeoff: bool = false, autoplay: bool = true) -> void:
 	NoDownforceGlobal.ui_manager.screens["DemoScreen"].get_node("TopBG/VBox/SpeedHBox/Speed").select(2)
-	NoDownforceGlobal.ui_manager.screens["DemoScreen"].get_node("TopBG/VBox/Rewind").button_pressed = false
+	NoDownforceGlobal.ui_manager.screens["DemoScreen"].get_node("TopBG/VBox/PlaybackButtons/Rewind").button_pressed = false
 	NoDownforceGlobal.ui_manager.screens["DemoScreen"].get_node("TopBG/VBox/PlaybackButtons/Pause").button_pressed = false
 	AACCGlobal.current_car.freeze = false
 
@@ -139,7 +139,7 @@ func _physics_process(delta: float) -> void:
 				playback_speed = 5.0
 			8:
 				playback_speed = 10.0
-		playback_speed *= -1.0 if NoDownforceGlobal.ui_manager.screens["DemoScreen"].get_node("TopBG/VBox/Rewind").button_pressed else 1.0
+		playback_speed *= -1.0 if NoDownforceGlobal.ui_manager.screens["DemoScreen"].get_node("TopBG/VBox/PlaybackButtons/Rewind").button_pressed else 1.0
 		if NoDownforceGlobal.ui_manager.screens["DemoScreen"].get_node("TopBG/VBox/PlaybackButtons/Pause").button_pressed:
 			playback_speed = 0.0
 	

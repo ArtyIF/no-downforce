@@ -12,7 +12,7 @@
 [node name="BurnoutParticles" type="GPUParticles3D"]
 layers = 2
 sorting_offset = 1000.0
-material_override = ExtResource("4_r6cyj")
+material_override = ExtResource("7_a15ek")
 cast_shadow = 0
 gi_mode = 0
 emitting = false
