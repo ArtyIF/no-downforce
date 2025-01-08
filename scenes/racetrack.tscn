@@ -506,7 +506,7 @@ theme_override_constants/separation = 10
 [node name="RaceButton" type="Button" parent="UI/MainMenu/BG/HBox"]
 custom_minimum_size = Vector2(150, 50)
 layout_mode = 2
-text = "Solo Race!!!"
+text = "Solo Race"
 script = ExtResource("20_js2oq")
 
 [node name="Demos" type="Button" parent="UI/MainMenu/BG/HBox"]
