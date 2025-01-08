@@ -76,7 +76,7 @@ func load_demo(start_from_takeoff: bool = false, autoplay: bool = true) -> void:
 
 		NoDownforceGlobal.ui_manager.screens["DemoScreen"].get_node("TopBG/VBox/PositionSlider").max_value = demo.length
 		NoDownforceGlobal.ui_manager.show_screen("DemoScreen")
-		NoDownforceGlobal.ui_manager.screens["DemoScreen"].get_node("TopBG/VBox/PlaybackButtons/Pause").grab_focus()
+		NoDownforceGlobal.ui_manager.screens["DemoScreen"].get_node("TopBG/VBox/PlaybackButtons/Pause").call_deferred("grab_focus")
 		NoDownforceGlobal.playing_demo = true
 	else:
 		NoDownforceGlobal.ui_manager.show_screen("IntroScreen")

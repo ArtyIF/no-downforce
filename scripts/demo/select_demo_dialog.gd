@@ -66,27 +66,20 @@ func on_visibility_changed():
 		$BG/VBox/Scroll/List/NoUserDemos.visible = true
 	else:
 		$BG/VBox/Scroll/List/NoUserDemos.visible = false
+	
+	$BG/VBox/Scroll.set_deferred("scroll_vertical", 0)
 
 func select_demo(demo: DemoResource, is_dev_demo: bool):
 	hide()
 	NoDownforceGlobal.ui_manager.windows["DemoDialog"].demo = demo
 	NoDownforceGlobal.ui_manager.windows["DemoDialog"].is_dev_demo = is_dev_demo
-	NoDownforceGlobal.ui_manager.show_window("DemoDialog")
-	#NoDownforceGlobal.demo_car_input.demo = demo
-	#if not vs_ghost:
-	#	NoDownforceGlobal.demo_car_input.custom_car = null
-	#	NoDownforceGlobal.demo_car_input.load_demo()
-	#else:
-	#	var ghost_instance: Car = ghost_car.instantiate()
-	#	NoDownforceGlobal.demo_car_input.get_parent().add_child(ghost_instance)
-	#	NoDownforceGlobal.demo_car_input.custom_car = ghost_instance
-	#	NoDownforceGlobal.demo_car_input.load_demo(true, false)
+	NoDownforceGlobal.ui_manager.popup_window("DemoDialog")
 
 func open_file_dialog():
 	hide()
 	if NoDownforceGlobal.ui_manager.windows["LoadDemoFileDialog"].root_subfolder != "demos":
 		NoDownforceGlobal.ui_manager.windows["LoadDemoFileDialog"].root_subfolder = "demos"
-	NoDownforceGlobal.ui_manager.show_window("LoadDemoFileDialog")
+	NoDownforceGlobal.ui_manager.popup_window("LoadDemoFileDialog")
 
 func _process(_delta: float) -> void:
 	if Input.is_action_pressed("ui_cancel") and visible:

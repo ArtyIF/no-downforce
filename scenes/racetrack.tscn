@@ -503,7 +503,7 @@ theme_override_constants/separation = 10
 [node name="RaceButton" type="Button" parent="UI/MainMenu/BG/HBox"]
 custom_minimum_size = Vector2(150, 50)
 layout_mode = 2
-text = "Race"
+text = "Solo Race"
 script = ExtResource("20_js2oq")
 
 [node name="Demos" type="Button" parent="UI/MainMenu/BG/HBox"]
@@ -550,6 +550,21 @@ vertical_alignment = 2
 script = ExtResource("24_ahn5o")
 
 [node name="VersionRequest" type="HTTPRequest" parent="UI/MainMenu/VersionBG/Version"]
+
+[node name="HintBG" type="PanelContainer" parent="UI/MainMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = 150.0
+grow_horizontal = 2
+
+[node name="HintLabel" type="Label" parent="UI/MainMenu/HintBG"]
+layout_mode = 2
+text = "Hint: you can race against a ghost in the Demos section!"
+horizontal_alignment = 1
 
 [node name="IntroScreen" type="Control" parent="UI"]
 visible = false
@@ -1236,7 +1251,7 @@ script = ExtResource("24_mkv83")
 auto_translate_mode = 1
 title = "Choose Action"
 initial_position = 2
-size = Vector2i(400, 272)
+size = Vector2i(400, 325)
 visible = false
 wrap_controls = true
 transient = true
@@ -1260,7 +1275,7 @@ layout_mode = 2
 [node name="Name" type="Label" parent="UI/DemoDialog/BG/VBox/DemoInfo"]
 layout_mode = 2
 theme_type_variation = &"HeaderSmall"
-text = "Demo Title sfgsdfgdfgsdgdsgsdgtesrgtdgt"
+text = "Demo Title"
 text_overrun_behavior = 3
 
 [node name="FilePath" type="Label" parent="UI/DemoDialog/BG/VBox/DemoInfo"]
@@ -1282,29 +1297,79 @@ layout_mode = 2
 text = "Version: 0.0"
 horizontal_alignment = 2
 
-[node name="WatchDemo" type="Button" parent="UI/DemoDialog/BG/VBox"]
+[node name="HSeparator" type="HSeparator" parent="UI/DemoDialog/BG/VBox"]
 layout_mode = 2
-text = "Watch Demo"
-alignment = 0
 
-[node name="GhostRace" type="Button" parent="UI/DemoDialog/BG/VBox"]
+[node name="Options" type="VBoxContainer" parent="UI/DemoDialog/BG/VBox"]
+layout_mode = 2
+
+[node name="GhostRace" type="Button" parent="UI/DemoDialog/BG/VBox/Options"]
 layout_mode = 2
 text = "Ghost Race"
 alignment = 0
 
-[node name="Rename" type="Button" parent="UI/DemoDialog/BG/VBox"]
+[node name="WatchDemo" type="Button" parent="UI/DemoDialog/BG/VBox/Options"]
+layout_mode = 2
+text = "Watch Demo"
+alignment = 0
+
+[node name="Rename" type="Button" parent="UI/DemoDialog/BG/VBox/Options"]
 layout_mode = 2
 text = "Rename"
 alignment = 0
 
-[node name="Delete" type="Button" parent="UI/DemoDialog/BG/VBox"]
+[node name="Delete" type="Button" parent="UI/DemoDialog/BG/VBox/Options"]
 layout_mode = 2
 text = "Delete"
 alignment = 0
 
-[node name="Cancel" type="Button" parent="UI/DemoDialog/BG/VBox"]
+[node name="Cancel" type="Button" parent="UI/DemoDialog/BG/VBox/Options"]
 layout_mode = 2
 text = "Cancel"
+alignment = 0
+
+[node name="RenameOptions" type="VBoxContainer" parent="UI/DemoDialog/BG/VBox"]
+visible = false
+layout_mode = 2
+
+[node name="Question" type="Label" parent="UI/DemoDialog/BG/VBox/RenameOptions"]
+custom_minimum_size = Vector2(380, 0)
+layout_mode = 2
+text = "Rename the demo above:"
+autowrap_mode = 3
+
+[node name="RenameField" type="LineEdit" parent="UI/DemoDialog/BG/VBox/RenameOptions"]
+layout_mode = 2
+placeholder_text = "New name, empty for file path"
+
+[node name="Rename" type="Button" parent="UI/DemoDialog/BG/VBox/RenameOptions"]
+layout_mode = 2
+text = "Rename"
+alignment = 0
+
+[node name="Cancel" type="Button" parent="UI/DemoDialog/BG/VBox/RenameOptions"]
+layout_mode = 2
+text = "Cancel"
+alignment = 0
+
+[node name="DeleteOptions" type="VBoxContainer" parent="UI/DemoDialog/BG/VBox"]
+visible = false
+layout_mode = 2
+
+[node name="Question" type="Label" parent="UI/DemoDialog/BG/VBox/DeleteOptions"]
+custom_minimum_size = Vector2(380, 0)
+layout_mode = 2
+text = "Delete the demo above? THIS CANNOT BE UNDONE!"
+autowrap_mode = 3
+
+[node name="Cancel" type="Button" parent="UI/DemoDialog/BG/VBox/DeleteOptions"]
+layout_mode = 2
+text = "No"
+alignment = 0
+
+[node name="Delete" type="Button" parent="UI/DemoDialog/BG/VBox/DeleteOptions"]
+layout_mode = 2
+text = "Yes, delete this demo"
 alignment = 0
 
 [node name="ErrorDialog" type="AcceptDialog" parent="UI"]
