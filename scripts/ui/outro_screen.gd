@@ -29,6 +29,7 @@ func on_show() -> void:
 func on_save() -> void:
 	NoDownforceGlobal.race_tracker.demo.name = $BG/VBox/DemoName.text
 	NoDownforceGlobal.race_tracker.demo.save()
+	NoDownforceGlobal.demo_car_input.demo = null
 	NoDownforceGlobal.race_tracker.reset(true)
 	NoDownforceGlobal.ui_manager.show_screen("MainMenu")
 	NoDownforceGlobal.ui_manager.screens["MainMenu"].get_node("BG/HBox/RaceButton").call_deferred("grab_focus")

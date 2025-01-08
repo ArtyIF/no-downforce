@@ -1229,7 +1229,7 @@ alignment = 1
 [node name="FileDialogButton" type="Button" parent="UI/SelectDemoDialog/BG/VBox/BottomButtons"]
 layout_mode = 2
 size_flags_horizontal = 4
-text = "Open from File... (mouse required)"
+text = "Open from File..."
 
 [node name="CancelButton" type="Button" parent="UI/SelectDemoDialog/BG/VBox/BottomButtons"]
 layout_mode = 2
