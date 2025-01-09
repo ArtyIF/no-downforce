@@ -25,7 +25,7 @@
 [ext_resource type="Script" uid="uid://b50jlbs3eaai3" path="res://scripts/scene/lookat_camera_position.gd" id="16_60j73"]
 [ext_resource type="LightmapGIData" uid="uid://diilqw22h2lfa" path="res://lightmaps/racetrack_realtime.lmbake" id="16_w7je6"]
 [ext_resource type="Script" uid="uid://bbppe8tb16clq" path="res://scripts/ui/ui_manager.gd" id="18_ocxmh"]
-[ext_resource type="Texture2D" uid="uid://bdxlnj62ojse4" path="res://textures/logo.png" id="18_p664h"]
+[ext_resource type="Texture2D" uid="uid://bdxlnj62ojse4" path="res://ui/logo.png" id="18_p664h"]
 [ext_resource type="Script" uid="uid://chmpfjelb8eur" path="res://scripts/race/checkpoint_label.gd" id="19_52djk"]
 [ext_resource type="Script" uid="uid://dedvko1t8b6dk" path="res://scripts/ui/main_menu_panel.gd" id="19_vlhqj"]
 [ext_resource type="Script" uid="uid://btxnochio5unn" path="res://scripts/ui/menu/credits_button.gd" id="20_2hgki"]

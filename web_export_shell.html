@@ -49,7 +49,6 @@ body {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	visibility: hidden;
 }
 
 #status-splash {
@@ -111,19 +110,17 @@ const engine = new Engine(GODOT_CONFIG);
 	const statusLoading = document.getElementById('status-loading');
 	const statusNotice = document.getElementById('status-notice');
 
-	let initializing = true;
 	let statusMode = '';
 
 	function setStatusMode(mode) {
-		if (statusMode === mode || !initializing) {
+		if (statusMode === mode) {
 			return;
 		}
 		if (mode === 'hidden') {
-			statusOverlay.remove();
-			initializing = false;
+			statusOverlay.style.display = 'none';
 			return;
 		}
-		statusOverlay.style.visibility = 'visible';
+		statusOverlay.style.display = 'flex';
 		statusLoading.style.display = mode === 'loading' ? 'block' : 'none';
 		statusNotice.style.display = mode === 'notice' ? 'block' : 'none';
 		statusMode = mode;
@@ -161,7 +158,6 @@ const engine = new Engine(GODOT_CONFIG);
 			setStatusNotice('An unknown error occurred.');
 		}
 		setStatusMode('notice');
-		initializing = false;
 	}
 
 	const missing = Engine.getMissingFeatures({
@@ -206,6 +202,14 @@ const engine = new Engine(GODOT_CONFIG);
 				let currentMB = current / 1_000_000;
 				let currentMBRounded = currentMB.toFixed(3);
 				setStatusLoading(`Downloaded ${currentMBRounded} MB...`);
+			},
+			'onExit': function (status_code) {
+				if (status_code !== 0) {
+					displayFailureNotice(`Sorry, something went wrong. Refresh the page to restart. Code ${status_code}`);
+				} else {
+					setStatusNotice('Thank you for playing!');
+					setStatusMode('notice');
+				}
 			},
 			'mainPack': 'no-downforce.zip',
 		}).then(() => {
