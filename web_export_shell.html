@@ -199,9 +199,14 @@ const engine = new Engine(GODOT_CONFIG);
 		setStatusMode('loading');
 		engine.startGame({
 			'onProgress': function (current, total) {
-				let currentMB = current / 1_000_000;
+				let currentMB = current / 1_048_576;
 				let currentMBRounded = currentMB.toFixed(3);
-				setStatusLoading(`Downloaded ${currentMBRounded} MB...`);
+				let totalMB = '60.183';
+				if (currentMBRounded === totalMB) {
+					setStatusLoading('Loading...')
+				} else {
+					setStatusLoading(`Downloaded ${currentMBRounded}/${totalMB} MB...`);
+				}
 			},
 			'onExit': function (status_code) {
 				if (status_code !== 0) {
