@@ -1551,20 +1551,65 @@ text = "Set Bindings"
 script = ExtResource("47_v4lrh")
 control = "aaccdemo_reset"
 
-[node name="RecenterCamera" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Controls/Scroll/List"]
+[node name="CameraForward" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Controls/Scroll/List"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Controls/Scroll/List/RecenterCamera"]
+[node name="Label" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Controls/Scroll/List/CameraForward"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Recenter Camera"
+text = "Camera Forward"
 
-[node name="Value" type="Button" parent="UI/SettingsDialog/BG/VBox/Tabs/Controls/Scroll/List/RecenterCamera"]
+[node name="Value" type="Button" parent="UI/SettingsDialog/BG/VBox/Tabs/Controls/Scroll/List/CameraForward"]
 custom_minimum_size = Vector2(150, 40)
 layout_mode = 2
 text = "Set Bindings"
 script = ExtResource("47_v4lrh")
-control = "aaccdemo_recenter_camera"
+control = "nd_camera_forward"
+
+[node name="CameraBack" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Controls/Scroll/List"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Controls/Scroll/List/CameraBack"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Camera Back"
+
+[node name="Value" type="Button" parent="UI/SettingsDialog/BG/VBox/Tabs/Controls/Scroll/List/CameraBack"]
+custom_minimum_size = Vector2(150, 40)
+layout_mode = 2
+text = "Set Bindings"
+script = ExtResource("47_v4lrh")
+control = "nd_camera_back"
+
+[node name="CameraLeft" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Controls/Scroll/List"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Controls/Scroll/List/CameraLeft"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Camera Left"
+
+[node name="Value" type="Button" parent="UI/SettingsDialog/BG/VBox/Tabs/Controls/Scroll/List/CameraLeft"]
+custom_minimum_size = Vector2(150, 40)
+layout_mode = 2
+text = "Set Bindings"
+script = ExtResource("47_v4lrh")
+control = "nd_camera_left"
+
+[node name="CameraRight" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Controls/Scroll/List"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Controls/Scroll/List/CameraRight"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Camera Right"
+
+[node name="Value" type="Button" parent="UI/SettingsDialog/BG/VBox/Tabs/Controls/Scroll/List/CameraRight"]
+custom_minimum_size = Vector2(150, 40)
+layout_mode = 2
+text = "Set Bindings"
+script = ExtResource("47_v4lrh")
+control = "nd_camera_right"
 
 [node name="Audio" type="VBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs"]
 visible = false

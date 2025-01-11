@@ -5,16 +5,6 @@ extends Window
 var bindings: Array[InputEvent] = []
 var waiting_for_press: int = -1
 
-var _user_names_of_bindings: Dictionary[String, String] = {
-	"aacc_forward": "Accelerate",
-	"aacc_backward": "Brake/Reverse",
-	"aacc_steer_left": "Steer Left",
-	"aacc_steer_right": "Steer Right",
-	"aacc_handbrake": "Handbrake",
-	"aaccdemo_reset": "Reset",
-	"aaccdemo_recenter_camera": "Recenter Camera",
-}
-
 func _ready() -> void:
 	about_to_popup.connect(on_popup)
 	close_requested.connect(save_and_close)
@@ -53,7 +43,7 @@ func refresh_bindings(focus_on_binding: int):
 		$BG/VBox/Scroll/List/AddNewBinding.call_deferred("grab_focus")
 
 func on_popup() -> void:
-	title = "Control: " + _user_names_of_bindings[control_to_change]
+	title = "Control: " + SettingsResource.rebindable_controls[control_to_change]
 	$BG/VBox/Scroll.set_deferred("scroll_vertical", 0)
 	$BG/VBox/Deadzone/Value.value = InputMap.action_get_deadzone(control_to_change)
 	refresh_bindings(0)
