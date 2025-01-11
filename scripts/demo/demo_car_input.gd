@@ -47,20 +47,20 @@ func load_demo(start_from_takeoff: bool = false, autoplay: bool = true) -> void:
 	NoDownforceGlobal.ui_manager.screens["DemoScreen"].get_node("TopBG/VBox/PlaybackButtons/Rewind").button_pressed = false
 	NoDownforceGlobal.ui_manager.screens["DemoScreen"].get_node("TopBG/VBox/PlaybackButtons/Pause").button_pressed = false
 	AACCGlobal.current_car.freeze = false
-
 	NoDownforceGlobal.ui_manager.screens["HUD"].get_node("Time/VBox/TargetTime").visible = false
 	NoDownforceGlobal.ui_manager.screens["HUD"].get_node("Time/VBox/TargetTimeLabel").visible = false
+
 	if not demo:
 		NoDownforceGlobal.playing_demo = false
 		return
-	if not demo.version.begins_with("0.6"):
-		if demo.version.begins_with("0.5"):
-			demo.convert_from_05()
-		else:
-			NoDownforceGlobal.ui_manager.windows["ErrorDialog"].dialog_text = "This demo is incompatible with this version of the game."
-			NoDownforceGlobal.ui_manager.call_deferred("popup_window", "ErrorDialog")
-			demo = null
-			return
+
+	if demo.version.is_empty() or demo.version.begins_with("0.1") or demo.version.begins_with("0.2") or demo.version.begins_with("0.3") or demo.version.begins_with("0.4"):
+		NoDownforceGlobal.ui_manager.windows["ErrorDialog"].dialog_text = "This demo is incompatible with this version of the game."
+		NoDownforceGlobal.ui_manager.call_deferred("popup_window", "ErrorDialog")
+		demo = null
+		return
+	if demo.version.begins_with("0.5"):
+		demo.convert_from_05()
 
 	_car = custom_car if custom_car else AACCGlobal.current_car
 	_car.reset()
