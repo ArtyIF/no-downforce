@@ -404,8 +404,6 @@ doppler_tracking = 1
 script = ExtResource("10_7ntn4")
 pitch_range = Vector2(0.75, 1.25)
 
-[node name="HitReaction" parent="." instance=ExtResource("15_nwlw3")]
-
 [node name="BrakeSqueal" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("15_es48c")
 volume_db = -80.0
@@ -415,3 +413,5 @@ autoplay = true
 bus = &"SFX"
 playback_type = 1
 script = ExtResource("16_jmtha")
+
+[node name="HitReaction" parent="." instance=ExtResource("15_nwlw3")]

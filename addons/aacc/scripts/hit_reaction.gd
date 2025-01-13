@@ -80,5 +80,5 @@ func _physics_process(delta: float) -> void:
 	
 	# TODO: use delta
 	sparks_control += 1
-	if sparks_control >= 4:
+	if sparks_control >= 2:
 		sparks_control = 0
