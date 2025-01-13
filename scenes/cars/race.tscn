@@ -248,7 +248,7 @@ linear_grip = 180000.0
 reduced_grip_curve = SubResource("Resource_qkpdq")
 angular_grip = 180000.0
 brake_force = 36000.0
-takeoff_force = 3200.0
+takeoff_force = 6400.0
 air_stabilization_force = 0.0
 
 [node name="Visuals" type="Node3D" parent="."]

@@ -65,8 +65,9 @@ func load_demo(start_from_takeoff: bool = false, autoplay: bool = true) -> void:
 	_car = custom_car if custom_car else AACCGlobal.current_car
 	_car.reset()
 	current_time = demo.start_time if start_from_takeoff else 0.0
-	if start_from_takeoff and (demo.version == "0.6.5" or demo.version == "0.6.6" or demo.version == "0.6.7" or demo.version == "0.6.8"):
-		current_time += 1.0 / Engine.physics_ticks_per_second
+	if start_from_takeoff:
+		if demo.version == "0.6.5" or demo.version == "0.6.6" or demo.version == "0.6.7" or demo.version == "0.6.8":
+			current_time += 1.0 / Engine.physics_ticks_per_second
 
 	if not custom_car:
 		if demo.name == "":
