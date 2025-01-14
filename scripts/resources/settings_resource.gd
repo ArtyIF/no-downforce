@@ -41,6 +41,8 @@ static var rebindable_controls: Dictionary[StringName, String] = {
 @export var graphics_ssao_quality: int = 4
 @export var graphics_ssr_quality: int = 4
 
+@export var accessibility_saturation: float = 1.0
+
 func load_controls():
 	for key in rebindable_controls.keys():
 		if controls.has(key):
