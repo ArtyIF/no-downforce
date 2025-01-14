@@ -1,4 +1,4 @@
-[gd_scene load_steps=99 format=3 uid="uid://bsp1ug1544wkv"]
+[gd_scene load_steps=98 format=3 uid="uid://bsp1ug1544wkv"]
 
 [ext_resource type="PackedScene" uid="uid://ctpcgnbte0ujm" path="res://scenes/models/pathtest.blend" id="1_27c0p"]
 [ext_resource type="Script" uid="uid://tr0544b3fh36" path="res://addons/aacc/scripts/car_input.gd" id="1_g86do"]
@@ -73,11 +73,10 @@
 [ext_resource type="Script" uid="uid://eo8xitm0i6d0" path="res://scripts/ui/settings/ssr_quality_setting.gd" id="50_d7avv"]
 [ext_resource type="Script" uid="uid://dpjh575chum8l" path="res://scripts/ui/settings/upscaling_mode_setting.gd" id="52_qtpag"]
 [ext_resource type="Resource" uid="uid://1m4oefithx7h" path="res://dev_demos/arty_n2_time.res" id="53_fw8to"]
-[ext_resource type="Resource" uid="uid://cpha1aemihv4k" path="res://dev_demos/arty_n4_time.res" id="53_jo63h"]
 [ext_resource type="Script" uid="uid://davqnenrgtsk5" path="res://scripts/ui/settings/fxaa_setting.gd" id="53_kdpoe"]
 [ext_resource type="Script" uid="uid://b3iogaibu4jsv" path="res://scripts/demo/demo_dialog.gd" id="56_tedy2"]
 [ext_resource type="PackedScene" uid="uid://bgcm0ljtikw2u" path="res://scenes/cars/race_ghost.tscn" id="57_03d3b"]
-[ext_resource type="Script" uid="uid://5xvequ7stgwg" path="res://scripts/ui/open_gl_warning.gd" id="62_tedy2"]
+[ext_resource type="Script" uid="uid://5xvequ7stgwg" path="res://scripts/ui/opengl_warning.gd" id="62_tedy2"]
 [ext_resource type="Script" uid="uid://dpbf65jjhg418" path="res://scripts/ui/settings/burnout_particles_quality_setting.gd" id="66_cigoj"]
 [ext_resource type="Script" uid="uid://dwwomgxsspqep" path="res://scripts/ui/control_binding_dialog.gd" id="66_w7je6"]
 [ext_resource type="Script" uid="uid://dpxbr22ydxi3r" path="res://scripts/ui/settings/auto_exposure_setting.gd" id="69_ts87n"]
@@ -1132,7 +1131,7 @@ wrap_controls = true
 transient = true
 exclusive = true
 script = ExtResource("44_w7je6")
-dev_demos = Array[ExtResource("45_kujmk")]([ExtResource("46_6ij7b"), ExtResource("53_fw8to"), ExtResource("53_jo63h"), ExtResource("47_6ij7b"), ExtResource("47_6ij7b")])
+dev_demos = Array[ExtResource("45_kujmk")]([ExtResource("46_6ij7b"), ExtResource("53_fw8to"), ExtResource("47_6ij7b"), ExtResource("47_6ij7b"), ExtResource("47_6ij7b")])
 
 [node name="BG" type="PanelContainer" parent="UI/SelectDemoDialog"]
 anchors_preset = 15

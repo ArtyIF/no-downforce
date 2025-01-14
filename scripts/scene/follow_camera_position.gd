@@ -44,7 +44,7 @@ func _physics_process(delta: float) -> void:
 		target_direction = _car.global_basis.z
 		slerp_amount = _car.revs.get_current_value()
 	var camera_vector: Vector2 = Input.get_vector("nd_camera_right", "nd_camera_left", "nd_camera_back", "nd_camera_forward")
-	if not camera_vector.is_zero_approx():
+	if not camera_vector.is_zero_approx() and not NoDownforceGlobal.playing_demo and NoDownforceGlobal.timer_going:
 		var angle: float = camera_vector.angle_to(Vector2.DOWN)
 		target_direction = _car.global_basis.z.rotated(_up_direction, angle)
 		slerp_amount = 1.0
