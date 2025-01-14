@@ -1,4 +1,4 @@
-[gd_scene load_steps=98 format=3 uid="uid://bsp1ug1544wkv"]
+[gd_scene load_steps=99 format=3 uid="uid://bsp1ug1544wkv"]
 
 [ext_resource type="PackedScene" uid="uid://ctpcgnbte0ujm" path="res://scenes/models/pathtest.blend" id="1_27c0p"]
 [ext_resource type="Script" uid="uid://tr0544b3fh36" path="res://addons/aacc/scripts/car_input.gd" id="1_g86do"]
@@ -82,6 +82,7 @@
 [ext_resource type="Script" uid="uid://dwwomgxsspqep" path="res://scripts/ui/control_binding_dialog.gd" id="66_w7je6"]
 [ext_resource type="Script" uid="uid://dpxbr22ydxi3r" path="res://scripts/ui/settings/auto_exposure_setting.gd" id="69_ts87n"]
 [ext_resource type="Script" uid="uid://ct1t65b0y3q1l" path="res://scripts/ui/settings/saturation_setting.gd" id="81_6kdwj"]
+[ext_resource type="Script" uid="uid://bd0p82qdgbmw2" path="res://scripts/ui/settings/game_speed_setting.gd" id="81_fw8to"]
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_u20ab"]
 auto_exposure_enabled = true
@@ -2136,7 +2137,6 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="GameSpeed" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Accessibility/Scroll/List"]
-visible = false
 layout_mode = 2
 
 [node name="Label" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Accessibility/Scroll/List/GameSpeed"]
@@ -2144,19 +2144,19 @@ layout_mode = 2
 size_flags_horizontal = 3
 text = "Game Speed"
 
-[node name="Value" type="OptionButton" parent="UI/SettingsDialog/BG/VBox/Tabs/Accessibility/Scroll/List/GameSpeed"]
+[node name="ValueText" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Accessibility/Scroll/List/GameSpeed"]
+layout_mode = 2
+text = "100%"
+script = ExtResource("38_3ppu2")
+
+[node name="Value" type="HSlider" parent="UI/SettingsDialog/BG/VBox/Tabs/Accessibility/Scroll/List/GameSpeed"]
 custom_minimum_size = Vector2(150, 40)
 layout_mode = 2
-selected = 3
-item_count = 4
-popup/item_0/text = "0.25x"
-popup/item_0/id = 0
-popup/item_1/text = "0.5x"
-popup/item_1/id = 1
-popup/item_2/text = "0.75x"
-popup/item_2/id = 2
-popup/item_3/text = "1x"
-popup/item_3/id = 3
+min_value = 0.05
+max_value = 1.0
+step = 0.05
+value = 1.0
+script = ExtResource("81_fw8to")
 
 [node name="Saturation" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Accessibility/Scroll/List"]
 layout_mode = 2

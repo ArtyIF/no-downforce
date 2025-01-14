@@ -34,6 +34,9 @@ func reset(force_reset: bool = false) -> void:
 	else:
 		NoDownforceGlobal.demo_car_input.demo = null
 		NoDownforceGlobal.demo_car_input.load_demo()
+	
+	Engine.time_scale = 1.0
+	Engine.physics_ticks_per_second = 240
 
 func _physics_process(delta: float) -> void:
 	AACCGlobal.current_car_input.enabled = (
@@ -57,6 +60,9 @@ func _physics_process(delta: float) -> void:
 		_car.input_backward = 0.0
 		_car.input_handbrake = true
 		_car.input_steer = 1.0
+
+		Engine.time_scale = 1.0
+		Engine.physics_ticks_per_second = 240
 		
 		if not playing_demo:
 			NoDownforceGlobal.ui_manager.show_screen("OutroScreen")
@@ -65,10 +71,17 @@ func _physics_process(delta: float) -> void:
 		if not playing_demo and not NoDownforceGlobal.timer_going and not _car.input_handbrake and (_car.input_forward > 0.0 or _car.input_backward > 0.0):
 			NoDownforceGlobal.timer_going = true
 			NoDownforceGlobal.ui_manager.show_screen("HUD")
+
 			demo.start_time = demo.length + (1.0 / Engine.physics_ticks_per_second)
 			if NoDownforceGlobal.demo_car_input.custom_car:
 				NoDownforceGlobal.demo_car_input.playback_speed = 1.0
+
 			$Checkpoint1.visible = true
+
+			var game_speed: float = NoDownforceGlobal.settings_resource.accessibility_game_speed
+			Engine.time_scale = game_speed
+			Engine.physics_ticks_per_second = 12 * floori(game_speed * 20)
+
 		if AACCGlobal.current_car_input.enabled:
 			demo.append(delta, _car.input_forward, _car.input_backward, _car.input_steer, _car.input_handbrake, _car.global_position, _car.global_rotation, _car.linear_velocity, _car.angular_velocity)
 		elif demo.length > 0.0:
