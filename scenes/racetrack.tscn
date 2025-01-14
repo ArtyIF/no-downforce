@@ -1668,7 +1668,7 @@ max_value = 1.0
 step = 0.01
 value = 1.0
 script = ExtResource("38_nv0xe")
-bus_name = "SFX"
+bus_name = &"SFX"
 
 [node name="Engine" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Audio/Scroll/List"]
 layout_mode = 2
@@ -1690,7 +1690,7 @@ max_value = 1.0
 step = 0.01
 value = 1.0
 script = ExtResource("38_nv0xe")
-bus_name = "Engine"
+bus_name = &"Engine"
 
 [node name="Background" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Audio/Scroll/List"]
 layout_mode = 2
@@ -1712,7 +1712,7 @@ max_value = 1.0
 step = 0.01
 value = 1.0
 script = ExtResource("38_nv0xe")
-bus_name = "Background"
+bus_name = &"Background"
 
 [node name="UI" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Audio/Scroll/List"]
 layout_mode = 2
@@ -1734,7 +1734,7 @@ max_value = 1.0
 step = 0.01
 value = 1.0
 script = ExtResource("38_nv0xe")
-bus_name = "UI"
+bus_name = &"UI"
 
 [node name="Graphics" type="VBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs"]
 visible = false
@@ -2135,6 +2135,29 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
+[node name="GameSpeed" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Accessibility/Scroll/List"]
+visible = false
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Accessibility/Scroll/List/GameSpeed"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Game Speed"
+
+[node name="Value" type="OptionButton" parent="UI/SettingsDialog/BG/VBox/Tabs/Accessibility/Scroll/List/GameSpeed"]
+custom_minimum_size = Vector2(150, 40)
+layout_mode = 2
+selected = 3
+item_count = 4
+popup/item_0/text = "0.25x"
+popup/item_0/id = 0
+popup/item_1/text = "0.5x"
+popup/item_1/id = 1
+popup/item_2/text = "0.75x"
+popup/item_2/id = 2
+popup/item_3/text = "1x"
+popup/item_3/id = 3
+
 [node name="Saturation" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Accessibility/Scroll/List"]
 layout_mode = 2
 
@@ -2155,6 +2178,28 @@ max_value = 1.0
 step = 0.01
 value = 1.0
 script = ExtResource("81_6kdwj")
+
+[node name="BrakeSquealVolume" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Accessibility/Scroll/List"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Accessibility/Scroll/List/BrakeSquealVolume"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Brake Squeal Volume"
+
+[node name="ValueText" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Accessibility/Scroll/List/BrakeSquealVolume"]
+layout_mode = 2
+text = "100%"
+script = ExtResource("38_3ppu2")
+
+[node name="Value" type="HSlider" parent="UI/SettingsDialog/BG/VBox/Tabs/Accessibility/Scroll/List/BrakeSquealVolume"]
+custom_minimum_size = Vector2(150, 40)
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+value = 1.0
+script = ExtResource("38_nv0xe")
+bus_name = &"Brake Squeal"
 
 [node name="CloseButton" type="Button" parent="UI/SettingsDialog/BG/VBox"]
 layout_mode = 2

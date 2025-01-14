@@ -22,6 +22,7 @@ static var rebindable_controls: Dictionary[StringName, String] = {
 	"Engine": 1.0,
 	"Background": 1.0,
 	"UI": 1.0,
+	"Brake Squeal": 1.0,
 }
 
 @export var graphics_window_mode: int = 2
@@ -42,6 +43,7 @@ static var rebindable_controls: Dictionary[StringName, String] = {
 @export var graphics_ssr_quality: int = 4
 
 @export var accessibility_saturation: float = 1.0
+@export var accessibility_game_speed: float = 1.0
 
 func load_controls():
 	for key in rebindable_controls.keys():
