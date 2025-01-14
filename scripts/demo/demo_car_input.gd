@@ -66,7 +66,9 @@ func load_demo(start_from_takeoff: bool = false, autoplay: bool = true) -> void:
 	_car.reset()
 	current_time = demo.start_time if start_from_takeoff else 0.0
 	if start_from_takeoff:
-		if demo.version == "0.6.5" or demo.version == "0.6.6" or demo.version == "0.6.7" or demo.version == "0.6.8":
+		if demo.version.begins_with("0.5") or demo.version.begins_with("0.6"):
+			current_time -= 1.0 / Engine.physics_ticks_per_second
+		if not demo.version.contains("0.5") and (demo.version == "0.6.5" or demo.version == "0.6.6" or demo.version == "0.6.7" or demo.version == "0.6.8"):
 			current_time += 1.0 / Engine.physics_ticks_per_second
 
 	if not custom_car:

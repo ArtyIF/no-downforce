@@ -3,10 +3,10 @@ class_name DemoResource extends Resource
 @export var version: String = ProjectSettings.get_setting("application/config/version")
 @export var name: String = ""
 # KEEP FOR BACKWARDS COMPATIBILITY WITH 0.5
-@export var frames: Array[DemoFrame] = []
+@export_storage var frames: Array[DemoFrame] = []
 @export var frames_dict: Dictionary[float, Array] = {}
 # KEEP FOR BACKWARDS COMPATIBILITY WITH 0.5
-@export var start_frame: int = 0
+@export_storage var start_frame: int = 0
 @export var start_time: float = 0.0
 @export var length: float = 0.0
 
