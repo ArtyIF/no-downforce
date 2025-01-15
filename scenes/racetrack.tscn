@@ -64,7 +64,6 @@
 [ext_resource type="Script" uid="uid://c7ywv8vs3n0to" path="res://scripts/resources/demo_resource.gd" id="45_kujmk"]
 [ext_resource type="Resource" uid="uid://w0okjv3sefig" path="res://dev_demos/arty_n1_time.res" id="46_6ij7b"]
 [ext_resource type="Script" uid="uid://rp6fcwlsx12j" path="res://scripts/ui/settings/shadow_resolution_setting.gd" id="46_csdh4"]
-[ext_resource type="Resource" uid="uid://cpha1aemihv4k" path="res://dev_demos/arty_n5_time.res" id="47_6ij7b"]
 [ext_resource type="Script" uid="uid://cedt1utsqflr7" path="res://scripts/ui/settings/shadow_filtering_quality_setting.gd" id="47_fbg68"]
 [ext_resource type="Script" uid="uid://dnd3afr8li1vx" path="res://scripts/ui/binding_button.gd" id="47_v4lrh"]
 [ext_resource type="Script" uid="uid://d0jnnkw80mbep" path="res://scripts/ui/settings/bloom_quality_setting.gd" id="48_m6i20"]
@@ -74,6 +73,7 @@
 [ext_resource type="Script" uid="uid://dpjh575chum8l" path="res://scripts/ui/settings/upscaling_mode_setting.gd" id="52_qtpag"]
 [ext_resource type="Resource" uid="uid://1m4oefithx7h" path="res://dev_demos/arty_n2_time.res" id="53_fw8to"]
 [ext_resource type="Script" uid="uid://davqnenrgtsk5" path="res://scripts/ui/settings/fxaa_setting.gd" id="53_kdpoe"]
+[ext_resource type="Resource" uid="uid://b44u1e76r7vt5" path="res://dev_demos/arty_n3_time.res" id="54_vtru7"]
 [ext_resource type="Script" uid="uid://b3iogaibu4jsv" path="res://scripts/demo/demo_dialog.gd" id="56_tedy2"]
 [ext_resource type="PackedScene" uid="uid://bgcm0ljtikw2u" path="res://scenes/cars/race_ghost.tscn" id="57_03d3b"]
 [ext_resource type="Script" uid="uid://5xvequ7stgwg" path="res://scripts/ui/opengl_warning.gd" id="62_tedy2"]
@@ -1131,7 +1131,7 @@ wrap_controls = true
 transient = true
 exclusive = true
 script = ExtResource("44_w7je6")
-dev_demos = Array[ExtResource("45_kujmk")]([ExtResource("46_6ij7b"), ExtResource("53_fw8to"), ExtResource("47_6ij7b"), ExtResource("47_6ij7b"), ExtResource("47_6ij7b")])
+dev_demos = Array[ExtResource("45_kujmk")]([ExtResource("46_6ij7b"), ExtResource("53_fw8to"), ExtResource("54_vtru7")])
 
 [node name="BG" type="PanelContainer" parent="UI/SelectDemoDialog"]
 anchors_preset = 15
