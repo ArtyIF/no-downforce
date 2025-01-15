@@ -14,6 +14,7 @@ static var rebindable_controls: Dictionary[StringName, String] = {
 	"nd_camera_back": "Camera Back",
 	"nd_camera_left": "Camera Left",
 	"nd_camera_right": "Camera Right",
+	"nd_camera_recenter": "Recenter Camera",
 }
 
 @export var audio_volumes: Dictionary[StringName, float] = {

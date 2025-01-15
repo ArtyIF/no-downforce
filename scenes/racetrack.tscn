@@ -1613,6 +1613,21 @@ text = "Set Bindings"
 script = ExtResource("47_v4lrh")
 control = "nd_camera_right"
 
+[node name="CameraRecenter" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Controls/Scroll/List"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Controls/Scroll/List/CameraRecenter"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Recenter Camera"
+
+[node name="Value" type="Button" parent="UI/SettingsDialog/BG/VBox/Tabs/Controls/Scroll/List/CameraRecenter"]
+custom_minimum_size = Vector2(150, 40)
+layout_mode = 2
+text = "Set Bindings"
+script = ExtResource("47_v4lrh")
+control = "nd_camera_recenter"
+
 [node name="Audio" type="VBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs"]
 visible = false
 layout_mode = 2

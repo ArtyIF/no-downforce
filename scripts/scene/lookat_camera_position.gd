@@ -43,7 +43,7 @@ func _physics_process(delta: float) -> void:
 	if _car.input_handbrake:
 		target_forward_offset_amount = 0.0
 	var camera_vector: Vector2 = Input.get_vector("nd_camera_right", "nd_camera_left", "nd_camera_back", "nd_camera_forward")
-	if not camera_vector.is_zero_approx() and not NoDownforceGlobal.playing_demo and NoDownforceGlobal.timer_going:
+	if not camera_vector.is_zero_approx() and (NoDownforceGlobal.timer_going or NoDownforceGlobal.playing_demo):
 		target_forward_offset_amount = 0.0
 	_forward_offset_amount = lerp(_forward_offset_amount, target_forward_offset_amount, 1.0 * delta)
 
