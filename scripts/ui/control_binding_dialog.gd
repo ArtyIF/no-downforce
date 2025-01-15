@@ -23,7 +23,7 @@ func refresh_bindings(focus_on_binding: int):
 
 		var binding_element: Control = $BG/VBox/Scroll/List/Bindings/BindingTemplate.duplicate()
 		binding_element.get_node("Binding").text = NoDownforceGlobal.input_event_as_string(binding)
-		binding_element.get_node("Binding").pressed.connect(change_binding.bind(i))
+		binding_element.get_node("Binding").pressed.connect(change_binding.bind(i, binding_element.get_node("Binding")))
 		binding_element.get_node("Delete").pressed.connect(delete_binding.bind(i))
 		binding_element.visible = true
 		$BG/VBox/Scroll/List/Bindings.add_child(binding_element)
@@ -33,7 +33,7 @@ func refresh_bindings(focus_on_binding: int):
 	
 	if waiting_for_press >= len(bindings):
 		var binding_element: Control = $BG/VBox/Scroll/List/Bindings/BindingTemplate.duplicate()
-		binding_element.get_node("Binding").text = "Unassigned"
+		binding_element.get_node("Binding").text = "Waiting for input..."
 		binding_element.get_node("Binding").button_pressed = true
 		binding_element.visible = true
 		$BG/VBox/Scroll/List/Bindings.add_child(binding_element)
@@ -48,9 +48,12 @@ func on_popup() -> void:
 	$BG/VBox/Deadzone/Value.value = InputMap.action_get_deadzone(control_to_change)
 	refresh_bindings(0)
 
-func change_binding(i: int):
+func change_binding(i: int, button: BaseButton):
 	if waiting_for_press < 0:
 		waiting_for_press = i
+		button.text = "Waiting for input..."
+	else:
+		button.button_pressed = false
 
 func delete_binding(i: int):
 	if waiting_for_press < 0:
@@ -77,8 +80,14 @@ func _input(event: InputEvent) -> void:
 					else:
 						success = false
 
-				if event is InputEventKey or event is InputEventJoypadButton:
+				if event is InputEventJoypadButton:
 					if not event.pressed:
+						success = false
+				if event is InputEventKey:
+					# fixes web bindings being wrong, hopefully
+					event.keycode = 0
+					event.key_label = 0
+					if not event.pressed or event.physical_keycode == 0:
 						success = false
 				if Input.is_action_pressed(control_to_change):
 					success = false
