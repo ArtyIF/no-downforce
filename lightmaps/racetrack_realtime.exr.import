@@ -4,15 +4,16 @@ importer="2d_array_texture"
 type="CompressedTexture2DArray"
 uid="uid://cr8ybxu1cyada"
 path.bptc="res://.godot/imported/racetrack_realtime.exr-69120e97b76fb77f56c5ec431858d09a.bptc.ctexarray"
+path.astc="res://.godot/imported/racetrack_realtime.exr-69120e97b76fb77f56c5ec431858d09a.astc.ctexarray"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://lightmaps/racetrack_realtime.exr"
-dest_files=["res://.godot/imported/racetrack_realtime.exr-69120e97b76fb77f56c5ec431858d09a.bptc.ctexarray"]
+dest_files=["res://.godot/imported/racetrack_realtime.exr-69120e97b76fb77f56c5ec431858d09a.bptc.ctexarray", "res://.godot/imported/racetrack_realtime.exr-69120e97b76fb77f56c5ec431858d09a.astc.ctexarray"]
 
 [params]
 
