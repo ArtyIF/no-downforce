@@ -5,4 +5,9 @@ uniform vec3 color : source_color = vec3(1.0);
 
 void sky() {
 	COLOR = texture(sky_texture, SKY_COORDS).rgb * color;
+	#if CURRENT_RENDERER == RENDERER_COMPATIBILITY
+		if (!AT_CUBEMAP_PASS) {
+			COLOR /= 2.0;
+		}
+	#endif
 }
