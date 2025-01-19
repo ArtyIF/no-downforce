@@ -90,7 +90,7 @@ auto_exposure_speed = 1.0
 auto_exposure_max_sensitivity = 3200.0
 
 [sub_resource type="FogMaterial" id="FogMaterial_qej83"]
-density = 0.2
+density = 0.5
 albedo = Color(1, 0.376471, 0, 1)
 height_falloff = 1.0
 
@@ -165,7 +165,7 @@ script = ExtResource("12_4duja")
 [node name="Sun" type="DirectionalLight3D" parent="Lighting"]
 transform = Transform3D(-0.707107, -0.183013, 0.683013, 0, 0.965926, 0.258819, -0.707107, 0.183013, -0.683013, 0, 0, 0)
 light_color = Color(1, 0.691667, 0.5, 1)
-light_energy = 4.0
+light_energy = 8.0
 shadow_enabled = true
 directional_shadow_blend_splits = true
 directional_shadow_fade_start = 0.9
@@ -175,7 +175,7 @@ script = ExtResource("3_03d3b")
 
 [node name="SunSky" type="DirectionalLight3D" parent="Lighting/Sun"]
 light_color = Color(1, 0.691667, 0.5, 1)
-light_energy = 50.0
+light_energy = 200.0
 light_volumetric_fog_energy = 0.0
 light_angular_distance = 2.0
 light_bake_mode = 0
@@ -187,6 +187,7 @@ shape = 4
 material = SubResource("FogMaterial_qej83")
 
 [node name="LightmapGI" type="LightmapGI" parent="."]
+visible = false
 shadowmask_mode = 2
 generate_probes_subdiv = 0
 light_data = ExtResource("16_w7je6")
@@ -410,6 +411,7 @@ follow_camera_position = NodePath("../LookatCameraPosition/SpringArm/ActualFollo
 lookat_camera_position = NodePath("../LookatCameraPosition")
 
 [node name="ReflectionProbe" type="ReflectionProbe" parent="Camera"]
+visible = false
 update_mode = 1
 max_distance = 200.0
 size = Vector3(100, 100, 100)

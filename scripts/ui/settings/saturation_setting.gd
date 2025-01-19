@@ -8,7 +8,7 @@ func _ready() -> void:
 
 func on_value_changed(value: float):
 	var env: Environment = world_env.environment
-	env.adjustment_saturation = value
+	env.adjustment_saturation = value * 1.2
 	world_env.environment = env
 	
 	NoDownforceGlobal.settings_resource.accessibility_saturation = value

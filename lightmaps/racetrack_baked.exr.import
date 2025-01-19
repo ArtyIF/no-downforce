@@ -18,7 +18,7 @@ dest_files=["res://.godot/imported/racetrack_baked.exr-2c9d7cc0c3699e5f9288a1dc3
 [params]
 
 compress/mode=2
-compress/high_quality=false
+compress/high_quality=true
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/channel_pack=1
