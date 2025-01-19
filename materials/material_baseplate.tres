@@ -1,4 +1,17 @@
-[gd_resource type="StandardMaterial3D" format=3 uid="uid://cxb5dakvcode1"]
+[gd_resource type="StandardMaterial3D" load_steps=5 format=3 uid="uid://cxb5dakvcode1"]
+
+[ext_resource type="Texture2D" uid="uid://bdjenj08f58hu" path="res://textures/bottom/dirt_aerial_02_diff_2k.png" id="1_tb4f5"]
+[ext_resource type="Texture2D" uid="uid://cuuoynnmaqjmh" path="res://textures/bottom/dirt_aerial_02_ao_2k.png" id="2_ptc3r"]
+[ext_resource type="Texture2D" uid="uid://r0i3mhknjbyn" path="res://textures/bottom/dirt_aerial_02_nor_gl_2k.png" id="3_84gho"]
+[ext_resource type="Texture2D" uid="uid://bxsk61ysu5v0x" path="res://textures/bottom/dirt_aerial_02_rough_2k.png" id="4_ovgv4"]
 
 [resource]
-albedo_color = Color(1, 0.376471, 0, 1)
+albedo_texture = ExtResource("1_tb4f5")
+roughness_texture = ExtResource("4_ovgv4")
+normal_enabled = true
+normal_texture = ExtResource("3_84gho")
+ao_enabled = true
+ao_texture = ExtResource("2_ptc3r")
+uv1_scale = Vector3(0.05, 0.05, 0.05)
+uv1_triplanar = true
+uv1_world_triplanar = true

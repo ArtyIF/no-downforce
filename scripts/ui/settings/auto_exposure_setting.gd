@@ -20,7 +20,7 @@ func on_value_changed(index: int):
 	var attr: CameraAttributesPractical = world_env.camera_attributes
 	match index:
 		0:
-			env.tonemap_exposure = 0.33
+			env.tonemap_exposure = 0.14
 			attr.auto_exposure_enabled = false
 		1:
 			env.tonemap_exposure = 1.0
