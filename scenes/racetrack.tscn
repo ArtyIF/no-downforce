@@ -170,7 +170,7 @@ camera_attributes = SubResource("CameraAttributesPractical_u20ab")
 script = ExtResource("12_4duja")
 
 [node name="Sun" type="DirectionalLight3D" parent="Lighting"]
-transform = Transform3D(-0.968148, -0.119471, 0.220038, 0, 0.878817, 0.477159, -0.25038, 0.46196, -0.850825, 0, 0, 0)
+transform = Transform3D(-0.833886, -0.263362, 0.485052, 0, 0.878817, 0.477159, -0.551937, 0.397896, -0.732833, 0, 0, 0)
 light_color = Color(1, 0.691667, 0.5, 1)
 light_energy = 8.0
 shadow_enabled = true
