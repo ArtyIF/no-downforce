@@ -87,12 +87,14 @@
 auto_exposure_enabled = true
 auto_exposure_scale = 0.5
 auto_exposure_speed = 1.0
-auto_exposure_max_sensitivity = 3200.0
+auto_exposure_min_sensitivity = 400.0
+auto_exposure_max_sensitivity = 2400.0
 
 [sub_resource type="FogMaterial" id="FogMaterial_qej83"]
 density = 0.5
 albedo = Color(1, 0.376471, 0, 1)
-height_falloff = 1.0
+height_falloff = 10.0
+edge_fade = 0.5
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_f85px"]
 size = Vector3(20, 20, 20)
@@ -166,6 +168,7 @@ script = ExtResource("12_4duja")
 transform = Transform3D(-0.707107, -0.183013, 0.683013, 0, 0.965926, 0.258819, -0.707107, 0.183013, -0.683013, 0, 0, 0)
 light_color = Color(1, 0.691667, 0.5, 1)
 light_energy = 8.0
+light_volumetric_fog_energy = 2.0
 shadow_enabled = true
 directional_shadow_blend_splits = true
 directional_shadow_fade_start = 0.9
