@@ -1,20 +1,20 @@
-[gd_resource type="Environment" load_steps=5 format=3 uid="uid://cx6466y1wxssu"]
+[gd_resource type="Environment" load_steps=3 format=3 uid="uid://cx6466y1wxssu"]
 
-[ext_resource type="Shader" uid="uid://dw4138ybhcuwd" path="res://shaders/tinted_sky.gdshader" id="1_j1amk"]
-[ext_resource type="Texture2D" uid="uid://dmj42bclmil6m" path="res://textures/kloofendal_28d_misty_4k.exr" id="2_j1amk"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_1sixt"]
-shader = ExtResource("1_j1amk")
-shader_parameter/sky_texture = ExtResource("2_j1amk")
-shader_parameter/color = Color(1, 0.506667, 0.2, 1)
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_27c0p"]
+sky_top_color = Color(1, 0.691667, 0.5, 1)
+sky_horizon_color = Color(1, 0.376471, 0, 1)
+sky_curve = 1.0
+ground_bottom_color = Color(0.501961, 0.188235, 0, 1)
+ground_horizon_color = Color(1, 0.376471, 0, 1)
+ground_curve = 0.5
+sun_angle_max = 0.0
 
 [sub_resource type="Sky" id="Sky_s8sy0"]
-sky_material = SubResource("ShaderMaterial_1sixt")
+sky_material = SubResource("ProceduralSkyMaterial_27c0p")
 
 [resource]
 background_mode = 2
 sky = SubResource("Sky_s8sy0")
-sky_rotation = Vector3(0, 3.18523, 0)
 tonemap_mode = 4
 tonemap_white = 16.0
 ssr_enabled = true
@@ -31,12 +31,13 @@ glow_normalized = true
 glow_intensity = 0.5
 glow_blend_mode = 1
 fog_light_color = Color(1, 0.376471, 0, 1)
-fog_light_energy = 4.0
+fog_sun_scatter = 0.1
 fog_density = 0.0025
 fog_sky_affect = 0.25
 fog_height_density = 0.5
 volumetric_fog_enabled = true
 volumetric_fog_density = 0.0025
+volumetric_fog_albedo = Color(1, 0.691667, 0.5, 1)
 volumetric_fog_anisotropy = 0.33
 volumetric_fog_length = 250.0
 volumetric_fog_ambient_inject = 1.0

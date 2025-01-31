@@ -1,15 +1,15 @@
-[gd_scene load_steps=99 format=3 uid="uid://bsp1ug1544wkv"]
+[gd_scene load_steps=98 format=3 uid="uid://bsp1ug1544wkv"]
 
 [ext_resource type="PackedScene" uid="uid://ctpcgnbte0ujm" path="res://scenes/models/pathtest.blend" id="1_27c0p"]
 [ext_resource type="Script" uid="uid://tr0544b3fh36" path="res://addons/aacc/scripts/car_input.gd" id="1_g86do"]
 [ext_resource type="Script" uid="uid://bscgy4yukr3na" path="res://scripts/race/car_setter.gd" id="1_rftos"]
 [ext_resource type="PackedScene" uid="uid://7qj1vlu41qpm" path="res://scenes/cars/race.tscn" id="2_fi1wu"]
+[ext_resource type="Script" uid="uid://cwo76t84hod0r" path="res://scripts/scene/opengl_sun.gd" id="3_03d3b"]
 [ext_resource type="Script" uid="uid://crrd7ugev6afh" path="res://addons/aacc/scripts/helper_classes/procedural_curve.gd" id="3_g86do"]
 [ext_resource type="Script" uid="uid://ddq1hbwwr3v26" path="res://scripts/shadow_color_setter.gd" id="3_opjfx"]
 [ext_resource type="Script" uid="uid://k4svdp3krbho" path="res://scripts/scene/camera.gd" id="4_0kx16"]
 [ext_resource type="Script" uid="uid://dct8lw28g61gg" path="res://scripts/race/race_tracker.gd" id="4_u20ab"]
 [ext_resource type="Material" uid="uid://dwvmrqsahnumm" path="res://materials/material_checkpoint.tres" id="5_w6o7j"]
-[ext_resource type="Material" uid="uid://bg2rrkd4n5v7b" path="res://materials/material_border.tres" id="6_fw8to"]
 [ext_resource type="AudioStream" uid="uid://vbxk4da82inc" path="res://audio/ui/checkpoint_pass.ogg" id="6_oc80m"]
 [ext_resource type="Environment" uid="uid://cx6466y1wxssu" path="res://misc/racetrack_environment.tres" id="6_qej83"]
 [ext_resource type="AudioStream" uid="uid://3nxptby4kecn" path="res://audio/ambience.ogg" id="7_f85px"]
@@ -87,19 +87,12 @@
 auto_exposure_enabled = true
 auto_exposure_scale = 0.5
 auto_exposure_speed = 1.0
-auto_exposure_max_sensitivity = 64000.0
+auto_exposure_max_sensitivity = 3200.0
 
 [sub_resource type="FogMaterial" id="FogMaterial_qej83"]
 density = 0.5
 albedo = Color(1, 0.376471, 0, 1)
-height_falloff = 10.0
-edge_fade = 0.25
-
-[sub_resource type="BoxMesh" id="BoxMesh_6kdwj"]
-lightmap_size_hint = Vector2i(219, 166)
-material = ExtResource("6_fw8to")
-add_uv2 = true
-size = Vector3(13, 1, 30)
+height_falloff = 1.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_f85px"]
 size = Vector3(20, 20, 20)
@@ -170,28 +163,36 @@ camera_attributes = SubResource("CameraAttributesPractical_u20ab")
 script = ExtResource("12_4duja")
 
 [node name="Sun" type="DirectionalLight3D" parent="Lighting"]
-transform = Transform3D(-0.833886, -0.263362, 0.485052, 0, 0.878817, 0.477159, -0.551937, 0.397896, -0.732833, 0, 0, 0)
+transform = Transform3D(-0.707107, -0.183013, 0.683013, 0, 0.965926, 0.258819, -0.707107, 0.183013, -0.683013, 0, 0, 0)
 light_color = Color(1, 0.691667, 0.5, 1)
 light_energy = 8.0
 shadow_enabled = true
 directional_shadow_blend_splits = true
+directional_shadow_fade_start = 0.9
+directional_shadow_max_distance = 50.0
 sky_mode = 1
+script = ExtResource("3_03d3b")
+
+[node name="SunSky" type="DirectionalLight3D" parent="Lighting/Sun"]
+light_color = Color(1, 0.691667, 0.5, 1)
+light_energy = 200.0
+light_volumetric_fog_energy = 0.0
+light_angular_distance = 2.0
+light_bake_mode = 0
+sky_mode = 2
 
 [node name="FogVolumeGlobal" type="FogVolume" parent="Lighting"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 0)
 shape = 4
 material = SubResource("FogMaterial_qej83")
 
 [node name="LightmapGI" type="LightmapGI" parent="."]
+visible = false
 shadowmask_mode = 2
 generate_probes_subdiv = 0
 light_data = ExtResource("16_w7je6")
 
 [node name="pathtest" parent="." instance=ExtResource("1_27c0p")]
-
-[node name="StartPadding" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.6, 0)
-mesh = SubResource("BoxMesh_6kdwj")
 
 [node name="CarSetter" type="Node" parent="." node_paths=PackedStringArray("car")]
 script = ExtResource("1_rftos")
@@ -417,7 +418,6 @@ size = Vector3(100, 100, 100)
 enable_shadows = true
 cull_mask = 1048573
 reflection_mask = 2
-ambient_mode = 0
 
 [node name="LogoViewportContainer" type="TextureRect" parent="."]
 anchors_preset = 15
