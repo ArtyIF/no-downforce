@@ -7,6 +7,6 @@ func _process(delta: float) -> void:
 	var env: Environment = environment
 	env.fog_density = lerp(0.0025, 0.2, fade_amount.get_current_value())
 	env.fog_height_density = lerp(0.5, 0.0, fade_amount.get_current_value())
-	env.fog_sky_affect = lerp(0.25, 1.0, fade_amount.get_current_value())
-	env.fog_sun_scatter = lerp(0.1, 0.025, fade_amount.get_current_value())
+	env.fog_sky_affect = lerp(0.25, 0.99, fade_amount.get_current_value())
+	env.fog_sun_scatter = lerp(0.025, 0.025, fade_amount.get_current_value())
 	environment = env

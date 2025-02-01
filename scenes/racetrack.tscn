@@ -190,7 +190,6 @@ shape = 4
 material = SubResource("FogMaterial_qej83")
 
 [node name="LightmapGI" type="LightmapGI" parent="."]
-visible = false
 shadowmask_mode = 2
 generate_probes_subdiv = 0
 light_data = ExtResource("16_w7je6")
