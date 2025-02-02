@@ -1,10 +1,9 @@
-[gd_scene load_steps=99 format=3 uid="uid://bsp1ug1544wkv"]
+[gd_scene load_steps=98 format=3 uid="uid://bsp1ug1544wkv"]
 
 [ext_resource type="PackedScene" uid="uid://ctpcgnbte0ujm" path="res://scenes/models/pathtest.blend" id="1_27c0p"]
 [ext_resource type="Script" uid="uid://tr0544b3fh36" path="res://addons/aacc/scripts/car_input.gd" id="1_g86do"]
 [ext_resource type="Script" uid="uid://bscgy4yukr3na" path="res://scripts/race/car_setter.gd" id="1_rftos"]
 [ext_resource type="PackedScene" uid="uid://7qj1vlu41qpm" path="res://scenes/cars/race.tscn" id="2_fi1wu"]
-[ext_resource type="Script" uid="uid://cwo76t84hod0r" path="res://scripts/scene/opengl_sun.gd" id="3_03d3b"]
 [ext_resource type="Script" uid="uid://crrd7ugev6afh" path="res://addons/aacc/scripts/helper_classes/procedural_curve.gd" id="3_g86do"]
 [ext_resource type="Script" uid="uid://ddq1hbwwr3v26" path="res://scripts/shadow_color_setter.gd" id="3_opjfx"]
 [ext_resource type="Script" uid="uid://k4svdp3krbho" path="res://scripts/scene/camera.gd" id="4_0kx16"]
@@ -175,7 +174,6 @@ directional_shadow_blend_splits = true
 directional_shadow_fade_start = 0.9
 directional_shadow_max_distance = 50.0
 sky_mode = 1
-script = ExtResource("3_03d3b")
 
 [node name="SunSky" type="DirectionalLight3D" parent="Lighting/Sun"]
 light_color = Color(1, 0.691667, 0.5, 1)

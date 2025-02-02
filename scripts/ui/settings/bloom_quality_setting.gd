@@ -25,6 +25,13 @@ func on_value_changed(index: int):
 		2:
 			env.glow_enabled = true
 			RenderingServer.environment_glow_set_use_bicubic_upscale(true)
+	if NoDownforceGlobal.using_opengl:
+		if index == 0:
+			# the finish tiles look green otherwise
+			env.glow_enabled = true
+			env.glow_intensity = 0.0
+		else:
+			env.glow_intensity = 0.17
 	world_env.environment = env
 	
 	NoDownforceGlobal.settings_resource.graphics_bloom_quality = index
