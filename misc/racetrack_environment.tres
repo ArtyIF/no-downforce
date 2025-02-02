@@ -10,6 +10,7 @@ ground_horizon_color = Color(1, 0.376471, 0, 1)
 ground_curve = 0.5
 ground_energy_multiplier = 2.0
 sun_angle_max = 0.0
+use_debanding = false
 
 [sub_resource type="Sky" id="Sky_s8sy0"]
 sky_material = SubResource("ProceduralSkyMaterial_27c0p")
@@ -25,6 +26,7 @@ ssr_fade_in = 1.0
 ssr_fade_out = 1.0
 ssr_depth_tolerance = 0.11
 ssao_enabled = true
+ssil_enabled = true
 glow_enabled = true
 glow_levels/1 = 1.0
 glow_levels/2 = 1.0
