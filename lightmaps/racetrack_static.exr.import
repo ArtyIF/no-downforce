@@ -1,0 +1,28 @@
+[remap]
+
+importer="2d_array_texture"
+type="CompressedTexture2DArray"
+uid="uid://dxkdscufrvnsj"
+path.bptc="res://.godot/imported/racetrack_static.exr-4383a23bc6b97b11872a22d21f454a78.bptc.ctexarray"
+path.astc="res://.godot/imported/racetrack_static.exr-4383a23bc6b97b11872a22d21f454a78.astc.ctexarray"
+metadata={
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
+"vram_texture": true
+}
+
+[deps]
+
+source_file="res://lightmaps/racetrack_static.exr"
+dest_files=["res://.godot/imported/racetrack_static.exr-4383a23bc6b97b11872a22d21f454a78.bptc.ctexarray", "res://.godot/imported/racetrack_static.exr-4383a23bc6b97b11872a22d21f454a78.astc.ctexarray"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/channel_pack=1
+mipmaps/generate=false
+mipmaps/limit=-1
+slices/horizontal=1
+slices/vertical=1

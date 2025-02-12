@@ -1,4 +1,4 @@
-[gd_scene load_steps=98 format=3 uid="uid://bsp1ug1544wkv"]
+[gd_scene load_steps=97 format=3 uid="uid://bsp1ug1544wkv"]
 
 [ext_resource type="PackedScene" uid="uid://ctpcgnbte0ujm" path="res://scenes/models/pathtest.blend" id="1_27c0p"]
 [ext_resource type="Script" uid="uid://tr0544b3fh36" path="res://addons/aacc/scripts/car_input.gd" id="1_g86do"]
@@ -7,7 +7,6 @@
 [ext_resource type="Script" uid="uid://crrd7ugev6afh" path="res://addons/aacc/scripts/helper_classes/procedural_curve.gd" id="3_g86do"]
 [ext_resource type="Script" uid="uid://ddq1hbwwr3v26" path="res://scripts/shadow_color_setter.gd" id="3_opjfx"]
 [ext_resource type="Script" uid="uid://k4svdp3krbho" path="res://scripts/scene/camera.gd" id="4_0kx16"]
-[ext_resource type="LightmapGIData" uid="uid://diilqw22h2lfa" path="res://lightmaps/racetrack_realtime.lmbake" id="4_6kdwj"]
 [ext_resource type="Script" uid="uid://dct8lw28g61gg" path="res://scripts/race/race_tracker.gd" id="4_u20ab"]
 [ext_resource type="Material" uid="uid://dwvmrqsahnumm" path="res://materials/material_checkpoint.tres" id="5_w6o7j"]
 [ext_resource type="AudioStream" uid="uid://vbxk4da82inc" path="res://audio/ui/checkpoint_pass.ogg" id="6_oc80m"]
@@ -170,6 +169,9 @@ light_color = Color(1, 0.691667, 0.5, 1)
 light_energy = 8.0
 light_volumetric_fog_energy = 2.0
 shadow_enabled = true
+directional_shadow_split_1 = 0.167
+directional_shadow_split_2 = 0.33
+directional_shadow_split_3 = 0.67
 directional_shadow_blend_splits = true
 directional_shadow_fade_start = 0.9
 directional_shadow_max_distance = 50.0
@@ -192,7 +194,6 @@ material = SubResource("FogMaterial_qej83")
 quality = 2
 shadowmask_mode = 2
 generate_probes_subdiv = 0
-light_data = ExtResource("4_6kdwj")
 
 [node name="pathtest" parent="." instance=ExtResource("1_27c0p")]
 
@@ -1923,8 +1924,8 @@ popup/item_0/id = 0
 popup/item_1/text = "Dynamic"
 popup/item_1/id = 1
 script = ExtResource("42_o2x5v")
-baked_light_data = "uid://ctuxuv3f0vdcd"
-realtime_light_data = "uid://diilqw22h2lfa"
+static_light_data = "uid://y3xxks7m2exd"
+dynamic_light_data = "uid://bimmbsbwrgk7"
 
 [node name="AutoExposure" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Graphics/Scroll/List"]
 layout_mode = 2
