@@ -18,12 +18,12 @@ func on_value_changed(index: int):
 
 	match index:
 		0:
-			$"/root/RaceTrack/Camera/ReflectionProbe".visible = false
+			$"/root/RaceTrack/ReflectionProbe".visible = false
 		1:
-			$"/root/RaceTrack/Camera/ReflectionProbe".visible = true
-			$"/root/RaceTrack/Camera/ReflectionProbe".enable_shadows = false
+			$"/root/RaceTrack/ReflectionProbe".visible = true
+			$"/root/RaceTrack/ReflectionProbe".enable_shadows = false
 		2:
-			$"/root/RaceTrack/Camera/ReflectionProbe".visible = true
-			$"/root/RaceTrack/Camera/ReflectionProbe".enable_shadows = true
+			$"/root/RaceTrack/ReflectionProbe".visible = true
+			$"/root/RaceTrack/ReflectionProbe".enable_shadows = true
 	
 	NoDownforceGlobal.settings_resource.graphics_reflection_probe_quality = index
