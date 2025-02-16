@@ -1,12 +1,15 @@
-[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://b3nlwh0xilbf2"]
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://b3nlwh0xilbf2"]
 
 [ext_resource type="Texture2D" uid="uid://ovh02hb8osu2" path="res://textures/rough_texture.tres" id="1_tss8c"]
+[ext_resource type="Texture2D" uid="uid://dh5vru6bpnaa6" path="res://textures/rough_texture_n.tres" id="2_8v8ic"]
 
 [resource]
 albedo_color = Color(0.25098, 0.25098, 0.25098, 1)
-roughness = 0.75
-detail_enabled = true
-detail_blend_mode = 3
-detail_albedo = ExtResource("1_tss8c")
+albedo_texture = ExtResource("1_tss8c")
+roughness = 0.67
+normal_enabled = true
+normal_texture = ExtResource("2_8v8ic")
 uv1_scale = Vector3(0.33, 0.33, 0.33)
 uv1_triplanar = true
+uv1_world_triplanar = true
+texture_filter = 5
