@@ -41,7 +41,7 @@ var copyright_info: Dictionary[String, Array] = {
 			"source": "https://freesound.org/s/707639/",
 			"copyright": ["2023, Ridderick"],
 			"license": "CC0-1.0",
-			"changes_made": "Trimmed and looped",
+			"changes_made": "Trimmed, looped and layered",
 		},
 		{
 			"name": "Hurricane Ophelia - Youghal, Co. Cork, Ireland - 16th October 2017 (2)",

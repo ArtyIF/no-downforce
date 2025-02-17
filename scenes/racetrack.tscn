@@ -409,8 +409,9 @@ margin = 0.1
 [node name="ReflectionProbe" type="ReflectionProbe" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35, 0)
 update_mode = 1
+blend_distance = 0.0
 max_distance = 200.0
-size = Vector3(100, 100, 100)
+size = Vector3(10, 10, 10)
 enable_shadows = true
 cull_mask = 1048573
 reflection_mask = 2

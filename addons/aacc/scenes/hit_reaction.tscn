@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://w2tm5lmehs3t" path="res://addons/aacc/scenes/hit_sound.tscn" id="2_e78h8"]
 [ext_resource type="PackedScene" uid="uid://68owx6receu4" path="res://addons/aacc/scenes/land_sound.tscn" id="3_oi3b7"]
 [ext_resource type="PackedScene" uid="uid://dmiohxwb2w23v" path="res://addons/aacc/scenes/sparks.tscn" id="4_jlxfa"]
-[ext_resource type="AudioStream" uid="uid://01658uam7grv" path="res://addons/aacc/sounds/scratch.wav" id="5_2vaqu"]
+[ext_resource type="AudioStream" uid="uid://cli0o8j8jp682" path="res://addons/aacc/sounds/scratch.wav" id="5_2vaqu"]
 
 [node name="HitReaction" type="Node3D"]
 script = ExtResource("1_fkqpw")
