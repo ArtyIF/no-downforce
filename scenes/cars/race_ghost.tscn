@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=4 uid="uid://bgcm0ljtikw2u"]
+[gd_scene load_steps=41 format=4 uid="uid://bgcm0ljtikw2u"]
 
 [ext_resource type="PhysicsMaterial" uid="uid://rgr13gn8pk0m" path="res://addons/aacc/car_physics_material.tres" id="1_neuu7"]
 [ext_resource type="Script" uid="uid://wiw33iaw2pjg" path="res://addons/aacc/scripts/car.gd" id="2_xc6lf"]
@@ -7,7 +7,6 @@
 [ext_resource type="Material" uid="uid://dhvix21u07c64" path="res://materials/race_shadow.tres" id="5_xfr2s"]
 [ext_resource type="Material" uid="uid://x1suldb8ong5" path="res://materials/car/car_body.tres" id="5_xrrol"]
 [ext_resource type="Script" uid="uid://bf1xbn8a0sqtj" path="res://addons/aacc/scripts/car_shadow.gd" id="6_4mp4t"]
-[ext_resource type="Script" uid="uid://ddbto224nnq8t" path="res://scripts/scene/ghost_opengl.gd" id="6_kw5pg"]
 [ext_resource type="Material" uid="uid://fiebo0otk8en" path="res://materials/car/car_wheel_bl_ghost.tres" id="7_4thc7"]
 [ext_resource type="Script" uid="uid://cffihwqtqvy4x" path="res://addons/aacc/scripts/car_wheel.gd" id="7_kw5pg"]
 [ext_resource type="Material" uid="uid://cevyey3i21tim" path="res://materials/car/car_wheel_bl.tres" id="8_21x01"]
@@ -190,7 +189,6 @@ layers = 2
 material_override = ExtResource("4_rh3xe")
 gi_mode = 2
 mesh = SubResource("ArrayMesh_xrrol")
-script = ExtResource("6_kw5pg")
 
 [node name="WheelBL" type="MeshInstance3D" parent="Visuals/180Turnaround"]
 transform = Transform3D(1, 0, -2.13163e-14, 0, 1, 0, 2.13163e-14, 0, 1, 0.35, 0.3, -0.880114)
@@ -198,7 +196,6 @@ layers = 2
 material_override = ExtResource("7_4thc7")
 gi_mode = 2
 mesh = SubResource("ArrayMesh_21x01")
-script = ExtResource("6_kw5pg")
 
 [node name="WheelBR" type="MeshInstance3D" parent="Visuals/180Turnaround"]
 transform = Transform3D(1, 0, -2.13163e-14, 0, 1, 0, 2.13163e-14, 0, 1, -0.35, 0.3, -0.880114)
@@ -206,7 +203,6 @@ layers = 2
 material_override = ExtResource("9_hupwi")
 gi_mode = 2
 mesh = SubResource("ArrayMesh_mciiw")
-script = ExtResource("6_kw5pg")
 
 [node name="WheelFL" type="MeshInstance3D" parent="Visuals/180Turnaround"]
 transform = Transform3D(1, 0, -2.13163e-14, 0, 1, 0, 2.13163e-14, 0, 1, 0.35, 0.3, 0.639886)
@@ -214,7 +210,6 @@ layers = 2
 material_override = ExtResource("11_jd1en")
 gi_mode = 2
 mesh = SubResource("ArrayMesh_rh3xe")
-script = ExtResource("6_kw5pg")
 
 [node name="WheelFR" type="MeshInstance3D" parent="Visuals/180Turnaround"]
 transform = Transform3D(1, 0, -2.13163e-14, 0, 1, 0, 2.13163e-14, 0, 1, -0.35, 0.3, 0.639886)
@@ -222,7 +217,6 @@ layers = 2
 material_override = ExtResource("13_ffqjw")
 gi_mode = 2
 mesh = SubResource("ArrayMesh_4thc7")
-script = ExtResource("6_kw5pg")
 
 [node name="Shadow" type="MeshInstance3D" parent="Visuals/180Turnaround"]
 layers = 2
