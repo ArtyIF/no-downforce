@@ -194,6 +194,35 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
 shape = 4
 material = SubResource("FogMaterial_qej83")
 
+[node name="DefaultReflectionProbeAbove" type="ReflectionProbe" parent="Lighting"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 48, 0)
+max_distance = 750.0
+size = Vector3(1000, 100, 1000)
+origin_offset = Vector3(113, -46.5, -163)
+enable_shadows = true
+cull_mask = 1048573
+reflection_mask = 1
+
+[node name="DefaultReflectionProbeBelow" type="ReflectionProbe" parent="Lighting"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -15, 0)
+max_distance = 750.0
+size = Vector3(1000, 30, 1000)
+origin_offset = Vector3(-200, 6, 278)
+enable_shadows = true
+cull_mask = 1048573
+reflection_mask = 1
+ambient_color = Color(1, 0.376471, 0, 1)
+ambient_color_energy = 0.5
+
+[node name="StartReflectionProbe" type="ReflectionProbe" parent="Lighting"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+max_distance = 750.0
+size = Vector3(13, 5, 32)
+box_projection = true
+enable_shadows = true
+cull_mask = 1048573
+reflection_mask = 1
+
 [node name="LightmapGI" type="LightmapGI" parent="."]
 quality = 2
 shadowmask_mode = 2
@@ -372,7 +401,7 @@ at_checkpoint = true
 
 [node name="FinishPattern" type="TextureRect" parent="CheckpointView"]
 modulate = Color(1, 0.376471, 0, 0.25098)
-anchors_preset = -1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
@@ -418,16 +447,15 @@ margin = 0.1
 
 [node name="ActualFollowCameraPosition" type="Node3D" parent="LookatCameraPosition/SpringArm"]
 
-[node name="ReflectionProbe" type="ReflectionProbe" parent="."]
+[node name="DynamicReflectionProbe" type="ReflectionProbe" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35, 0)
 update_mode = 1
 blend_distance = 0.0
 max_distance = 200.0
-size = Vector3(10, 10, 10)
+size = Vector3(50, 50, 50)
 enable_shadows = true
 cull_mask = 1048573
 reflection_mask = 2
-ambient_mode = 0
 script = ExtResource("21_6kdwj")
 
 [node name="Camera" type="Camera3D" parent="." node_paths=PackedStringArray("follow_camera_position", "lookat_camera_position")]

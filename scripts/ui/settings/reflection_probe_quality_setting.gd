@@ -18,12 +18,24 @@ func on_value_changed(index: int):
 
 	match index:
 		0:
-			$"/root/RaceTrack/ReflectionProbe".visible = false
+			$"/root/RaceTrack/Lighting/DefaultReflectionProbeAbove".reflection_mask = 3
+			$"/root/RaceTrack/Lighting/DefaultReflectionProbeBelow".reflection_mask = 3
+			$"/root/RaceTrack/Lighting/StartReflectionProbe".reflection_mask = 3
+
+			$"/root/RaceTrack/DynamicReflectionProbe".visible = false
 		1:
-			$"/root/RaceTrack/ReflectionProbe".visible = true
-			$"/root/RaceTrack/ReflectionProbe".enable_shadows = false
+			$"/root/RaceTrack/Lighting/DefaultReflectionProbeAbove".reflection_mask = 1
+			$"/root/RaceTrack/Lighting/DefaultReflectionProbeBelow".reflection_mask = 1
+			$"/root/RaceTrack/Lighting/StartReflectionProbe".reflection_mask = 1
+
+			$"/root/RaceTrack/DynamicReflectionProbe".visible = true
+			$"/root/RaceTrack/DynamicReflectionProbe".enable_shadows = false
 		2:
-			$"/root/RaceTrack/ReflectionProbe".visible = true
-			$"/root/RaceTrack/ReflectionProbe".enable_shadows = true
+			$"/root/RaceTrack/Lighting/DefaultReflectionProbeAbove".reflection_mask = 1
+			$"/root/RaceTrack/Lighting/DefaultReflectionProbeBelow".reflection_mask = 1
+			$"/root/RaceTrack/Lighting/StartReflectionProbe".reflection_mask = 1
+
+			$"/root/RaceTrack/DynamicReflectionProbe".visible = true
+			$"/root/RaceTrack/DynamicReflectionProbe".enable_shadows = true
 	
 	NoDownforceGlobal.settings_resource.graphics_reflection_probe_quality = index
