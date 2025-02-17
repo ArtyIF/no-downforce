@@ -10,6 +10,14 @@ class_name UIManager extends Control
 func _ready() -> void:
 	NoDownforceGlobal.ui_manager = self
 
+	await get_tree().create_timer(1.0).timeout
+	screens["MainMenu"].get_node("BG").visible = true
+	screens["MainMenu"].get_node("BG/HBox/RaceButton").call_deferred("grab_focus")
+	
+	var tween: Tween = $"/root/RaceTrack/LoadingCover".create_tween()
+	tween.tween_property($"/root/RaceTrack/LoadingCover", "modulate", Color(1.0, 1.0, 1.0, 0.0), 0.5)
+	tween.tween_callback($"/root/RaceTrack/LoadingCover".queue_free)
+
 func show_screen(screen_name: String):
 	for screen_key in screens.keys():
 		if screen_key == screen_name:

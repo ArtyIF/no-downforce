@@ -40,6 +40,7 @@ func reset(force_reset: bool = false) -> void:
 
 func _physics_process(delta: float) -> void:
 	AACCGlobal.current_car_input.enabled = (
+		not get_node_or_null("/root/RaceTrack/LoadingCover") and
 		not NoDownforceGlobal.showing_main_menu and
 		not (NoDownforceGlobal.playing_demo and not NoDownforceGlobal.demo_car_input.custom_car) and
 		not NoDownforceGlobal.checkpoints_passed == NoDownforceGlobal.total_checkpoints

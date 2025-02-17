@@ -1,4 +1,4 @@
-[gd_scene load_steps=99 format=3 uid="uid://bsp1ug1544wkv"]
+[gd_scene load_steps=100 format=3 uid="uid://bsp1ug1544wkv"]
 
 [ext_resource type="PackedScene" uid="uid://ctpcgnbte0ujm" path="res://scenes/models/pathtest.blend" id="1_27c0p"]
 [ext_resource type="Script" uid="uid://tr0544b3fh36" path="res://addons/aacc/scripts/car_input.gd" id="1_g86do"]
@@ -83,6 +83,7 @@
 [ext_resource type="Script" uid="uid://bechkf3qsq3gl" path="res://scripts/ui/settings/ssil_quality_setting.gd" id="79_fw8to"]
 [ext_resource type="Script" uid="uid://ct1t65b0y3q1l" path="res://scripts/ui/settings/saturation_setting.gd" id="81_6kdwj"]
 [ext_resource type="Script" uid="uid://bd0p82qdgbmw2" path="res://scripts/ui/settings/game_speed_setting.gd" id="81_fw8to"]
+[ext_resource type="Texture2D" uid="uid://cb15rtci1iogw" path="res://ui/boot_image.png" id="84_vtru7"]
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_u20ab"]
 auto_exposure_enabled = true
@@ -542,6 +543,7 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="BG" type="PanelContainer" parent="UI/MainMenu"]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -2388,3 +2390,22 @@ text = "Save and Close"
 
 [node name="UISounds" type="AudioStreamPlayer" parent="UI"]
 bus = &"UI"
+
+[node name="LoadingCover" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0509804, 0.0352941, 0.0235294, 1)
+
+[node name="BootImage" type="TextureRect" parent="LoadingCover"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("84_vtru7")
+expand_mode = 1
+stretch_mode = 5
