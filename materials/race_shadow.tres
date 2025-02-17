@@ -1,7 +1,7 @@
 [gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://dhvix21u07c64"]
 
 [ext_resource type="Shader" uid="uid://ddwtvg0ya0g44" path="res://addons/aacc/shaders/shadow_decal_shader.gdshader" id="1_updcr"]
-[ext_resource type="Texture2D" uid="uid://c5jygr0sma3dj" path="res://textures/race.png" id="2_d7jis"]
+[ext_resource type="Texture2D" uid="uid://c5jygr0sma3dj" path="res://textures/race_shadow.png" id="2_d7jis"]
 
 [resource]
 render_priority = 0

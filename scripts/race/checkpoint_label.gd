@@ -6,6 +6,10 @@ func _process(_delta: float) -> void:
 	if at_checkpoint and NoDownforceGlobal.checkpoints_passed + 1 == NoDownforceGlobal.total_checkpoints:
 		text = "FINISH"
 		$"../CheckpointLabel".visible = false
+		if at_checkpoint:
+			$"../../../FinishPattern".visible = true
 	else:
 		text = "%d/%d" % [NoDownforceGlobal.checkpoints_passed + (1 if at_checkpoint else 0), NoDownforceGlobal.total_checkpoints]
 		$"../CheckpointLabel".visible = true
+		if at_checkpoint:
+			$"../../../FinishPattern".visible = false

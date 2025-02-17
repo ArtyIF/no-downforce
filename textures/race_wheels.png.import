@@ -3,8 +3,8 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b3mluqxfvdqp7"
-path.s3tc="res://.godot/imported/race_wheels.png-3e72a4ff223c09b2408b3471f0012d4c.s3tc.ctex"
-path.etc2="res://.godot/imported/race_wheels.png-3e72a4ff223c09b2408b3471f0012d4c.etc2.ctex"
+path.s3tc="res://.godot/imported/race_wheels.png-5bcc76b724bdfa54e8bc4ba4c756ba8c.s3tc.ctex"
+path.etc2="res://.godot/imported/race_wheels.png-5bcc76b724bdfa54e8bc4ba4c756ba8c.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
@@ -12,8 +12,8 @@ metadata={
 
 [deps]
 
-source_file="res://scenes/cars/race_wheels.png"
-dest_files=["res://.godot/imported/race_wheels.png-3e72a4ff223c09b2408b3471f0012d4c.s3tc.ctex", "res://.godot/imported/race_wheels.png-3e72a4ff223c09b2408b3471f0012d4c.etc2.ctex"]
+source_file="res://textures/race_wheels.png"
+dest_files=["res://.godot/imported/race_wheels.png-5bcc76b724bdfa54e8bc4ba4c756ba8c.s3tc.ctex", "res://.godot/imported/race_wheels.png-5bcc76b724bdfa54e8bc4ba4c756ba8c.etc2.ctex"]
 
 [params]
 

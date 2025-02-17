@@ -2,9 +2,9 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c5jygr0sma3dj"
-path.s3tc="res://.godot/imported/race.png-c60e0d74deaf8dbfb3726e043c6f2aec.s3tc.ctex"
-path.etc2="res://.godot/imported/race.png-c60e0d74deaf8dbfb3726e043c6f2aec.etc2.ctex"
+uid="uid://22hwega4gqq"
+path.s3tc="res://.godot/imported/race_body.png-dfd09fc384f6009fe81c0916cacf415d.s3tc.ctex"
+path.etc2="res://.godot/imported/race_body.png-dfd09fc384f6009fe81c0916cacf415d.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
@@ -12,8 +12,8 @@ metadata={
 
 [deps]
 
-source_file="res://textures/race.png"
-dest_files=["res://.godot/imported/race.png-c60e0d74deaf8dbfb3726e043c6f2aec.s3tc.ctex", "res://.godot/imported/race.png-c60e0d74deaf8dbfb3726e043c6f2aec.etc2.ctex"]
+source_file="res://textures/race_body.png"
+dest_files=["res://.godot/imported/race_body.png-dfd09fc384f6009fe81c0916cacf415d.s3tc.ctex", "res://.godot/imported/race_body.png-dfd09fc384f6009fe81c0916cacf415d.etc2.ctex"]
 
 [params]
 

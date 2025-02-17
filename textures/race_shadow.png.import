@@ -2,9 +2,9 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://22hwega4gqq"
-path.s3tc="res://.godot/imported/race_body.png-e2000e8819d0f3e6e722f0d2c8f26b72.s3tc.ctex"
-path.etc2="res://.godot/imported/race_body.png-e2000e8819d0f3e6e722f0d2c8f26b72.etc2.ctex"
+uid="uid://c5jygr0sma3dj"
+path.s3tc="res://.godot/imported/race_shadow.png-399ff7ac26202451bb3404f1ec14824c.s3tc.ctex"
+path.etc2="res://.godot/imported/race_shadow.png-399ff7ac26202451bb3404f1ec14824c.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
@@ -12,8 +12,8 @@ metadata={
 
 [deps]
 
-source_file="res://scenes/cars/race_body.png"
-dest_files=["res://.godot/imported/race_body.png-e2000e8819d0f3e6e722f0d2c8f26b72.s3tc.ctex", "res://.godot/imported/race_body.png-e2000e8819d0f3e6e722f0d2c8f26b72.etc2.ctex"]
+source_file="res://textures/race_shadow.png"
+dest_files=["res://.godot/imported/race_shadow.png-399ff7ac26202451bb3404f1ec14824c.s3tc.ctex", "res://.godot/imported/race_shadow.png-399ff7ac26202451bb3404f1ec14824c.etc2.ctex"]
 
 [params]
 

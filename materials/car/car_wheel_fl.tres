@@ -2,7 +2,7 @@
 
 [ext_resource type="Shader" uid="uid://ci2abxhm6guxv" path="res://shaders/car.gdshader" id="1_34l1h"]
 [ext_resource type="Texture2D" uid="uid://drsnrjjsfeyn7" path="res://textures/colormap.png" id="2_udakt"]
-[ext_resource type="Texture2D" uid="uid://b3mluqxfvdqp7" path="res://scenes/cars/race_wheels.png" id="3_3y7br"]
+[ext_resource type="Texture2D" uid="uid://b3mluqxfvdqp7" path="res://textures/race_wheels.png" id="3_3y7br"]
 
 [resource]
 render_priority = 0
