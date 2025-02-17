@@ -1,6 +1,8 @@
-[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://4unpxrqicot5"]
+[gd_resource type="StandardMaterial3D" load_steps=4 format=3 uid="uid://4unpxrqicot5"]
 
 [ext_resource type="Texture2D" uid="uid://dmqubpgxrgiip" path="res://textures/finish.png" id="1_m2gcc"]
+[ext_resource type="Texture2D" uid="uid://ovh02hb8osu2" path="res://textures/rough_texture.tres" id="1_wkw4h"]
+[ext_resource type="Texture2D" uid="uid://dh5vru6bpnaa6" path="res://textures/rough_texture_n.tres" id="2_kcqps"]
 
 [resource]
 albedo_color = Color(0.501961, 0.188235, 0, 1)
@@ -10,6 +12,10 @@ emission = Color(1, 0.376471, 0, 1)
 emission_energy_multiplier = 8.0
 emission_operator = 1
 emission_texture = ExtResource("1_m2gcc")
+detail_enabled = true
+detail_blend_mode = 3
+detail_albedo = ExtResource("1_wkw4h")
+detail_normal = ExtResource("2_kcqps")
 uv1_scale = Vector3(0.4, 0.4, 0.4)
 uv1_triplanar = true
 uv1_world_triplanar = true

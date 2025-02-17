@@ -362,7 +362,7 @@ process_priority = -1000
 process_physics_priority = -1000
 script = ExtResource("1_g86do")
 enabled = false
-metadata/_custom_type_script = ExtResource("1_g86do")
+metadata/_custom_type_script = "uid://tr0544b3fh36"
 
 [node name="DemoCarInput" type="Node" parent="."]
 process_priority = -1000
