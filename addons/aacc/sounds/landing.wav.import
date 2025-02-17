@@ -14,11 +14,11 @@ dest_files=["res://.godot/imported/landing.wav-4a4a8c524cd0144d62795e334d88d9c0.
 
 force/8_bit=false
 force/mono=false
-force/max_rate=false
+force/max_rate=true
 force/max_rate_hz=44100
 edit/trim=false
-edit/normalize=false
-edit/loop_mode=0
+edit/normalize=true
+edit/loop_mode=1
 edit/loop_begin=0
 edit/loop_end=-1
-compress/mode=2
+compress/mode=0

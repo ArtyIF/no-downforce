@@ -11,7 +11,7 @@ func _physics_process(delta: float) -> void:
 	volume_db = linear_to_db(smooth_volume.get_current_value())
 	
 	if target_value > 0.01:
-		pitch_scale = clamp(target_value, 0.01, 4.0)
+		pitch_scale = clamp(target_value, 0.01, 10.0)
 
 	if is_inf(volume_db) or car.freeze:
 		volume_db = -80.0

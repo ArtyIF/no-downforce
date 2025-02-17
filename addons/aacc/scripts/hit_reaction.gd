@@ -52,26 +52,25 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	var state: PhysicsDirectBodyState3D = PhysicsServer3D.body_get_direct_state(car_rid)
 
-	var average_contact_velocity: float = 0.0
 	var total_scratch_amount: float = 0.0
 
 	if state.get_contact_count() > 0:
 		for i in range(state.get_contact_count()):
-			average_contact_velocity += state.get_contact_local_velocity_at_position(i).length()
-			var scratch_amount: float = clamp((state.get_contact_local_velocity_at_position(i).length() - 0.1) / 10.0, 0.0, 1.0)
+			var scratch_amount: float = (state.get_contact_local_velocity_at_position(i).length() - 0.1) / 20.0
 			total_scratch_amount += scratch_amount
 
 			if sparks_control == 0:
 				spawn_particle(i, state, scratch_amount)
 
-		total_scratch_amount = clamp(total_scratch_amount, 0.0, 1.0)
+		total_scratch_amount /= state.get_contact_count()
+
 		if not scratch_sound.playing:
 			scratch_sound.play(randf_range(0.0, scratch_sound.stream.get_length()))
-		scratch_sound.pitch_scale = lerp(0.5, 1.0, clamp(total_scratch_amount, 0.0, 1.0))
+		scratch_sound.pitch_scale = clamp(lerp(0.2, 1.0, total_scratch_amount), 0.2, 2.0)
 	else:
 		sparks_control = 0
 
-	smooth_scratch_amount.advance_to(total_scratch_amount, delta)
+	smooth_scratch_amount.advance_to(clamp(total_scratch_amount, 0.0, 1.0), delta)
 	scratch_sound.volume_db = linear_to_db(smooth_scratch_amount.get_current_value())
 	if scratch_sound.volume_db < -60.0: # TODO: get from project settings
 		scratch_sound.stop()
