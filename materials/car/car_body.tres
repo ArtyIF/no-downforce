@@ -1,0 +1,12 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://x1suldb8ong5"]
+
+[ext_resource type="Shader" uid="uid://ci2abxhm6guxv" path="res://shaders/car.gdshader" id="1_3o8gp"]
+[ext_resource type="Texture2D" uid="uid://drsnrjjsfeyn7" path="res://textures/colormap.png" id="2_hq0dq"]
+[ext_resource type="Texture2D" uid="uid://22hwega4gqq" path="res://scenes/cars/race_body.png" id="3_bpsj6"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_3o8gp")
+shader_parameter/color_texture = ExtResource("2_hq0dq")
+shader_parameter/lightmap_texture = ExtResource("3_bpsj6")
+shader_parameter/lightmap_rect = Vector4(0.000976562, 0.000976562, 0.859375, 0.859375)

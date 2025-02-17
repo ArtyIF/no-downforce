@@ -12,3 +12,5 @@ metallic_specular = 1.0
 roughness = 0.05
 rim_enabled = true
 rim_tint = 0.0
+detail_blend_mode = 3
+detail_uv_layer = 1
