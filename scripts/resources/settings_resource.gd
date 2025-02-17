@@ -40,9 +40,9 @@ static var rebindable_controls: Dictionary[StringName, String] = {
 @export var graphics_burnout_particles_quality: int = 5
 @export var graphics_bloom_quality: int = 2
 @export var graphics_fog_quality: int = 4
-@export var graphics_ssao_quality: int = 4
-@export var graphics_ssil_quality: int = 4
-@export var graphics_ssr_quality: int = 4
+@export var graphics_ssao_quality: int = 2
+@export var graphics_ssil_quality: int = 2
+@export var graphics_ssr_quality: int = 2
 
 @export var accessibility_saturation: float = 1.0
 @export var accessibility_game_speed: float = 1.0

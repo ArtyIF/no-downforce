@@ -16,8 +16,5 @@ void vertex() {
 }
 
 void fragment() {
-	ALBEDO = color;
-
-	AO = texture(lightmap_texture, UV2).r;
-	AO_LIGHT_AFFECT = 1.0;
+	ALBEDO = color * texture(lightmap_texture, UV2).rgb;
 }

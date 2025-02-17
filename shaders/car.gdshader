@@ -23,8 +23,5 @@ void fragment() {
 	RIM = 1.0;
 	RIM_TINT = 0.0;
 
-	ALBEDO = texture(color_texture, UV).rgb;
-
-	AO = texture(lightmap_texture, UV2).r;
-	AO_LIGHT_AFFECT = 1.0;
+	ALBEDO = texture(color_texture, UV).rgb * texture(lightmap_texture, UV2).rgb;
 }

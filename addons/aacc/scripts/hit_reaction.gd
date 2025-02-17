@@ -72,7 +72,7 @@ func _physics_process(delta: float) -> void:
 
 	smooth_scratch_amount.advance_to(clamp(total_scratch_amount, 0.0, 1.0), delta)
 	scratch_sound.volume_db = linear_to_db(smooth_scratch_amount.get_current_value())
-	if scratch_sound.volume_db < -60.0: # TODO: get from project settings
+	if scratch_sound.volume_db < -60.0 or car.freeze: # TODO: get from project settings
 		scratch_sound.stop()
 	
 	# TODO: use delta
