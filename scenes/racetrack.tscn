@@ -1,4 +1,4 @@
-[gd_scene load_steps=100 format=3 uid="uid://bsp1ug1544wkv"]
+[gd_scene load_steps=101 format=3 uid="uid://bsp1ug1544wkv"]
 
 [ext_resource type="PackedScene" uid="uid://ctpcgnbte0ujm" path="res://scenes/models/pathtest.blend" id="1_27c0p"]
 [ext_resource type="Script" uid="uid://tr0544b3fh36" path="res://addons/aacc/scripts/car_input.gd" id="1_g86do"]
@@ -70,6 +70,7 @@
 [ext_resource type="Script" uid="uid://dkcssvrqrlro6" path="res://scripts/ui/settings/ssao_quality_setting.gd" id="50_burr8"]
 [ext_resource type="Script" uid="uid://eo8xitm0i6d0" path="res://scripts/ui/settings/ssr_quality_setting.gd" id="50_d7avv"]
 [ext_resource type="Resource" uid="uid://vc7pffaia1p5" path="res://dev_demos/arty_n1_time.res" id="52_6kdwj"]
+[ext_resource type="Resource" uid="uid://dyesqoc1ti2t4" path="res://dev_demos/arty_n0_time.res" id="52_8pgcq"]
 [ext_resource type="Script" uid="uid://dpjh575chum8l" path="res://scripts/ui/settings/upscaling_mode_setting.gd" id="52_qtpag"]
 [ext_resource type="Resource" uid="uid://1m4oefithx7h" path="res://dev_demos/arty_n2_time.res" id="53_fw8to"]
 [ext_resource type="Script" uid="uid://davqnenrgtsk5" path="res://scripts/ui/settings/fxaa_setting.gd" id="53_kdpoe"]
@@ -1183,7 +1184,7 @@ wrap_controls = true
 transient = true
 exclusive = true
 script = ExtResource("44_w7je6")
-dev_demos = Array[ExtResource("45_kujmk")]([ExtResource("52_6kdwj"), ExtResource("53_fw8to"), ExtResource("54_6kdwj")])
+dev_demos = Array[ExtResource("45_kujmk")]([ExtResource("52_8pgcq"), ExtResource("52_6kdwj"), ExtResource("53_fw8to"), ExtResource("54_6kdwj")])
 
 [node name="BG" type="PanelContainer" parent="UI/SelectDemoDialog"]
 anchors_preset = 15
