@@ -1,5 +1,5 @@
 shader_type spatial;
-render_mode diffuse_toon, specular_toon;
+render_mode diffuse_toon;
 
 uniform sampler2D color_texture : source_color, hint_default_white, repeat_disable, filter_linear_mipmap_anisotropic;
 
@@ -20,8 +20,21 @@ void fragment() {
 	SPECULAR = 1.0;
 	ROUGHNESS = 0.05;
 
-	RIM = 1.0;
-	RIM_TINT = 0.0;
-
 	ALBEDO = texture(color_texture, UV).rgb * texture(lightmap_texture, UV2).rgb;
+}
+
+void light() {
+	float NdotL = max(0.0, dot(NORMAL, LIGHT));
+	DIFFUSE_LIGHT += NdotL * ATTENUATION * LIGHT_COLOR / PI;
+
+	float NdotH = max(0.0, dot(NORMAL, normalize(VIEW + LIGHT)));
+	float phong = pow(NdotH, 15.0);
+	SPECULAR_LIGHT += phong * ALBEDO * LIGHT_COLOR * ATTENUATION * SPECULAR_AMOUNT;
+
+	if (LIGHT_IS_DIRECTIONAL) {
+		float NdotV = dot(NORMAL, VIEW);
+		float fresnel = 1.0 - clamp(NdotV, 0.0, 1.0);
+		float rim = pow(fresnel, 4.0);
+		SPECULAR_LIGHT += rim * ALBEDO * LIGHT_COLOR * mix(0.25, 1.0, ATTENUATION);
+	}
 }

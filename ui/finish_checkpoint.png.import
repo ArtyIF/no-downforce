@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://40yt1jhbak6d"
-path="res://.godot/imported/finish_checkpoint.png-faa536498dd6f6db9a9df30a792b2e12.ctex"
+path="res://.godot/imported/finish_checkpoint.png-5fcb167ab54c0d72537c3df3a8afa39a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/finish_checkpoint.png"
-dest_files=["res://.godot/imported/finish_checkpoint.png-faa536498dd6f6db9a9df30a792b2e12.ctex"]
+source_file="res://ui/finish_checkpoint.png"
+dest_files=["res://.godot/imported/finish_checkpoint.png-5fcb167ab54c0d72537c3df3a8afa39a.ctex"]
 
 [params]
 

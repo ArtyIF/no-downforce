@@ -19,7 +19,7 @@
 [ext_resource type="Script" uid="uid://b3ugjja162d4u" path="res://scripts/scene/very_low_fog_fade.gd" id="12_4duja"]
 [ext_resource type="Script" uid="uid://bf5r1446orb5o" path="res://scripts/ui/hud/speed_label.gd" id="13_687kb"]
 [ext_resource type="Script" uid="uid://kaltnwdawygu" path="res://scripts/ui/hud/gear_label.gd" id="13_vycac"]
-[ext_resource type="Texture2D" uid="uid://40yt1jhbak6d" path="res://textures/finish_checkpoint.png" id="14_fw8to"]
+[ext_resource type="Texture2D" uid="uid://40yt1jhbak6d" path="res://ui/finish_checkpoint.png" id="14_fw8to"]
 [ext_resource type="Script" uid="uid://d3uedaj5w0io6" path="res://scripts/ui/hud/revs_progress.gd" id="14_p664h"]
 [ext_resource type="Script" uid="uid://dt721ix7r1ufo" path="res://scripts/scene/follow_camera_position.gd" id="15_dj8gt"]
 [ext_resource type="Script" uid="uid://b50jlbs3eaai3" path="res://scripts/scene/lookat_camera_position.gd" id="16_60j73"]
