@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=4 uid="uid://bgcm0ljtikw2u"]
+[gd_scene load_steps=42 format=4 uid="uid://bgcm0ljtikw2u"]
 
 [ext_resource type="PhysicsMaterial" uid="uid://rgr13gn8pk0m" path="res://addons/aacc/car_physics_material.tres" id="1_neuu7"]
 [ext_resource type="Script" uid="uid://wiw33iaw2pjg" path="res://addons/aacc/scripts/car.gd" id="2_xc6lf"]
@@ -27,6 +27,7 @@
 [ext_resource type="Script" uid="uid://t5im4xcigfjb" path="res://addons/aacc/scripts/audio/car_brake_squeal_sound.gd" id="17_xfr2s"]
 [ext_resource type="AudioStream" uid="uid://d26n3xs6s7xha" path="res://addons/aacc/sounds/tire_roll.wav" id="19_hr23p"]
 [ext_resource type="Script" uid="uid://clouc4sxsptvp" path="res://addons/aacc/scripts/audio/car_tire_roll_sound.gd" id="20_rv1aa"]
+[ext_resource type="PackedScene" uid="uid://w2tm5lmehs3t" path="res://addons/aacc/scenes/hit_sound.tscn" id="23_rh3xe"]
 
 [sub_resource type="Resource" id="Resource_sei37"]
 resource_local_to_scene = true
@@ -337,6 +338,7 @@ bus = &"SFX"
 attenuation_filter_cutoff_hz = 20500.0
 doppler_tracking = 1
 script = ExtResource("13_21x01")
+hit_sound = ExtResource("23_rh3xe")
 
 [node name="BrakeSqueal" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("16_qq7oi")

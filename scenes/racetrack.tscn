@@ -451,7 +451,6 @@ margin = 0.1
 
 [node name="DynamicReflectionProbe" type="ReflectionProbe" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35, 0)
-visible = false
 update_mode = 1
 blend_distance = 0.0
 max_distance = 200.0
