@@ -1,0 +1,8 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://dydmoqv0jljyc"]
+
+[ext_resource type="Shader" uid="uid://ci2abxhm6guxv" path="res://shaders/car.gdshader" id="1_5y0vg"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_5y0vg")
+shader_parameter/lightmap_rect = Vector4(0, 0, 1, 1)
