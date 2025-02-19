@@ -691,21 +691,15 @@ grow_vertical = 0
 layout_mode = 2
 alignment = 2
 
-[node name="GearLabel" type="Label" parent="UI/HUD/SpeedRev/VBox"]
+[node name="RevsGear" type="HBoxContainer" parent="UI/HUD/SpeedRev/VBox"]
 layout_mode = 2
-text = "Gear"
-horizontal_alignment = 2
+theme_override_constants/separation = 10
+alignment = 1
 
-[node name="Gear" type="Label" parent="UI/HUD/SpeedRev/VBox"]
-layout_mode = 2
-theme_type_variation = &"MatrixLargeLabel"
-text = "1"
-horizontal_alignment = 2
-script = ExtResource("13_vycac")
-
-[node name="Revs" type="ProgressBar" parent="UI/HUD/SpeedRev/VBox"]
+[node name="Revs" type="ProgressBar" parent="UI/HUD/SpeedRev/VBox/RevsGear"]
 custom_minimum_size = Vector2(150, 15)
 layout_mode = 2
+size_flags_vertical = 4
 max_value = 1.0
 step = 0.0
 value = 0.5
@@ -713,17 +707,30 @@ fill_mode = 1
 show_percentage = false
 script = ExtResource("14_p664h")
 
-[node name="Speed" type="Label" parent="UI/HUD/SpeedRev/VBox"]
+[node name="Gear" type="Label" parent="UI/HUD/SpeedRev/VBox/RevsGear"]
+layout_mode = 2
+theme_type_variation = &"MatrixLargeLabel"
+text = "1"
+horizontal_alignment = 2
+script = ExtResource("13_vycac")
+
+[node name="Speed" type="HBoxContainer" parent="UI/HUD/SpeedRev/VBox"]
+layout_mode = 2
+alignment = 2
+
+[node name="Speed" type="Label" parent="UI/HUD/SpeedRev/VBox/Speed"]
 layout_mode = 2
 theme_type_variation = &"MatrixLargeLabel"
 text = "888"
 horizontal_alignment = 2
 script = ExtResource("13_687kb")
 
-[node name="SpeedUnit" type="Label" parent="UI/HUD/SpeedRev/VBox"]
+[node name="SpeedUnit" type="Label" parent="UI/HUD/SpeedRev/VBox/Speed"]
 layout_mode = 2
+size_flags_vertical = 1
 text = "km/h"
 horizontal_alignment = 2
+vertical_alignment = 1
 
 [node name="Time" type="PanelContainer" parent="UI/HUD"]
 layout_mode = 1
@@ -2393,6 +2400,7 @@ text = "Save and Close"
 bus = &"UI"
 
 [node name="LoadingCover" type="ColorRect" parent="."]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

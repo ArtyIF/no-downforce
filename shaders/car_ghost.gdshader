@@ -25,14 +25,12 @@ void light() {
 		DIFFUSE_LIGHT += NdotL * ATTENUATION * LIGHT_COLOR / PI;
 
 		float NdotH = max(0.0, dot(NORMAL, normalize(VIEW + LIGHT)));
-		float phong = pow(NdotH, 15.0) * ATTENUATION;
+		float phong = pow(NdotH, 10.0) * ATTENUATION;
 
-		float rim = 0.0;
-		if (LIGHT_IS_DIRECTIONAL) {
-			float NdotV = dot(NORMAL, VIEW);
-			float fresnel = 1.0 - clamp(NdotV, 0.0, 1.0);
-			rim = pow(fresnel, mix(4.0, 2.0, NdotL * ATTENUATION)) * mix(0.33, 1.0, NdotL * ATTENUATION);
-		}
+		float NdotV = dot(NORMAL, VIEW);
+		float fresnel = 1.0 - max(0.0, NdotV);
+		float NdotU = max(0.0, dot(NORMAL, vec3(0.0, 1.0, 0.0)));
+		float rim = pow(fresnel, 3.0) * NdotU;
 
 		SPECULAR_LIGHT += max(phong, rim) * ALBEDO * LIGHT_COLOR * SPECULAR_AMOUNT;
 	}
