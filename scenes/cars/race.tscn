@@ -22,7 +22,7 @@
 [ext_resource type="AudioStream" uid="uid://d26n3xs6s7xha" path="res://addons/aacc/sounds/tire_roll.wav" id="16_h61s1"]
 [ext_resource type="Script" uid="uid://t5im4xcigfjb" path="res://addons/aacc/scripts/audio/car_brake_squeal_sound.gd" id="16_jmtha"]
 [ext_resource type="Script" uid="uid://clouc4sxsptvp" path="res://addons/aacc/scripts/audio/car_tire_roll_sound.gd" id="17_btcgt"]
-[ext_resource type="PackedScene" uid="uid://w2tm5lmehs3t" path="res://addons/aacc/scenes/hit_sound.tscn" id="18_akcl5"]
+[ext_resource type="PackedScene" uid="uid://5a08b8crmdpm" path="res://addons/aacc/scenes/land_sound.tscn" id="18_akcl5"]
 
 [sub_resource type="Resource" id="Resource_sei37"]
 resource_local_to_scene = true
@@ -325,7 +325,7 @@ playback_type = 1
 doppler_tracking = 1
 script = ExtResource("10_7ntn4")
 pitch_range = Vector2(0.75, 1.25)
-hit_sound = ExtResource("18_akcl5")
+land_sound = ExtResource("18_akcl5")
 
 [node name="BrakeSqueal" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("14_l4ncn")

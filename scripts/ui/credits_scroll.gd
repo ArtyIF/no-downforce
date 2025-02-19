@@ -31,12 +31,6 @@ var copyright_info: Dictionary[String, Array] = {
 			"license": "CC-BY-4.0",
 		},
 		{
-			"name": "Car Land/Hit",
-			"source": "https://freesound.org/s/446135/",
-			"copyright": ["2018, JustInvoke"],
-			"license": "CC-BY-4.0",
-		},
-		{
 			"name": "metal plate scratch",
 			"source": "https://freesound.org/s/707639/",
 			"copyright": ["2023, Ridderick"],

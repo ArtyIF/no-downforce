@@ -34,8 +34,8 @@ void light() {
 	if (LIGHT_IS_DIRECTIONAL) {
 		float NdotV = dot(NORMAL, VIEW);
 		float fresnel = 1.0 - clamp(NdotV, 0.0, 1.0);
-		rim = pow(fresnel, 2.0) * 0.33;
+		rim = pow(fresnel, mix(4.0, 2.0, NdotL * ATTENUATION)) * mix(0.33, 1.0, NdotL * ATTENUATION);
 	}
-	
+
 	SPECULAR_LIGHT += max(phong, rim) * ALBEDO * LIGHT_COLOR * SPECULAR_AMOUNT;
 }

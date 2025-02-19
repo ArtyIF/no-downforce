@@ -1,7 +1,7 @@
 ## TODO: documentation
 class_name CarTireScreechSound extends AudioStreamPlayer3D
 @export var pitch_range: Vector2 = Vector2(0.5, 1.0)
-@export var hit_sound: PackedScene
+@export var land_sound: PackedScene
 
 @onready var car: Car = get_node("..")
 var smooth_burnout_amount = SmoothedFloat.new(0.0, 8.0, 8.0)
@@ -11,11 +11,12 @@ var old_ground_coefficient: float = 1.0
 func _physics_process(delta: float) -> void:
 	smooth_burnout_amount.advance_to(clamp(car.burnout_amount * 10.0, 0.0, 1.0), delta)
 
+	# TODO: separate into a different component
 	smooth_burnout_amount_land.advance_to(0.0, delta)
 	if is_zero_approx(old_ground_coefficient) and car.ground_coefficient > 0.0:
-		var land_velocity: float = clamp(abs(car.old_linear_velocity.y) / 10.0, 0.0, 1.0)
+		var land_velocity: float = clamp(abs(car.linear_velocity.y) / 10.0, 0.0, 1.0)
 		smooth_burnout_amount_land.force_current_value(land_velocity)
-		var hit_instance: AudioStreamPlayer3D = hit_sound.instantiate()
+		var hit_instance: AudioStreamPlayer3D = land_sound.instantiate()
 		hit_instance.volume_db = linear_to_db(land_velocity)
 		hit_instance.pitch_scale = randf_range(0.9, 1.1)
 		add_child(hit_instance)
