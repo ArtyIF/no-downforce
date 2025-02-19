@@ -1523,6 +1523,11 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
+[node name="Car" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Controls/Scroll/List"]
+layout_mode = 2
+theme_type_variation = &"HeaderMedium"
+text = "Car"
+
 [node name="Accelerate" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Controls/Scroll/List"]
 layout_mode = 2
 
@@ -1613,6 +1618,11 @@ text = "Set Bindings"
 script = ExtResource("47_v4lrh")
 control = "aaccdemo_reset"
 
+[node name="Camera" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Controls/Scroll/List"]
+layout_mode = 2
+theme_type_variation = &"HeaderMedium"
+text = "Camera"
+
 [node name="CameraForward" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Controls/Scroll/List"]
 layout_mode = 2
 
@@ -1702,6 +1712,11 @@ follow_focus = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+
+[node name="Volume" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Audio/Scroll/List"]
+layout_mode = 2
+theme_type_variation = &"HeaderMedium"
+text = "Volume"
 
 [node name="Master" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Audio/Scroll/List"]
 layout_mode = 2
@@ -1835,6 +1850,11 @@ text = "Due to technical limitations, some graphics settings are not available i
 autowrap_mode = 3
 script = ExtResource("62_tedy2")
 
+[node name="Display" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Graphics/Scroll/List"]
+layout_mode = 2
+theme_type_variation = &"HeaderMedium"
+text = "Display"
+
 [node name="WindowMode" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Graphics/Scroll/List"]
 layout_mode = 2
 
@@ -1960,6 +1980,11 @@ popup/item_1/text = "On"
 popup/item_1/id = 1
 script = ExtResource("53_kdpoe")
 
+[node name="Lighting" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Graphics/Scroll/List"]
+layout_mode = 2
+theme_type_variation = &"HeaderMedium"
+text = "Lighting"
+
 [node name="LightingQuality" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Graphics/Scroll/List"]
 layout_mode = 2
 
@@ -1980,46 +2005,6 @@ popup/item_1/id = 1
 script = ExtResource("42_o2x5v")
 static_light_data = "uid://y3xxks7m2exd"
 dynamic_light_data = "uid://bimmbsbwrgk7"
-
-[node name="AutoExposure" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Graphics/Scroll/List"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Graphics/Scroll/List/AutoExposure"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Auto-Exposure"
-
-[node name="Value" type="OptionButton" parent="UI/SettingsDialog/BG/VBox/Tabs/Graphics/Scroll/List/AutoExposure"]
-custom_minimum_size = Vector2(150, 40)
-layout_mode = 2
-selected = 1
-item_count = 2
-popup/item_0/text = "Off"
-popup/item_0/id = 0
-popup/item_1/text = "On"
-popup/item_1/id = 1
-script = ExtResource("69_ts87n")
-
-[node name="ReflectionProbeQuality" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Graphics/Scroll/List"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Graphics/Scroll/List/ReflectionProbeQuality"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Reflection Probe Quality"
-
-[node name="Value" type="OptionButton" parent="UI/SettingsDialog/BG/VBox/Tabs/Graphics/Scroll/List/ReflectionProbeQuality"]
-custom_minimum_size = Vector2(150, 40)
-layout_mode = 2
-selected = 2
-item_count = 3
-popup/item_0/text = "Off"
-popup/item_0/id = 0
-popup/item_1/text = "Low"
-popup/item_1/id = 1
-popup/item_2/text = "High"
-popup/item_2/id = 2
-script = ExtResource("45_f75xh")
 
 [node name="ShadowResolution" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Graphics/Scroll/List"]
 layout_mode = 2
@@ -2073,6 +2058,57 @@ popup/item_5/text = "Ultra"
 popup/item_5/id = 5
 script = ExtResource("47_fbg68")
 
+[node name="ReflectionProbeQuality" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Graphics/Scroll/List"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Graphics/Scroll/List/ReflectionProbeQuality"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Reflection Probe Quality"
+
+[node name="Value" type="OptionButton" parent="UI/SettingsDialog/BG/VBox/Tabs/Graphics/Scroll/List/ReflectionProbeQuality"]
+custom_minimum_size = Vector2(150, 40)
+layout_mode = 2
+selected = 2
+item_count = 3
+popup/item_0/text = "Off"
+popup/item_0/id = 0
+popup/item_1/text = "Low"
+popup/item_1/id = 1
+popup/item_2/text = "High"
+popup/item_2/id = 2
+script = ExtResource("45_f75xh")
+
+[node name="Environment" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Graphics/Scroll/List"]
+layout_mode = 2
+theme_type_variation = &"HeaderMedium"
+text = "Environment"
+
+[node name="FogQuality" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Graphics/Scroll/List"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Graphics/Scroll/List/FogQuality"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Fog Quality"
+
+[node name="Value" type="OptionButton" parent="UI/SettingsDialog/BG/VBox/Tabs/Graphics/Scroll/List/FogQuality"]
+custom_minimum_size = Vector2(150, 40)
+layout_mode = 2
+selected = 4
+item_count = 5
+popup/item_0/text = "Very Low"
+popup/item_0/id = 0
+popup/item_1/text = "Low"
+popup/item_1/id = 1
+popup/item_2/text = "Medium"
+popup/item_2/id = 2
+popup/item_3/text = "High"
+popup/item_3/id = 3
+popup/item_4/text = "Ultra"
+popup/item_4/id = 4
+script = ExtResource("49_tfpfy")
+
 [node name="BurnoutParticlesQuality" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Graphics/Scroll/List"]
 layout_mode = 2
 
@@ -2100,6 +2136,11 @@ popup/item_5/text = "Ultra"
 popup/item_5/id = 5
 script = ExtResource("66_cigoj")
 
+[node name="PostProcessing" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Graphics/Scroll/List"]
+layout_mode = 2
+theme_type_variation = &"HeaderMedium"
+text = "Post-Processing"
+
 [node name="BloomQuality" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Graphics/Scroll/List"]
 layout_mode = 2
 
@@ -2121,30 +2162,24 @@ popup/item_2/text = "High"
 popup/item_2/id = 2
 script = ExtResource("48_m6i20")
 
-[node name="FogQuality" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Graphics/Scroll/List"]
+[node name="AutoExposure" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Graphics/Scroll/List"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Graphics/Scroll/List/FogQuality"]
+[node name="Label" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Graphics/Scroll/List/AutoExposure"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Fog Quality"
+text = "Auto-Exposure"
 
-[node name="Value" type="OptionButton" parent="UI/SettingsDialog/BG/VBox/Tabs/Graphics/Scroll/List/FogQuality"]
+[node name="Value" type="OptionButton" parent="UI/SettingsDialog/BG/VBox/Tabs/Graphics/Scroll/List/AutoExposure"]
 custom_minimum_size = Vector2(150, 40)
 layout_mode = 2
-selected = 4
-item_count = 5
-popup/item_0/text = "Very Low"
+selected = 1
+item_count = 2
+popup/item_0/text = "Off"
 popup/item_0/id = 0
-popup/item_1/text = "Low"
+popup/item_1/text = "On"
 popup/item_1/id = 1
-popup/item_2/text = "Medium"
-popup/item_2/id = 2
-popup/item_3/text = "High"
-popup/item_3/id = 3
-popup/item_4/text = "Ultra"
-popup/item_4/id = 4
-script = ExtResource("49_tfpfy")
+script = ExtResource("69_ts87n")
 
 [node name="SSAOQuality" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Graphics/Scroll/List"]
 layout_mode = 2
@@ -2171,31 +2206,6 @@ popup/item_4/text = "Ultra"
 popup/item_4/id = 4
 script = ExtResource("50_burr8")
 
-[node name="SSILQuality2" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Graphics/Scroll/List"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Graphics/Scroll/List/SSILQuality2"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Screen Space Indirect Lighting Quality"
-
-[node name="Value" type="OptionButton" parent="UI/SettingsDialog/BG/VBox/Tabs/Graphics/Scroll/List/SSILQuality2"]
-custom_minimum_size = Vector2(150, 40)
-layout_mode = 2
-selected = 4
-item_count = 5
-popup/item_0/text = "Off"
-popup/item_0/id = 0
-popup/item_1/text = "Low"
-popup/item_1/id = 1
-popup/item_2/text = "Medium"
-popup/item_2/id = 2
-popup/item_3/text = "High"
-popup/item_3/id = 3
-popup/item_4/text = "Ultra"
-popup/item_4/id = 4
-script = ExtResource("79_fw8to")
-
 [node name="SSRQuality" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Graphics/Scroll/List"]
 layout_mode = 2
 
@@ -2220,6 +2230,31 @@ popup/item_3/id = 3
 popup/item_4/text = "Ultra"
 popup/item_4/id = 4
 script = ExtResource("50_d7avv")
+
+[node name="SSILQuality2" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Graphics/Scroll/List"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Graphics/Scroll/List/SSILQuality2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Screen Space Indirect Lighting Quality"
+
+[node name="Value" type="OptionButton" parent="UI/SettingsDialog/BG/VBox/Tabs/Graphics/Scroll/List/SSILQuality2"]
+custom_minimum_size = Vector2(150, 40)
+layout_mode = 2
+selected = 4
+item_count = 5
+popup/item_0/text = "Off"
+popup/item_0/id = 0
+popup/item_1/text = "Low"
+popup/item_1/id = 1
+popup/item_2/text = "Medium"
+popup/item_2/id = 2
+popup/item_3/text = "High"
+popup/item_3/id = 3
+popup/item_4/text = "Ultra"
+popup/item_4/id = 4
+script = ExtResource("79_fw8to")
 
 [node name="Accessibility" type="VBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs"]
 visible = false
@@ -2400,7 +2435,6 @@ text = "Save and Close"
 bus = &"UI"
 
 [node name="LoadingCover" type="ColorRect" parent="."]
-visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
