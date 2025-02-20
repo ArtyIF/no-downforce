@@ -13,8 +13,8 @@ func _physics_process(delta: float) -> void:
 
 	# TODO: separate into a different component
 	smooth_burnout_amount_land.advance_to(0.0, delta)
-	if is_zero_approx(old_ground_coefficient) and car.ground_coefficient > 0.0:
-		var land_velocity: float = clamp(abs(car.linear_velocity.y) / 10.0, 0.0, 1.0)
+	if car.ground_coefficient > old_ground_coefficient:
+		var land_velocity: float = clamp(max(-car.linear_velocity.y, 0.0) * (car.ground_coefficient - old_ground_coefficient) / 5.0, 0.0, 1.0)
 		smooth_burnout_amount_land.force_current_value(land_velocity)
 		var hit_instance: AudioStreamPlayer3D = land_sound.instantiate()
 		hit_instance.volume_db = linear_to_db(land_velocity)
