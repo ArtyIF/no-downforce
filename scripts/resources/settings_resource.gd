@@ -25,8 +25,16 @@ static var rebindable_controls: Dictionary[StringName, String] = {
 	"UI": 1.0,
 	"Brake Squeal": 1.0,
 }
+@export var audio_qualities: Dictionary[StringName, AACCGlobal.SoundQuality] = {
+	"Engine" = AACCGlobal.SoundQuality.ON,
+	"TireScreech" = AACCGlobal.SoundQuality.ON,
+	"Scrape" = AACCGlobal.SoundQuality.ON,
+	"Collision" = AACCGlobal.SoundQuality.ON,
+	"BrakeSqueal" = AACCGlobal.SoundQuality.ON,
+	"TireRoll" = AACCGlobal.SoundQuality.CURRENT_ONLY,
+}
 
-@export var graphics_window_mode: int = 2
+@export var graphics_window_mode: int = 0
 @export var graphics_vsync: int = 1
 @export var graphics_resolution_scale: float = 1.0
 @export var graphics_upscaling_mode: int = 0

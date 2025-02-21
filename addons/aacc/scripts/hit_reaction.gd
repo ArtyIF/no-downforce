@@ -5,7 +5,7 @@ extends Node3D
 
 @onready var car: Car = get_node("..")
 @onready var car_rid: RID = car.get_rid()
-@onready var scratch_sound: AudioStreamPlayer3D = get_node("ScratchSound")
+@onready var scrape_sound: AudioStreamPlayer3D = get_node("ScrapeSound")
 
 var sparks_control: int = 0
 var smooth_scratch_amount: SmoothedFloat = SmoothedFloat.new(0.0, 50.0, 5.0)
@@ -18,15 +18,14 @@ func play_hit_sound(_body: Node) -> void:
 			var projected_velocity: Vector3 = state.get_contact_local_velocity_at_position(i).project(state.get_contact_local_normal(i))
 			if projected_velocity.length() > 0.1:
 				# TODO: have a globally-accessible class take care of it
-				var hit_instance: AudioStreamPlayer3D
-				var hit_amount: float
+				var hit_amount: float = clamp((projected_velocity.length() - 0.1) / 5.0, 0.0, 1.0)
 
-				hit_amount = clamp((projected_velocity.length() - 0.1) / 5.0, 0.0, 1.0)
-				hit_instance = hit_sound.instantiate()
-				hit_instance.volume_db = linear_to_db(hit_amount)
-				hit_instance.pitch_scale = randf_range(0.9, 1.1)
-				add_child(hit_instance)
-				hit_instance.global_position = state.get_contact_local_position(i)
+				if AACCGlobal.can_play("Collision", car):
+					var hit_instance: AudioStreamPlayer3D = hit_sound.instantiate()
+					hit_instance.volume_db = linear_to_db(hit_amount)
+					hit_instance.pitch_scale = randf_range(0.9, 1.1)
+					add_child(hit_instance)
+					hit_instance.global_position = state.get_contact_local_position(i)
 
 				spawn_particle(i, state, hit_amount)
 
@@ -59,16 +58,19 @@ func _physics_process(delta: float) -> void:
 
 		total_scratch_amount /= state.get_contact_count()
 
-		if not scratch_sound.playing:
-			scratch_sound.play(randf_range(0.0, scratch_sound.stream.get_length()))
-		scratch_sound.pitch_scale = clamp(lerp(0.2, 1.0, total_scratch_amount), 0.2, 2.0)
+		if AACCGlobal.can_play("Scrape", car):
+			if not scrape_sound.playing:
+				scrape_sound.play(randf_range(0.0, scrape_sound.stream.get_length()))
+			scrape_sound.pitch_scale = clamp(lerp(0.2, 1.0, total_scratch_amount), 0.2, 2.0)
+		else:
+			scrape_sound.stop()
 	else:
 		sparks_control = 0
 
 	smooth_scratch_amount.advance_to(clamp(total_scratch_amount, 0.0, 1.0), delta)
-	scratch_sound.volume_db = linear_to_db(smooth_scratch_amount.get_current_value())
-	if scratch_sound.volume_db < -60.0 or car.freeze: # TODO: get from project settings
-		scratch_sound.stop()
+	scrape_sound.volume_db = linear_to_db(smooth_scratch_amount.get_current_value())
+	if scrape_sound.volume_db < -60.0 or car.freeze: # TODO: get from project settings
+		scrape_sound.stop()
 	
 	# TODO: use delta
 	sparks_control += 1

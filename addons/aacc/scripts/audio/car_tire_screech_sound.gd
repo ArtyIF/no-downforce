@@ -16,20 +16,25 @@ func _physics_process(delta: float) -> void:
 	if car.ground_coefficient > old_ground_coefficient:
 		var land_velocity: float = clamp(max(-car.linear_velocity.y, 0.0) * (car.ground_coefficient - old_ground_coefficient) / 5.0, 0.0, 1.0)
 		smooth_burnout_amount_land.force_current_value(land_velocity)
-		var hit_instance: AudioStreamPlayer3D = land_sound.instantiate()
-		hit_instance.volume_db = linear_to_db(land_velocity)
-		hit_instance.pitch_scale = randf_range(0.9, 1.1)
-		add_child(hit_instance)
+		
+		if AACCGlobal.can_play("Collision", car):
+			var hit_instance: AudioStreamPlayer3D = land_sound.instantiate()
+			hit_instance.volume_db = linear_to_db(land_velocity)
+			hit_instance.pitch_scale = randf_range(0.9, 1.1)
+			add_child(hit_instance)
 	
 	var burnout_land: float = max(smooth_burnout_amount.get_current_value(), smooth_burnout_amount_land.get_current_value())
 	pitch_scale = 1.0 if burnout_land > smooth_burnout_amount.get_current_value() else lerp(pitch_range.x, pitch_range.y, smooth_burnout_amount.get_current_value())
 	volume_db = linear_to_db(clamp(burnout_land * 10.0, 0.0, 1.0))
 
-	if is_inf(volume_db) or car.freeze:
-		volume_db = -80.0
-	if volume_db >= -60.0 and not playing:
-		play(randf_range(0.0, stream.get_length()))
-	elif volume_db < -60.0 and playing:
+	if AACCGlobal.can_play("TireScreech", car):
+		if is_inf(volume_db) or car.freeze:
+			volume_db = -80.0
+		if volume_db >= -60.0 and not playing:
+			play(randf_range(0.0, stream.get_length()))
+		elif volume_db < -60.0 and playing:
+			stop()
+	else:
 		stop()
 	
 	old_ground_coefficient = car.ground_coefficient

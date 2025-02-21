@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://cli0o8j8jp682"
-path="res://.godot/imported/scratch.wav-bf32b5f0a6c2c6fee4bb4ece8ea3d46d.sample"
+path="res://.godot/imported/scrape.wav-b615d7041102ec3a445aff8b65e1e0f9.sample"
 
 [deps]
 
-source_file="res://addons/aacc/sounds/scratch.wav"
-dest_files=["res://.godot/imported/scratch.wav-bf32b5f0a6c2c6fee4bb4ece8ea3d46d.sample"]
+source_file="res://addons/aacc/sounds/scrape.wav"
+dest_files=["res://.godot/imported/scrape.wav-b615d7041102ec3a445aff8b65e1e0f9.sample"]
 
 [params]
 

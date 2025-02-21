@@ -1,4 +1,4 @@
-[gd_scene load_steps=101 format=3 uid="uid://bsp1ug1544wkv"]
+[gd_scene load_steps=102 format=3 uid="uid://bsp1ug1544wkv"]
 
 [ext_resource type="PackedScene" uid="uid://ctpcgnbte0ujm" path="res://scenes/models/pathtest.blend" id="1_27c0p"]
 [ext_resource type="Script" uid="uid://tr0544b3fh36" path="res://addons/aacc/scripts/car_input.gd" id="1_g86do"]
@@ -78,6 +78,7 @@
 [ext_resource type="Script" uid="uid://b3iogaibu4jsv" path="res://scripts/demo/demo_dialog.gd" id="56_tedy2"]
 [ext_resource type="PackedScene" uid="uid://bgcm0ljtikw2u" path="res://scenes/cars/race_ghost.tscn" id="57_03d3b"]
 [ext_resource type="Script" uid="uid://5xvequ7stgwg" path="res://scripts/ui/opengl_warning.gd" id="62_tedy2"]
+[ext_resource type="Script" uid="uid://cdmru06nexuqf" path="res://scripts/ui/settings/audio_quality_setting.gd" id="64_0lt35"]
 [ext_resource type="Script" uid="uid://dpbf65jjhg418" path="res://scripts/ui/settings/burnout_particles_quality_setting.gd" id="66_cigoj"]
 [ext_resource type="Script" uid="uid://dwwomgxsspqep" path="res://scripts/ui/control_binding_dialog.gd" id="66_w7je6"]
 [ext_resource type="Script" uid="uid://dpxbr22ydxi3r" path="res://scripts/ui/settings/auto_exposure_setting.gd" id="69_ts87n"]
@@ -1718,20 +1719,20 @@ layout_mode = 2
 theme_type_variation = &"HeaderMedium"
 text = "Volume"
 
-[node name="Master" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Audio/Scroll/List"]
+[node name="MasterVolume" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Audio/Scroll/List"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Audio/Scroll/List/Master"]
+[node name="Label" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Audio/Scroll/List/MasterVolume"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Master Volume"
 
-[node name="ValueText" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Audio/Scroll/List/Master"]
+[node name="ValueText" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Audio/Scroll/List/MasterVolume"]
 layout_mode = 2
 text = "100%"
 script = ExtResource("38_3ppu2")
 
-[node name="Value" type="HSlider" parent="UI/SettingsDialog/BG/VBox/Tabs/Audio/Scroll/List/Master"]
+[node name="Value" type="HSlider" parent="UI/SettingsDialog/BG/VBox/Tabs/Audio/Scroll/List/MasterVolume"]
 custom_minimum_size = Vector2(150, 30)
 layout_mode = 2
 max_value = 1.0
@@ -1739,20 +1740,20 @@ step = 0.01
 value = 1.0
 script = ExtResource("38_nv0xe")
 
-[node name="SFX" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Audio/Scroll/List"]
+[node name="SFXVolume" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Audio/Scroll/List"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Audio/Scroll/List/SFX"]
+[node name="Label" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Audio/Scroll/List/SFXVolume"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "SFX Volume"
 
-[node name="ValueText" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Audio/Scroll/List/SFX"]
+[node name="ValueText" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Audio/Scroll/List/SFXVolume"]
 layout_mode = 2
 text = "100%"
 script = ExtResource("38_3ppu2")
 
-[node name="Value" type="HSlider" parent="UI/SettingsDialog/BG/VBox/Tabs/Audio/Scroll/List/SFX"]
+[node name="Value" type="HSlider" parent="UI/SettingsDialog/BG/VBox/Tabs/Audio/Scroll/List/SFXVolume"]
 custom_minimum_size = Vector2(150, 30)
 layout_mode = 2
 max_value = 1.0
@@ -1761,20 +1762,20 @@ value = 1.0
 script = ExtResource("38_nv0xe")
 bus_name = &"SFX"
 
-[node name="Engine" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Audio/Scroll/List"]
+[node name="EngineVolume" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Audio/Scroll/List"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Audio/Scroll/List/Engine"]
+[node name="Label" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Audio/Scroll/List/EngineVolume"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Engine Sounds Volume"
 
-[node name="ValueText" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Audio/Scroll/List/Engine"]
+[node name="ValueText" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Audio/Scroll/List/EngineVolume"]
 layout_mode = 2
 text = "100%"
 script = ExtResource("38_3ppu2")
 
-[node name="Value" type="HSlider" parent="UI/SettingsDialog/BG/VBox/Tabs/Audio/Scroll/List/Engine"]
+[node name="Value" type="HSlider" parent="UI/SettingsDialog/BG/VBox/Tabs/Audio/Scroll/List/EngineVolume"]
 custom_minimum_size = Vector2(150, 30)
 layout_mode = 2
 max_value = 1.0
@@ -1783,20 +1784,20 @@ value = 1.0
 script = ExtResource("38_nv0xe")
 bus_name = &"Engine"
 
-[node name="Background" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Audio/Scroll/List"]
+[node name="BackgroundVolume" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Audio/Scroll/List"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Audio/Scroll/List/Background"]
+[node name="Label" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Audio/Scroll/List/BackgroundVolume"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Ambient & Hurricane Sounds Volume"
 
-[node name="ValueText" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Audio/Scroll/List/Background"]
+[node name="ValueText" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Audio/Scroll/List/BackgroundVolume"]
 layout_mode = 2
 text = "100%"
 script = ExtResource("38_3ppu2")
 
-[node name="Value" type="HSlider" parent="UI/SettingsDialog/BG/VBox/Tabs/Audio/Scroll/List/Background"]
+[node name="Value" type="HSlider" parent="UI/SettingsDialog/BG/VBox/Tabs/Audio/Scroll/List/BackgroundVolume"]
 custom_minimum_size = Vector2(150, 30)
 layout_mode = 2
 max_value = 1.0
@@ -1805,20 +1806,20 @@ value = 1.0
 script = ExtResource("38_nv0xe")
 bus_name = &"Background"
 
-[node name="UI" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Audio/Scroll/List"]
+[node name="UIVolume" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Audio/Scroll/List"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Audio/Scroll/List/UI"]
+[node name="Label" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Audio/Scroll/List/UIVolume"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "UI Sounds Volume"
 
-[node name="ValueText" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Audio/Scroll/List/UI"]
+[node name="ValueText" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Audio/Scroll/List/UIVolume"]
 layout_mode = 2
 text = "100%"
 script = ExtResource("38_3ppu2")
 
-[node name="Value" type="HSlider" parent="UI/SettingsDialog/BG/VBox/Tabs/Audio/Scroll/List/UI"]
+[node name="Value" type="HSlider" parent="UI/SettingsDialog/BG/VBox/Tabs/Audio/Scroll/List/UIVolume"]
 custom_minimum_size = Vector2(150, 30)
 layout_mode = 2
 max_value = 1.0
@@ -1832,125 +1833,137 @@ layout_mode = 2
 theme_type_variation = &"HeaderMedium"
 text = "Sound Detail"
 
-[node name="BrakesSquealing" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Audio/Scroll/List"]
+[node name="EngineDetail" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Audio/Scroll/List"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Audio/Scroll/List/BrakesSquealing"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Brakes Squealing (when braking)"
-
-[node name="Value" type="OptionButton" parent="UI/SettingsDialog/BG/VBox/Tabs/Audio/Scroll/List/BrakesSquealing"]
-custom_minimum_size = Vector2(150, 40)
-layout_mode = 2
-selected = 2
-item_count = 3
-popup/item_0/text = "None"
-popup/item_0/id = 0
-popup/item_1/text = "Player Only"
-popup/item_1/id = 1
-popup/item_2/text = "On"
-popup/item_2/id = 2
-
-[node name="TiresRolling" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Audio/Scroll/List"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Audio/Scroll/List/TiresRolling"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Tires Rolling (rumbling at high speeds)"
-
-[node name="Value" type="OptionButton" parent="UI/SettingsDialog/BG/VBox/Tabs/Audio/Scroll/List/TiresRolling"]
-custom_minimum_size = Vector2(150, 40)
-layout_mode = 2
-selected = 2
-item_count = 3
-popup/item_0/text = "None"
-popup/item_0/id = 0
-popup/item_1/text = "Player Only"
-popup/item_1/id = 1
-popup/item_2/text = "On"
-popup/item_2/id = 2
-
-[node name="Collisions" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Audio/Scroll/List"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Audio/Scroll/List/Collisions"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Collisions"
-
-[node name="Value" type="OptionButton" parent="UI/SettingsDialog/BG/VBox/Tabs/Audio/Scroll/List/Collisions"]
-custom_minimum_size = Vector2(150, 40)
-layout_mode = 2
-selected = 2
-item_count = 3
-popup/item_0/text = "None"
-popup/item_0/id = 0
-popup/item_1/text = "Player Only"
-popup/item_1/id = 1
-popup/item_2/text = "On"
-popup/item_2/id = 2
-
-[node name="Scraping" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Audio/Scroll/List"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Audio/Scroll/List/Scraping"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Scraping"
-
-[node name="Value" type="OptionButton" parent="UI/SettingsDialog/BG/VBox/Tabs/Audio/Scroll/List/Scraping"]
-custom_minimum_size = Vector2(150, 40)
-layout_mode = 2
-selected = 2
-item_count = 3
-popup/item_0/text = "None"
-popup/item_0/id = 0
-popup/item_1/text = "Player Only"
-popup/item_1/id = 1
-popup/item_2/text = "On"
-popup/item_2/id = 2
-
-[node name="TiresScreeching" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Audio/Scroll/List"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Audio/Scroll/List/TiresScreeching"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Tires Screeching (when drifting, landing and doing burnouts)"
-
-[node name="Value" type="OptionButton" parent="UI/SettingsDialog/BG/VBox/Tabs/Audio/Scroll/List/TiresScreeching"]
-custom_minimum_size = Vector2(150, 40)
-layout_mode = 2
-selected = 2
-item_count = 3
-popup/item_0/text = "None"
-popup/item_0/id = 0
-popup/item_1/text = "Player Only"
-popup/item_1/id = 1
-popup/item_2/text = "On"
-popup/item_2/id = 2
-
-[node name="Engines" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Audio/Scroll/List"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Audio/Scroll/List/Engines"]
+[node name="Label" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Audio/Scroll/List/EngineDetail"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Engines"
 
-[node name="Value" type="OptionButton" parent="UI/SettingsDialog/BG/VBox/Tabs/Audio/Scroll/List/Engines"]
+[node name="Value" type="OptionButton" parent="UI/SettingsDialog/BG/VBox/Tabs/Audio/Scroll/List/EngineDetail"]
 custom_minimum_size = Vector2(150, 40)
 layout_mode = 2
 selected = 2
 item_count = 3
-popup/item_0/text = "None"
+popup/item_0/text = "Off"
 popup/item_0/id = 0
 popup/item_1/text = "Player Only"
 popup/item_1/id = 1
 popup/item_2/text = "On"
 popup/item_2/id = 2
+script = ExtResource("64_0lt35")
+quality_name = &"Engine"
+
+[node name="TireScreechDetail" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Audio/Scroll/List"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Audio/Scroll/List/TireScreechDetail"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Tires Screeching (when drifting, landing and doing burnouts)"
+
+[node name="Value" type="OptionButton" parent="UI/SettingsDialog/BG/VBox/Tabs/Audio/Scroll/List/TireScreechDetail"]
+custom_minimum_size = Vector2(150, 40)
+layout_mode = 2
+selected = 2
+item_count = 3
+popup/item_0/text = "Off"
+popup/item_0/id = 0
+popup/item_1/text = "Player Only"
+popup/item_1/id = 1
+popup/item_2/text = "On"
+popup/item_2/id = 2
+script = ExtResource("64_0lt35")
+quality_name = &"TireScreech"
+
+[node name="ScrapeDetail" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Audio/Scroll/List"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Audio/Scroll/List/ScrapeDetail"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Scraping"
+
+[node name="Value" type="OptionButton" parent="UI/SettingsDialog/BG/VBox/Tabs/Audio/Scroll/List/ScrapeDetail"]
+custom_minimum_size = Vector2(150, 40)
+layout_mode = 2
+selected = 2
+item_count = 3
+popup/item_0/text = "Off"
+popup/item_0/id = 0
+popup/item_1/text = "Player Only"
+popup/item_1/id = 1
+popup/item_2/text = "On"
+popup/item_2/id = 2
+script = ExtResource("64_0lt35")
+quality_name = &"Scrape"
+
+[node name="CollisionDetail" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Audio/Scroll/List"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Audio/Scroll/List/CollisionDetail"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Collisions"
+
+[node name="Value" type="OptionButton" parent="UI/SettingsDialog/BG/VBox/Tabs/Audio/Scroll/List/CollisionDetail"]
+custom_minimum_size = Vector2(150, 40)
+layout_mode = 2
+selected = 2
+item_count = 3
+popup/item_0/text = "Off"
+popup/item_0/id = 0
+popup/item_1/text = "Player Only"
+popup/item_1/id = 1
+popup/item_2/text = "On"
+popup/item_2/id = 2
+script = ExtResource("64_0lt35")
+quality_name = &"Collision"
+
+[node name="BrakeSquealDetail" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Audio/Scroll/List"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Audio/Scroll/List/BrakeSquealDetail"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Brakes Squealing (when braking)"
+
+[node name="Value" type="OptionButton" parent="UI/SettingsDialog/BG/VBox/Tabs/Audio/Scroll/List/BrakeSquealDetail"]
+custom_minimum_size = Vector2(150, 40)
+layout_mode = 2
+selected = 2
+item_count = 3
+popup/item_0/text = "Off"
+popup/item_0/id = 0
+popup/item_1/text = "Player Only"
+popup/item_1/id = 1
+popup/item_2/text = "On"
+popup/item_2/id = 2
+script = ExtResource("64_0lt35")
+quality_name = &"BrakeSqueal"
+
+[node name="TireRollDetail" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Audio/Scroll/List"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Audio/Scroll/List/TireRollDetail"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Tires Rolling (rumbling at high speeds)"
+
+[node name="Value" type="OptionButton" parent="UI/SettingsDialog/BG/VBox/Tabs/Audio/Scroll/List/TireRollDetail"]
+custom_minimum_size = Vector2(150, 40)
+layout_mode = 2
+selected = 2
+item_count = 3
+popup/item_0/text = "Off"
+popup/item_0/id = 0
+popup/item_1/text = "Player Only"
+popup/item_1/id = 1
+popup/item_2/text = "On"
+popup/item_2/id = 2
+script = ExtResource("64_0lt35")
+quality_name = &"TireRoll"
 
 [node name="Graphics" type="VBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs"]
 visible = false

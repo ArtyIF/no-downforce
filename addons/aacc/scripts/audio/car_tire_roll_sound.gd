@@ -13,9 +13,12 @@ func _physics_process(delta: float) -> void:
 	if target_value > 0.01:
 		pitch_scale = clamp(target_value, 0.01, 10.0)
 
-	if is_inf(volume_db) or car.freeze:
-		volume_db = -80.0
-	if volume_db >= -60.0 and not playing:
-		play(randf_range(0.0, stream.get_length()))
-	elif volume_db < -60.0 and playing:
+	if AACCGlobal.can_play("TireRoll", car):
+		if is_inf(volume_db) or car.freeze:
+			volume_db = -80.0
+		if volume_db >= -60.0 and not playing:
+			play(randf_range(0.0, stream.get_length()))
+		elif volume_db < -60.0 and playing:
+			stop()
+	else:
 		stop()
