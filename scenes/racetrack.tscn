@@ -1827,6 +1827,131 @@ value = 1.0
 script = ExtResource("38_nv0xe")
 bus_name = &"UI"
 
+[node name="SoundDetail" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Audio/Scroll/List"]
+layout_mode = 2
+theme_type_variation = &"HeaderMedium"
+text = "Sound Detail"
+
+[node name="BrakesSquealing" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Audio/Scroll/List"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Audio/Scroll/List/BrakesSquealing"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Brakes Squealing (when braking)"
+
+[node name="Value" type="OptionButton" parent="UI/SettingsDialog/BG/VBox/Tabs/Audio/Scroll/List/BrakesSquealing"]
+custom_minimum_size = Vector2(150, 40)
+layout_mode = 2
+selected = 2
+item_count = 3
+popup/item_0/text = "None"
+popup/item_0/id = 0
+popup/item_1/text = "Player Only"
+popup/item_1/id = 1
+popup/item_2/text = "On"
+popup/item_2/id = 2
+
+[node name="TiresRolling" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Audio/Scroll/List"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Audio/Scroll/List/TiresRolling"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Tires Rolling (rumbling at high speeds)"
+
+[node name="Value" type="OptionButton" parent="UI/SettingsDialog/BG/VBox/Tabs/Audio/Scroll/List/TiresRolling"]
+custom_minimum_size = Vector2(150, 40)
+layout_mode = 2
+selected = 2
+item_count = 3
+popup/item_0/text = "None"
+popup/item_0/id = 0
+popup/item_1/text = "Player Only"
+popup/item_1/id = 1
+popup/item_2/text = "On"
+popup/item_2/id = 2
+
+[node name="Collisions" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Audio/Scroll/List"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Audio/Scroll/List/Collisions"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Collisions"
+
+[node name="Value" type="OptionButton" parent="UI/SettingsDialog/BG/VBox/Tabs/Audio/Scroll/List/Collisions"]
+custom_minimum_size = Vector2(150, 40)
+layout_mode = 2
+selected = 2
+item_count = 3
+popup/item_0/text = "None"
+popup/item_0/id = 0
+popup/item_1/text = "Player Only"
+popup/item_1/id = 1
+popup/item_2/text = "On"
+popup/item_2/id = 2
+
+[node name="Scraping" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Audio/Scroll/List"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Audio/Scroll/List/Scraping"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Scraping"
+
+[node name="Value" type="OptionButton" parent="UI/SettingsDialog/BG/VBox/Tabs/Audio/Scroll/List/Scraping"]
+custom_minimum_size = Vector2(150, 40)
+layout_mode = 2
+selected = 2
+item_count = 3
+popup/item_0/text = "None"
+popup/item_0/id = 0
+popup/item_1/text = "Player Only"
+popup/item_1/id = 1
+popup/item_2/text = "On"
+popup/item_2/id = 2
+
+[node name="TiresScreeching" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Audio/Scroll/List"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Audio/Scroll/List/TiresScreeching"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Tires Screeching (when drifting, landing and doing burnouts)"
+
+[node name="Value" type="OptionButton" parent="UI/SettingsDialog/BG/VBox/Tabs/Audio/Scroll/List/TiresScreeching"]
+custom_minimum_size = Vector2(150, 40)
+layout_mode = 2
+selected = 2
+item_count = 3
+popup/item_0/text = "None"
+popup/item_0/id = 0
+popup/item_1/text = "Player Only"
+popup/item_1/id = 1
+popup/item_2/text = "On"
+popup/item_2/id = 2
+
+[node name="Engines" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Audio/Scroll/List"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Audio/Scroll/List/Engines"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Engines"
+
+[node name="Value" type="OptionButton" parent="UI/SettingsDialog/BG/VBox/Tabs/Audio/Scroll/List/Engines"]
+custom_minimum_size = Vector2(150, 40)
+layout_mode = 2
+selected = 2
+item_count = 3
+popup/item_0/text = "None"
+popup/item_0/id = 0
+popup/item_1/text = "Player Only"
+popup/item_1/id = 1
+popup/item_2/text = "On"
+popup/item_2/id = 2
+
 [node name="Graphics" type="VBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs"]
 visible = false
 layout_mode = 2
