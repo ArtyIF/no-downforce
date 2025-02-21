@@ -106,6 +106,12 @@ var copyright_info: Dictionary[String, Array] = {
 			"copyright": ["2022-2024, GGBotNet"],
 			"license": "OFL-1.1",
 		},
+		{
+			"name": "Material Symbols",
+			"source": "https://fonts.google.com/icons",
+			"copyright": ["2022-2025, Google"],
+			"license": "Apache-2.0",
+		},
 	],
 	"Models": [
 		{

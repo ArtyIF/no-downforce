@@ -11,7 +11,6 @@
 [ext_resource type="StyleBox" uid="uid://djeifm0a8tat5" path="res://ui/background_panel.tres" id="7_2j8s8"]
 [ext_resource type="Texture2D" uid="uid://c6u87l0mcgnec" path="res://ui/textures/checkbutton_unchecked.png" id="7_qijjd"]
 [ext_resource type="Texture2D" uid="uid://cjmnfm65wuhkr" path="res://ui/textures/radio_checked.png" id="7_qxik8"]
-[ext_resource type="FontFile" uid="uid://yg13fswuk34r" path="res://fonts/MatrixTypeDisplay-Regular.otf" id="7_y5ki2"]
 [ext_resource type="Texture2D" uid="uid://7cqpdnoxlbyo" path="res://ui/textures/checkbox_unchecked.png" id="7_yipae"]
 [ext_resource type="Texture2D" uid="uid://dj783yw7fpv6r" path="res://ui/textures/radio_unchecked.png" id="8_iag4h"]
 [ext_resource type="StyleBox" uid="uid://dn2v12vx6uj0d" path="res://ui/fill.tres" id="8_rtqkv"]
@@ -32,6 +31,7 @@
 [ext_resource type="Texture2D" uid="uid://dwvi8u0edegpb" path="res://ui/textures/radio_checked_disabled.png" id="21_5hoqc"]
 [ext_resource type="Texture2D" uid="uid://mmcawthemyj5" path="res://ui/textures/checkbox_checked disabled.png" id="21_rjlhu"]
 [ext_resource type="Texture2D" uid="uid://crhgofm8q53h3" path="res://ui/textures/checkbox_unchecked_disabled.png" id="23_p7okc"]
+[ext_resource type="FontVariation" uid="uid://cr85j62oae06b" path="res://fonts/MatrixTypeDisplay-Adjusted.tres" id="24_ukikx"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_iag4h"]
 
@@ -141,18 +141,18 @@ MatrixHugeLabel/colors/font_color = Color(1, 0.376471, 0, 1)
 MatrixHugeLabel/colors/font_outline_color = Color(1, 0.376471, 0, 0.376471)
 MatrixHugeLabel/constants/outline_size = 10
 MatrixHugeLabel/font_sizes/font_size = 48
-MatrixHugeLabel/fonts/font = ExtResource("7_y5ki2")
+MatrixHugeLabel/fonts/font = ExtResource("24_ukikx")
 MatrixLargeLabel/base_type = &"Label"
 MatrixLargeLabel/colors/font_color = Color(1, 0.376471, 0, 1)
 MatrixLargeLabel/colors/font_outline_color = Color(1, 0.376471, 0, 0.376471)
 MatrixLargeLabel/constants/outline_size = 5
 MatrixLargeLabel/font_sizes/font_size = 24
-MatrixLargeLabel/fonts/font = ExtResource("7_y5ki2")
+MatrixLargeLabel/fonts/font = ExtResource("24_ukikx")
 MatrixSmallLabel/base_type = &"Label"
 MatrixSmallLabel/colors/font_color = Color(1, 0.376471, 0, 1)
 MatrixSmallLabel/colors/font_outline_color = Color(1, 0.376471, 0, 0.501961)
 MatrixSmallLabel/constants/outline_size = 2
-MatrixSmallLabel/fonts/font = ExtResource("7_y5ki2")
+MatrixSmallLabel/fonts/font = ExtResource("24_ukikx")
 OptionButton/constants/arrow_margin = 8
 OptionButton/icons/arrow = ExtResource("15_6eqeh")
 Panel/styles/panel = ExtResource("7_2j8s8")

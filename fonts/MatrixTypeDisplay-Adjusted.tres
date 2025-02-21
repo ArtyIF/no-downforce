@@ -1,0 +1,8 @@
+[gd_resource type="FontVariation" load_steps=2 format=3 uid="uid://cr85j62oae06b"]
+
+[ext_resource type="FontFile" uid="uid://yg13fswuk34r" path="res://fonts/MatrixTypeDisplay-Regular.otf" id="1_xvaie"]
+
+[resource]
+base_font = ExtResource("1_xvaie")
+spacing_top = -1
+spacing_bottom = -3

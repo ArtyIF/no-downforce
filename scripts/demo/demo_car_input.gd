@@ -48,7 +48,6 @@ func load_demo(start_from_takeoff: bool = false, autoplay: bool = true) -> void:
 	NoDownforceGlobal.ui_manager.screens["DemoScreen"].get_node("TopBG/VBox/PlaybackButtons/Pause").button_pressed = false
 	AACCGlobal.current_car.freeze = false
 	NoDownforceGlobal.ui_manager.screens["HUD"].get_node("Time/VBox/TargetTime").visible = false
-	NoDownforceGlobal.ui_manager.screens["HUD"].get_node("Time/VBox/TargetTimeLabel").visible = false
 
 	if not demo:
 		NoDownforceGlobal.playing_demo = false
@@ -83,9 +82,8 @@ func load_demo(start_from_takeoff: bool = false, autoplay: bool = true) -> void:
 		NoDownforceGlobal.playing_demo = true
 	else:
 		NoDownforceGlobal.ui_manager.show_screen("IntroScreen")
-		NoDownforceGlobal.ui_manager.screens["HUD"].get_node("Time/VBox/TargetTime").text = NoDownforceGlobal.float_to_time(demo.length - demo.start_time)
+		NoDownforceGlobal.ui_manager.screens["HUD"].get_node("Time/VBox/TargetTime/TargetTimeLabel").text = NoDownforceGlobal.float_to_time(demo.length - demo.start_time)
 		NoDownforceGlobal.ui_manager.screens["HUD"].get_node("Time/VBox/TargetTime").visible = true
-		NoDownforceGlobal.ui_manager.screens["HUD"].get_node("Time/VBox/TargetTimeLabel").visible = true
 
 	playback_speed = 1.0 if autoplay else 0.0
 

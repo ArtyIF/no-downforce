@@ -1,4 +1,4 @@
-[gd_scene load_steps=102 format=3 uid="uid://bsp1ug1544wkv"]
+[gd_scene load_steps=106 format=3 uid="uid://bsp1ug1544wkv"]
 
 [ext_resource type="PackedScene" uid="uid://ctpcgnbte0ujm" path="res://scenes/models/pathtest.blend" id="1_27c0p"]
 [ext_resource type="Script" uid="uid://tr0544b3fh36" path="res://addons/aacc/scripts/car_input.gd" id="1_g86do"]
@@ -17,6 +17,7 @@
 [ext_resource type="AudioStream" uid="uid://b26fs6221u2u5" path="res://audio/ui/checkpoint_finish.wav" id="10_fw8to"]
 [ext_resource type="Script" uid="uid://d34asehi5ugcg" path="res://scripts/race/checkpoint.gd" id="11_6v6se"]
 [ext_resource type="Script" uid="uid://b3ugjja162d4u" path="res://scripts/scene/very_low_fog_fade.gd" id="12_4duja"]
+[ext_resource type="Texture2D" uid="uid://dh4khdgvjnf1e" path="res://fonts/material_symbols/flag.svg" id="13_1j73q"]
 [ext_resource type="Script" uid="uid://bf5r1446orb5o" path="res://scripts/ui/hud/speed_label.gd" id="13_687kb"]
 [ext_resource type="Script" uid="uid://kaltnwdawygu" path="res://scripts/ui/hud/gear_label.gd" id="13_vycac"]
 [ext_resource type="Texture2D" uid="uid://40yt1jhbak6d" path="res://ui/finish_checkpoint.png" id="14_fw8to"]
@@ -54,11 +55,14 @@
 [ext_resource type="Script" uid="uid://dh1nqnmjiswug" path="res://scripts/ui/settings/value_text.gd" id="38_3ppu2"]
 [ext_resource type="Script" uid="uid://c7hfgvl4lvkcx" path="res://scripts/ui/hud/handbrake_bar.gd" id="38_l4ne8"]
 [ext_resource type="Script" uid="uid://b4tcctbtpnuab" path="res://scripts/ui/settings/audio_setting.gd" id="38_nv0xe"]
+[ext_resource type="Texture2D" uid="uid://bbk2ofaske6cu" path="res://fonts/material_symbols/timer.svg" id="40_jilgw"]
 [ext_resource type="Script" uid="uid://ep67hxlgypke" path="res://scripts/ui/settings/window_mode_setting.gd" id="40_lcwrm"]
 [ext_resource type="Script" uid="uid://bxt8o0qvoywct" path="res://scripts/ui/settings/resolution_scale_setting.gd" id="41_4hh65"]
 [ext_resource type="Script" uid="uid://b7018n1kx30a5" path="res://scripts/ui/settings/msaa_setting.gd" id="42_00phd"]
 [ext_resource type="Script" uid="uid://ctdhta0mxpl7v" path="res://scripts/ui/settings/lighting_quality_setting.gd" id="42_o2x5v"]
+[ext_resource type="Texture2D" uid="uid://kf8cra5501e1" path="res://fonts/material_symbols/trophy.svg" id="42_s7tqr"]
 [ext_resource type="Script" uid="uid://d4atu24eanq2n" path="res://scripts/ui/settings/vsync_setting.gd" id="43_0j4tq"]
+[ext_resource type="Texture2D" uid="uid://b1rkxqkaierhp" path="res://fonts/material_symbols/flag_check.svg" id="43_1j73q"]
 [ext_resource type="Script" uid="uid://ckqtlfjjwmtic" path="res://scripts/demo/select_demo_dialog.gd" id="44_w7je6"]
 [ext_resource type="Script" uid="uid://cc8hml66mwr74" path="res://scripts/ui/settings/reflection_probe_quality_setting.gd" id="45_f75xh"]
 [ext_resource type="Script" uid="uid://c7ywv8vs3n0to" path="res://scripts/resources/demo_resource.gd" id="45_kujmk"]
@@ -124,7 +128,7 @@ billboard_keep_scale = true
 [sub_resource type="QuadMesh" id="QuadMesh_6ij7b"]
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_kujmk")
-size = Vector2(16, 8)
+size = Vector2(16, 5)
 
 [sub_resource type="Resource" id="Resource_rftos"]
 resource_local_to_scene = true
@@ -373,7 +377,7 @@ script = ExtResource("23_ahn5o")
 [node name="CheckpointView" type="SubViewport" parent="."]
 own_world_3d = true
 transparent_bg = true
-size = Vector2i(512, 256)
+size = Vector2i(432, 144)
 
 [node name="Panel" type="PanelContainer" parent="CheckpointView"]
 anchors_preset = 15
@@ -382,29 +386,32 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBox" type="VBoxContainer" parent="CheckpointView/Panel"]
+[node name="HBox" type="HBoxContainer" parent="CheckpointView/Panel"]
 layout_mode = 2
+theme_override_constants/separation = 10
 alignment = 1
 
-[node name="CheckpointLabel" type="Label" parent="CheckpointView/Panel/VBox"]
+[node name="CheckpointIcon" type="TextureRect" parent="CheckpointView/Panel/HBox"]
+modulate = Color(1, 0.690196, 0.501961, 1)
+custom_minimum_size = Vector2(96, 0)
 layout_mode = 2
-theme_override_font_sizes/font_size = 48
-text = "Checkpoint"
-horizontal_alignment = 1
+texture = ExtResource("13_1j73q")
+expand_mode = 1
+stretch_mode = 5
 
-[node name="Checkpoint" type="Label" parent="CheckpointView/Panel/VBox"]
+[node name="Checkpoint" type="Label" parent="CheckpointView/Panel/HBox"]
 layout_mode = 2
 theme_type_variation = &"MatrixLargeLabel"
 theme_override_constants/outline_size = 15
 theme_override_font_sizes/font_size = 90
-text = "012345/FINISH"
+text = "1/5"
 horizontal_alignment = 1
 script = ExtResource("19_52djk")
 at_checkpoint = true
 
 [node name="FinishPattern" type="TextureRect" parent="CheckpointView"]
-modulate = Color(1, 0.376471, 0, 0.25098)
-anchors_preset = 15
+modulate = Color(1, 0.376471, 0, 0.501961)
+anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
@@ -743,43 +750,55 @@ grow_horizontal = 0
 [node name="VBox" type="VBoxContainer" parent="UI/HUD/Time"]
 layout_mode = 2
 
-[node name="YourTimeLabel" type="Label" parent="UI/HUD/Time/VBox"]
+[node name="YourTime" type="HBoxContainer" parent="UI/HUD/Time/VBox"]
 layout_mode = 2
-text = "Your Time"
-horizontal_alignment = 2
 
-[node name="YourTime" type="Label" parent="UI/HUD/Time/VBox"]
+[node name="YourTimeLabel" type="Label" parent="UI/HUD/Time/VBox/YourTime"]
 layout_mode = 2
 theme_type_variation = &"MatrixLargeLabel"
 text = "00:00.000"
 horizontal_alignment = 2
 script = ExtResource("20_f85px")
 
-[node name="TargetTimeLabel" type="Label" parent="UI/HUD/Time/VBox"]
+[node name="YourTimeIcon" type="TextureRect" parent="UI/HUD/Time/VBox/YourTime"]
+modulate = Color(1, 0.690196, 0.501961, 1)
+layout_mode = 2
+texture = ExtResource("40_jilgw")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="TargetTime" type="HBoxContainer" parent="UI/HUD/Time/VBox"]
 visible = false
 layout_mode = 2
-text = "Target Time"
-horizontal_alignment = 2
 
-[node name="TargetTime" type="Label" parent="UI/HUD/Time/VBox"]
-visible = false
+[node name="TargetTimeLabel" type="Label" parent="UI/HUD/Time/VBox/TargetTime"]
 layout_mode = 2
 theme_type_variation = &"MatrixLargeLabel"
 text = "02:00.000"
 horizontal_alignment = 2
 
+[node name="TargetTimeIcon" type="TextureRect" parent="UI/HUD/Time/VBox/TargetTime"]
+modulate = Color(1, 0.690196, 0.501961, 1)
+layout_mode = 2
+texture = ExtResource("42_s7tqr")
+expand_mode = 3
+stretch_mode = 5
+
 [node name="Checkpoints" type="PanelContainer" parent="UI/HUD"]
 layout_mode = 1
 anchors_preset = -1
 
-[node name="VBox" type="VBoxContainer" parent="UI/HUD/Checkpoints"]
+[node name="HBox" type="HBoxContainer" parent="UI/HUD/Checkpoints"]
 layout_mode = 2
 
-[node name="CheckpointLabel" type="Label" parent="UI/HUD/Checkpoints/VBox"]
+[node name="CheckpointIcon" type="TextureRect" parent="UI/HUD/Checkpoints/HBox"]
+modulate = Color(1, 0.690196, 0.501961, 1)
 layout_mode = 2
-text = "Checkpoint"
+texture = ExtResource("43_1j73q")
+expand_mode = 3
+stretch_mode = 5
 
-[node name="Checkpoint" type="Label" parent="UI/HUD/Checkpoints/VBox"]
+[node name="Checkpoint" type="Label" parent="UI/HUD/Checkpoints/HBox"]
 layout_mode = 2
 theme_type_variation = &"MatrixLargeLabel"
 text = "0/5"
