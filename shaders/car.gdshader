@@ -16,7 +16,7 @@ void vertex() {
 }
 
 void fragment() {
-	METALLIC = 0.5;
+	METALLIC = 0.33;
 	SPECULAR = 1.0;
 	ROUGHNESS = 0.0;
 
