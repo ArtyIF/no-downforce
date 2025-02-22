@@ -3,11 +3,16 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
-		<title>$GODOT_PROJECT_NAME</title>
+		<title>No Downforce</title>
 		<style>
 @font-face {
 	font-family: 'Qaz';
 	src: local('Qaz'), url('Qaz-Regular.otf');
+}
+
+@font-face {
+	font-family: 'MatrixType Display';
+	src: local('MatrixType Display'), url('MatrixTypeDisplay-Regular.otf');
 }
 
 html, body, #canvas {
@@ -62,17 +67,20 @@ body {
 }
 
 #status-loading {
+	font-family: 'MatrixType Display', monospace;
+	font-size: 24px;
 	background-color: #1a120d;
-	color: #ffb07f;
+	color: #ff6000;
+	-webkit-text-stroke: 2px #ff600080;
 }
 
 #status-notice {
+	font-family: 'Qaz', sans-serif;
 	background-color: #ff6000;
 	color: #1a120d;
 }
 
 #status-loading, #status-notice {
-	font-family: 'Qaz', sans-serif;
 	margin: 0 auto;
 	top: calc(50vh + 130px);
 	width: fit-content;
@@ -82,7 +90,9 @@ body {
 	z-index: 1;
 }
 		</style>
-		$GODOT_HEAD_INCLUDE
+		<link id="-gd-engine-icon" rel="icon" type="image/png" href="index.icon.png" />
+<link rel="apple-touch-icon" href="index.apple-touch-icon.png"/>
+
 	</head>
 	<body>
 		<canvas id="canvas">
@@ -95,14 +105,14 @@ body {
 
 		<div id="status">
 			<img id="status-splash" src="index.png" alt="">
-			<div id="status-loading">Downloading...</div>
+			<div id="status-loading">0%</div>
 			<div id="status-notice"></div>
 		</div>
 
-		<script src="$GODOT_URL"></script>
+		<script src="index.js"></script>
 		<script>
-const GODOT_CONFIG = $GODOT_CONFIG;
-const GODOT_THREADS_ENABLED = $GODOT_THREADS_ENABLED;
+const GODOT_CONFIG = {"args":[],"canvasResizePolicy":2,"ensureCrossOriginIsolationHeaders":true,"executable":"index","experimentalVK":false,"fileSizes":{"index.pck":357823824,"index.wasm":43675779},"focusCanvas":true,"gdextensionLibs":[]};
+const GODOT_THREADS_ENABLED = false;
 const engine = new Engine(GODOT_CONFIG);
 
 (function () {
@@ -199,13 +209,12 @@ const engine = new Engine(GODOT_CONFIG);
 		setStatusMode('loading');
 		engine.startGame({
 			'onProgress': function (current, total) {
-				let currentMB = current / 1_048_576;
-				let currentMBRounded = currentMB.toFixed(3);
-				let totalMB = 'FILL THIS IN';
-				if (currentMBRounded === totalMB) {
-					setStatusLoading('Loading...')
+				let totalActual = -100; // REPLACE
+				if (current === totalActual) {
+					setStatusLoading('100%');
 				} else {
-					setStatusLoading(`Downloaded ${currentMBRounded}/${totalMB} MB...`);
+					console.log(current);
+					setStatusLoading(`${Math.floor(current * 100 / totalActual)}%`);
 				}
 			},
 			'onExit': function (status_code) {
@@ -225,3 +234,4 @@ const engine = new Engine(GODOT_CONFIG);
 		</script>
 	</body>
 </html>
+
