@@ -120,6 +120,7 @@ viewport_path = NodePath("CheckpointView")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kujmk"]
 resource_local_to_scene = true
+transparency = 1
 shading_mode = 0
 albedo_texture = SubResource("ViewportTexture_kujmk")
 billboard_mode = 1
@@ -411,7 +412,7 @@ at_checkpoint = true
 
 [node name="FinishPattern" type="TextureRect" parent="CheckpointView"]
 modulate = Color(1, 0.376471, 0, 0.501961)
-anchors_preset = -1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
@@ -1059,8 +1060,8 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -170.0
-offset_top = -152.0
+offset_left = -197.0
+offset_top = -71.0
 grow_horizontal = 0
 grow_vertical = 0
 
@@ -1068,21 +1069,15 @@ grow_vertical = 0
 layout_mode = 2
 alignment = 2
 
-[node name="GearLabel" type="Label" parent="UI/DemoScreen/SpeedRev/VBox"]
+[node name="RevsGear" type="HBoxContainer" parent="UI/DemoScreen/SpeedRev/VBox"]
 layout_mode = 2
-text = "Gear"
-horizontal_alignment = 2
+theme_override_constants/separation = 10
+alignment = 1
 
-[node name="Gear" type="Label" parent="UI/DemoScreen/SpeedRev/VBox"]
-layout_mode = 2
-theme_type_variation = &"MatrixLargeLabel"
-text = "1"
-horizontal_alignment = 2
-script = ExtResource("13_vycac")
-
-[node name="Revs" type="ProgressBar" parent="UI/DemoScreen/SpeedRev/VBox"]
+[node name="Revs" type="ProgressBar" parent="UI/DemoScreen/SpeedRev/VBox/RevsGear"]
 custom_minimum_size = Vector2(150, 15)
 layout_mode = 2
+size_flags_vertical = 4
 max_value = 1.0
 step = 0.0
 value = 0.5
@@ -1090,17 +1085,30 @@ fill_mode = 1
 show_percentage = false
 script = ExtResource("14_p664h")
 
-[node name="Speed" type="Label" parent="UI/DemoScreen/SpeedRev/VBox"]
+[node name="Gear" type="Label" parent="UI/DemoScreen/SpeedRev/VBox/RevsGear"]
+layout_mode = 2
+theme_type_variation = &"MatrixLargeLabel"
+text = "1"
+horizontal_alignment = 2
+script = ExtResource("13_vycac")
+
+[node name="Speed" type="HBoxContainer" parent="UI/DemoScreen/SpeedRev/VBox"]
+layout_mode = 2
+alignment = 2
+
+[node name="Speed" type="Label" parent="UI/DemoScreen/SpeedRev/VBox/Speed"]
 layout_mode = 2
 theme_type_variation = &"MatrixLargeLabel"
 text = "888"
 horizontal_alignment = 2
 script = ExtResource("13_687kb")
 
-[node name="SpeedUnit" type="Label" parent="UI/DemoScreen/SpeedRev/VBox"]
+[node name="SpeedUnit" type="Label" parent="UI/DemoScreen/SpeedRev/VBox/Speed"]
 layout_mode = 2
+size_flags_vertical = 1
 text = "km/h"
 horizontal_alignment = 2
+vertical_alignment = 1
 
 [node name="Time" type="PanelContainer" parent="UI/DemoScreen"]
 layout_mode = 1
@@ -1112,17 +1120,22 @@ grow_horizontal = 0
 [node name="VBox" type="VBoxContainer" parent="UI/DemoScreen/Time"]
 layout_mode = 2
 
-[node name="RunTimeLabel" type="Label" parent="UI/DemoScreen/Time/VBox"]
+[node name="YourTime" type="HBoxContainer" parent="UI/DemoScreen/Time/VBox"]
 layout_mode = 2
-text = "Run Time"
-horizontal_alignment = 2
 
-[node name="RunTime" type="Label" parent="UI/DemoScreen/Time/VBox"]
+[node name="YourTimeLabel" type="Label" parent="UI/DemoScreen/Time/VBox/YourTime"]
 layout_mode = 2
 theme_type_variation = &"MatrixLargeLabel"
 text = "00:00.000"
 horizontal_alignment = 2
 script = ExtResource("20_f85px")
+
+[node name="YourTimeIcon" type="TextureRect" parent="UI/DemoScreen/Time/VBox/YourTime"]
+modulate = Color(1, 0.690196, 0.501961, 1)
+layout_mode = 2
+texture = ExtResource("40_jilgw")
+expand_mode = 3
+stretch_mode = 5
 
 [node name="PauseMenu" type="Control" parent="UI"]
 process_mode = 3

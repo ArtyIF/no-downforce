@@ -6,6 +6,8 @@ uniform vec3 color : source_color;
 uniform sampler2D lightmap_texture : source_color, hint_default_white, repeat_disable, filter_linear_mipmap_anisotropic;
 uniform vec4 lightmap_rect = vec4(0.0, 0.0, 1.0, 1.0);
 
+uniform sampler2D DEPTH_TEXTURE : hint_depth_texture, filter_linear;
+
 void vertex() {
 	float x1 = lightmap_rect.x;
 	float y1 = lightmap_rect.y;
@@ -15,8 +17,20 @@ void vertex() {
 	UV2.y = (UV2.y * (y2 - y1)) + y1;
 }
 
+float proximity_fade(float fade_dst, sampler2D depth_texture, vec3 vertex, vec2 screen_uv, mat4 inv_proj_matrix) {
+	float depth = textureLod(depth_texture, screen_uv, 0.0).r;
+	#if CURRENT_RENDERER == RENDERER_COMPATIBILITY
+		depth *= 2.0;
+		depth -= 1.0;
+	#endif
+	vec4 world_pos = inv_proj_matrix * vec4(screen_uv * 2.0 - 1.0, depth, 1.0);
+	world_pos.xyz /= world_pos.w;
+
+	return clamp(1.0 - smoothstep(world_pos.z + fade_dst, world_pos.z, vertex.z), 0.0, 1.0);
+}
+
 void fragment() {
-	ALBEDO = color * texture(lightmap_texture, UV2).rgb;
+	ALBEDO = color * texture(lightmap_texture, UV2).rgb * proximity_fade(1.0, DEPTH_TEXTURE, VERTEX, SCREEN_UV, INV_PROJECTION_MATRIX);
 }
 
 void light() {
