@@ -1063,8 +1063,6 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -197.0
-offset_top = -71.0
 grow_horizontal = 0
 grow_vertical = 0
 
@@ -1252,7 +1250,7 @@ theme_override_constants/separation = 5
 [node name="HeaderTemplate" type="Label" parent="UI/SelectDemoDialog/BG/VBox/Scroll/List"]
 visible = false
 layout_mode = 2
-theme_type_variation = &"HeaderLarge"
+theme_type_variation = &"MatrixLargeLabel"
 text = "Header Text"
 text_overrun_behavior = 3
 
