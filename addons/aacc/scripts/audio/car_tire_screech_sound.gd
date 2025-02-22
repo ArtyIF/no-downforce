@@ -15,7 +15,8 @@ func _physics_process(delta: float) -> void:
 	smooth_burnout_amount_land.advance_to(0.0, delta)
 	if car.ground_coefficient > old_ground_coefficient:
 		var land_velocity: float = clamp(max(-car.linear_velocity.y, 0.0) * (car.ground_coefficient - old_ground_coefficient) / 5.0, 0.0, 1.0)
-		smooth_burnout_amount_land.force_current_value(land_velocity)
+		if land_velocity >= 0.1:
+			smooth_burnout_amount_land.force_current_value(land_velocity)
 		
 		if AACCGlobal.can_play("Collision", car):
 			var hit_instance: AudioStreamPlayer3D = land_sound.instantiate()
