@@ -334,7 +334,7 @@ stream = ExtResource("12_xrrol")
 volume_db = -80.0
 unit_size = 5.0
 autoplay = true
-bus = &"SFX"
+bus = &"High Pitch"
 attenuation_filter_cutoff_hz = 20500.0
 doppler_tracking = 1
 script = ExtResource("13_21x01")
@@ -346,7 +346,7 @@ volume_db = -80.0
 unit_size = 1.0
 max_db = 0.0
 autoplay = true
-bus = &"SFX"
+bus = &"High Pitch"
 script = ExtResource("17_xfr2s")
 
 [node name="TireRoll" type="AudioStreamPlayer3D" parent="."]

@@ -23,7 +23,9 @@ static var rebindable_controls: Dictionary[StringName, String] = {
 	"Engine": 1.0,
 	"Background": 1.0,
 	"UI": 1.0,
-	"Brake Squeal": 1.0,
+	"High Pitch": 1.0,
+	"Harsh": 1.0,
+	"Hurricane": 1.0,
 }
 @export var audio_qualities: Dictionary[StringName, AACCGlobal.SoundQuality] = {
 	"Engine" = AACCGlobal.SoundQuality.ON,
@@ -39,7 +41,7 @@ static var rebindable_controls: Dictionary[StringName, String] = {
 @export var graphics_resolution_scale: float = 1.0
 @export var graphics_upscaling_mode: int = 0
 @export var graphics_msaa: int = 1
-@export var graphics_fxaa: int = 1
+@export var graphics_fxaa: int = 0
 @export var graphics_lighting_quality: int = 1
 @export var graphics_auto_exposure: int = 1
 @export var graphics_reflection_probe_quality: int = 2
@@ -54,6 +56,7 @@ static var rebindable_controls: Dictionary[StringName, String] = {
 
 @export var accessibility_saturation: float = 1.0
 @export var accessibility_game_speed: float = 1.0
+@export var accessibility_regular_font: int = 0
 
 func load_controls():
 	for key in rebindable_controls.keys():

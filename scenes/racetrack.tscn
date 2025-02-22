@@ -1,4 +1,4 @@
-[gd_scene load_steps=106 format=3 uid="uid://bsp1ug1544wkv"]
+[gd_scene load_steps=107 format=3 uid="uid://bsp1ug1544wkv"]
 
 [ext_resource type="PackedScene" uid="uid://ctpcgnbte0ujm" path="res://scenes/models/pathtest.blend" id="1_27c0p"]
 [ext_resource type="Script" uid="uid://tr0544b3fh36" path="res://addons/aacc/scripts/car_input.gd" id="1_g86do"]
@@ -90,6 +90,7 @@
 [ext_resource type="Script" uid="uid://ct1t65b0y3q1l" path="res://scripts/ui/settings/saturation_setting.gd" id="81_6kdwj"]
 [ext_resource type="Script" uid="uid://bd0p82qdgbmw2" path="res://scripts/ui/settings/game_speed_setting.gd" id="81_fw8to"]
 [ext_resource type="Texture2D" uid="uid://cb15rtci1iogw" path="res://ui/boot_image.png" id="84_vtru7"]
+[ext_resource type="Script" uid="uid://c3oefs3s201jj" path="res://scripts/ui/settings/regular_font_setting.gd" id="89_dvk61"]
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_u20ab"]
 auto_exposure_enabled = true
@@ -434,7 +435,7 @@ stream = ExtResource("8_f85px")
 volume_db = -80.0
 autoplay = true
 mix_target = 1
-bus = &"Background"
+bus = &"Hurricane"
 playback_type = 1
 script = ExtResource("9_mkv83")
 
@@ -753,6 +754,7 @@ layout_mode = 2
 
 [node name="YourTime" type="HBoxContainer" parent="UI/HUD/Time/VBox"]
 layout_mode = 2
+alignment = 2
 
 [node name="YourTimeLabel" type="Label" parent="UI/HUD/Time/VBox/YourTime"]
 layout_mode = 2
@@ -771,6 +773,7 @@ stretch_mode = 5
 [node name="TargetTime" type="HBoxContainer" parent="UI/HUD/Time/VBox"]
 visible = false
 layout_mode = 2
+alignment = 2
 
 [node name="TargetTimeLabel" type="Label" parent="UI/HUD/Time/VBox/TargetTime"]
 layout_mode = 2
@@ -1558,7 +1561,7 @@ size_flags_vertical = 3
 
 [node name="Car" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Controls/Scroll/List"]
 layout_mode = 2
-theme_type_variation = &"HeaderMedium"
+theme_type_variation = &"MatrixLargeLabel"
 text = "Car"
 
 [node name="Accelerate" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Controls/Scroll/List"]
@@ -1653,7 +1656,7 @@ control = "aaccdemo_reset"
 
 [node name="Camera" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Controls/Scroll/List"]
 layout_mode = 2
-theme_type_variation = &"HeaderMedium"
+theme_type_variation = &"MatrixLargeLabel"
 text = "Camera"
 
 [node name="CameraForward" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Controls/Scroll/List"]
@@ -1748,7 +1751,7 @@ size_flags_vertical = 3
 
 [node name="Volume" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Audio/Scroll/List"]
 layout_mode = 2
-theme_type_variation = &"HeaderMedium"
+theme_type_variation = &"MatrixLargeLabel"
 text = "Volume"
 
 [node name="MasterVolume" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Audio/Scroll/List"]
@@ -1862,7 +1865,7 @@ bus_name = &"UI"
 
 [node name="SoundDetail" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Audio/Scroll/List"]
 layout_mode = 2
-theme_type_variation = &"HeaderMedium"
+theme_type_variation = &"MatrixLargeLabel"
 text = "Sound Detail"
 
 [node name="EngineDetail" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Audio/Scroll/List"]
@@ -2022,7 +2025,7 @@ script = ExtResource("62_tedy2")
 
 [node name="Display" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Graphics/Scroll/List"]
 layout_mode = 2
-theme_type_variation = &"HeaderMedium"
+theme_type_variation = &"MatrixLargeLabel"
 text = "Display"
 
 [node name="WindowMode" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Graphics/Scroll/List"]
@@ -2152,7 +2155,7 @@ script = ExtResource("53_kdpoe")
 
 [node name="Lighting" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Graphics/Scroll/List"]
 layout_mode = 2
-theme_type_variation = &"HeaderMedium"
+theme_type_variation = &"MatrixLargeLabel"
 text = "Lighting"
 
 [node name="LightingQuality" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Graphics/Scroll/List"]
@@ -2251,7 +2254,7 @@ script = ExtResource("45_f75xh")
 
 [node name="Environment" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Graphics/Scroll/List"]
 layout_mode = 2
-theme_type_variation = &"HeaderMedium"
+theme_type_variation = &"MatrixLargeLabel"
 text = "Environment"
 
 [node name="FogQuality" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Graphics/Scroll/List"]
@@ -2308,7 +2311,7 @@ script = ExtResource("66_cigoj")
 
 [node name="PostProcessing" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Graphics/Scroll/List"]
 layout_mode = 2
-theme_type_variation = &"HeaderMedium"
+theme_type_variation = &"MatrixLargeLabel"
 text = "Post-Processing"
 
 [node name="BloomQuality" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Graphics/Scroll/List"]
@@ -2441,6 +2444,11 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
+[node name="Gameplay" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Accessibility/Scroll/List"]
+layout_mode = 2
+theme_type_variation = &"MatrixLargeLabel"
+text = "Gameplay"
+
 [node name="GameSpeed" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Accessibility/Scroll/List"]
 layout_mode = 2
 
@@ -2463,6 +2471,11 @@ step = 0.05
 value = 1.0
 script = ExtResource("81_fw8to")
 
+[node name="Display" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Accessibility/Scroll/List"]
+layout_mode = 2
+theme_type_variation = &"MatrixLargeLabel"
+text = "Display"
+
 [node name="Saturation" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Accessibility/Scroll/List"]
 layout_mode = 2
 
@@ -2484,27 +2497,100 @@ step = 0.01
 value = 1.0
 script = ExtResource("81_6kdwj")
 
-[node name="BrakeSquealVolume" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Accessibility/Scroll/List"]
+[node name="SFX" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Accessibility/Scroll/List"]
+layout_mode = 2
+theme_type_variation = &"MatrixLargeLabel"
+text = "Sound Effects"
+
+[node name="HighPitchVolume" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Accessibility/Scroll/List"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Accessibility/Scroll/List/BrakeSquealVolume"]
+[node name="Label" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Accessibility/Scroll/List/HighPitchVolume"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Brake Squeal Volume"
+text = "High-Pitched Sounds Volume (brakes squealing and tires screeching)"
 
-[node name="ValueText" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Accessibility/Scroll/List/BrakeSquealVolume"]
+[node name="ValueText" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Accessibility/Scroll/List/HighPitchVolume"]
 layout_mode = 2
 text = "100%"
 script = ExtResource("38_3ppu2")
 
-[node name="Value" type="HSlider" parent="UI/SettingsDialog/BG/VBox/Tabs/Accessibility/Scroll/List/BrakeSquealVolume"]
+[node name="Value" type="HSlider" parent="UI/SettingsDialog/BG/VBox/Tabs/Accessibility/Scroll/List/HighPitchVolume"]
 custom_minimum_size = Vector2(150, 40)
 layout_mode = 2
 max_value = 1.0
 step = 0.01
 value = 1.0
 script = ExtResource("38_nv0xe")
-bus_name = &"Brake Squeal"
+bus_name = &"High Pitch"
+
+[node name="HarshVolume" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Accessibility/Scroll/List"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Accessibility/Scroll/List/HarshVolume"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Harsh Sounds Volume (scraping)"
+
+[node name="ValueText" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Accessibility/Scroll/List/HarshVolume"]
+layout_mode = 2
+text = "100%"
+script = ExtResource("38_3ppu2")
+
+[node name="Value" type="HSlider" parent="UI/SettingsDialog/BG/VBox/Tabs/Accessibility/Scroll/List/HarshVolume"]
+custom_minimum_size = Vector2(150, 40)
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+value = 1.0
+script = ExtResource("38_nv0xe")
+bus_name = &"Harsh"
+
+[node name="HurricaneVolume" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Accessibility/Scroll/List"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Accessibility/Scroll/List/HurricaneVolume"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Hurricane Volume"
+
+[node name="ValueText" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Accessibility/Scroll/List/HurricaneVolume"]
+layout_mode = 2
+text = "100%"
+script = ExtResource("38_3ppu2")
+
+[node name="Value" type="HSlider" parent="UI/SettingsDialog/BG/VBox/Tabs/Accessibility/Scroll/List/HurricaneVolume"]
+custom_minimum_size = Vector2(150, 40)
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+value = 1.0
+script = ExtResource("38_nv0xe")
+bus_name = &"Hurricane"
+
+[node name="UI" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Accessibility/Scroll/List"]
+layout_mode = 2
+theme_type_variation = &"MatrixLargeLabel"
+text = "UI"
+
+[node name="UseRegularFont" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Accessibility/Scroll/List"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Accessibility/Scroll/List/UseRegularFont"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Use regular font instead of the matrix font"
+
+[node name="Value" type="OptionButton" parent="UI/SettingsDialog/BG/VBox/Tabs/Accessibility/Scroll/List/UseRegularFont"]
+custom_minimum_size = Vector2(150, 40)
+layout_mode = 2
+selected = 0
+item_count = 2
+popup/item_0/text = "Off"
+popup/item_0/id = 0
+popup/item_1/text = "On"
+popup/item_1/id = 1
+script = ExtResource("89_dvk61")
 
 [node name="CloseButton" type="Button" parent="UI/SettingsDialog/BG/VBox"]
 layout_mode = 2

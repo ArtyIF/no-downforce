@@ -320,7 +320,7 @@ volume_db = -80.0
 unit_size = 5.0
 max_db = 0.0
 autoplay = true
-bus = &"SFX"
+bus = &"High Pitch"
 playback_type = 1
 doppler_tracking = 1
 script = ExtResource("10_7ntn4")
@@ -333,7 +333,7 @@ volume_db = -80.0
 unit_size = 1.5
 max_db = 0.0
 autoplay = true
-bus = &"Brake Squeal"
+bus = &"High Pitch"
 playback_type = 1
 script = ExtResource("16_jmtha")
 

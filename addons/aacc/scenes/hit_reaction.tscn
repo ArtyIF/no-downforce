@@ -13,6 +13,6 @@ sparks = ExtResource("4_jlxfa")
 [node name="ScrapeSound" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("5_2vaqu")
 unit_size = 5.0
-bus = &"SFX"
+bus = &"Harsh"
 playback_type = 1
 doppler_tracking = 2
