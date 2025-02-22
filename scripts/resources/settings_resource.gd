@@ -31,8 +31,8 @@ static var rebindable_controls: Dictionary[StringName, String] = {
 	"Engine" = AACCGlobal.SoundQuality.ON,
 	"TireScreech" = AACCGlobal.SoundQuality.ON,
 	"Scrape" = AACCGlobal.SoundQuality.ON,
-	"Collision" = AACCGlobal.SoundQuality.ON,
-	"BrakeSqueal" = AACCGlobal.SoundQuality.ON,
+	"Collision" = AACCGlobal.SoundQuality.CURRENT_ONLY,
+	"BrakeSqueal" = AACCGlobal.SoundQuality.CURRENT_ONLY,
 	"TireRoll" = AACCGlobal.SoundQuality.CURRENT_ONLY,
 }
 
