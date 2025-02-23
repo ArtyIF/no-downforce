@@ -1,4 +1,4 @@
-[gd_scene load_steps=107 format=3 uid="uid://bsp1ug1544wkv"]
+[gd_scene load_steps=112 format=3 uid="uid://bsp1ug1544wkv"]
 
 [ext_resource type="PackedScene" uid="uid://ctpcgnbte0ujm" path="res://scenes/models/pathtest.blend" id="1_27c0p"]
 [ext_resource type="Script" uid="uid://tr0544b3fh36" path="res://addons/aacc/scripts/car_input.gd" id="1_g86do"]
@@ -64,12 +64,17 @@
 [ext_resource type="Script" uid="uid://d4atu24eanq2n" path="res://scripts/ui/settings/vsync_setting.gd" id="43_0j4tq"]
 [ext_resource type="Texture2D" uid="uid://b1rkxqkaierhp" path="res://fonts/material_symbols/flag_check.svg" id="43_1j73q"]
 [ext_resource type="Script" uid="uid://ckqtlfjjwmtic" path="res://scripts/demo/select_demo_dialog.gd" id="44_w7je6"]
+[ext_resource type="Texture2D" uid="uid://crvc8o02iikkv" path="res://ui/textures/car_outline.png" id="45_0yaju"]
 [ext_resource type="Script" uid="uid://cc8hml66mwr74" path="res://scripts/ui/settings/reflection_probe_quality_setting.gd" id="45_f75xh"]
 [ext_resource type="Script" uid="uid://c7ywv8vs3n0to" path="res://scripts/resources/demo_resource.gd" id="45_kujmk"]
 [ext_resource type="Script" uid="uid://rp6fcwlsx12j" path="res://scripts/ui/settings/shadow_resolution_setting.gd" id="46_csdh4"]
+[ext_resource type="Texture2D" uid="uid://be32sfbmvpucc" path="res://ui/textures/car_wheel_bl_outline.png" id="46_xl67u"]
+[ext_resource type="Texture2D" uid="uid://1mllgiwmiyb4" path="res://ui/textures/car_wheel_br_outline.png" id="47_4k73g"]
 [ext_resource type="Script" uid="uid://cedt1utsqflr7" path="res://scripts/ui/settings/shadow_filtering_quality_setting.gd" id="47_fbg68"]
 [ext_resource type="Script" uid="uid://dnd3afr8li1vx" path="res://scripts/ui/binding_button.gd" id="47_v4lrh"]
 [ext_resource type="Script" uid="uid://d0jnnkw80mbep" path="res://scripts/ui/settings/bloom_quality_setting.gd" id="48_m6i20"]
+[ext_resource type="Texture2D" uid="uid://dn1v4wl0jp4ew" path="res://ui/textures/car_wheel_fl_outline.png" id="48_ylw7s"]
+[ext_resource type="Texture2D" uid="uid://c6r5bvn1guiei" path="res://ui/textures/car_wheel_fr_outline.png" id="49_nndth"]
 [ext_resource type="Script" uid="uid://bxhi7uko1dn7p" path="res://scripts/ui/settings/fog_quality_setting.gd" id="49_tfpfy"]
 [ext_resource type="Script" uid="uid://dkcssvrqrlro6" path="res://scripts/ui/settings/ssao_quality_setting.gd" id="50_burr8"]
 [ext_resource type="Script" uid="uid://eo8xitm0i6d0" path="res://scripts/ui/settings/ssr_quality_setting.gd" id="50_d7avv"]
@@ -678,7 +683,6 @@ Hint: Hold handbrake and accelerate to take off much faster!"
 horizontal_alignment = 1
 
 [node name="HUD" type="Control" parent="UI"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -808,8 +812,51 @@ theme_type_variation = &"MatrixLargeLabel"
 text = "0/5"
 script = ExtResource("19_52djk")
 
+[node name="LandedWheels" type="PanelContainer" parent="UI/HUD"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_bottom = 1.0
+grow_vertical = 0
+
+[node name="Base" type="TextureRect" parent="UI/HUD/LandedWheels"]
+modulate = Color(0.0509804, 0.0352941, 0.0235294, 1)
+custom_minimum_size = Vector2(64, 128)
+layout_mode = 2
+texture = ExtResource("45_0yaju")
+expand_mode = 1
+
+[node name="WheelBL" type="TextureRect" parent="UI/HUD/LandedWheels"]
+modulate = Color(1, 0.376471, 0, 1)
+custom_minimum_size = Vector2(64, 128)
+layout_mode = 2
+texture = ExtResource("46_xl67u")
+expand_mode = 1
+
+[node name="WheelBR" type="TextureRect" parent="UI/HUD/LandedWheels"]
+modulate = Color(1, 0.376471, 0, 1)
+custom_minimum_size = Vector2(64, 128)
+layout_mode = 2
+texture = ExtResource("47_4k73g")
+expand_mode = 1
+
+[node name="WheelFL" type="TextureRect" parent="UI/HUD/LandedWheels"]
+modulate = Color(1, 0.376471, 0, 1)
+custom_minimum_size = Vector2(64, 128)
+layout_mode = 2
+texture = ExtResource("48_ylw7s")
+expand_mode = 1
+
+[node name="WheelFR" type="TextureRect" parent="UI/HUD/LandedWheels"]
+modulate = Color(1, 0.376471, 0, 1)
+custom_minimum_size = Vector2(64, 128)
+layout_mode = 2
+texture = ExtResource("49_nndth")
+expand_mode = 1
+
 [node name="OutroScreen" type="Control" parent="UI"]
 visible = false
+custom_minimum_size = Vector2(128, 128)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -2689,6 +2736,7 @@ text = "Save and Close"
 bus = &"UI"
 
 [node name="LoadingCover" type="ColorRect" parent="."]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
