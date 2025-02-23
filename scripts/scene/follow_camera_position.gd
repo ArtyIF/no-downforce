@@ -22,7 +22,7 @@ func reset():
 func _physics_process(delta: float) -> void:
 	var global_com: Vector3 = _car.to_global(_car.center_of_mass)
 	var final_position: Vector3 = global_com
-	
+
 	var target_up_direction: Vector3 = Vector3.UP
 	if _car.ground_coefficient > 0.0:
 		target_up_direction = _car.average_wheel_collision_normal
@@ -40,9 +40,9 @@ func _physics_process(delta: float) -> void:
 
 	var target_direction: Vector3 = -_car.linear_velocity.normalized()
 	var slerp_amount: float = clamp((_car.linear_velocity.length() - 0.25) / 10.0, 0.0, 1.0)
-	if Input.get_action_strength("nd_camera_recenter") or (_car.input_handbrake and _car.input_forward > 0.0 and _car.linear_velocity.length() <= 0.25):
+	if Input.is_action_pressed("nd_camera_recenter") or (_car.input_handbrake and _car.input_forward > 0.0 and _car.linear_velocity.length() <= 0.25):
 		target_direction = _car.global_basis.z
-		if not Input.get_action_strength("nd_camera_recenter"):
+		if not Input.is_action_pressed("nd_camera_recenter"):
 			slerp_amount = _car.revs.get_current_value()
 		else:
 			slerp_amount = 1.0
@@ -54,6 +54,9 @@ func _physics_process(delta: float) -> void:
 		else:
 			target_direction = target_direction.rotated(_up_direction, angle)
 		slerp_amount = 1.0
+	if Input.is_action_pressed("nd_camera_recenter") or not camera_vector.is_zero_approx():
+		slerp_amount /= Engine.time_scale
+
 	if slerp_amount > 0.0:
 		_direction = _plane.project(_direction.slerp(target_direction, slerp_amount * 10.0 * delta)).normalized()
 

@@ -23,7 +23,7 @@ func reset():
 func _physics_process(delta: float) -> void:
 	var global_com: Vector3 = _car.to_global(_car.center_of_mass)
 	var final_position: Vector3 = global_com
-	
+
 	var target_up_direction: Vector3 = Vector3.UP
 	if _car.ground_coefficient > 0.0:
 		target_up_direction = _car.average_wheel_collision_normal
@@ -37,7 +37,7 @@ func _physics_process(delta: float) -> void:
 	var offset: Vector3 = _offset_node_min.position.lerp(_offset_node_max.position, _offset_amount)
 
 	final_position += up_direction * offset.y
-	
+
 	var target_forward_offset_amount: float = clamp((_car.linear_velocity.length() - 0.25) / 10.0, 0.0, 1.0) * sign(_car.local_linear_velocity.z)
 	target_forward_offset_amount *= _car.ground_coefficient
 	if _car.input_handbrake:

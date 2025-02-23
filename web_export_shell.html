@@ -208,10 +208,10 @@ const engine = new Engine(GODOT_CONFIG);
 		engine.startGame({
 			'onProgress': function (current, total) {
 				let totalActual = -100; // REPLACE
+				console.log(current);
 				if (current === totalActual) {
 					setStatusLoading('100%');
 				} else {
-					console.log(current);
 					setStatusLoading(`${Math.floor(current * 100 / totalActual)}%`);
 				}
 			},
