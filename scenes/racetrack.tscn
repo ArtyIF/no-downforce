@@ -1,4 +1,4 @@
-[gd_scene load_steps=111 format=3 uid="uid://bsp1ug1544wkv"]
+[gd_scene load_steps=114 format=3 uid="uid://bsp1ug1544wkv"]
 
 [ext_resource type="PackedScene" uid="uid://ctpcgnbte0ujm" path="res://scenes/models/pathtest.blend" id="1_27c0p"]
 [ext_resource type="Script" uid="uid://tr0544b3fh36" path="res://addons/aacc/scripts/car_input.gd" id="1_g86do"]
@@ -67,15 +67,18 @@
 [ext_resource type="Texture2D" uid="uid://crvc8o02iikkv" path="res://ui/textures/car_outline.png" id="45_0yaju"]
 [ext_resource type="Script" uid="uid://cc8hml66mwr74" path="res://scripts/ui/settings/reflection_probe_quality_setting.gd" id="45_f75xh"]
 [ext_resource type="Script" uid="uid://c7ywv8vs3n0to" path="res://scripts/resources/demo_resource.gd" id="45_kujmk"]
+[ext_resource type="Texture2D" uid="uid://cjnv5ocmpmst7" path="res://ui/textures/car_wheel_fl_outline.png" id="46_4k73g"]
 [ext_resource type="Script" uid="uid://rp6fcwlsx12j" path="res://scripts/ui/settings/shadow_resolution_setting.gd" id="46_csdh4"]
-[ext_resource type="Texture2D" uid="uid://b1tp8ho0imi21" path="res://ui/textures/car_wheels_outline.png" id="46_ywljp"]
 [ext_resource type="Script" uid="uid://cedt1utsqflr7" path="res://scripts/ui/settings/shadow_filtering_quality_setting.gd" id="47_fbg68"]
 [ext_resource type="Script" uid="uid://pwwsdsyoe32f" path="res://scripts/ui/wheel_indicator.gd" id="47_hnyrx"]
 [ext_resource type="Script" uid="uid://dnd3afr8li1vx" path="res://scripts/ui/binding_button.gd" id="47_v4lrh"]
 [ext_resource type="Script" uid="uid://d0jnnkw80mbep" path="res://scripts/ui/settings/bloom_quality_setting.gd" id="48_m6i20"]
+[ext_resource type="Texture2D" uid="uid://jn78ej7lhjy2" path="res://ui/textures/car_wheel_fr_outline.png" id="48_ylw7s"]
+[ext_resource type="Texture2D" uid="uid://dn24vuwdso55f" path="res://ui/textures/car_wheel_bl_outline.png" id="49_nndth"]
 [ext_resource type="Script" uid="uid://bxhi7uko1dn7p" path="res://scripts/ui/settings/fog_quality_setting.gd" id="49_tfpfy"]
 [ext_resource type="Script" uid="uid://dkcssvrqrlro6" path="res://scripts/ui/settings/ssao_quality_setting.gd" id="50_burr8"]
 [ext_resource type="Script" uid="uid://eo8xitm0i6d0" path="res://scripts/ui/settings/ssr_quality_setting.gd" id="50_d7avv"]
+[ext_resource type="Texture2D" uid="uid://1xlk6tugioq3" path="res://ui/textures/car_wheel_br_outline.png" id="50_he5ea"]
 [ext_resource type="Resource" uid="uid://vc7pffaia1p5" path="res://dev_demos/arty_n1_time.res" id="52_6kdwj"]
 [ext_resource type="Resource" uid="uid://dyesqoc1ti2t4" path="res://dev_demos/arty_n0_time.res" id="52_8pgcq"]
 [ext_resource type="Script" uid="uid://dpjh575chum8l" path="res://scripts/ui/settings/upscaling_mode_setting.gd" id="52_qtpag"]
@@ -682,7 +685,6 @@ Hint: Hold handbrake and accelerate to take off much faster!"
 horizontal_alignment = 1
 
 [node name="HUD" type="Control" parent="UI"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -826,46 +828,42 @@ layout_mode = 2
 texture = ExtResource("45_0yaju")
 expand_mode = 1
 
-[node name="Wheels" type="TextureRect" parent="UI/HUD/LandedWheels"]
-clip_children = 1
-custom_minimum_size = Vector2(64, 128)
+[node name="Wheels" type="GridContainer" parent="UI/HUD/LandedWheels"]
+modulate = Color(1, 0.376471, 0, 1)
 layout_mode = 2
-texture = ExtResource("46_ywljp")
-expand_mode = 1
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
+columns = 2
 
-[node name="WheelFL" type="ColorRect" parent="UI/HUD/LandedWheels/Wheels"]
-layout_mode = 0
-offset_right = 32.0
-offset_bottom = 64.0
-color = Color(1, 0.376471, 0, 1)
+[node name="WheelFL" type="TextureRect" parent="UI/HUD/LandedWheels/Wheels"]
+custom_minimum_size = Vector2(32, 64)
+layout_mode = 2
+texture = ExtResource("46_4k73g")
+expand_mode = 1
 script = ExtResource("47_hnyrx")
 node_path = "WheelFL"
 
-[node name="WheelFR" type="ColorRect" parent="UI/HUD/LandedWheels/Wheels"]
-layout_mode = 0
-offset_left = 32.0
-offset_right = 64.0
-offset_bottom = 64.0
-color = Color(1, 0.376471, 0, 1)
+[node name="WheelFR" type="TextureRect" parent="UI/HUD/LandedWheels/Wheels"]
+custom_minimum_size = Vector2(32, 64)
+layout_mode = 2
+texture = ExtResource("48_ylw7s")
+expand_mode = 1
 script = ExtResource("47_hnyrx")
 node_path = "WheelFR"
 
-[node name="WheelBL" type="ColorRect" parent="UI/HUD/LandedWheels/Wheels"]
-layout_mode = 0
-offset_top = 64.0
-offset_right = 32.0
-offset_bottom = 128.0
-color = Color(1, 0.376471, 0, 1)
+[node name="WheelBL" type="TextureRect" parent="UI/HUD/LandedWheels/Wheels"]
+custom_minimum_size = Vector2(32, 64)
+layout_mode = 2
+texture = ExtResource("49_nndth")
+expand_mode = 1
 script = ExtResource("47_hnyrx")
 node_path = "WheelBL"
 
-[node name="WheelBR" type="ColorRect" parent="UI/HUD/LandedWheels/Wheels"]
-layout_mode = 0
-offset_left = 32.0
-offset_top = 64.0
-offset_right = 64.0
-offset_bottom = 128.0
-color = Color(1, 0.376471, 0, 1)
+[node name="WheelBR" type="TextureRect" parent="UI/HUD/LandedWheels/Wheels"]
+custom_minimum_size = Vector2(32, 64)
+layout_mode = 2
+texture = ExtResource("50_he5ea")
+expand_mode = 1
 script = ExtResource("47_hnyrx")
 node_path = "WheelBR"
 
@@ -2784,6 +2782,7 @@ text = "Save and Close"
 bus = &"UI"
 
 [node name="LoadingCover" type="ColorRect" parent="."]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
