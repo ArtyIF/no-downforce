@@ -685,6 +685,7 @@ Hint: Hold handbrake and accelerate to take off much faster!"
 horizontal_alignment = 1
 
 [node name="HUD" type="Control" parent="UI"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -2782,7 +2783,6 @@ text = "Save and Close"
 bus = &"UI"
 
 [node name="LoadingCover" type="ColorRect" parent="."]
-visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
