@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://1mllgiwmiyb4"
-path="res://.godot/imported/car_wheel_br_outline.png-cb3a3fb1bfa6bdb85f84eb860b17b43c.ctex"
+uid="uid://b1tp8ho0imi21"
+path="res://.godot/imported/car_wheels_outline.png-bc7bca96fe61cd127b3622e81c3090d8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ui/textures/car_wheel_br_outline.png"
-dest_files=["res://.godot/imported/car_wheel_br_outline.png-cb3a3fb1bfa6bdb85f84eb860b17b43c.ctex"]
+source_file="res://ui/textures/car_wheels_outline.png"
+dest_files=["res://.godot/imported/car_wheels_outline.png-bc7bca96fe61cd127b3622e81c3090d8.ctex"]
 
 [params]
 
