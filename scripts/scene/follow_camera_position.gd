@@ -54,8 +54,6 @@ func _physics_process(delta: float) -> void:
 		else:
 			target_direction = target_direction.rotated(_up_direction, angle)
 		slerp_amount = 1.0
-	if Input.is_action_pressed("nd_camera_recenter") or not camera_vector.is_zero_approx():
-		slerp_amount /= Engine.time_scale
 
 	if slerp_amount > 0.0:
 		_direction = _plane.project(_direction.slerp(target_direction, slerp_amount * 10.0 * delta)).normalized()
