@@ -1,4 +1,4 @@
-[gd_scene load_steps=110 format=3 uid="uid://bsp1ug1544wkv"]
+[gd_scene load_steps=111 format=3 uid="uid://bsp1ug1544wkv"]
 
 [ext_resource type="PackedScene" uid="uid://ctpcgnbte0ujm" path="res://scenes/models/pathtest.blend" id="1_27c0p"]
 [ext_resource type="Script" uid="uid://tr0544b3fh36" path="res://addons/aacc/scripts/car_input.gd" id="1_g86do"]
@@ -84,6 +84,7 @@
 [ext_resource type="Resource" uid="uid://cpha1aemihv4k" path="res://dev_demos/arty_n3_time.res" id="54_6kdwj"]
 [ext_resource type="Script" uid="uid://b3iogaibu4jsv" path="res://scripts/demo/demo_dialog.gd" id="56_tedy2"]
 [ext_resource type="PackedScene" uid="uid://bgcm0ljtikw2u" path="res://scenes/cars/race_ghost.tscn" id="57_03d3b"]
+[ext_resource type="Texture2D" uid="uid://0q2cqlvf2onn" path="res://fonts/material_symbols/update.svg" id="57_rfjg3"]
 [ext_resource type="Script" uid="uid://5xvequ7stgwg" path="res://scripts/ui/opengl_warning.gd" id="62_tedy2"]
 [ext_resource type="Script" uid="uid://cdmru06nexuqf" path="res://scripts/ui/settings/audio_quality_setting.gd" id="64_0lt35"]
 [ext_resource type="Script" uid="uid://dpbf65jjhg418" path="res://scripts/ui/settings/burnout_particles_quality_setting.gd" id="66_cigoj"]
@@ -681,6 +682,7 @@ Hint: Hold handbrake and accelerate to take off much faster!"
 horizontal_alignment = 1
 
 [node name="HUD" type="Control" parent="UI"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -818,7 +820,7 @@ anchor_bottom = 1.0
 grow_vertical = 0
 
 [node name="Base" type="TextureRect" parent="UI/HUD/LandedWheels"]
-modulate = Color(0.0509804, 0.0352941, 0.0235294, 1)
+modulate = Color(0.2, 0.137255, 0.101961, 1)
 custom_minimum_size = Vector2(64, 128)
 layout_mode = 2
 texture = ExtResource("45_0yaju")
@@ -1274,6 +1276,39 @@ custom_minimum_size = Vector2(150, 50)
 layout_mode = 2
 text = "Quit"
 script = ExtResource("23_suohj")
+
+[node name="UpdateBanner" type="Control" parent="UI"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Update" type="PanelContainer" parent="UI/UpdateBanner"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+grow_horizontal = 0
+
+[node name="UpdateInfo" type="HBoxContainer" parent="UI/UpdateBanner/Update"]
+layout_mode = 2
+alignment = 2
+
+[node name="UpdateLabel" type="Label" parent="UI/UpdateBanner/Update/UpdateInfo"]
+layout_mode = 2
+theme_type_variation = &"MatrixHugeLabel"
+text = "1.3.1"
+horizontal_alignment = 2
+
+[node name="UpdateIcon" type="TextureRect" parent="UI/UpdateBanner/Update/UpdateInfo"]
+modulate = Color(1, 0.690196, 0.501961, 1)
+layout_mode = 2
+texture = ExtResource("57_rfjg3")
+expand_mode = 3
+stretch_mode = 5
 
 [node name="SelectDemoDialog" type="Window" parent="UI"]
 auto_translate_mode = 1
@@ -2749,7 +2784,6 @@ text = "Save and Close"
 bus = &"UI"
 
 [node name="LoadingCover" type="ColorRect" parent="."]
-visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
