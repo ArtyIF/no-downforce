@@ -17,6 +17,18 @@ static var rebindable_controls: Dictionary[StringName, String] = {
 	"nd_camera_recenter": "Recenter Camera",
 }
 
+@export var gameplay_speed_unit: int = 0
+@export var gameplay_show_hud_elements: Dictionary[StringName, bool] = {
+	"Speed": true,
+	"GearRPM": true,
+	"Timer": true,
+	"TargetTime": true,
+	"PassedCheckpoints": true,
+	"WheelContacts": true,
+	"DemoInputs": true,
+	"DemoControls": true,
+}
+
 @export var audio_volumes: Dictionary[StringName, float] = {
 	"Master": 1.0,
 	"SFX": 1.0,

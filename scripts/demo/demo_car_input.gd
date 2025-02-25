@@ -83,7 +83,7 @@ func load_demo(start_from_takeoff: bool = false, autoplay: bool = true) -> void:
 	else:
 		NoDownforceGlobal.ui_manager.show_screen("IntroScreen")
 		NoDownforceGlobal.ui_manager.screens["HUD"].get_node("Time/VBox/TargetTime/TargetTimeLabel").text = NoDownforceGlobal.float_to_time(demo.length - demo.start_time)
-		NoDownforceGlobal.ui_manager.screens["HUD"].get_node("Time/VBox/TargetTime").visible = true
+		NoDownforceGlobal.ui_manager.screens["HUD"].get_node("Time/VBox/TargetTime").visible = NoDownforceGlobal.settings_resource.gameplay_show_hud_elements["TargetTime"]
 
 	playback_speed = 1.0 if autoplay else 0.0
 
@@ -145,6 +145,8 @@ func _physics_process(delta: float) -> void:
 		playback_speed *= -1.0 if NoDownforceGlobal.ui_manager.screens["DemoScreen"].get_node("TopBG/VBox/PlaybackButtons/Rewind").button_pressed else 1.0
 		if NoDownforceGlobal.ui_manager.screens["DemoScreen"].get_node("TopBG/VBox/PlaybackButtons/Pause").button_pressed:
 			playback_speed = 0.0
+	else:
+		NoDownforceGlobal.ui_manager.screens["HUD"].get_node("Time/VBox/TargetTime").visible = NoDownforceGlobal.settings_resource.gameplay_show_hud_elements["TargetTime"]
 	
 	if changing_time:
 		playback_speed = 0.0
