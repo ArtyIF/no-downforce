@@ -1,4 +1,4 @@
-[gd_scene load_steps=114 format=3 uid="uid://bsp1ug1544wkv"]
+[gd_scene load_steps=115 format=3 uid="uid://bsp1ug1544wkv"]
 
 [ext_resource type="PackedScene" uid="uid://ctpcgnbte0ujm" path="res://scenes/models/pathtest.blend" id="1_27c0p"]
 [ext_resource type="Script" uid="uid://tr0544b3fh36" path="res://addons/aacc/scripts/car_input.gd" id="1_g86do"]
@@ -98,6 +98,7 @@
 [ext_resource type="Script" uid="uid://bd0p82qdgbmw2" path="res://scripts/ui/settings/game_speed_setting.gd" id="81_fw8to"]
 [ext_resource type="Texture2D" uid="uid://cb15rtci1iogw" path="res://ui/boot_image.png" id="84_vtru7"]
 [ext_resource type="Script" uid="uid://c3oefs3s201jj" path="res://scripts/ui/settings/regular_font_setting.gd" id="89_dvk61"]
+[ext_resource type="Script" uid="uid://cy3ewrd1703nu" path="res://scripts/ui/settings/sparks_setting.gd" id="89_ylw7s"]
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_u20ab"]
 auto_exposure_enabled = true
@@ -252,7 +253,6 @@ car = NodePath("../Race")
 
 [node name="ShadowColorSetter" type="Node" parent="."]
 script = ExtResource("3_opjfx")
-shadow_intensity = 0.75
 
 [node name="RaceTracker" type="Node" parent="." node_paths=PackedStringArray("checkpoints_list")]
 process_priority = -1000
@@ -829,6 +829,37 @@ layout_mode = 2
 texture = ExtResource("45_0yaju")
 expand_mode = 1
 
+[node name="WheelsBase" type="GridContainer" parent="UI/HUD/LandedWheels"]
+modulate = Color(0.0509804, 0.0352941, 0.0235294, 1)
+layout_mode = 2
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
+columns = 2
+
+[node name="WheelFL" type="TextureRect" parent="UI/HUD/LandedWheels/WheelsBase"]
+custom_minimum_size = Vector2(32, 64)
+layout_mode = 2
+texture = ExtResource("46_4k73g")
+expand_mode = 1
+
+[node name="WheelFR" type="TextureRect" parent="UI/HUD/LandedWheels/WheelsBase"]
+custom_minimum_size = Vector2(32, 64)
+layout_mode = 2
+texture = ExtResource("48_ylw7s")
+expand_mode = 1
+
+[node name="WheelBL" type="TextureRect" parent="UI/HUD/LandedWheels/WheelsBase"]
+custom_minimum_size = Vector2(32, 64)
+layout_mode = 2
+texture = ExtResource("49_nndth")
+expand_mode = 1
+
+[node name="WheelBR" type="TextureRect" parent="UI/HUD/LandedWheels/WheelsBase"]
+custom_minimum_size = Vector2(32, 64)
+layout_mode = 2
+texture = ExtResource("50_he5ea")
+expand_mode = 1
+
 [node name="Wheels" type="GridContainer" parent="UI/HUD/LandedWheels"]
 modulate = Color(1, 0.376471, 0, 1)
 layout_mode = 2
@@ -1284,6 +1315,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(2, 2)
 
 [node name="Update" type="PanelContainer" parent="UI/UpdateBanner"]
 layout_mode = 1
@@ -1299,7 +1331,7 @@ alignment = 2
 [node name="UpdateLabel" type="Label" parent="UI/UpdateBanner/Update/UpdateInfo"]
 layout_mode = 2
 theme_type_variation = &"MatrixHugeLabel"
-text = "1.3.1"
+text = "1.3.2"
 horizontal_alignment = 2
 
 [node name="UpdateIcon" type="TextureRect" parent="UI/UpdateBanner/Update/UpdateInfo"]
@@ -2400,6 +2432,25 @@ popup/item_4/id = 4
 popup/item_5/text = "Ultra"
 popup/item_5/id = 5
 script = ExtResource("66_cigoj")
+
+[node name="Sparks" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Graphics/Scroll/List"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Graphics/Scroll/List/Sparks"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Sparks"
+
+[node name="Value" type="OptionButton" parent="UI/SettingsDialog/BG/VBox/Tabs/Graphics/Scroll/List/Sparks"]
+custom_minimum_size = Vector2(150, 40)
+layout_mode = 2
+selected = 1
+item_count = 2
+popup/item_0/text = "Off"
+popup/item_0/id = 0
+popup/item_1/text = "On"
+popup/item_1/id = 1
+script = ExtResource("89_ylw7s")
 
 [node name="PostProcessing" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Graphics/Scroll/List"]
 layout_mode = 2
