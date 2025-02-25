@@ -10,15 +10,11 @@
 	src: local('Qaz'), url('Qaz-Regular.otf');
 }
 
-@font-face {
-	font-family: 'MatrixType Display';
-	src: local('MatrixType Display'), url('MatrixTypeDisplay-Regular.otf');
-}
-
 html, body, #canvas {
 	margin: 0;
 	padding: 0;
 	border: 0;
+	font-family: 'Qaz', sans-serif;
 	font-size: 16px;
 }
 
@@ -67,11 +63,7 @@ body {
 }
 
 #status-loading {
-	font-family: 'MatrixType Display', monospace;
-	font-size: 24px;
 	background-color: #1a120d;
-	color: #ff6000;
-	-webkit-text-stroke: 2px #ff600080;
 }
 
 #status-notice {
@@ -89,6 +81,24 @@ body {
 	text-align: center;
 	z-index: 1;
 }
+
+#progress {
+	min-width: 280px;
+	border-radius: 4px;
+	background-color: #0d0906;
+	box-shadow: 0px 0px 0px 1px #ffb080 inset;
+}
+
+#progress-bar {
+	min-height: 20px;
+	border-radius: 4px;
+	background-color: #ff6000;
+}
+
+#progress-text {
+	padding-top: 5px;
+	color: #ffb080;
+}
 		</style>
 		$GODOT_HEAD_INCLUDE
 	</head>
@@ -103,7 +113,12 @@ body {
 
 		<div id="status">
 			<img id="status-splash" src="index.png" alt="">
-			<div id="status-loading">0%</div>
+			<div id="status-loading">
+					<div id="progress">
+						<div id="progress-bar" style="width: 0%"></div>
+					</div>
+					<div id="progress-text">Connecting…</div>
+			</div>
 			<div id="status-notice"></div>
 		</div>
 
@@ -117,6 +132,8 @@ const engine = new Engine(GODOT_CONFIG);
 	const statusOverlay = document.getElementById('status');
 	const statusLoading = document.getElementById('status-loading');
 	const statusNotice = document.getElementById('status-notice');
+	const progressBar = document.getElementById('progress-bar');
+	const progressText = document.getElementById('progress-text');
 
 	let statusMode = '';
 
@@ -145,15 +162,13 @@ const engine = new Engine(GODOT_CONFIG);
 		});
 	}
 
-	function setStatusLoading(text) {
-		while (statusLoading.lastChild) {
-			statusLoading.removeChild(statusLoading.lastChild);
+	function setStatusLoading(progress, current, total) {
+		progressBar.style.width = `${progress * 100}%`;
+		if (current === total) {
+			progressBar.style.backgroundColor = '#ffff00';
 		}
-		const lines = text.split('\n');
-		lines.forEach((line) => {
-			statusLoading.appendChild(document.createTextNode(line));
-			statusLoading.appendChild(document.createElement('br'));
-		});
+		const bytesInMB = 1_048_576;
+		progressText.textContent = `${Math.floor(progress * 100)}% (${(current / bytesInMB).toFixed(3)}/${(total / bytesInMB).toFixed(3)} MB)`;
 	}
 
 	function displayFailureNotice(err) {
@@ -210,9 +225,9 @@ const engine = new Engine(GODOT_CONFIG);
 				let totalActual = -100; // REPLACE
 				console.log(current);
 				if (current === totalActual) {
-					setStatusLoading('100%');
+					setStatusLoading(1.0, current, totalActual);
 				} else {
-					setStatusLoading(`${Math.floor(current * 100 / totalActual)}%`);
+					setStatusLoading(Math.min(Math.max(current / totalActual, 0), 1), current, totalActual);
 				}
 			},
 			'onExit': function (status_code) {
