@@ -246,8 +246,9 @@ cull_mask = 1048573
 reflection_mask = 1
 
 [node name="LightmapGI" type="LightmapGI" parent="."]
-quality = 2
+quality = 3
 shadowmask_mode = 2
+texel_scale = 4.0
 generate_probes_subdiv = 0
 
 [node name="pathtest" parent="." instance=ExtResource("1_27c0p")]
