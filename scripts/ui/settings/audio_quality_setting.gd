@@ -7,5 +7,5 @@ func _ready() -> void:
 	on_value_changed(NoDownforceGlobal.settings_resource.audio_qualities[quality_name])
 
 func on_value_changed(index: int):
-	AACCGlobal.current_sound_qualities[quality_name] = index
-	NoDownforceGlobal.settings_resource.audio_qualities[quality_name] = index
+	AACCGlobal.current_sound_qualities[quality_name] = index as AACCGlobal.SoundQuality
+	NoDownforceGlobal.settings_resource.audio_qualities[quality_name] = index as AACCGlobal.SoundQuality

@@ -86,7 +86,7 @@
 [ext_resource type="Resource" uid="uid://dyesqoc1ti2t4" path="res://dev_demos/arty_n0_time.res" id="52_8pgcq"]
 [ext_resource type="Script" uid="uid://dpjh575chum8l" path="res://scripts/ui/settings/upscaling_mode_setting.gd" id="52_qtpag"]
 [ext_resource type="Resource" uid="uid://1m4oefithx7h" path="res://dev_demos/arty_n2_time.res" id="53_fw8to"]
-[ext_resource type="Script" uid="uid://davqnenrgtsk5" path="res://scripts/ui/settings/fxaa_setting.gd" id="53_kdpoe"]
+[ext_resource type="Script" uid="uid://davqnenrgtsk5" path="res://scripts/ui/settings/ssaa_setting.gd" id="53_kdpoe"]
 [ext_resource type="Resource" uid="uid://cpha1aemihv4k" path="res://dev_demos/arty_n3_time.res" id="54_6kdwj"]
 [ext_resource type="Script" uid="uid://b3iogaibu4jsv" path="res://scripts/demo/demo_dialog.gd" id="56_tedy2"]
 [ext_resource type="PackedScene" uid="uid://bgcm0ljtikw2u" path="res://scenes/cars/race_ghost.tscn" id="57_03d3b"]
@@ -1364,7 +1364,7 @@ alignment = 2
 [node name="UpdateLabel" type="Label" parent="UI/UpdateBanner/Update/UpdateInfo"]
 layout_mode = 2
 theme_type_variation = &"MatrixHugeLabel"
-text = "1.3.5"
+text = "1.3.6"
 horizontal_alignment = 2
 
 [node name="UpdateIcon" type="TextureRect" parent="UI/UpdateBanner/Update/UpdateInfo"]
@@ -2485,7 +2485,7 @@ layout_mode = 2
 [node name="Label" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Graphics/Scroll/List/MSAA"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "MSAA"
+text = "Multisample Anti-Aliasing"
 
 [node name="Value" type="OptionButton" parent="UI/SettingsDialog/BG/VBox/Tabs/Graphics/Scroll/List/MSAA"]
 custom_minimum_size = Vector2(150, 40)
@@ -2502,23 +2502,25 @@ popup/item_3/text = "8×"
 popup/item_3/id = 3
 script = ExtResource("42_00phd")
 
-[node name="FXAA" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Graphics/Scroll/List"]
+[node name="SSAA" type="HBoxContainer" parent="UI/SettingsDialog/BG/VBox/Tabs/Graphics/Scroll/List"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Graphics/Scroll/List/FXAA"]
+[node name="Label" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Graphics/Scroll/List/SSAA"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "FXAA"
+text = "Screen Space Anti-Aliasing"
 
-[node name="Value" type="OptionButton" parent="UI/SettingsDialog/BG/VBox/Tabs/Graphics/Scroll/List/FXAA"]
+[node name="Value" type="OptionButton" parent="UI/SettingsDialog/BG/VBox/Tabs/Graphics/Scroll/List/SSAA"]
 custom_minimum_size = Vector2(150, 40)
 layout_mode = 2
-selected = 1
-item_count = 2
+selected = 2
+item_count = 3
 popup/item_0/text = "Off"
 popup/item_0/id = 0
-popup/item_1/text = "On"
+popup/item_1/text = "FXAA"
 popup/item_1/id = 1
+popup/item_2/text = "SMAA"
+popup/item_2/id = 2
 script = ExtResource("53_kdpoe")
 
 [node name="Lighting" type="Label" parent="UI/SettingsDialog/BG/VBox/Tabs/Graphics/Scroll/List"]

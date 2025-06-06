@@ -2,8 +2,8 @@ extends OptionButton
 
 func _ready() -> void:
 	item_selected.connect(on_value_changed)
-	select(NoDownforceGlobal.settings_resource.graphics_fxaa)
-	on_value_changed(NoDownforceGlobal.settings_resource.graphics_fxaa)
+	select(NoDownforceGlobal.settings_resource.graphics_ssaa)
+	on_value_changed(NoDownforceGlobal.settings_resource.graphics_ssaa)
 
 	if NoDownforceGlobal.using_opengl:
 		set_item_disabled(1, true)
@@ -20,5 +20,7 @@ func on_value_changed(index: int):
 			$"/root".get_viewport().screen_space_aa = Viewport.SCREEN_SPACE_AA_DISABLED
 		1:
 			$"/root".get_viewport().screen_space_aa = Viewport.SCREEN_SPACE_AA_FXAA
+		2:
+			$"/root".get_viewport().screen_space_aa = Viewport.SCREEN_SPACE_AA_SMAA
 	
-	NoDownforceGlobal.settings_resource.graphics_fxaa = index
+	NoDownforceGlobal.settings_resource.graphics_ssaa = index
