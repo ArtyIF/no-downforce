@@ -95,18 +95,23 @@ air_stabilization_force = 0.0
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 
 [node name="body" parent="Visuals/race" index="0"]
+gi_mode = 2
 surface_material_override/0 = ExtResource("5_yyw0u")
 
 [node name="wheel-back-left" parent="Visuals/race" index="1"]
+gi_mode = 2
 surface_material_override/0 = ExtResource("5_0qwsg")
 
 [node name="wheel-back-right" parent="Visuals/race" index="2"]
+gi_mode = 2
 surface_material_override/0 = ExtResource("6_akcl5")
 
 [node name="wheel-front-left" parent="Visuals/race" index="3"]
+gi_mode = 2
 surface_material_override/0 = ExtResource("7_yyw0u")
 
 [node name="wheel-front-right" parent="Visuals/race" index="4"]
+gi_mode = 2
 surface_material_override/0 = ExtResource("8_qgyd1")
 
 [node name="Shadow" type="MeshInstance3D" parent="Visuals/race"]

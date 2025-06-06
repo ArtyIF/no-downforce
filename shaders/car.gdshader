@@ -17,7 +17,7 @@ void vertex() {
 
 void fragment() {
 	METALLIC = 0.33;
-	SPECULAR = 1.0;
+	SPECULAR = texture(lightmap_texture, UV2).r;
 	ROUGHNESS = 0.0;
 
 	ALBEDO = texture(color_texture, UV).rgb * texture(lightmap_texture, UV2).rgb;

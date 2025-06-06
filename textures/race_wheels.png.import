@@ -2,20 +2,22 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b3mluqxfvdqp7"
-path="res://.godot/imported/race_wheels.png-5bcc76b724bdfa54e8bc4ba4c756ba8c.ctex"
+uid="uid://bpr5mqcck8ju7"
+path.s3tc="res://.godot/imported/race_wheels.png-5bcc76b724bdfa54e8bc4ba4c756ba8c.s3tc.ctex"
+path.etc2="res://.godot/imported/race_wheels.png-5bcc76b724bdfa54e8bc4ba4c756ba8c.etc2.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
+"vram_texture": true
 }
 
 [deps]
 
 source_file="res://textures/race_wheels.png"
-dest_files=["res://.godot/imported/race_wheels.png-5bcc76b724bdfa54e8bc4ba4c756ba8c.ctex"]
+dest_files=["res://.godot/imported/race_wheels.png-5bcc76b724bdfa54e8bc4ba4c756ba8c.s3tc.ctex", "res://.godot/imported/race_wheels.png-5bcc76b724bdfa54e8bc4ba4c756ba8c.etc2.ctex"]
 
 [params]
 
-compress/mode=3
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0
@@ -23,7 +25,7 @@ compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=1
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""

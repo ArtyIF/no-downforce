@@ -96,18 +96,23 @@ do_not_apply_forces = true
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 
 [node name="body" parent="Visuals/race" index="0"]
+gi_mode = 2
 surface_material_override/0 = ExtResource("4_rh3xe")
 
 [node name="wheel-back-left" parent="Visuals/race" index="1"]
+gi_mode = 2
 surface_material_override/0 = ExtResource("7_4thc7")
 
 [node name="wheel-back-right" parent="Visuals/race" index="2"]
+gi_mode = 2
 surface_material_override/0 = ExtResource("9_hupwi")
 
 [node name="wheel-front-left" parent="Visuals/race" index="3"]
+gi_mode = 2
 surface_material_override/0 = ExtResource("11_jd1en")
 
 [node name="wheel-front-right" parent="Visuals/race" index="4"]
+gi_mode = 2
 surface_material_override/0 = ExtResource("13_ffqjw")
 
 [node name="Shadow" type="MeshInstance3D" parent="Visuals/race"]
