@@ -64,7 +64,6 @@ func _physics_process(delta: float) -> void:
 		if AACCGlobal.can_play("Scrape", car):
 			if not scrape_sound.playing:
 				scrape_sound.play(randf_range(0.0, scrape_sound.stream.get_length()))
-			scrape_sound.pitch_scale = clamp(lerp(0.2, 1.0, total_scratch_amount), 0.2, 2.0)
 		else:
 			scrape_sound.stop()
 	else:

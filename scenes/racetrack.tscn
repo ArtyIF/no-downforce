@@ -189,7 +189,7 @@ script = ExtResource("12_4duja")
 
 [node name="Sun" type="DirectionalLight3D" parent="Lighting"]
 transform = Transform3D(-0.707107, -0.183013, 0.683013, 0, 0.965926, 0.258819, -0.707107, 0.183013, -0.683013, 0, 0, 0)
-light_color = Color(1, 0.691667, 0.5, 1)
+light_color = Color(1, 0.6901961, 0.5019608, 1)
 light_energy = 8.0
 light_volumetric_fog_energy = 2.0
 shadow_enabled = true
@@ -1480,9 +1480,11 @@ size_flags_horizontal = 4
 text = "Cancel"
 
 [node name="LoadDemoFileDialog" type="FileDialog" parent="UI"]
+auto_translate_mode = 2
 title = "Open a File"
 initial_position = 2
 size = Vector2i(800, 600)
+auto_translate = false
 ok_button_text = "Open"
 file_mode = 0
 access = 1
@@ -1617,18 +1619,22 @@ alignment = 0
 
 [node name="ErrorDialog" type="AcceptDialog" parent="UI"]
 process_mode = 3
+auto_translate_mode = 2
 title = "Error!"
 initial_position = 2
 size = Vector2i(165, 100)
 popup_window = true
+auto_translate = false
 dialog_text = "Error text goes here"
 
 [node name="CreditsDialog" type="AcceptDialog" parent="UI"]
+auto_translate_mode = 2
 title = "Credits"
 initial_position = 2
 size = Vector2i(800, 600)
 wrap_controls = false
 min_size = Vector2i(800, 600)
+auto_translate = false
 ok_button_text = "Close"
 
 [node name="CreditsLabel" type="RichTextLabel" parent="UI/CreditsDialog"]
