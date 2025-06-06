@@ -18,6 +18,7 @@ nodes/root_name=""
 nodes/apply_root_scale=true
 nodes/root_scale=1.0
 nodes/import_as_skeleton_bones=false
+nodes/use_name_suffixes=true
 nodes/use_node_type_suffixes=true
 meshes/ensure_tangents=true
 meshes/generate_lods=true
@@ -36,6 +37,7 @@ _subresources={
 "materials": {
 "colormap": {
 "use_external/enabled": true,
+"use_external/fallback_path": "res://materials/kenney_colormap_adjusted.tres",
 "use_external/path": "uid://iyyp6q7p13dj"
 }
 }

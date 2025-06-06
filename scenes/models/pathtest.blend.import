@@ -18,6 +18,7 @@ nodes/root_name=""
 nodes/apply_root_scale=true
 nodes/root_scale=1.0
 nodes/import_as_skeleton_bones=false
+nodes/use_name_suffixes=true
 nodes/use_node_type_suffixes=true
 meshes/ensure_tangents=true
 meshes/generate_lods=true
@@ -36,18 +37,22 @@ _subresources={
 "materials": {
 "Baseplate": {
 "use_external/enabled": true,
+"use_external/fallback_path": "res://materials/material_baseplate.tres",
 "use_external/path": "uid://cxb5dakvcode1"
 },
 "Border": {
 "use_external/enabled": true,
+"use_external/fallback_path": "res://materials/material_border.tres",
 "use_external/path": "uid://bg2rrkd4n5v7b"
 },
 "Road": {
 "use_external/enabled": true,
+"use_external/fallback_path": "res://materials/material_track.tres",
 "use_external/path": "uid://b3nlwh0xilbf2"
 },
 "StartingPoint": {
 "use_external/enabled": true,
+"use_external/fallback_path": "res://materials/material_start.tres",
 "use_external/path": "uid://4unpxrqicot5"
 }
 }
